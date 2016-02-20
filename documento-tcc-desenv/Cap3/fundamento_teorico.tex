@@ -6,7 +6,7 @@ Na Seção~\ref{sec:kdd} será abordado os conceitos de descoberta de conhecimen
 %%
 % KDD
 \section{DESCOBERTA DE CONHECIMENTO EM BASE DE DADOS E \textit{DATA MINING}}\label{sec:kdd}
-Muitas pessoas tratam a mineração de dados como um sinônimo para outro termo muito popular, descoberta de conhecimento em base de dados (\textit{knowledge discovery from data}) - KDD, enquanto outros referenciam \textit{data mining} como apenas uma etapa no processo de descoberta de conhecimento em base de dados. O processo de KDD é demonstrado através da  Figura~\ref{kdd-fig} como uma sequência interativa e iterativa dos seguintes passos: \\ \\ \\ \\ \\ \\
+Muitas pessoas tratam a mineração de dados como um sinônimo para outro termo muito popular, descoberta de conhecimento em base de dados (\textit{knowledge discovery from data}) - KDD, enquanto outros referenciam \textit{data mining} como apenas uma etapa no processo de descoberta de conhecimento em base de dados. O processo de KDD é demonstrado através da  Figura~\ref{kdd-fig} e posteriormente listada como uma sequência interativa e iterativa dos seguintes passos: \\ \\ \\ \\ \\ \\
 
 \begin{figure}
 	\centering
@@ -27,6 +27,7 @@ Muitas pessoas tratam a mineração de dados como um sinônimo para outro termo 
 	\item \textit{Knowledge presentation} (Apresentação de conhecimento).
 \end{enumerate}
 
+É importante notar que algum dos processos acontecem na mesma etapa: Limpeza e integração; Seleção e transformação; Avaliação e apresentação.
 
 De acordo com \apudonline{brachman}{fayyad2}, as etapas são interativas porque envolvem a cooperação da pessoa responsável pela análise de dados, cujo conhecimento sobre o domínio orientará a execução do processo. Por sua vez, a interação deve-se ao fato de que, com frequência, esse processo não é executado de forma sequencial, mas envolve repetidas seleções de parâmetros e conjuntos de dados, aplicações das técnicas de \textit{data mining} e posterior análise dos resultados obtidos, a fim de refinar os conhecimentos extraídos.
 
@@ -84,11 +85,11 @@ O oposto de aprendizagem supervisionada é um conjunto de tarefas conhecidas com
 %%
 % Python
 \section{PYTHON}\label{sec:python}
-Python é uma linguagem de programação orientada a objetos, interpretada, interativa. Incorpora módulos, excessões, tipagem dinâmica alta. Possuindo uma sintaxe clara e simples, o que facilita o aprendizado para novos desenvolvedores, assim como a rápida leitura e interpretação para usuários mais experientes. A linguagem dispõe de interfaces para várias chamadas de sistemas (\textit{system calls}) e bibliotecas, também para vários sistemas de janelas, e é extensível a outras linguagens de programação como C ou C++. É também usada como uma linguagem de extensão para aplicações que precisam de uma interface programática \cite{python-doc}.
+Python é uma linguagem de programação orientada a objetos, interpretada, interativa. Incorpora módulos, excessões e de tipagem dinâmica alta. Possui uma sintaxe clara e simples, o que facilita o aprendizado para novos desenvolvedores, assim como a rápida leitura e interpretação para usuários mais experientes. A linguagem dispõe de interfaces para várias chamadas de sistemas (\textit{system calls}) e bibliotecas, também para vários sistemas de janelas, e é extensível a outras linguagens de programação como C ou C++. É também usada como uma linguagem de extensão para aplicações que precisam de uma interface programática \cite{python-doc}.
 
 Outra característica de Python é a portabilidade, podendo ser utilizada em diversos sistemas operacionais como variantes do Unix, em sistemas Mac e também em PCs sob MS-DOS, Windows, Windows-NT, e OS/2.
 
-Python é uma linguagem de programação de alto-nível que pode ser aplicada em soluções para diversas classes diferentes. A linguagem possui uma vasta quantidade de bibliotecas que atende a áreas como o processamento de \textit{strings} (expressões regulares, Unicode, cálculo de diferença entre arquivos), protocolos de Internet (HTTP, FTP, SMTP, XML-RPC, POP, IMAP, CGI \textit{programming}), engenharia de software (testes unitários, registro de logs, \textit{profiling}, análise de código Python), e interfaces para sistemas operacionais (\textit{system calls}, sistemas de arquivos, TCP/IP sockets) \cite{python-doc}.
+É uma linguagem de programação de alto-nível que pode ser aplicada em soluções para diversas classes diferentes. A linguagem possui uma vasta quantidade de bibliotecas que atende a áreas como o processamento de \textit{strings} (expressões regulares, Unicode, cálculo de diferença entre arquivos), protocolos de Internet (HTTP, FTP, SMTP, XML-RPC, POP, IMAP, CGI \textit{programming}), engenharia de software (testes unitários, registro de logs, \textit{profiling}, análise de código Python), e interfaces para sistemas operacionais (\textit{system calls}, sistemas de arquivos, TCP/IP \textit{sockets}) \cite{python-doc}.
 
 A sintaxe bastante expressiva e a abundância de suas bibliotecas tornam Python uma ótima linguagem para se obter resultados em várias questões. Algumas de suas utilidades é apresentada conforme a seguinte lista:
 
@@ -99,7 +100,8 @@ A sintaxe bastante expressiva e a abundância de suas bibliotecas tornam Python 
 	\item \textit{matplotlib} e \textit{Seaborn} são mecanismos que possibilitam a visualização dos dados.
 \end{itemize}
 
-\textit{Dictionaries} em Python são estruturas de dados similares ao JSON, que permitem ordenar dados através de um modelo chave-valor. Devido então a sintaxe intuitiva que a linguagem possui e seu excelente ecossistema de bibliotecas, é possível acessar APIs e manipular dados com mais facilidade \cite{mining-social-web}. 
+A utilização dessa linguagem como ferramenta principal para este trabalho se justifica na utilização dos pacotes que facilitam a análise e interpretação de dados. Como exemplo, \textit{NumPy}, \textit{SciPy}, \textit{pandas}, \textit{matplotlib} e \textit{IPython} são os mecanismos indispensáveis para a mineração de informações juntamente com as estruturas de dados já presentes em Python como os \textit{dictionaries} (estruturas similares ao JSON), que permitem ordenar dados através de um modelo chave-valor. Devido então a sintaxe intuitiva que a linguagem possui e seu excelente ecossistema de bibliotecas, é possível acessar APIs e manipular dados com mais facilidade \cite{mining-social-web}.
+
 
 
 

@@ -5,9 +5,9 @@
 
 #### João :
 * [x] Melhorar o resumo
-* [ ] Comentar sobre a tabela -> explicar o tempo de desenvolvimento do trabalho
-* [ ] Ver a palavra qualidade
-* [ ] Etapas não batem com o número de figuras (Figura 1)
+* [x] Comentar sobre a tabela -> explicar o tempo de desenvolvimento do trabalho
+* [x] Ver a palavra qualidade
+* [x] Etapas não batem com o número de figuras (Figura 1)
 * [ ] Objetivo -> Dentro do __Objetivo Geral__ deve ser melhor especificado nos objetivos específicos
 * [ ] Deixar claro quais os resultados finais desejados
 
@@ -18,7 +18,7 @@
     * __'Mineração de dados utilizando a linguagem de programação Python para análise e mineração de dados aplicado à rede social Linkedin'__
 * [x] Resumo precisa ser reescrito
 * [ ] Próximo trabalho deve ser colocado análise de resultados
-* [ ] Falta de referências sobre as afirmações na introdução
+* [x] Falta de referências sobre as afirmações na introdução
 * [ ] Ver a revisão bibliográfica
 * [ ] Definir metodologia
 
