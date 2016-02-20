@@ -5,7 +5,7 @@ como meu TCC, com o objetivo de "colá" grau (glue grade).
 
 Tenho me aventurado com machine learning e um pouco de IA para este projeto.
 
-A princípio este repositório contém apenas os arquivos referente a dissertação e desenvolvimento em Latex.
+A princípio este repositório contém apenas os arquivos referentes a dissertação e desenvolvimento em Latex.
 
 Posteriormente disponibilizarei os códigos e algoritmos utilizado para a mineração de dados em si.
 
