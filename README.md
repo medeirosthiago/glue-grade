@@ -17,4 +17,4 @@ https://github.com/medeirosthiiago/glue-grade/blob/master/bugs.md
 
 ### Última versão da dissertação
 
-https://github.com/medeirosthiiago/glue-grade/blob/master/documento-tcc-desenv/modelo%20UFPR.pdf
+https://github.com/medeirosthiiago/glue-grade/blob/master/documento-tcc-desenv/modelo.pdf
