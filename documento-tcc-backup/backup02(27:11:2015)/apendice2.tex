@@ -1,0 +1,250 @@
+% ----------------------------------------------------------
+\chapter{MODELO HÍBRIDO}
+
+Modelo híbrido desenvolvido, em Pascal, para solucionar o problema da ruptura de barragens governado pelas equações de Águas Rasas unidimensional. 
+
+\begin{verbatim}
+
+	program rb02;
+	
+	uses
+	wincrt;
+	
+	type
+	vet = array[0..1000] of double;
+	
+	var
+	az,au   : text;
+	x       : ^vet;
+	u,z     : array[1..2] of ^vet;
+	t,ti,
+	c0,zm,
+	dx,dt,
+	msdx,z0 : double;
+	i,i2,
+	nx1,
+	nx2     : integer;
+	
+	const
+	h  : double  = 1.0;
+	lp : double  = 2.0;
+	lg : double  = 4.0;
+	g  : double  = 9.807;
+	ep : double  = 0.00001;
+	nx : integer = 400;
+	ni : integer = 500;
+	
+	
+	procedure sol_ex(t:double);
+	
+	var
+	x1,x2,a : double;
+	i1,i2,i : integer;
+	
+	begin
+	
+	x1 := h - t*c0;
+	x2 := h + 2.0*t*c0;
+	
+	i1 := trunc(ep+(x1/dx));
+	i2 := trunc(ep+(x2/dx));
+	
+	for i := i1+1 to i2-1 do
+	begin
+	
+	a := (2.0*c0 + (h-x^[i])/t)/3.0;
+	
+	z[2]^[i] := a*a/g;
+	u[2]^[i] := 2.0*(c0 - a);
+	
+	end;
+	
+	end;
+	
+	procedure sol_num(t:double);
+	
+	var
+	dzdx,dudx,
+	a,zx,ux,
+	zmed      : double;
+	i1,i2,i   : integer;
+	
+	begin
+	
+	z[1] := z[2];
+	u[1] := u[2];
+	
+	for i := 1 to nx1 do
+	begin
+	
+	i1 := i - 1;
+	i2 := i + 1;
+	
+	zx := 0.5*(z[1]^[i1] + z[1]^[i2]);
+	ux := 0.5*(u[1]^[i1] + u[1]^[i2]);
+	
+	dzdx := msdx*(z[1]^[i2] - z[1]^[i1]);
+	dudx := msdx*(u[1]^[i2] - u[1]^[i1]);
+	
+	a := ux*dudx + g*dzdx;
+	u[2]^[i] := ux - a*dt;
+	
+	a := zx*dudx + ux*dzdx;
+	z[2]^[i] := zx - a*dt;
+	
+	end;
+	
+	z[2]^[0]  := z[2]^[1];
+	z[2]^[nx] := z[2]^[nx-1];
+	
+	zmed := 0.0;
+	for i := 0 to nx do
+	zmed := zmed + z[2]^[i];
+	
+	a := nx*zm/zmed;
+	for i := 0 to nx do
+	z[2]^[i] := a*z[2]^[i];
+	
+	end;
+	
+	procedure gravar(t:double);
+	
+	var
+	i : integer;
+	
+	begin
+	
+	writeln(az);
+	write  (az,t);
+	
+	writeln(au);
+	write  (au,t);
+	
+	i := 0;
+	repeat
+	
+	write(az,' ',z[2]^[i]);
+	write(au,' ',u[2]^[i]);
+	
+	i := i + nx2;
+	
+	until i > nx;
+	(*
+	write(az,' ',z[2]^[nx]);
+	write(au,' ',u[2]^[nx]);
+	*)
+	end;
+	
+	begin
+	
+	new(x);
+	for i := 1 to 2 do
+	begin
+	new(u[i]);
+	new(z[i]);
+	end;
+	
+	nx1  := nx - 1;
+	nx2  := nx div 20;
+	dx   := lg/nx;
+	dt   := 0.01*dx;
+	msdx := 0.5/dx;
+	
+	i2 := trunc((h/dx)+ep);
+	
+	for i := 0 to nx do
+	begin
+	x^[i]    := i*dx;
+	u[2]^[i] := 0.0;
+	end;
+	
+	for i := 0 to i2 do
+	z[2]^[i] := lp;
+	
+	for i := i2+1 to nx do
+	z[2]^[i] := 0.0;
+	
+	zm := lp*h/lg;
+	c0 := sqrt(g*lp);
+	
+	writeln(zm);
+	
+	t  := h/c0;
+	ti := 0.5*(lg-h)/c0;
+	
+	if ti > t
+	then
+	ti := t;
+	
+	writeln(ti);
+	readln;
+	
+	assign(az,'rb02z.txt');
+	assign(au,'rb02u.txt');
+	
+	rewrite(az);
+	rewrite(au);
+	
+	writeln(az);
+	write  (az,'        t(s)\x(m)      ');
+	writeln(au);
+	write  (au,'        t(s)\x(m)      ');
+	
+	i := 0;
+	repeat
+	
+	write(az,' ',x^[i]);
+	write(au,' ',x^[i]);
+	
+	i := i + nx2;
+	
+	until i > nx;
+	(*
+	write(az,' ',x^[nx]);
+	write(au,' ',x^[nx]);
+	*)
+	t := ni*dt;
+	repeat
+	
+	writeln(t);
+	
+	sol_ex(t);
+	
+	writeln(t,z[2]^[0],z[2]^[nx]);
+	
+	gravar(t);
+	
+	t := t + ni*dt;
+	
+	until t > ti;
+	
+	t := t - ni*dt;
+	
+	repeat
+	
+	z0 := z[2]^[0];
+	
+	for i := 1 to ni do
+	begin
+	
+	t := t + dt;
+	
+	sol_num(t);
+	
+	end;
+	
+	gravar(t);
+	
+	writeln(t,z[2]^[0],z[2]^[nx]);
+	
+	until abs(z0-z[2]^[0]) < ep;
+	
+	close(az);
+	close(au);
+	
+	end.
+	
+\end{verbatim}
+
+% ----------------------------------------------------------
+%\lipsum[55-57]

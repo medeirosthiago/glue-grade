@@ -1,0 +1,582 @@
+\chapter{FUNDAMENTAÇÃO TEÓRICA}
+%Título Capítulo 3
+
+De acordo com a Física Clássica, Leis de Conservação são aquelas que afirmam que para um sistema físico, isolado, que passa por um determinado processo, apresenta propriedades que não mudam antes, durante ou depois do processo. Estas Leis estão intimamente relacionadas com simetrias que ocorrem na natureza. Elas advêm de relações matemáticas associadas a certas simetrias de um processo físico. Para entender estas simetrias, este capítulo aborda alguns conceitos fundamentais, tais como: a forma de descrever um movimento, Seção \ref{Desc_Mov}, as principais Leis de Conservação, Seção \ref{Leis}, a formulação da equação da Hidrostática, Seção \ref{Hidro}, o comportamento de um fluido newtoniano, Seção \ref{Flui_New}, a construção da equação de Navier-Stokes para fluidos incompressíveis, Seção \ref{NS}, a formação de um sistema de equações diferenciais constituído, principalmente, pelas Leis de Conservação ou, em muitos casos, por uma simplificação da equação de Navier-Stokes, chamada de equações de Euler, Seção \ref{Euler}  e, por fim, apresenta mais um sistema de equações diferenciais composto pelas equações de Águas Rasas, Seção \ref{aguasrasas}.
+
+%\begin{enumerate}
+%\item Conservação da massa;
+%\item Consevação do \textit{Momentum};
+%\item Conservação da energia.
+%\end{enumerate}
+
+%---------------------------------------------------------------------------------------------------------------------------------------------------
+\section{DESCRIÇÃO DO MOVIMENTO} \label{Desc_Mov}
+
+Descrever um movimento significa prever a posição, a velocidade e a aceleração de todos os pontos do meio contínuo a qualquer instante de tempo \textit{t} \cite{Lai}.
+Um movimento pode ser descrito por meio de uma mera observação, assim como ocorre na observação do movimento de um lago, um túnel de vento ou em um modelo reduzido. Por meio de uma descrição material ou também chamada de Lagrangeana onde um ponto que possui uma posição  inicial é acompanhado por um vetor posição $ \vec{r} ( \vec{x}, \textit{t} )$, normalmente usado quando o meio em que o ponto material se encontra sofre pouca deformação. Por meio de uma descrição espacial ou Euleriana onde o vetor posição  $ \vec{r} ( \vec{x}, \textit{t} )$ é fixo e as partículas passam sucessivamente por essa posição, chamada de região de controle, normalmente usada em um meio que sofre grandes deformações (fluido).
+Ao se considerar o movimento em um meio contínuo, a temperatura $\Theta$ , a velocidade \textit{v} e o tensor de tensões \textbf{T} variam com o tempo. Se ao descrever o movimento for adotado a configuração Lagrangeana as grandezas $\Theta$ , \textit{v} , \textbf{T} serão expressas como funções dependentes das coordenadas materiais e do tempo $ t $, ou seja,
+
+\begin{equation}
+\Theta= \widehat{\Theta} (X_{1} , X_{2} , X_{3} , \textit{t} ),
+\end{equation}
+\begin{equation}
+\textit{v}=\widehat{ \textit{v} } (X_{1} , X_{2} , X_{3} , \textit{t} ),  \label{equacao 1}
+\end{equation}
+e
+\begin{equation}
+\textbf{T}= \widehat{\textbf{T}}(X_{1} , X_{2} , X_{3} , \textit{t} ).
+\end{equation}
+
+Caso seja adotado a configuração Euleriana, tem-se então as grandezas expressas em função das coordenadas de um ponto fixo no espaço $(x_{1}, x_{2}, x_{3})$ e o tempo $ t $, ou seja,
+
+\begin{equation}
+\Theta=\check{ \Theta } (x_{1} , x_{2} , x_{3} , \textit{t} ),
+\end{equation}
+\begin{equation}
+\textit{v}=\check{ \textit{v} } (x_{1} , x_{2} , x_{3} , \textit{t} ),  \label{equacao 1}
+\end{equation}
+e
+\begin{equation}
+\textbf{T}= \check{ \textbf{T} }(x_{1} , x_{2} , x_{3} , \textit{t} ).
+\end{equation}
+
+%---------------------------------------------------------------------------------------------------------------------------------------------------- 
+%\section{} \label{Tensor}
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------------
+\section{LEIS DE CONSERVAÇÃO} \label{Leis}
+
+\subsection{Lei de conservação da massa}
+
+Em seus experimentos o francês Antoine Laurent Lavosier concluiu que, numa reação química realizada em um sistema fechado, a massa permanecia constante, ou seja, em um sistema fechado, onde não há troca de matéria com o meio ambiente, a massa total antes da reação é igual a massa total após a reação. Por esta descoberta a Lei de Lavosier é hoje popularmente conhecida pela frase:
+
+\begin{center}
+\textit{" Na natureza nada se cria, nada se perde, tudo se transforma."}
+\end{center}
+
+Para definir a equação de conservação da massa, considere $\rho$ a massa específica de um material ou seja, $\rho$ é a massa do material por unidade de volume, $Vm$. Como a massa deve ser conservada para todo o tempo pode-se afirmar que
+\begin{equation} \label{lei_conser_massa}
+\dfrac{D}{Dt} \int_{Vm} \rho ( \vec{x} , t) dV=0.
+\end{equation}
+
+De acordo com o Teorema de Transportes de Reynolds \cite{Malvern}, para um dado $\textbf{T}( \vec{x}, t)$, que pode ser um escalar ou uma função tensorial com coordenadas espaciais $(x_{1},x_{2},x_{2})$ no tempo \textit{t}, tem-se que
+\begin{equation} \label{transp_Reynolds}
+\dfrac{D}{Dt} \int_{Vm} \textbf{T} ( \vec{x} , t)dV =\int_{Vc} \dfrac{ \partial \textbf{T} ( \vec{x} ,t)}{ \partial t} dV + \int_{Sc} \textbf{T} ( \vec{v} \cdot \vec{n}) dS,
+\end{equation}
+onde $\textit{Vc}$ é o volume de controle, fixo no espaço, $\textit{Sc}$ são as fronteiras de $\textit{Vc}$, $\vec{v} = (u , v , w) $ é um vetor velocidade  e $\vec{n}$ é um vetor normal unitário. Desta forma, a equação (\ref{lei_conser_massa}) pode ser escrita como
+\begin{equation} \label{conser_massa_Vc1}
+\int_{Vc} \dfrac{ \partial}{\partial t} \rho (\vec{x} , t) dV= - \int_{Sc} \rho ( \vec{v} \cdot \vec{n} ) dS,
+\end{equation}
+ou
+\begin{equation} \label{conser_massa_Vc2}
+\dfrac{ \partial}{\partial t} \int_{Vc} \rho ( \vec{x} , t) dV = - \int_{Sc} \rho ( \vec{v} \cdot \vec{n} ) dS.
+\end{equation}
+
+A equação (\ref{conser_massa_Vc2}) indica que a taxa de variação da massa dentro do volume de controle é igual ao influxo de massa através da superfície de controle. Como, pelo Teorema de Gauss \cite{Lai},
+\begin{equation} \label{teorema_Gauss}
+\int_{Sc} \rho ( \vec{v} \cdot \vec{n} ) dS= \int_{Vc} (\mbox{div} \rho \vec{v}) dV,
+\end{equation}
+então a equação (\ref{conser_massa_Vc1}) pode ser escrita como
+\begin{equation}
+\int_{Vc} \dfrac{ \partial}{\partial t} \rho (\vec{x} , t) dV= - \int_{Vc} (\mbox{div} \rho \vec{v}) dV
+\end{equation}
+ou
+\begin{equation} \label{integral_massa}
+\int_{Vc} \left[ \dfrac{ \partial \rho}{\partial t} + \mbox{div} ( \rho \vec{v}) \right] dV = 0,
+\end{equation}
+que é válida para todo $Vc$. Assim,
+\begin{equation} \label{eq_massa_1}
+\dfrac{ \partial \rho}{\partial t} + \mbox{div} ( \rho \vec{v}) = 0
+\end{equation}
+ou
+\begin{equation} \label{eq_massa_2}
+\dfrac{ \partial \rho}{\partial t} +  \rho \mbox{div} ( \vec{v}) = 0.
+\end{equation}
+
+As equações (\ref{eq_massa_1}) ou a sua variação, equação (\ref{eq_massa_2}), são conhecidas como a equação de Conservação da Massa ou equação da Continuidade. \cite{Lai}.
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------------
+\subsection{Lei de conservação do \textit{momentum}}
+
+Sabe-se que corpos possuem massa que pode ser denotada por \textit{m}. Quando este se deslocam apresentam uma velocidade $\vec{v}$. A quantidade obtida da multiplicação da massa pela velocidade $(m \cdot \vec{v})$, chamado do movimento linear, também deve ser conservado ou, em outras palavras, não é possível aumentar nem diminuir o valor desta quantidade \cite{Malvern}.
+
+A ideia básica deste postulado é que cada partícula, em um meio contínuo, deve satisfazer a lei do movimento de Newton, também conhecida como Segunda Lei de Newton, que pode ser escrita na forma vetorial
+\begin{equation}
+\vec{F}= m \cdot \vec{a},
+\end{equation}
+onde $ \vec{a}= {D \vec{v}}/{Dt}$ é aceleração da partícula.
+
+O princípio global do  \textit{momentum} linear diz que a força total (força de superfície e forças de corpo) que atua em qualquer parte fixa de um ponto material é igual à taxa de variação da quantidade de movimento linear \cite{Lai}. 
+
+Denotando por  \textbf{t} o vetor de tensões e  \textbf{B} as forças de corpo por unidade de massa, tem-se 
+\begin{equation} \label{eq_movimento_1}
+\int_{Sc} \textbf{t} dS + \int_{Vc} \rho \textbf{B} dV = \dfrac{D}{Dt} \int_{Vm} \rho \vec{v} dV. 
+\end{equation}
+
+De acordo com o Teorema de Transportes de Reynolds, equação (\ref{transp_Reynolds}), a equação (\ref{eq_movimento_1}) pode ser escrita da seguinte forma
+\begin{equation} \label{eq_movimento_2}
+\int_{Sc} \textbf{t} dS + \int_{Vc} \rho \textbf{B} dV = \int_{Vc} \dfrac{ \partial \rho \vec{v}}{ \partial t} dV + \int_{Sc} \rho \vec{v} ( \vec{v} \cdot \vec{n}) dS.
+\end{equation}
+
+Assim, de acordo com a equação (\ref{eq_movimento_2}), pode-se afirma que a força total exercida sobre a parte fixa de um ponto material num dado instante de tempo \textit{t} e volume de controle $Vc$ é igual à razão de tempo da mudança total do movimento linear dentro do volume de controle adicionado do influxo do movimento linear através da superfície de controle $Sc$. 
+
+De forma análoga à equação (\ref{integral_massa}), onde foi aplicado o Teorema da Divergência de Gauss, a equação (\ref{eq_movimento_2}) pode ser escrita como:
+\begin{equation} \label{eq_movimento_3}
+\int_{Vc} \left[ \dfrac{D( \rho \vec{v} )}{Dt} + \rho \vec{v} (\mbox{div} \vec{v}) \right] dV = \int_{Sc} \textbf{t} dS + \int_{Vc} \rho \textbf{B} dV.
+\end{equation}
+
+Considerando a derivada material \cite{Malvern}, tem-se que:
+\begin{equation}
+\dfrac{D( \rho \vec{v} )}{Dt} = \dfrac{D \rho}{Dt} \vec{v} + \rho \dfrac{D \vec{v}}{Dt}= -( \rho \mbox{div} \vec{v}) \vec{v} + \rho \dfrac{D \vec{v}}{Dt}.
+\end{equation}  
+
+Da equação de conservação da massa, $D \rho / Dt +  \rho \mbox{div} \vec{v} = 0$. Logo, a equação (\ref{eq_movimento_3}) pode ser escrita como
+\begin{equation}
+\int_{Vc} \rho \dfrac{D \vec{v}}{Dt} dV = \int_{Sc} \textbf{t} dS + \int_{Vc} \rho \textbf{B} dV.
+\end{equation}
+
+Como \textbf{t} é um vetor de tensão, então poder ser decomposto em função do tensor de tensão de Cauchy \textbf{T} e do vetor normal unitário $ \vec{n}$. Assim,
+\begin{equation} \label{integral_vetor_tensao}
+\int_{Sc} \textbf{t} dS = \int_{Sc} \textbf{T} \vec{n} dS = \int_{Vc} \mbox{div} \textbf{T} dV.
+\end{equation}
+
+Desta forma, tem-se na equação (\ref{integral_vetor_tensao}) que
+\begin{equation}
+\int_{Vc} \left( \rho \dfrac{D \vec{v}}{Dt} - \mbox{div} \textbf{T} - \rho \textbf{B} \right) dV = 0. 
+\end{equation}
+Logo,
+\begin{equation}
+\rho \dfrac{D \vec{v}}{Dt} - \mbox{div} \textbf{T} - \rho \textbf{B} = 0,
+\end{equation}
+ou seja,
+\begin{equation} \label{eq_movimento_final}
+\rho \dfrac{D \vec{v}}{Dt} = \mbox{div} \textbf{T} + \rho \textbf{B},
+\end{equation}
+que é chamada de equação do Movimento.
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------------
+\subsection{Lei de conservação da energia}
+
+O Princípio ou Lei de conservação da energia estabelece que a quantidade total de energia de um sistema isolado deve permanecer constante, ou seja, a energia não pode variar, ser destruída, mas sim transformada.
+Desconsiderando a entrada de outras formas de energia a Lei de conservação de energia, segundo \citeonline{Lai}, pode ser enunciada de seguinte forma:
+
+\begin{center}
+ " A razão do acréscimo, no tempo, da energia interna e da energia cinética para um ponto material fixo é igual a variação do trabalho realizado pela superfície e as forças de corpo mais o fluxo de calor, por condução, através das superfícies deste volume." 
+\end{center}
+ 
+ Considerando que $ v^{ 2 }$   denota $ ( \vec{v} \cdot \vec{v} ) $, \textbf{u} a energia interna por unidade de massa, \textbf{q}  o vetor fluxo de calor, ou seja, a razão do fluxo de calor por unidade de área através das fronteiras e  $ q_{S} $ é o suprimento de calor por unidade de massa, então tem-se 
+\begin{equation} \label{conserv_energia_1}
+\dfrac{D}{Dt} \int_{Vm} \left( \dfrac{ \rho v^{2}}{2} + \rho \textbf{u} \right) dV = \int_{Sc} ( \textbf{t} \cdot \vec{v}) dS + \int_{Vc} \rho ( \textbf{B} \cdot \vec{v}) dV - \int_{Sc} ( \textbf{q} \cdot \vec{n}) dS + \int_{Vc} \rho q_{S} dV.
+\end{equation}
+
+Aplicando o Teorema de Transportes de Reynolds, equação (\ref{transp_Reynolds}), o lado esquerdo da equação (\ref{conserv_energia_1}) pode ser escrito como:
+\begin{equation} \label{conserv_energia_2}
+\dfrac{D}{Dt} \int_{Vm} \left( \dfrac{ \rho v^{2}}{2} + \rho \textbf{u} \right) dV = \int_{Vc} \left[ \dfrac{D}{Dt} \rho \left( \dfrac{v^{2}}{2} + \textbf{u} \right) + \rho \left( \dfrac{v^{2}}{2} + \textbf{u} \right) \mbox{div} \vec{v} \right] dV.
+\end{equation}
+
+Considerando a derivada material e evidenciando os termos semelhantes, a equação (\ref{conserv_energia_2}) torna-se
+%\begin{equation}
+%\dfrac{D}{Dt} \int_{Vm} \left( \dfrac{ \rho v^{2}}{2} + \rho \textbf{u} \right) dV = \int_{Vc} \left[ \rho \dfrac{D}{Dt} \left( \dfrac{v^{2}}{2} + \textbf{u} \right) + \left( \dfrac{v^{2}}{2} + \textbf{u} \right) \left( \dfrac{D \rho}{Dt} + \rho div \vec{v} \right) \right] dV = \int_{Vc} \left[ \rho \dfrac{D}{Dt} \left( \dfrac{v^{2}}{2} + \textbf{u} \right) \right] dV.
+%\end{equation}
+
+\begin{eqnarray} \label{conserv_energia_3}
+\dfrac{D}{Dt} \int_{Vm} \left( \dfrac{ \rho v^{2}}{2} + \rho \textbf{u} \right) dV = \nonumber \\
+\int_{Vc} \left[ \rho \dfrac{D}{Dt} \left( \dfrac{v^{2}}{2} + \textbf{u} \right) + \left( \dfrac{v^{2}}{2} + \textbf{u} \right) \left( \dfrac{D \rho}{Dt} + \rho \mbox{div} \vec{v} \right) \right] dV = \nonumber \\
+\int_{Vc} \left[ \rho \dfrac{D}{Dt} \left( \dfrac{v^{2}}{2} + \textbf{u} \right) \right] dV.
+\end{eqnarray}
+
+Como a força total $ P $ ou taxa de trabalho, realizado pelo vetor de tensão \textbf{t} sobre a superfície $ Sc $ é dada por
+\begin{equation} \label{conserv_energia_4}
+P = \int_{Sc}( \textbf{t} \cdot \vec{v}) dS = \int_{Vc} [(\mbox{div} \textbf{T}) \cdot \vec{v} + tr( \textbf{T} ^{T} \bigtriangledown \vec{v} ) ] dV,
+\end{equation} 
+onde $ tr $ representa o traço de $( \textbf{T} ^{T} \bigtriangledown \vec{v} ) $ e $\bigtriangledown \vec{v}$ o gradiente do vetor velocidade. Então, na equação (\ref{conserv_energia_1}), tem-se 
+\begin{equation} \label{conserv_energia_5}
+\int_{Sc}( \textbf{t} \cdot \vec{v}) dS = \int_{Vc} [(\mbox{div} \textbf{T}) \cdot \vec{v} + tr( \textbf{T} ^{T} \bigtriangledown \vec{v} ) ] dV.
+\end{equation}
+
+Pela equação (\ref{teorema_Gauss}), Teorema da Divergência de Gauss,
+\begin{equation} \label{conserv_energia_6}
+\int_{Sc}( \textbf{q} \cdot \vec{n}) dS = \int_{Vc} (\mbox{div} \textbf{q}) dV.
+\end{equation} 
+Assim, considerando as equações (\ref{conserv_energia_2}), (\ref{conserv_energia_3}), (\ref{conserv_energia_4}), (\ref{conserv_energia_5}) e (\ref{conserv_energia_6}) a equação (\ref{conserv_energia_1}) resulta em
+\begin{equation} \label{conserv_energia_7}
+\int_{Vm} \dfrac{D}{Dt} \left( \dfrac{v^{2}}{2} + \textbf{u} \right) dV = \int_{Vc} [( \mbox{div} \textbf{T} + \rho \textbf{B}) \cdot \vec{v} + tr ( \textbf{T} ^{T} \bigtriangledown \vec{v}) - \mbox{div} \textbf{q} + \rho q_{S}] dV.
+\end{equation}
+
+Como
+\begin{equation}
+(\mbox{div} \textbf{T} + \rho \textbf{B}) \vec{v} = \rho \dfrac{D \vec{v}}{Dt} \cdot \vec{v} = \dfrac{1}{2} \rho \dfrac{Dv^{2}}{Dt},
+\end{equation}
+a equação (\ref{conserv_energia_7}) torna-se
+\begin{equation}
+\int_{Vc} \rho \dfrac{D \textbf{u}}{Dt} dV = \int_{Vc} [tr( \textbf{T} ^{T} \bigtriangledown \vec{v}) - \mbox{div} \textbf{q} + \rho q_{S}] dV,
+\end{equation}
+resultado em
+\begin{equation} \label{conerv_energia_final}
+\rho \dfrac{D \textbf{u}}{Dt} = tr( \textbf{T} ^{T} \bigtriangledown \vec{v}) - \mbox{div} \textbf{q} + \rho q_{S},
+\end{equation} 
+que é chamada de equação de Conservação da Energia.
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------------
+\section{EQUAÇÃO HIDROSTÁTICA} \label{Hidro}
+
+Considerando a equação do movimento de Cauchy em notação indicial,
+\begin{equation}
+\dfrac{ \partial T_{ij}}{ \partial x_{j}} + \rho B_{i}  = \rho a_{i},
+\end{equation}
+onde $a_{i}$ representa a taxa de variação da quantidade de movimento linear e negligenciando a aceleração, tem-se
+\begin{equation} \label{eqestatica}
+\dfrac{ \partial T_{ij}}{ \partial x_{j}} + \rho B_{i}  = 0,
+\end{equation}
+chamada de equação do equilíbrio estático \cite{Lai}.
+
+Se este fluido for considerado em equilíbrio estático, então somente a tensão normal será considerada, ou seja, não há forças de tensões cisalhantes. Sendo assim, a única força de superfície a atuar neste fluido será a pressão $P$. Logo
+\begin{equation}
+T_{ij} = -P \delta_{ij},
+\end{equation}
+sendo $\delta_{ij}$ o delta de Kronecker, conforme definido no Apêndice (\ref{Tensor}).
+Assim, a equação (\ref{eqestatica}) pode ser escrita como
+\begin{equation} \label{estatica1}
+\dfrac{ \partial P}{ \partial x_{i}} = \rho B_{i}.
+\end{equation}
+
+Ao analisar a equação (\ref{eqestatica}) percebe-se que duas forças atuam sobre este fluido, que são as forças de corpo e as forças de superfície, sendo esta última a pressão. Para muitas aplicações em engenharia, as forças de corpo são causadas pela gravidade, conforme abordado em \citeonline{Fox}. Sendo assim, considerando o vetor gravidade $ \vec{g} = ( g_1 , g_2 , g_3) $, a equação (\ref{estatica1}) pode ser dada por
+\begin{equation}
+\dfrac{ \partial P}{ \partial x_{i}} = \rho g_{i},
+\end{equation}
+que também pode ser escrita na forma
+\begin{equation} \label{eqhidro}
+- \nabla P + \rho \vec{g} = 0,
+\end{equation}
+que é a equação hidrostática.
+
+Se for adotado, no sistema de coordenadas cartesianas, o eixo $z$ como o eixo direcionado verticalmente para cima, tem-se
+\begin{equation}
+\dfrac{ \partial P}{ \partial x_{1}} = 0,
+\end{equation}
+\begin{equation}
+\dfrac{ \partial P}{ \partial x_{2}} = 0
+\end{equation}
+e
+\begin{equation}
+\dfrac{ \partial P}{ \partial x_{3}} = - \rho g_{3},
+\end{equation}
+o que mostra que a pressão é independente de $x$ e $y$. Logo, a derivada total pode ser usada no lugar da derivada parcial, ou seja,
+\begin{equation} \label{pressaoz}
+\dfrac{ dP}{ dz} = - \rho g.
+\end{equation}
+
+Para fluidos incompressíveis, $ \rho =\mbox{constante}$, tem-se
+\begin{equation} \label{pctante}
+\dfrac{ dP}{ dz} = - \rho g = \mbox{constante}.
+\end{equation}
+Assim, para a variação de pressão, dado uma condição de fronteira e um nível de referência $ z_0 $ com pressão $ P_0 $, tem-se
+\begin{equation}
+\int^{ P}_{ P_0} {dP} = - \int^{z}_{z_0} { \rho g dz} = - \rho g \int^{z}_{z_0} {dz},
+\end{equation}
+o que resulta em 
+\begin{equation}
+P - P_{0} = - \rho g (z-z_0) = \rho g (z_0 - z)
+\end{equation}
+ou
+\begin{equation} \label{varpres}
+\Delta P = \rho g (z_0 - z) = \rho g h.
+\end{equation}
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------------
+\section{FLUIDOS NEWTONIANOS} \label{Flui_New}
+
+	
+
+%\begin{figure}
+%\caption{O EXPERIMENTO DE NEWTON DE TRANSFERÊNCIA DE QUANTIDADE DE MOVIMENTO}
+%\label{fig:expnewton}
+%\centering
+%\includegraphics[scale=1]{experimento_de_newton.jpg}
+%\end{figure}	
+
+O filósofo, matemático e físico inglês Isaac Newton observou, por meio de um experimento em que colocou uma placa em movimento sobre um fluido, Figura \ref{fig:expnewton}, que muitos fluidos apresentam proporcionalidade entre a tensão tangencial ou cisalhante e a taxa de deformação e que esta constante de proporcionalidade é uma propriedade intrínseca do material, a qual denominou de viscosidade absoluta ou viscosidade dinâmica, $ \mu $ \cite{Marchetti}.
+\begin{equation}
+\textbf{T} _{xy} = \mu \dfrac{\partial v_{x}}{\partial y}.
+\end{equation}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1]{figuras/experimento_de_newton.jpg}
+	\caption{\footnotesize{\textsc{O experimento de Newton de transferência de quantidade de movimento}}}
+	\vspace{-0.1cm}
+	\legend{\footnotesize{FONTE: \citeonline{Gobbi}}}
+	\label{fig:expnewton}
+\end{figure} 
+
+Desta forma, a viscosidade dinâmica de um fluido, $ \mu $, é a medida de sua resistência à deformação.
+Quando uma tensão cisalhante é aplicada em um sólido elástico, este se deforma até atingir o estado de equilíbrio. No entanto, ao ser removida esta tensão o sólido retorna ao seu estado inicial \cite{Lai}. 
+Para certos fluidos, como a água, a deformação permanece mesmo após findar a tensão cisalhante. Pode-se dizer então que a tensão cisalhante do fluido em movimento não depende da deformação, mas sim da taxa de deformação aplicada sobre ele. Quando a relação tensão e taxa de deformação é linear, diz-se que este é um fluido newtoniano, como pode ser observado na Figura \ref{fig:fluidonewtoniano}.    
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=1]{figuras/fluido_newtoniano.jpg}
+\caption{\textsc{Tensão \textit{versus} taxa de deformação para vários fluidos}}
+\vspace{-0.1cm}
+\legend{FONTE: \citeonline{Gobbi}}
+\label{fig:fluidonewtoniano}
+\end{figure}
+%\begin{figure}[h]
+%\caption{TENSÃO x TAXA DE DEFORMAÇÃO PARA VÁRIOS FLUIDOS}
+%\label{fig:fluidonewtoniano}
+%\centering
+%\includegraphics[scale=1]{fluido_newtoniano.jpg}
+%\end{figure}	
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------------
+\section{EQUAÇÃO DE NAVIER-STOKES PARA FLUIDOS INCOMPRESSÍVEIS} \label{NS}
+
+Considerando as características dos fluidos newtonianos, cuja tensão e a taxa de deformação são lineares, o tensor de tensões \textbf{T} pode ser decomposto em duas parcelas
+\begin{equation}
+\textbf{T} = - P \textbf{I} + \textbf{T} ^{ \backprime},
+\end{equation}
+onde $ - P \textbf{I} $ é a parcela hidrodinâmica, sendo $ P $ a pressão, e $ \textbf{T} ^{ \backprime} $ uma parcela não hidrodinâmica que depende da taxa de deformação do fluido.
+
+A taxa de deformação pode ser representada pelo tensor gradiente de velocidades $  \textbf{D} $, ou seja,
+\begin{equation}
+\textbf{D} = \dfrac{1}{2} [ \vec{ \bigtriangledown} \vec{v} + ( \vec{ \bigtriangledown} \vec{v}) ^{T}],
+\end{equation} 
+ou, usando a notação indicial, o tensor $ \textbf{D} $ pode ser escrito na configuração euleriana como:
+\begin{equation}
+D_{ij} = \dfrac{1}{2} \left[ \dfrac{ \partial v_{i}}{ \partial x_{j}} + \dfrac{ \partial v_{j}}{ \partial x_{i}} \right],
+\end{equation}
+onde $v$ é o vetor velocidade.
+
+Pela relação linear do fluido newtoniano, Figura \ref{fig:fluidonewtoniano}, pode-se fazer uma comparação com a relação constitutiva de um sólido elástico linear isotrópico \cite{Lai}. Assim, a parcela não hidrodinâmica $ \textbf{T} ^{ \backprime} $ pode ser escrita como
+\begin{equation} \label{parcela_nao_hidrod}
+T_{ij} ^{\backprime} = \lambda \Delta \delta _{ij} + 2 \mu D_{ij},
+\end{equation}
+onde $ \lambda $, $  \mu $ são constantes do material e $ \Delta $ é o traço do tensor \textbf{D}. Escrito conforme a equação (\ref{parcela_nao_hidrod}), o tensor $ \textbf{T} ^{ \backprime}$ é chamado de tensão de viscosidade e, assim, o tensor de tensão torna-se
+\begin{equation} \label{parcela_hidrod}
+T_{ij} = - P \delta _{ij} - \lambda \Delta \delta _{ij} - 2 \mu D_{ij}.
+\end{equation}
+
+Para o caso de um fluido em equilíbrio, como em um recipiente isolado contendo água, a equação (\ref{parcela_nao_hidrod}) será nula.
+
+Tomando como base a equação de conservação da massa, equação (\ref{eq_massa_2}), um fluido será dito incompressível se
+\begin{equation}
+\dfrac{ D \rho}{Dt} = 0.
+\end{equation} 
+Logo,
+\begin{equation}
+\rho \dfrac{ \partial v_{k}}{ \partial x_{k}} = 0,
+\end{equation} 
+o que implica em
+\begin{equation}
+\dfrac{ \partial v_{k}}{ \partial x_{k}} = div \vec{v} = 0.
+\end{equation}
+
+Assim, para um fluido incompressível, o traço do tensor gradiente de velocidades será nulo, ou seja,
+\begin{equation}
+\Delta = D_{ii} = D_{11} + D_{22} + D_{33} = 0. 
+\end{equation}
+
+Desta forma, a equação (\ref{parcela_hidrod}) será escrita como
+\begin{equation}
+T_{ij} = - P \delta _{ij} - 2 \mu D_{ij}
+\end{equation}
+ou
+\begin{equation} \label{parcela_hidrod_2}
+T_{ij} = - P \delta _{ij} - \mu \left[ \dfrac{ \partial v_{i}}{ \partial x_{j}} + \dfrac{ \partial v_{j}}{ \partial x_{i}} \right].
+\end{equation}
+
+Da equação do movimento, equação (\ref{eq_movimento_final}), tem-se
+\begin{equation}  \label{parcela_hidrod_3}
+\rho \left( \dfrac{ \partial v_{i}}{ \partial t} + v_{j} \dfrac{ \partial v_{i}}{ \partial x_{j}} \right) = \dfrac{ \partial T_{ij}}{ \partial x_{j}} + \rho B_{i}.
+\end{equation}
+
+Diferenciando parcialmente a equação (\ref{parcela_hidrod_2}), resulta:
+\begin{equation} \label{derv_parcela_hidrod}
+\dfrac{ \partial T_{ij}}{ \partial x_{j}} = - \dfrac{ \partial P}{ \partial x_{i}} + \mu \dfrac{ \partial ^{2} v_{i}}{ \partial x_{j} \partial x_{j}} + \mu \dfrac{ \partial ^{2} v_{j}}{ \partial x_{j} \partial x_{i}}.
+\end{equation}
+
+Para um fluido incompressível, 
+\begin{equation}
+\dfrac{ \partial ^{2} v_{j}}{ \partial x_{j} \partial x_{i}} = \dfrac{ \partial}{ \partial x_{i}} \left( \dfrac{ \partial v_{j}}{ \partial x_{j}} \right) = 0.
+\end{equation}
+
+Logo, a equação (\ref{derv_parcela_hidrod}), para um fluido incompressível, torna-se
+\begin{equation}  \label{parcela_hidrod_4}
+\dfrac{ \partial T_{ij}}{ \partial x_{j}} = - \dfrac{ \partial P}{ \partial x_{i}} + \mu \dfrac{ \partial ^{2} v_{i}}{ \partial x_{j} \partial x_{j}}.
+\end{equation}
+Adotando as equações (\ref{parcela_hidrod_3}) e (\ref{parcela_hidrod_4}), a equação constitutiva (\ref{parcela_hidrod_2}) resulta
+\begin{equation} \label{Navier_Stokes}
+\rho \left( \dfrac{ \partial v_{i}}{ \partial t} + v_{j} \dfrac{ \partial v_{i}}{ \partial x_{j}} \right) = \rho B_{i}  - \dfrac{ \partial P}{ \partial x_{i}} + \mu \dfrac{ \partial ^{2} v_{i}}{ \partial x_{j} \partial x_{j}}, 
+\end{equation}
+chamada de equação de Navier-Stokes para fluidos newtonianos incompressíveis.
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------------
+\section{EQUAÇÕES DE EULER} \label{Euler}
+
+Segundo \citeonline{Toro}, as equações de Euler dependentes do tempo $t$ formam um sistema não linear hiperbólico de leis de conservação que governam a dinâmica de um material compressível, quando os efeitos das forças de corpo, tensões viscosas e fluxo de calor são negligenciados. Por este motivo, pode-se afirmar que as equações de Euler são simplificações da equação de Navier-Stokes.
+
+Este sistema formado pode ser representado por um conjunto de variáveis físicas ou primitivas, tais como densidade $( \rho)$, pressão $(P)$, velocidade na direção do eixo $x$ $(u)$, velocidade na direção do eixo $y$ $(v)$ e velocidade na direção do eixo $z$ $(w)$ ou então, em função de variáveis conservativas como densidade $( \rho)$, momento na direção do eixo $x$ $( \rho u)$, momento na direção do eixo $y$ $( \rho v)$, momento na direção do eixo $z$ $( \rho w)$ e energia total por unidade de massa $( \textit{E})$.
+
+Pode-se dizer que, fisicamente, este sistema de equações conservativas resulta da adoção da lei de conservação da massa, da conservação do momento e da conservação da energia. Desta forma, considerando as equações (\ref{eq_massa_2}), (\ref{eq_movimento_final}) e (\ref{conerv_energia_final}) obtém-se o sistema de equações conservativas formadas pelas equações de Euler
+\begin{equation} \label{massasis}
+\rho_{t} + ( \rho u)_{x} + ( \rho v)_{y} + ( \rho w)_{z} = 0,
+\end{equation}
+\begin{equation} \label{momentox}
+( \rho u)_{t} + ( \rho u^{2} + P )_{x} + ( \rho uv)_{y} + ( \rho uw)_{z} = 0,
+\end{equation}
+\begin{equation} \label{momentoy}
+( \rho v)_{t} + ( \rho uv)_{x} + ( \rho v^{2} + P )_{y}  + ( \rho vw)_{z} = 0,
+\end{equation}
+\begin{equation} \label{momentoz}
+( \rho w)_{t} + ( \rho uw)_{x} + ( \rho vw)_{y} + ( \rho w^{2} + P )_{z} = 0
+\end{equation}
+e
+\begin{equation} \label{energiasis}
+\textit{E}_{t} + [u( \textit{E}+P)]_{x} + [v( \textit{E}+P)]_{y} + [w( \textit{E}+P)]_{z} = 0,
+\end{equation} 
+onde
+\begin{center} \label{Energi_T}
+ $ \textit{E} = \rho \left[ \frac{1}{2} \vec{(v)}^{2} + \textbf{e} \right] $ 
+\end{center}
+ é a energia total,
+\begin{center}
+ $  \frac{1}{2} \vec{(v)}^{2} = \frac{1}{2} \vec{v} \cdot \vec{v} = \frac{1}{2} \left( u^2 + v^2 + w^2 \right) $ 
+\end{center}
+é a energia cinética específica e $ \textbf{e} $ é a energia interna específica.
+
+De acordo com \citeonline{Novak}, as equações de Euler são somente as equações (\ref{momentox}), (\ref{momentoy}) e (\ref{momentoz}). No entanto, conforme \citeonline{Toro}, pode-se generalizar e considerar o sistema completo como as equações de Euler.
+
+As equações de Euler também podem ser escritas na forma vetorial
+\begin{equation} \label{vetorEuler}
+\vec{U}_t + \vec{F(U)}_x + \vec{G(U)}_y + \vec{H(U)}_z = 0,
+\end{equation}
+sendo $ \vec{U} $ um vetor de variáveis conservativas e $ \vec{F(U)}$, $ \vec{G(U)}$, $ \vec{H(U)}$ vetores fluxos nas direções $x$, $y$ e $z$, respectivamente, ou seja,
+\begin{equation}
+\vec{U} =  \left[ 
+\begin{array}{c}
+\rho \\
+\rho u \\
+\rho v \\
+\rho w \\
+\textit{E} \\
+\end{array}
+\right] ; 
+\vec{F(U)} =  \left[ 
+\begin{array}{c}
+\rho u \\
+\rho u^2 + P \\
+\rho uv \\
+\rho uw \\
+u ( \textit{E} + P ) \\
+\end{array}
+\right] ;  
+\vec{G(U)} =  \left[ 
+\begin{array}{c}
+\rho v \\
+\rho uv \\
+\rho v^2 + P \\
+\rho vw \\
+v ( \textit{E} + P ) \\
+\end{array}
+\right] ;
+ \vec{H(U)} =  \left[ 
+\begin{array}{c}
+\rho w \\
+\rho uw \\
+\rho vw \\
+\rho w^2 + P \\
+w ( \textit{E} + P ) \\
+\end{array}
+\right]. 
+\end{equation}
+
+Quando as forças de corpo são incluídas via um termo fonte, mas os efeitos da viscosidade e condução do calor são negligenciados, as equações de Euler, na forma vetorial, podem ser escritas
+\begin{equation} \label{vetorFonte}
+\vec{U}_t + \vec{F(U)}_x + \vec{G(U)}_y + \vec{H(U)}_z = \vec{S(U)},
+\end{equation}
+onde, em $ \vec{S(U)} $ forças de corpo, como a gravidade, podem ser introduzidas. Normalmente, $ \vec{S(U)} $ é uma função algébrica das variáveis do escoamento e não envolve derivadas, mas pode haver exceções \cite{Toro}.
+
+Como comentado anteriormente, as equações de Euler podem ser escritas em função de variáveis primitivas ou físicas. Assim, expandindo as derivadas na equação de conservação da massa (\ref{massasis}), substituindo nas equações do momento (\ref{momentox}), (\ref{momentoy}), (\ref{momentoz})  e, após, usando na equação da energia (\ref{energiasis}) resultam nas equações de Euler para um gás ideal, com a gravidade como termo fonte, escritas como:
+\begin{equation} \label{massasis2}
+\rho_t + u \rho_x + v \rho_y + w \rho_z + \rho ( u_x + v_y + w_z ) = 0,
+\end{equation}
+\begin{equation} \label{momentox2}
+u_t + uu_x + vu_y + wu_z + \frac{1}{ \rho} P_x = g_1,
+\end{equation}
+\begin{equation} \label{momentoy2}
+v_t + uv_x + vv_y + wv_z + \frac{1}{ \rho} P_y = g_2,
+\end{equation}
+\begin{equation} \label{momentow2}
+w_t + uw_x + vw_y + ww_z + \frac{1}{ \rho} P_z = g_3
+\end{equation}
+e
+\begin{equation} \label{energiasis2}
+P_t + uP_x + vP_y + wP_z + \gamma P( u_x + v_y + w_z ) = 0,
+\end{equation}
+onde $ \gamma$, chamada de razão de calor específico ou expoente específico, é dado por
+\begin{equation}
+\gamma = \frac{ c_P}{c_V},
+\end{equation}
+ou seja, é a razão entre o calor específico sob pressão constante e o calor específico sob volume constante \cite{Leveque2004}.
+
+De acordo com \citeonline{Toro}, a razão de calor específico da água, $ \gamma_W$, é de $ 1 cal/{g \cdot{} ^{ \circ}} C $ e do ar, $ \gamma_a$, é de $ 0,24 cal/{g \cdot{} ^{ \circ}} C $, ambas sob pressão constante.
+
+Segundo \citeonline{Leveque2004}, pode-se estabelecer uma relação para a razão de calor específico em função do número de Prandtl, $Pr$, ou seja, 
+\begin{equation} \label{RelPr}
+\gamma = \frac{5Pr}{9Pr - 4}.
+\end{equation}
+
+Em condições normais, ou seja, temperatura constante e pressão constante, o número de Prandtl para o ar é $Pr_{a} = 0,71$ e para a água, a uma temperatura de $ 20^{ \circ}C$, é  $Pr_{W} = 0,7$. Assim, usando a relação (\ref{RelPr}), tem-se
+\begin{equation} \label{rel}
+\gamma_W \approx \gamma_a \approx 1,52174.
+\end{equation}
+No entanto, se o escoamento for isotérmico, então pode-se considerar que  $\gamma_W = \gamma_a = 1$.
+
+%---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+\section{EQUAÇÕES DE ÁGUAS RASAS} \label{aguasrasas}
+
+As equações de Águas Rasas, segundo \citeonline{Dutykh}, podem ser consideradas como aproximações do problema de escoamentos em superfícies livres onde, na equação (\ref{eq_movimento_final}), a componente da aceleração na direção do eixo $y$ pode ser negligenciada. Logo, derivando a equação da variação de pressão hidrostática (\ref{varpres}) em função de $x$ e $z$, tem-se:
+\begin{equation*} \label{P1}
+P_x= \rho g h_x
+\end{equation*}
+e
+\begin{equation*} \label{P2}
+P_z= \rho g h_z.
+\end{equation*}
+Dessa forma, tanto as pressões como as demais componentes da aceleração da equação do Movimento (\ref{eq_movimento_final}) são independentes da componente $y$, resulta
+\begin{equation} \label{AR}
+u_t + uu_x + wu_x = -gh_x
+\end{equation}
+e
+\begin{equation} \label{ARR}
+w_t + uw_x + ww_z = -gh_z,
+\end{equation}
+chamadas de equações de Águas Rasas.
+
+Para o caso do escoamento ser considerado levemente compressível, pode-se supor
+\begin{equation*}
+\rho \approx \rho_\infty \left[1+ \tau (P - P_\infty)\right],
+\end{equation*}
+sendo $\rho_\infty$ e $P_\infty$ a densidade e a pressão na superfície livre do escoamento, respectivamente, e $\tau$ o coeficiente de compressibilidade isotérmica. Assim, considerando-se as equações (\ref{massasis}) e (\ref{momentox}), nas equações de Euler, e supondo o escoamento ocorrendo somente na direção do eixo cartesiano $x$, resulta
+\begin{equation} \label{massaP}
+P_t + (Pu)_x = 0
+\end{equation}
+e
+\begin{equation} \label{movP}
+u_t + uu_x + \frac{1}{\rho} P_x = 0.
+\end{equation}
+
+Considerando-se a hipótese da distribuição hidrostática de pressão, equação (\ref{varpres}), e adotando que $\rho = \rho_\infty$, as equações (\ref{massaP}) e (\ref{movP}) podem ser escritas como:
+\begin{equation} \label{ARR2}
+h_t + (hu)_x = 0
+\end{equation}
+e
+\begin{equation} \label{AR2}
+u_t + uu_x + gh_x = 0,
+\end{equation}
+que são equações unidimensionais equivalentes ao modelo de Águas Rasas (\ref{AR}) e (\ref{ARR}).
+
+As equações de Águas Rasas, assim como as equações de Euler ou Navier-Stokes, podem ser escritas em função de outras variáveis, tais como as variáveis conservativas, onde seu tratamento se torna mais conveniente na construção de esquemas de diferenças finitas ou na forma normal, cujo tratamento matricial transforma o sistema em equações quase-lineares. Tais forma de equacionamento, bem como outras dimensões e propriedades importantes que governam o escoamento, nesse tipo de sistema, pode ser encontrado em bibliografias como \citeonline{Tan}, onde o assunto é amplamente tratado e discutido.
+
+
+

@@ -1,0 +1,216 @@
+%----------------------------------------------------------------- 
+% CAPA
+\renewcommand{\imprimircapa}{%
+  \begin{capa}
+  	\begin{center} %Isso eu fiz
+  		\large{FACULDADE ANGLO-AMERICANO DE FOZ DO IGUAÇU}
+  	\end{center}
+    \center
+    %{\imprimirautor} %Dica da Tássia
+        
+    %{\ABNTEXchapterfont\large\imprimirautor} %Original
+    {\ABNTEXchapterfont\imprimirautor} %Isso eu fiz
+
+    \vspace*{8cm}
+    %{\imprimirtitulo} Dica da Tássia
+    \ABNTEXchapterfont\bfseries\large\imprimirtitulo
+    \vfill
+    
+    \large\imprimirlocal
+
+    \large\imprimirdata
+    
+    \vspace*{1cm}
+  \end{capa}
+}
+
+\makeatletter
+%----------------------------------------------------------------- 
+% FOLHA DE ROSTO
+\renewcommand{\folhaderostocontent}{
+		\center	
+		%{\large\textbf\imprimirautor} %Original
+			{\large\imprimirautor} %Eu fiz
+	
+	    \vspace*{8cm}		
+		
+		
+		{\large\textbf\imprimirtitulo}
+	
+		\vspace*{3cm}	
+
+		\abntex@ifnotempty{\imprimirpreambulo}{
+			\hspace{.3\textwidth}
+			\begin{minipage}{.55\textwidth}
+			
+				\SingleSpacing
+				\imprimirpreambulo				
+				\SingleSpacing				
+				{\imprimirorientadorRotulo~\imprimirorientador\par}
+				\SingleSpacing	
+		        \abntex@ifnotempty{\imprimircoorientador}{
+		             {\imprimircoorientadorRotulo~\imprimircoorientador}
+		}
+		\end{minipage}
+		
+			\vspace*{\fill}
+		}
+		
+		
+		{\large\textbf\imprimirlocal}
+		
+		{\large\textbf\imprimirdata}		
+}
+
+%****************************************************
+%outras configurações 
+%***********************************************************
+\setlength{\parindent}{1.3cm} % Tamanho do parágrafo
+\setlength{\parskip}{0.2cm}  % Controle do espaçamento entre um parágrafo e outro
+	% Altera o tamanho das fontes dos capítulos e dos apêndices
+\renewcommand{\ABNTEXchapterfont}{\bfseries}
+\renewcommand{\ABNTEXchapterfontsize}{\large}
+\renewcommand{\ABNTEXsectionfontsize}{\normalfont}
+
+% Separação de Palavras:
+%\hyphenation{}
+\hyphenation{teorias}
+\hyphenation{baseados}
+\hyphenation{MATLAB}
+\hyphenation{Pyramid}
+\hyphenation{Mar-cação}
+\hyphenation{lin-guagem}
+\hyphenation{matplotlib}
+\hyphenation{sociali-zação}
+\hyphenation{bi-bli-oteca}
+\hyphenation{Notebook}
+\hyphenation{profis-si-onais}
+\hyphenation{ar-quivos}
+\hyphenation{usu-ário}
+\hyphenation{LinkedIn}
+
+	% Configura layout para elementos textuais
+
+\makepagestyle{abnt_ufpr}
+
+\makeoddhead{abntchapfirst}{}{}{\ABNTEXfontereduzida\thepage}
+
+\pagestyle{abnt_ufpr}
+
+
+
+\newtheorem{theorem}{Teorema}[chapter]
+\newtheorem{definition}[theorem]{Defini\c{c}\~{a}o}
+\newtheorem{proposition}[theorem]{Proposi\c{c}\~{a}o}
+
+\makeatother
+%********************************************************************
+%*********************************************************************
+% Essa parte para baixo até o fim foi tudo copiado da TASSIA
+
+%\newcommand{\quadroname}{Quadro}
+%\newcommand{\listofquadrosname}{Lista de quadros}
+
+%\newfloat[chapter]{quadro}{loq}{\quadroname}
+%\newlistof{listofquadros}{loq}{\listofquadrosname}
+%\newlistentry{quadro}{loq}{0}
+
+% configurações para atender às regras da ABNT
+%\counterwithout{quadro}{chapter}
+%\renewcommand{\cftquadroname}{\quadroname\space}
+%\renewcommand*{\cftquadroaftersnum}{\hfill--\hfill}
+
+%****************************************************
+%outras configuraÃ§Ãµes
+%***********************************************************
+%\setlength{\parindent}{1.3cm} % Tamanho do parÃ¡grafo
+%\setlength{\parskip}{0.0cm}  % Controle do espaÃ§amento entre um parÃ¡grafo e outro
+
+% Altera o tamanho das fontes dos capÃ­tulos e dos apÃªndices
+
+\renewcommand{\ABNTEXchapterfont}{\normalfont\fontseries{b}\selectfont}
+\renewcommand{\ABNTEXchapterfontsize}{\normalsize}
+\renewcommand{\ABNTEXpartfont}{\fontseries{b}\selectfont\selectfont}
+\renewcommand{\ABNTEXpartfontsize}{\normalsize}
+\renewcommand{\ABNTEXsectionfont}{\normalfont\selectfont}
+\renewcommand{\ABNTEXsectionfontsize}{\normalsize}
+\renewcommand{\ABNTEXsubsectionfont}{\normalfont\selectfont}
+\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
+\renewcommand{\ABNTEXsubsubsectionfont}{\normalfont\selectfont}
+\renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize}
+\renewcommand{\ABNTEXsubsubsubsectionfont}{\normalfont\itshape\selectfont}
+\renewcommand{\ABNTEXsubsubsubsectionfontsize}{\normalsize}
+
+
+% CONFIGURACAO DO SUMARIO
+
+% Sumário
+\renewcommand*{\cftsectionfont}{\normalfont}
+\renewcommand*{\cftsubsubsectionfont}{\normalfont}
+\renewcommand*{\cftsubsectionfont}{\normalfont}
+\renewcommand*{\cftparagraphfont}{\normalfont\itshape}
+
+% -----------------------------------------------------------------------------
+% Modifica o espaçamento no sumário
+% Nao ha espacos, para as entradas de capitulos
+\setlength{\cftbeforeparagraphskip}{0pt}
+\setlength{\cftbeforesubsectionskip}{0pt}
+\setlength{\cftbeforesectionskip}{0pt}
+\setlength{\cftbeforesubsubsectionskip}{0pt}
+\setlength{\cftbeforechapterskip}{0pt}
+
+
+
+\addto\captionsbrazil{
+	\renewcommand{\bibname}{REFER\^ENCIAS}
+}
+
+\addto\captionsbrazil{\renewcommand{\listadesiglasname}{LISTA DE ABREVIATURAS}}
+\addto\captionsbrazil{\renewcommand{\listfigurename}{LISTA DE ILUSTRAÇÕES}}
+\addto\captionsbrazil{\renewcommand{\listtablename}{LISTA DE TABELAS}}
+\addto\captionsbrazil{\renewcommand{\contentsname}{SUMÁRIO}}
+\addto\captionsbrazil{\renewcommand\appendixtocname{APÊNDICES}\renewcommand\appendixpagename{APÊNDICES}}
+\addto\captionsbrazil{\renewcommand{\figurename}{FIGURA}}
+\addto\captionsbrazil{\renewcommand{\tablename}{TABELA}}
+
+
+% Configura layout para elementos textuais
+
+%\makepagestyle{abnt_ufpr}
+
+
+%\makeoddhead{abntchapfirst}{}{}{\ABNTEXfontereduzida\thepage}
+
+%\pagestyle{abnt_ufpr}
+
+%%%%%%%% AMBIENTES %%%%%%%%%%
+%\newtheorem{teo}{Teorema}[chapter]
+%\newtheorem{cor}[teo]{Corol\'{a}rio}
+%\newtheorem{lem}[teo]{Lema}
+%\newtheorem{prop}[teo]{Proposi\c{c}\~{a}o}
+%\newtheorem{defn}[teo]{Defini\c{c}\~{a}o}
+%\newtheorem{Ex}[teo]{Exemplo}
+%\newtheorem{obs}[teo]{Observa\c{c}\~{a}o}
+%\newtheorem{prob}[teo]{Problema}
+%\newtheorem{conc}[teo]{Conclusão}
+%\newenvironment{dem}{\smallskip \noindent{\bf Demonstra\c{c}\~{a}o}: }
+%{\hfill $\Box$\hspace{0in}\medskip}
+
+%%%%%%%% COMANDOS FRECUENTES %%%%%%%%
+%\newcommand{\eq}{\begin{equation}}
+%	\newcommand{\ee}{\end{equation}}
+%\newcommand{\R}{{\mathbb R}}
+%\newcommand{\N}{{\mathbb N}}
+%\newcommand{\K}{{\mathbb K}}
+%\newcommand{\Q}{{\mathbb Q}}
+%\newcommand{\Z}{{\mathbb Z}}
+%\newcommand{\V}{{\mathbb V}}
+%\newcommand{\D}{{\mathcal{D}}}
+%\newcommand{\C}{{\mathbb C}}
+%\newcommand{\di} {\displaystyle}
+%\newcommand{\I}{{\displaystyle\int_{0}^{T} \displaystyle\int_{0}^1 }}
+%\newcommand{\Ia}{{\displaystyle\int_{0}^{1} \displaystyle\int_{0}^T }}
+%\newcommand{\Ii}{{\displaystyle\int_{0}^{t} \displaystyle\int_{0}^1 }}
+%\newcommand{\Ib}{{\displaystyle\int_{0}^{1} \displaystyle\int_{0}^t }}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\makeatother 

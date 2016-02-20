@@ -1,0 +1,73 @@
+% ISOACCENT DOCUMENT STYLE OPTION -- released 12 April 1994
+% for LaTeX
+% by Pedro J. de Rezende (rezende@dcc.unicamp.br)
+%
+
+% ISOACCENT  defines accented characters, using  ISO standard, to expand
+% to the corresponding macros. This has become possible now that TeX3.xx
+% can handle 8 bit characters.
+%
+% =====================================================================
+% This file is in the  public  domain: it may be freely used by anyone;
+% it may be  distributed  as long as  it remains  free of charge and it
+% absolutely must remain unchanged.
+%
+% If you *must* change it, then call the resulting file something other
+% than  isoaccent.sty  or  isoaccent.tex,  and attach your name to your
+% *documented* changes.
+% ======================================================================
+%
+\typeout{Document Style Option `isoaccent' -- Released 12 April 1994}
+% 
+\ifx\isomacros\undefined\else\endinput\fi
+
+\catcode`\ç=\active\defç{\c c}      % ,c
+\catcode`\Ç=\active\defÇ{\c C}      % ,C
+\catcode`\ä=\active\defä{\"a}       % "a
+\catcode`\ë=\active\defë{\"e}       % "e
+\catcode`\ï=\active\defï{\"{\i}}    % "i
+\catcode`\ö=\active\defö{\"o}       % "o
+\catcode`\ü=\active\defü{\"u}       % "u
+\catcode`\Ä=\active\defÄ{\"A}       % "A
+\catcode`\Ë=\active\defË{\"E}       % "E
+\catcode`\Ï=\active\defÏ{\"I}       % "I
+\catcode`\Ö=\active\defÖ{\"O}       % "O
+\catcode`\Ü=\active\defÜ{\"U}       % "U
+\catcode`\á=\active\defá{\'a}       % 'a
+\catcode`\é=\active\defé{\'e}       % 'e
+\catcode`\í=\active\defí{\'{\i}}    % 'i
+\catcode`\ó=\active\defó{\'o}       % 'o
+\catcode`\ú=\active\defú{\'u}       % 'u
+\catcode`\Á=\active\defÁ{\'A}       % 'A
+\catcode`\É=\active\defÉ{\'E}       % 'E
+\catcode`\Í=\active\defÍ{\'I}       % 'I
+\catcode`\Ó=\active\defÓ{\'O}       % 'O
+\catcode`\Ú=\active\defÚ{\'U}       % 'U
+\catcode`\à=\active\defà{\`a}       % `a
+\catcode`\è=\active\defè{\`e}       % `e
+\catcode`\ì=\active\defì{\`{\i}}    % `i
+\catcode`\ò=\active\defò{\`o}       % `o
+\catcode`\ù=\active\defù{\`u}       % `u
+\catcode`\À=\active\defÀ{\`A}       % `A
+\catcode`\È=\active\defÈ{\`E}       % `E
+\catcode`\Ì=\active\defÌ{\`I}       % `I
+\catcode`\Ò=\active\defÒ{\`O}       % `O
+\catcode`\Ù=\active\defÙ{\`U}       % `U
+\catcode`\ã=\active\defã{\~a}       % ~a
+\catcode`\ñ=\active\defñ{\~n}       % ~n
+\catcode`\õ=\active\defõ{\~o}       % ~o
+\catcode`\Ã=\active\defÃ{\~A}       % ~A
+\catcode`\Ñ=\active\defÑ{\~N}       % ~N
+\catcode`\Õ=\active\defÕ{\~O}       % ~O
+\catcode`\â=\active\defâ{\^a}       % ^a
+\catcode`\ê=\active\defê{\^e}       % ^e
+\catcode`\î=\active\defî{\^{\i}}    % ^i
+\catcode`\ô=\active\defô{\^o}       % ^o
+\catcode`\û=\active\defû{\^u}       % ^u
+\catcode`\Â=\active\defÂ{\^A}       % ^A
+\catcode`\Ê=\active\defÊ{\^E}       % ^E
+\catcode`\Î=\active\defÎ{\^I}       % ^I
+\catcode`\Ô=\active\defÔ{\^O}       % ^O
+\catcode`\Û=\active\defÛ{\^U}       % ^U
+
+\let\isomacros\null

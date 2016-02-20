@@ -1,0 +1,59 @@
+%% ADAPTADO DE: \cite{abntex2modelo-include}
+
+
+\chapter[INTRODUÇÃO]{INTRODUÇÃO}
+%\addcontentsline{toc}{chapter}{INTRODUÇÃO}
+
+A crescente demanda energética mundial, tanto por parte do consumo populacional como do industrial, tem aumentado a busca por fontes de eletricidade, seja ela gerada por força hidráulica, termoelétricas, nuclear ou fontes alternativas como as usinas eólicas e as solares.
+
+Mundialmente, a fonte predominante de energia elétrica recai sobre as usinas hidrelétricas. No Brasil, $79\%$ da energia produzida vem de hidrelétricas e a demanda média anual cresce em torno de $3\%$, podendo alcançar $20 \%$ em certas regiões \cite{BEN}. Somente a Usina Hidrelétrica de Itaipu, considerada a maior usina hidrelétrica do mundo em geração de energia, com  $20$ unidades geradoras e $14.000 \ MW$ de potência instalada, fornece cerca de $17 \%$ da energia consumida no Brasil e $72 \%$ da energia consumida no Paraguai \cite{ITAIPU}.
+
+A construção de uma hidrelétrica, além dos benefícios trazidos pela geração de eletricidade, ainda auxilia em atividades como irrigação, navegação, recreação e controle de inundações. No entanto, para que isso seja possível, existe a necessidade da formação de grandes reservatórios, o que eleva a preocupação da população e das autoridades com possíveis incidentes que possam ocorrer envolvendo a ruptura desta barragem \cite{Rafael}.
+
+Mesmo com todos os esforços empregados para que eventos catastróficos sejam evitados, a ruptura de barragens é uma realidade que ocorre no mundo todo. Além da preocupação com a coluna d'água gerada por esse fenômeno, existe também o perigo com o grande transporte de sedimentos e detritos que ocorre à jusante da barragem, podendo causar sérias perdas materiais e, até, vidas humanas às populações que residem nas regiões consideradas como "áreas de risco".
+
+Dentre as inúmeras rupturas de barragens ocorridas mundialmente, \citeonline{Jean} destaca a ocorrida na represa de Malpasset, situada no vale do Rio Reyran, a $12 \ km$ da cidade de Fréjus, no sudeste da França, quando no dia 02 de dezembro de 1959, após uma chuva torrencial que elevou rapidamente o nível do reservatório, obrigando que as comportas fossem abertas, houve o colapso da estrutura de concreto da barragem. Além dos danos materiais ocorridos, como pontes e estradas danificadas, $433$ pessoas foram vitimadas.
+
+No Brasil, conforme comenta \citeonline{Rafael}, a ruptura da barragem da cidade de Aporé, localizada à $472 \ km$ da cidade de Goiânia, no Estado de Goiás, não causou vítimas, mas os danos foram consideráveis.
+
+Neste contexto, o estudo da ruptura de barragens tem se tornado um importante problema prático para os engenheiros, pois além de especificar as formas ideais para construí-las eles devem se preocupar, também, com seu entorno. Para isso, muitos engenheiros, em parceria com pesquisadores das mais variadas áreas do conhecimento, têm feito uso da Dinâmica dos Fluidos Computacional para simular e prever os danos causados por aquele fenômeno. Essa parceria, bem como a evolução dos modelos numéricos que buscam prever eventos daquela natureza, têm alcançado resultados satisfatórios, motivo pelo qual incentivou a realização deste trabalho.   
+
+ 
+\section{OBJETIVOS} \label{OBJ}
+
+\subsection{Objetivo Geral}
+
+O objetivo geral desta dissertação é modelar, matematicamente e computacionalmente, a ruptura de uma barragem hipotética, cujo movimento da massa líquida será governado pelas equações de Euler.
+
+\subsection{Objetivos Específicos}
+\begin{itemize}
+	
+\item Deduzir as equações de Águas Rasas unidimensionais a partir das equações de Euler.  
+
+\item Simular a ruptura de uma barragem hipotética utilizando o Método das Diferenças Finitas Explícito (MDFE), associado ao esquema difusivo de Lax-Friedrichs, para discretizar e gerar a malha computacional do sistema governado pelas equações de Euler. 
+
+\item Comparar os resultados encontrados com os que foram obtidos pelo método PySPH. %onde, para simulação, os autores utilizaram o método lagrangeano baseado em partículas suavizadas, cujo algoritmo implementado foi intitulado de PySPH.
+
+\item Alterar, em ambos experimentos, alguns parâmetros como tempo de simulação e o tamanho do passo comparando, novamente, os resultados a fim de verificar a conformidade entre os modelos.
+\end{itemize}   
+ 
+%------------------------------------------------------------------------------------------------------------
+\section{ESTRUTURA DA DISSERTAÇÃO}
+
+Esta dissertação é composta, além deste capítulo introdutório, de mais seis capítulos.
+
+No Capítulo 2 é feito um levantamento e análise dos trabalhos mais relevantes que contribuíram e motivaram a escrita desta dissertação.
+
+Os conceitos e as equações fundamentais para a implementação computacional da ruptura de barragens, como as equações de Euler e as equações de Águas Rasas, são apresentados no Capítulo 3.
+
+As diferentes formas de tratar computacionalmente um domínio, bem como as particularidades de cada um deles e as ferramentas numéricas para resolvê-los, são abordados no Capítulo 4.
+
+No Capítulo 5 são apresentados os detalhes da implementação do algoritmo que simula a ruptura de uma barragem hipotética.
+
+Os resultados encontrados na simulação numérica, usando uma abordagem euleriana, são comparados com o tratamento lagrangeano, do mesmo problema, por meio do código PySPH e apresentados no Capítulo 6.
+
+Por fim, a conclusão se dá no Capítulo 7, onde são tratadas e discutidas as dificuldades encontradas e, também, são estabelecidas as possibilidades para trabalhos futuros.
+
+No Apêndice A é feita uma revisão dos conceitos fundamentais sobre tensores, necessária para o entendimento da algumas definições apresentadas neste trabalho e no Apêndice B mostra-se o modelo híbrido desenvolvido para obter os resultados do problema proposto.     
+
+

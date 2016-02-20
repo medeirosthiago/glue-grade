@@ -1,0 +1,25 @@
+\chapter{CONCLUSÕES E RECOMENDAÇÕES}
+%Título Capítulo 7
+
+A proposta dessa dissertação foi de construir um modelo matemático capaz de simular a ruptura de uma barragem hipotética, cujo movimento da massa líquida era governado por um sistema de EDPs hiperbólicas formado pelas equações de Euler. Para tanto, esse sistema foi discretizado utilizando o MDFE, associado ao esquema difusivo de Lax-Friedrichs. 
+
+Durante a construção do modelo, para obtenção das soluções numéricas, surgiram algumas dificuldades com o tratamento das descontinuidades. Verificou-se, inicialmente, que aplicação direta do MDFE no sistema de EDPs formado pelas equações de Euler, não era capaz de tratar as diferenças entre as propriedades físicas formadoras do problema, como a densidade e a pressão. Buscou-se, como alternativa, considerar o escoamento incompressível e ocorrendo somente na direção do eixo cartesiano $x$, mas o resultado obtido mostrou-se incapaz de solucionar o problema.
+
+Com o intuito de não se afastar do escopo principal desse trabalho, ou seja, a utilização das equações de Euler, optou-se por considerar o escoamento levemente compressível e, novamente, ocorrendo somente na direção do eixo cartesiano $x$, o que resultou em um modelo equivalente ao de Águas Rasas. Após, um novo tratamento foi realizado sobre essas equações formando um modelo unidimensional de Águas Rasas baseado na velocidade do escoamento e na propagação da onda. Com isso, foi possível obter, por meio do Método das Características, uma solução analítica para os instantes iniciais do escoamento evitando resultados espúrios causados pelas descontinuidades formadoras das ondas de choque ou rarefação. 
+
+Solucionado o problema com os estágios iniciais do escoamento, foi possível tratar os demais tempos de simulação utilizando o método numérico proposto, ou seja, a adoção do MDFE em associação com o esquema difusivo de Lax-Friedrichs. Dessa forma, construiu-se um modelo híbrido para a modelagem da ruptura de barragens onde, nos momentos em que se formam os choques, obtêm-se uma solução analítica que serve de condição inicial para o tratamento numérico nos demais tempos de simulação. 
+
+A análise dos resultados considerou o modelo numérico implementado satisfatório, pois foi possível observar a formação das frentes de ondas, com o aumento das velocidades no início do escoamento, e a formação dos \textit{sloshing} quando o fluido colide com as paredes laterais da barragem hipotética. Além disso, foi possível observar a influência da massa líquida nos variados pontos do canal finito e, também, em diferentes intervalos de tempo. 
+
+O comparativo proposto entre os resultados do modelo desenvolvido e aqueles obtidos por meio do PySPH foi prejudicado, devido às dificuldades encontradas no processamento e tratamento do código lagrangeano. Mesmo assim, pôde-se comparar alguns tempos de simulação comprovando, novamente, a eficiência do modelo híbrido desenvolvido.
+
+Diante do exposto acima recomenda-se, como trabalhos futuros, a construção de modelos numéricos bidimensionais e tridimensionais que utilizem as equações de Águas Rasas, com a inclusão de termos fonte e inclinação de leitos, como governantes do sistema a fim de capturar, com maior precisão e detalhes, os fenômenos causados pelas descontinuidades do problema proposto. Tais modelos, em sua maioria, fazem uso de métodos que tratam as equações em sua forma integral e utilizam funções de fluxos para representar o escoamento. Métodos, como o TVD, associam fluxos de baixa e alta ordens para solucionar o problema, mas essa aplicação de forma direta conduz a resultados espúrios que, geralmente, são corrigidos com o emprego de funções dissipativas e limitadores de fluxos. Alguns modelos, considerados como híbridos, adotam mais de uma forma de função limitadora, dependendo da fase e da descontinuidade do escoamento. 
+
+Recomenda-se, também, uma análise mais aprofundada dos métodos SPH, uma vez que esse tipo de abordagem vem ganhando destaque na comunidade científica e, com isso, alcançando aplicabilidade em diversas áreas, como as engenharias e entretenimento. 
+
+Apesar das dificuldades encontradas em utilizar o código PySPH,  devido principalmente à limitação de máquina, esse continua sendo uma boa opção de trabalho, simplesmente por se tratar de um código de fonte aberta, Python, o que facilita sua manipulação e alteração dependendo da aplicabilidade desejada. Pode-se pensar também, no desenvolvimento de um código próprio para implementar o método SPH adotando uma linguagem de programação que seja, computacionalmente, mais eficaz a fim de contornar as limitações do Python.         
+
+  
+
+ 
+

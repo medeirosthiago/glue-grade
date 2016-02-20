@@ -1,0 +1,1539 @@
+%------------------------------------------------------------------------------%
+% Liliana M. Gramani
+% DMAT - PPGMNE - UFPR
+% Curitiba, 2011
+% l.gramani@gmail.com
+% (041) 3361-3465 ou (041) 3361-3218
+%------------------------------------------------------------------------------%
+%------------------------------------------------------------------------------%
+%Valmei Abreu Júnior
+%Faculdade Anglo-Americano de Foz do Iguaçu
+%Foz do Iguaçu,2012
+%Dinter em Métodos Numéricos
+%(045)9108-4895
+%------------------------------------------------------------------------------%
+\documentclass[a4paper,12pt,fleqn]{report}
+%No lugar de fceqn mudar para fleqn muda para esquerda as equações
+
+%---- Space betweem lines ----
+\newcommand{\blst}{1}  %{1.15}
+\renewcommand{\baselinestretch}{\blst}
+
+%---- Page format ----
+\addtolength{\parskip}{\baselineskip} %espaçamento de uma linha entre dois parágrafos
+\setlength{\mathindent}{1cm} 
+\pagestyle{myheadings}
+\raggedbottom                 %  Avoid vertical fitting
+
+%---- Page sizes ----
+\oddsidemargin  =   0 mm
+\evensidemargin =   0 mm
+\textwidth      = 160 mm
+\textheight     = 220 mm
+\topmargin      =  10 mm
+\topskip        =   0 mm
+\headsep        =  10 mm
+\footskip       =  10 mm
+
+%---- Packages to Portuguese ----
+\usepackage[brazil]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{indentfirst}
+\usepackage{t1enc}
+
+%---- General Use Packages ----
+\usepackage{latexsym}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{epsfig}
+%\usepackage[pdftex]{graphicx}
+\usepackage{color}
+%\usepackage[colorlinks,citecolor=black,filecolor=black,linkcolor=black,urlcolor=black]{hyperref}
+
+%TEoremas de Definições
+
+\newtheorem{theorem}{Teorema}[chapter]
+\newtheorem{definition}[theorem]{Defini\c{c}\~{a}o}
+\newtheorem{proposition}[theorem]{Proposi\c{c}\~{a}o}
+
+%---- Figure settings ----
+\setcounter{topnumber}         {2}
+\setcounter{bottomnumber}      {2}
+\setcounter{totalnumber}       {2}
+\renewcommand{\topfraction}    {1}
+\renewcommand{\bottomfraction} {1}
+\renewcommand{\textfraction}   {0}
+
+%---- Numbering ----
+\setcounter{secnumdepth}{1}  % Number only sections
+\setcounter{tocdepth}   {1}  % Only sections are included in Table of contends
+
+%---- Title Formats ----
+\usepackage[bf,rm,compact]{titlesec}
+\font\bigrm = cmr10 at 40pt
+\titleformat{\chapter}[display]
+            {\thispagestyle{empty}\normalfont\huge\sffamily}
+            {\rightline{\normalfont\bigrm{\thechapter}}}
+            {-2cm}
+            {\bfseries}
+            [{\vspace{-5mm}\hrulefill\\[.8ex]}]
+\titlespacing{\chapter}
+            {0cm}{0.5cm}{1.5cm}
+
+%---- Headers ----
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{} }
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\lhead[\fancyplain{}{\bfseries\thepage}]
+       {\fancyplain{}{\small\slshape\bfseries\leftmark}}
+\rhead[\fancyplain{}{\small\slshape\bfseries\rightmark}]
+       {\fancyplain{}{\bfseries\thepage}}
+\cfoot[\fancyplain{\bfseries\thepage}{}]
+       {\fancyplain{\bfseries\thepage}{}}
+\renewcommand{\headrulewidth}{0.3pt}
+
+%------------------------------------------------------------------------------%
+%
+\title {SIMULAÇÃO NUMÉRICA DA RUPTURA DE BARRAGENS}
+\author{Valmei Abreu Júnior}
+\date  {Foz do Iguaçu, 2014}
+%
+%------------------------------------------------------------------------------%
+\begin{document}
+\maketitle
+\tableofcontents
+\listoffigures
+\listoftables
+
+%A redação do plano de pesquisa ou proposta deve refletir o poder de síntese do seu autor. Utilize as formatações de página, espaçamento e fonte aqui apresentados (Fonte Arial 12, espaçamento entre linhas 1,5, folha tamanho A4, margens padrão do Word). 
+%Deve haver especial atenção com o índice, pois o mesmo é gerado de maneira automática, não devendo ser apagado. Depois de introduzir todos os seus textos sob os itens apropriados, coloque o cursor do mouse sobre a área onde está o índice, clique com o botão direito do mouse, selecione a opção "Atualizar campo" e depois "Atualizar apenas o número das páginas". Pronto, o Índice indicará as páginas automaticamente. Não é preciso editá-lo. 
+%=======================================================================================================================================================
+%=======================================================================================================================================================
+\chapter{INTRODUÇÃO}
+%Título Capítulo 1
+
+\section{ OBJETIVOS}
+ 
+%-------------------------------------------------------------------------------------------------------------------------------------------------------
+\section{ESTRUTURA DA DISSERTAÇÃO}
+
+%=======================================================================================================================================================
+%=======================================================================================================================================================
+\chapter{REVISÃO BIBLIOGRÁFICA}
+%Título Capítulo 2
+
+%=======================================================================================================================================================
+%=======================================================================================================================================================
+\chapter{FUNDAMENTAÇÃO TEÓRICA}
+%Título Capítulo 3
+
+De acordo com a Física Clássica, Leis de Conservação são aquelas que afirmam que para um sistema físico, isolado, que passa por um determinado processo, apresenta propriedades que não mudam antes, durante ou depois do processo. Estas Leis estão intimamente relacionadas com simetrias que ocorrem na natureza. Elas advêm de relações matemáticas associadas a certas simetrias de um processo físico. (AGUILERA, 2013). Para entender estas simetrais, este capítulo aborda alguns conceitos fundamentais, tais como: a forma de descrever um movimento, os Tensores fundamentais, as principais Leis de Conservação, a formulação da equação da Hidrostática, o comportamento de fluido newtoniano, a construação da equação de Naveir-Stokes para fluidos incompressíveis e, por fim, a formação de um sistema de equações diferenciais constituído, principalmente, pela Leis de Conservação ou, em muitos casos, por uma simplificação da equação de Navier-Stokes, chamada de equações de Euler.
+
+%\begin{enumerate}
+%\item Conservação da massa;
+%\item Consevação do \textit{Momentum};
+%\item Conservação da energia.
+%\end{enumerate}
+
+%---------------------------------------------------------------------------------------------------------------------------------------------------
+\section{DESCRIÇÃO DO MOVIMENTO}
+
+Descrever um movimento significa prever a posição, a velocidade e a acelaração de todos os pontos do meio contínuo a qualquer instante de tempo \textit{t}. (LAI, 2010).
+Um movimeto pode ser descrito por meio de uma mera observação, assim como ocorre na observação do movimento de um lago, um túnel de vento ou em um modelo reduzido. Por meio de uma descrição material ou também chamada de Lagrangeana onde um ponto que possui uma posição  inicial é acompanhado por um vetor posição $ \vec{r} ( \vec{x}, \textit{t} )$, normalmente usado quando o meio em que o ponto material se encontra sofre pouca deformação. Por meio de uma descrição espacial ou Euleriana onde o vetor posição  $ \vec{r} ( \vec{x}, \textit{t} )$ é fixo e as partículas passam sucessivamentes por essa posição, chamada de região de controle, normalmente usada em um meio que sofre grandes deformações (fluido).
+Ao se considerar o movimento em um meio contínuo, a temperatura $\Theta$ , a velocidade \textit{v} e o tensor de tensões \textbf{T} variam com o tempo. Se ao descrever o movimento for adotado a configuração Lagrangeana as grandezas $\Theta$ , \textit{v} , \textbf{T} serão expressas como funções dependentes das coordenadas materiais e do tempo $ t $, ou seja,
+
+\begin{equation}
+\Theta= \widehat{\Theta} (X_{1} , X_{2} , X_{3} , \textit{t} )
+\end{equation}
+\begin{equation}
+\textit{v}=\widehat{ \textit{v} } (X_{1} , X_{2} , X_{3} , \textit{t} )  \label{equacao 1}
+\end{equation}
+\begin{equation}
+\textbf{T}= \widehat{\textbf{T}}(X_{1} , X_{2} , X_{3} , \textit{t} ).
+\end{equation}
+
+Caso seja adotado a configuração Euleriana, tem-se então as grandezas expressas em função das coordenadas de um ponto fixo no espaço $(x_{1}, x_{2}, x_{3})$ e o tempo $ t $, ou seja,
+
+\begin{equation}
+\Theta=\check{ \Theta } (x_{1} , x_{2} , x_{3} , \textit{t} )
+\end{equation}
+\begin{equation}
+\textit{v}=\check{ \textit{v} } (x_{1} , x_{2} , x_{3} , \textit{t} )  \label{equacao 1}
+\end{equation}
+\begin{equation}
+\textbf{T}= \check{ \textbf{T} }(x_{1} , x_{2} , x_{3} , \textit{t} ).
+\end{equation}
+
+%---------------------------------------------------------------------------------------------------------------------------------------------------- 
+\section{TENSORES}
+
+Na Física e nas Engenharias as grandezas podem ser classificadas e três grandes grupos:
+
+\begin{enumerate}
+
+\item Grandezas escalares: são aquelas que necessitam de somente uma informação para classifica-las. Como exemplos destas grandezas tem-se a temperatura, comprimento, massa, tempo, volume, energia, entre outros.
+\item Grandezas vetorias: são que neccesitam de três informações para caracteriza-las (módulo, direção e sentido). Como exemplos desta grandeza pode-se destacar o deslocamento, a força, o fluxo, a corrente elétrica e a aceleração.
+\item Grandezas Tensoriais: são aquelas que para serem bem representadas necessitam de, pelo menos, nove informações. Destacam-se como exemplos o tensor de tensão, o tensor de deformação, o tensor inercial e as rotações. 
+\end{enumerate}
+
+A transformação linear que tem a capacidade de transformar um dado vetor $ \vec{a} $ em um outro vetor $ \vec{b} $, ou seja,
+\begin{equation}
+\vec{a} = \textbf{T} \vec{b}
+\end{equation}
+é chamada de tensor de segunda ordem ou simplismente de tensor, cuja notação é $ \textbf{T} $. Assim, $ \textbf{T} $ é uma transformação linear, pois
+\begin{equation}
+\textbf{T} ( \alpha \vec{a} + \beta \vec{b}) = \alpha \textbf{T}( \vec{a}) + \beta \textbf{T} ( \vec{b}).
+\end{equation}
+ 
+Para um conjunto de vetores unitários $ e_{1}, e_{2}, e_{3} $, na direção das componentes de um sistema de coordenadas retangulares, suas transformações podem ser escritas na forma:
+\begin{equation}
+\textbf{T} e_{1} = \textbf{T} \left[ 
+\begin{array}{c}
+1\\
+0\\
+0\\
+\end{array}
+\right] = \textbf{T} (1 e_{1} + 0 e_{2} + 0 e_{3}) 
+\end{equation} 
+ou
+\begin{equation} \label{TFe1}
+\textbf{T} e_{1} = T_{11} e_{1} + T_{21} e_{2} + T_{31} e_{3}
+\end{equation}
+\begin{equation} \label{TFe2}
+\textbf{T} e_{2} = T_{12} e_{1} + T_{22} e_{2} + T_{32} e_{3}
+\end{equation}
+\begin{equation}\label{TFe3}
+\textbf{T} e_{3} = T_{13} e_{1} + T_{23} e_{2} + T_{33} e_{3}.
+\end{equation}
+
+Utilizando a notação indicial esta transformação pode ser generalizada como:
+\begin{equation} \label{indicialT}
+\textbf{T} e_{i} = T_{ji} e_{j}.
+\end{equation}
+
+Considerando as transformações apresentadas em (\ref{TFe1}), (\ref{TFe2}) e (\ref{TFe3}), o tensor \textbf{T} pode ser representado matricialmente da seguinte forma:
+ \begin{equation} \label{matrizT}
+\textbf{T} = [T] =  \left[ 
+\begin{array}{ccc}
+T_{11} & T_{12} & T_{13} \\
+T_{21} & T_{22} & T_{23} \\
+T_{31} & T_{32} & T_{33} \\
+\end{array}
+\right].  
+\end{equation} 
+
+Assim como na transformação linear, os tensores também apresentam algumas propriedades. São elas:
+\begin{enumerate}
+\item[a)] A soma entre dois tensores \textbf{T} e \textbf{S}
+\begin{equation}
+( \textbf{T} + \textbf{S}) \vec{a} = \textbf{T} \vec{a} + \textbf{S} \vec{a} 
+\end{equation}
+que, em notação indicial, é escrito como:
+\begin{equation}
+W_{ij} = T_{ij} + S_{ij}.
+\end{equation}
+\item[b)] O produto de dois tensores, caracteriza-se por:
+\begin{equation}
+( \textbf{T} \textbf{S}) \vec{a} = \textbf{T} ( \textbf{S} \vec{a})
+\end{equation}
+ou
+\begin{equation}
+(TS)_{ij} = T_{im} S_{mj}.
+\end{equation}
+\item[c)] Transposição de um tensor $( \textbf{T} ^{T})$
+\begin{equation}
+\vec{a} \cdot \textbf{T} \vec{b} = \vec{b} \cdot \textbf{T} ^{T} \vec{a}.
+\end{equation}
+\item[d)] O traço de um tensor \textbf{T} é representado em notação indicial por:
+\begin{equation}
+tr \textbf{T} = T_{ij} \delta _{ij}
+\end{equation}
+onde,
+\begin{equation}
+\delta _{ij} = \left\{
+\begin{array}{rcl}
+1 & se & i = j\\
+0 & se & i \neq j
+\end{array} \right.
+\end{equation}
+é o delta de Kronecker.
+\item[e)] Um tensor \textbf{T} pode ser decomposto em uma parte simétrica, $ \textbf{T} ^{S} $, e uma parte antissimétrica, $ \textbf{T} ^{A} $, ou seja,
+\begin{equation}
+\textbf{t} = \textbf{T} ^{S} + \textbf{T} ^{A}
+\end{equation}
+\begin{equation}
+\textbf{T} ^{S} = \dfrac{ \textbf{T} + \textbf{T} ^{T}}{2}
+\end{equation}
+e
+\begin{equation}
+\textbf{T} ^{A} = \dfrac{ \textbf{T} - \textbf{T} ^{T}}{2}.
+\end{equation}
+\end{enumerate}
+
+No cálculo tensorial, se $ \textbf{T} = \textbf{T} (t) $ for um tensor de segunda ordem dependente do tempo, então:
+\begin{equation}
+\dfrac{d \textbf{T}}{dt} = \lim_{ \Delta t \to 0} \dfrac{ \textbf{T} ( t+ \Delta t) - \textbf{T} (t)}{ \Delta (t)}
+\end{equation}
+e
+\begin{equation}
+\dfrac{d}{dt} [ \textbf{T} + \textbf{S}] = \dfrac{d \textbf{T}}{dt} + \dfrac{d \textbf{S}}{dt}.
+\end{equation}
+
+Se $ \alpha(t)$ for um escalar dependente do tempo, então:
+\begin{equation}
+\dfrac{d}{dt}  [ \alpha(t) \textbf{T}] = \dfrac{d \alpha(t)}{dt} \textbf{T} + \alpha(t) \dfrac{d \textbf{T}}{dt}.
+\end{equation}
+
+Se $ [ \textbf{T} \textbf{S}]$ for o produto entre dois tensores, então:
+\begin{equation}
+\dfrac{d}{dt} [ \textbf{T} \textbf{S}] = \dfrac{d \textbf{T}}{dt} \textbf{S} + \textbf{T} \dfrac{d \textbf{S}}{dt}. 
+\end{equation}
+
+Se $ [ \textbf{T} \vec{a}]$ representa a transformação de um vetor $ \vec{a}$, então:
+\begin{equation}
+\dfrac{d}{dt} [ \textbf{T} \vec{a}] = \dfrac{d \textbf{T}}{dt} \vec{a} + \textbf{T} \dfrac{d \vec{a}}{dt}.
+\end{equation}
+
+Se $[ \textbf{T} ^{T}]$ representar um tensor transposto, então:
+\begin{equation}
+\dfrac{d}{dt} [ \textbf{T} ^{T}] =
+\left[
+\begin{array}{c}
+\dfrac{d \textbf{T}}{dt}\\
+\end{array} \right] ^{T} .
+\end{equation}
+
+Para um campo vetorial o divergente de um vetor velocidade $ \vec{v}$ é calculado, segundo Malvrin (1969), por:
+\begin{equation}
+div \vec{v} = tr [ \vec{ \nabla} \vec{v}] = \vec{ \nabla} \cdot \vec{v}
+\end{equation} 
+onde $ \vec{ \nabla} $ é o operador gradiente. Assim, tem-se que, em relação às sua componentes,
+\begin{equation}
+div \vec{v} = \dfrac{ \partial v_{1}}{ \partial x_{1}} + \dfrac{ \partial v_{2}}{ \partial x_{2}} +\dfrac{ \partial v_{3}}{ \partial x_{3}}.
+\end{equation}
+
+Para um compo tensorial, o divergente deste campo é calculado pela equação
+\begin{equation}
+(div \textbf{T}) \cdot \vec{a} = div ( \textbf{T} ^{T} \vec{a}) - tr ( \textbf{T} ^{T} ( \vec{ \nabla} \vec{a}))
+\end{equation}
+ou, em notação indicial,
+\begin{equation}
+div \textbf{T} = \dfrac{ \partial T_{im}}{ \partial x_{m}} \vec{e} _{i}
+\end{equation}
+
+Em certos problemas da engenharia que envolvem pequenos deslocamentos faz-se necessário conhecer e descrever suas deformações. Quando estas deformações são muito pequenas dá-se o nome de deformações infinitesimais. (LAI, 2010).
+
+Considerando a figura (\ref{fig:campodeform}), em um dado instante $ t_{0} $, os pontos $ P(t_{0}) $ e $ Q(t_{0}) $ apresentam um vetor distância $ \vec{dX} $. Para este instante $ t_{0} $ diz-se que os pontos estão na configuração $ B_{0} $. Após um certo intervalo de tempo $ t $ ocorre o deslocamento dos pontos $ P $ e $ Q $, sendo chamados agora de $ P(t) $, $ Q(t) $  e a nova configuração de $ B_{t} $, o que infere uma mudança em $  \vec{dX} $ passando a ser chamado de $  \vec{dx} $. Esta variação de deslocamento, por ser infinitesimal, pode ser considerada como um filamento. Logo, o filamento  $  \vec{dx} $ é dado por:
+\begin{equation} \label{filamento}
+\vec{dx} = \vec{dX} + ( \vec{ \nabla} \vec{u}) \vec{dX}
+\end{equation}
+onde,
+\begin{equation}
+\vec{ \nabla} \vec{u} = \left[
+\begin{array}{ccc}
+\dfrac{ \partial u_{1}}{ \partial x_{1}} & \dfrac{ \partial u_{1}}{ \partial x_{2}} & \dfrac{ \partial u_{1}}{ \partial x_{3}}\\
+
+\dfrac{ \partial u_{2}}{ \partial x_{1}} & \dfrac{ \partial u_{2}}{ \partial x_{2}} & \dfrac{ \partial u_{3}}{ \partial x_{3}}\\
+
+\dfrac{ \partial u_{3}}{ \partial x_{1}} & \dfrac{ \partial u_{3}}{ \partial x_{2}} & \dfrac{ \partial u_{3}}{ \partial x_{3}}\
+\end{array} \right]
+\end{equation}
+é o tensor gradiente de deslocamentos.
+
+\begin{figure}
+\centering
+\includegraphics[scale=1]{campo_de_deformacao.jpg}
+\caption{Deformação infinitesimal (fonte: Lai, 2010)}
+\label{fig:campodeform}
+\end{figure}
+
+%\begin{figure}
+%\caption{DEFORMAÇÃO INFINITESIMAL}
+%\small{Fonte: LAI, 2010}
+%\label{fig:campodeform}
+%\centering
+%\includegraphics[scale=1]{campo_de_deformacao.jpg}
+%\end{figure}	
+		
+
+O filamento $ \vec{dx} $ na equação (\ref{filamento}) pode ser escrita como: 
+\begin{equation}
+\vec{dx} = [ \textbf{I} + ( \vec{ \nabla} \vec{u})] \vec{dX} 
+\end{equation}
+onde \textbf{I} é o  tensor identidade. logo, 
+\begin{equation} \label{filamento_dx}
+\vec{dx} = \textbf{F} \vec{dX}
+\end{equation}
+sendo
+\begin{equation} \label{tensordeform}
+\textbf{F} = \textbf{I} + ( \vec{ \nabla}  \vec{u}).
+\end{equation}
+Mas,
+\begin{equation}
+\textbf{F} ^T \cdot \textbf{F} = ( \textbf{I} + \vec{ \nabla}  \vec{u}) ^T \cdot ( \textbf{I} + \vec{ \nabla}  \vec{u}) 
+\end{equation}
+o que resulta em
+\begin{equation} \label{FtranspF}
+\textbf{F} ^T \cdot \textbf{F} = \textbf{I} + ( \vec{ \nabla}  \vec{u}) + ( \vec{ \nabla}  \vec{u}) ^T +  ( \vec{ \nabla}  \vec{u}) ^T ( \vec{ \nabla}  \vec{u}).
+\end{equation}
+
+Considerando que a magnetude do vetor $  \vec{u} $ é muito pequena, $  \Vert \vec{u} \Vert < < 1  $ , então:       
+\begin{equation}
+( \vec{ \nabla}  \vec{u}) ^T ( \vec{ \nabla}  \vec{u}) \approx 0
+\end{equation}
+que, substituindo na equação (\ref{FtranspF}), resulta:
+\begin{equation}
+\textbf{F} ^T \cdot \textbf{F} = \textbf{I} + ( \vec{ \nabla}  \vec{u}) + ( \vec{ \nabla}  \vec{u}) ^T .
+\end{equation}
+
+Assumindo
+\begin{equation}
+\textbf{E} = \dfrac{ ( \vec{ \nabla}  \vec{u}) + ( \vec{ \nabla}  \vec{u}) ^T}{2}
+\end{equation}
+ser um tensor simétrico de $ ( \vec{ \nabla}  \vec{u})   $, então:
+\begin{equation}
+\textbf{F} ^T \cdot \textbf{F} = \textbf{I} + 2 \textbf{E}.
+\end{equation}      
+sendo \textbf{E} chamado de tensor de deformações infinitesimais.
+Assim com foi feito nas equações (\ref{indicialT}) e (\ref{matrizT}), o tensor \textbf{E} também pode ser escrito na forma matricial como:
+\begin{equation}
+[E] =  \left[ 
+\begin{array}{ccc}
+E_{11} & E_{12} & E_{13} \\
+E_{21} & E_{22} & E_{23} \\
+E_{31} & E_{32} & E_{33} \\
+\end{array}
+\right] _{X_{1} X_{2} X_{3}}  
+\end{equation}
+       
+No entanto, se as deformações ocorrerem somente nas direções principais, ou seja, nas direções dos autovetores  do tensor \textbf{E}, então:
+\begin{equation}
+[E] =  \left[ 
+\begin{array}{ccc}
+E_{1} & 0 & 0 \\
+0 & E_{2} & 0 \\
+0 & 0 & E_{3} \\
+\end{array}
+\right]  
+\end{equation}
+e, neste caso, haverá na transformação uma preservação dos ângulos, sendo chamada de uma transformação pura. (LAI, 2010).
+
+\begin{figure}
+\centering
+\includegraphics[scale=1]{deformacoes.jpg}
+\caption{Campo de deslocamentos (fonte: Lai, 2010)}
+\label{fig:campodesl}
+\end{figure}
+
+%\begin{figure}
+%\caption{CAMPO DE DESLOCAMENTOS}
+%\label{fig:campodesl}
+%\centering
+%\includegraphics[scale=1]{deformacoes.jpg}
+%\end{figure}
+
+
+A figura (\ref{fig:campodesl}) apresenta o deslocamento de um dado corpo rígido no instante $ t_{0} $ e após um instante $ t $. Nota-se, em relação à sua configuração inicial, que este corpo sofreu dois movimentos, sendo um de rotação e o outro de deformação. Assim, sejam \textbf{U} e \textbf{V} tensores simétricos e \textbf{R} um tensor ortogonal próprio. Tomando como base a equação (\ref{tensordeform}), o tensor \textbf{F} pode ser escrito como:
+\begin{equation} \label{Caucy_dir}
+\textbf{F} = \textbf{R} \textbf{U}
+\end{equation}    
+e
+\begin{equation} \label{Caucy_esq}
+\textbf{F} = \textbf{V} \textbf{R}.
+\end{equation}
+ 
+ 
+%-----------------------------------------------------
+%para trabalhar com referencias para equações
+%incluir o label com um nome para a equacao e referenciar no texto com ~\ref{label} 
+%\begin{equation}\label{nome}
+%\textbf{F} = \textbf{V} \textbf{R}.
+%\end{equation}
+%-----------------------------------------------------
+
+As equações (\ref{Caucy_dir}) e (\ref{Caucy_esq}) são conhecidas como Teorema de decomposição polar e os tensores \textbf{U} e \textbf{V} como tensores de \textit{Strech} à direita e à esquerda, respectivamente.
+
+Utilizando as equações (\ref{Caucy_dir}) e (\ref{Caucy_esq}), a equação (\ref{filamento_dx}) pode ser escrita da seguinte forma:
+\begin{equation}
+\vec{dx} =  \textbf{F} \vec{dX} = \textbf{R} \textbf{U} \vec{dX} = \textbf{R} ( \textbf{U} \vec{dX})
+\end{equation}
+onde, pode-se afirmar que, inicialmente, o corpo está sofrendo uma deformação pura (\textit{Strech}) e, após, uma rotação. Mas, pela equação (\ref{Caucy_esq}), pode-se ter também que:
+\begin{equation}
+\vec{dx} =  \textbf{F} \vec{dX} = \textbf{V} \textbf{R} \vec{dX} = \textbf{V} ( \textbf{R} \vec{dX})
+\end{equation}
+onde inicialmente o corpo sofre uma rotação e então uma deformação. Em ambos os casos, o resultado será sempre o mesmo, como pode ser observado na figura (\ref{fig:campodeform}).
+
+Dos tensores \textbf{U} e \textbf{V} surgem conceitos de significativa importância nas engenharias. Para tanto, seja
+\begin{equation}
+\textbf{C} = \textbf{U} ^{2},
+\end{equation}
+então o tensor \textbf{C} é chamado de tensor deformação de Cauchy-Green à direita, pois na equação (\ref{Caucy_dir}) o tensor \textbf{U} encontra-se à direita. Como este tensor é simétrico e o tensor \textbf{R} é ortogonal, logo,
+\begin{equation} \label{CG_direita}
+\textbf{C} = \textbf{F} ^{T} \textbf{F}.
+\end{equation}
+
+As componentes do tensor de Cauchy-Green à direita, $ C_{ij} $, tomando como base o tensor \textbf{F}, representam uma razão quadrática da medida  de deformação entre dois filamentos $ \vec{dx} ^{ (1)} $ e $ \vec{dx} ^{ (2)} $, se $ i=j $. Caso $ i \neq j $, $ C_{ij} $ irá representar a medida de distorção angular entre os dois filamentos.
+
+Se as deformação não forem mais infinitesimais, mas sim finitas, tem-se o tensor Lagrangeano de deformações, $ \textbf{E} ^{*}$, sendo:
+\begin{equation}
+\textbf{E} ^{*} = \dfrac{1}{2} [( \vec{ \nabla} \vec{u}) + ( \vec{ \nabla} \vec{u}) ^{T}] + \dfrac{1}{2} ( \vec{ \nabla} \vec{u}) ^{T} ( \vec{ \nabla} \vec{u})
+\end{equation}  
+ou
+\begin{equation}
+\textbf{E} ^{*} = \dfrac{1}{2} ( \textbf{C} - \textbf{I}).
+\end{equation}
+
+Em notação indicial o tensor Lagrangeano de deformações é escrito como:
+\begin{equation}
+E_{ij} ^{*} = \dfrac{1}{2} \left[ \dfrac{ \partial u_{i}}{ \partial X_{j}} + \dfrac{ \partial u_{j}}{ \partial X_{i}} \right] + \dfrac{1}{2} \dfrac{ \partial u_{m}}{ \partial X_{i}}  \dfrac{ \partial u_{m}}{ \partial X_{j}}.
+\end{equation}
+
+Seja \begin{equation}
+\textbf{B} = \textbf{V} ^{2},
+\end{equation}
+então o tensor \textbf{B} é chamado de tensor de Cauchy-Green à esquerda, pois na equação (\ref{Caucy_esq}) o tensor \textbf{V} está à esquerda. 
+
+Assim como na equação (\ref{CG_direita}), tem-se que:
+\begin{equation}
+\textbf{B} = \textbf{V} ^{2} = \textbf{F} \textbf{F} ^{T} = ( \textbf{I} + \vec{ \nabla} \vec{u}) ( \textbf{I} + \vec{ \nabla} \vec{u}) ^{T}.
+\end{equation}
+Logo,
+\begin{equation}
+\textbf{B} = \textbf{I} + [ \vec{ \nabla} \vec{u} + ( \vec{ \nabla} \vec{u}) ^{T}] + ( \vec{ \nabla} \vec{u}) ( \vec{ \nabla} \vec{u}) ^{T}
+\end{equation}
+que em notação indicial, torna-se
+\begin{equation} \label{comp_CG_esquerda}
+B_{ij} = \delta _{ij} + \left[ \dfrac{ \partial u_{i}}{ \partial X_{j}} + \dfrac{ \partial u_{j}}{ \partial X_{i}} \right] +  \dfrac{ \partial u_{i}}{ \partial X_{m}}  \dfrac{ \partial u_{j}}{ \partial X_{m}}.
+\end{equation}
+
+Se na equação (\ref{comp_CG_esquerda}) $ i=j $, assim como ocorre no tensor de Cauchy-Green à direta, $ B_{ij} $ representará a razão quadrática da medida de deformação entre os filamentos $ \vec{dx} ^{ (1)} $ e  $ \vec{dx} ^{ (2)} $. Caso $ i \neq j $, $ B_{ij} $ representará o quanto o ângulo entre os filamentos deixa de ser reto.
+
+Se as deformações não forem mais infinitesimais, mas sim finitas, tem-se o tensor Euleriano de deformações,  $ \textbf{e} ^{*}$, sendo  
+\begin{equation}
+\textbf{e} ^{*} = \dfrac{1}{2} [( \vec{ \nabla} \vec{u}) + ( \vec{ \nabla} \vec{u}) ^{T}] - \dfrac{1}{2} ( \vec{ \nabla} \vec{u}) ^{T} ( \vec{ \nabla} \vec{u})
+\end{equation}
+ou
+\begin{equation}
+\textbf{e} ^{*} = \dfrac{1}{2} ( \textbf{I} - \textbf{B} ^{-1}).
+\end{equation}
+
+Em notação indicial o vetor $ \textbf{e} ^{*}$ torna-se
+\begin{equation}
+e_{ij} ^{*} = \dfrac{1}{2} \left[ \dfrac{ \partial u_{i}}{ \partial X_{j}} + \dfrac{ \partial u_{j}}{ \partial X_{i}} \right] - \dfrac{1}{2} \dfrac{ \partial u_{m}}{ \partial X_{i}}  \dfrac{ \partial u_{m}}{ \partial X_{j}}.
+\end{equation}
+
+Um dado corpo é dito em equilíbrio se a resultante das forças que atuam sobre ele é nula. (MALVRIN, 1969). Em outras palavras,
+\begin{equation}
+\sum \vec{F} = 0.
+\end{equation}  
+
+Seja $ S $ um plano que passa em algum ponto arbitrário $ P $ de um corpo que possui $  \vec{n} $ como seu vetor normal unitário. Ao ser aplicada uma força externa  $ \vec{F}$ neste corpo o ponto $ P $ sofrerá uma tensão (pressão) que é dada pela razão da decomposição da força $ \vec{F} $, em relação à normal $ \vec{n} $, pela variação de área. A medida que a área dimunui atingi-se um valor limite da tensão, 
+\begin{equation}
+\vec{t} = \lim_{ A_{S} \to 0} \dfrac{ \Delta \vec{F}}{ \Delta A_{S}}
+\end{equation}  
+onde $ \vec{t} $ é chamado de vetor tensão e é entendido como a força resultante no ponto $ P $ em uma área infinitesimal. Por esta característica, o vetor tensão $ \vec{t} $ tem dimensão de pressão, isto é, $ N/m^{2} $, $ Kgf/cm^{2} $, $ lb/in^{2} $. (LAI, 2010).
+
+\begin{figure}%COLOCAR FIGURA PAG 155 LAI
+\centering
+\includegraphics[scale=1]{vetor_tensao.jpg}
+\caption{Plano de formação do vetor de tensão (fonte: Lai, 2010)}
+\label{fig:vetortensao}
+\end{figure}
+%\begin{figure}%COLOCAR FIGURA PAG 155 LAI
+%\caption{PLANO DE FORMAÇÃO DO VETOR DE TENSÃO}
+%\label{fig:vetortensao}
+%\centering
+%\includegraphics[scale=1]{vetor_tensao.jpg}
+%\end{figure}	
+
+O vetor tensão $  \vec{t} $ depende tanto da posição do ponto $ P $ como também da normal do plano $ S $. Assim,
+\begin{equation}
+\vec{t} = \vec{t} ( \vec{x}, t, \vec{n}) = \textbf{T} ( \vec{x}, t) \vec{n}
+\end{equation} 
+ou, simplismente,
+\begin{equation} \label{vetor_tensao}
+\vec{t} _{ \vec{n}} = \textbf{T} \vec{n}.
+\end{equation}
+
+\begin{figure}%COLOCAR A FIGURA 4.2.1 PAG 157
+\centering
+\includegraphics[scale=1]{componentes_vetor_tensao.jpg}
+\caption{Componentes do vetor de tensão (fonte: Lai, 2010)}
+\label{fig:compvetortensao}
+\end{figure}
+%\begin{figure}%COLOCAR A FIGURA 4.2.1 PAG 157
+%\caption{COMPONENTES DO VETOR DE TENSÃO}
+%\label{fig:compvetortensao}
+%\centering
+%\includegraphics[scale=1]{componentes_vetor_tensao.jpg}
+%\end{figure}	
+			
+Tomando como base a figura (\ref{fig:compvetortensao}) o vetor de tensões pode ser escrito em função das suas componentes como:
+\begin{equation}
+\vec{t} _{ \vec{n}} = n_{1} \vec{t} _{ \vec{e} _{1}} + n_{2} \vec{t} _{ \vec{e} _{2}} + n_{3} \vec{t} _{ \vec{e} _{3}}.
+\end{equation}
+
+Assim,
+\begin{equation} \label{componente_vetor_tensao}
+\begin{array}{c}
+\vec{t} _{ \vec{e} _{1}} = T_{11} \vec{e} _{1} + T_{21} \vec{e} _{2} + T_{31} \vec{e} _{3}\\
+\vec{t} _{ \vec{e} _{2}} = T_{21} \vec{e} _{1} + T_{22} \vec{e} _{2} + T_{32} \vec{e} _{3}\\
+\vec{t} _{ \vec{e} _{3}} = T_{31} \vec{e} _{1} + T_{31} \vec{e} _{2} + T_{33} \vec{e} _{3}\\
+\end{array}
+\end{equation}
+ou utilizando notação indicial,
+\begin{equation}
+\vec{t} _{ \vec{e} _{i}} = T_{mi} \vec{e} _{m}
+\end{equation}
+sendo, $ T_{mi} $ com $ m=i  $, chamado componente tangencial, $ \sigma _{ \vec{n}} $, e quando $ m \neq i  $, $ T_{mi} $ é chamado de componente cisalhante, $ \vec{\tau} _{S}$, cuja magnetude é calculada por:
+\begin{equation}
+\Vert \vec{\tau} _{S} \Vert = \sqrt{ \Vert \vec{t} _{ \vec{n}} \Vert ^{2} - \Vert \sigma _{ \vec{n}} \Vert ^{2}}.
+\end{equation}
+
+De acordo com as equações (\ref{vetor_tensao}) e (\ref{componente_vetor_tensao}), $ \textbf{T} $ é uma transformação linear sendo chamado de tensor de tensões ou tensor de tensões de Cauchy. (LAI, 2010).
+
+O tensor de tensões de Cauchy, de acordo com a sua formulação, está definido na configuração deformada $ B_{t} $, conforme pode ser observado na figura (\ref{fig:campodesl}) e (\ref{fig:campodeform}). No entnato, em certos problemas das engenharias, há a necessidade de se avaliar os estados de tensões na configuração $ B_{0} $. Para tanto, seja $ \vec{df} $ um vetor força definido em uma área infinitesimal $ dA $. Então, 
+\begin{equation}
+\vec{df}  = \vec{t} dA
+\end{equation}
+onde, pela equação (\ref{vetor_tensao}), 
+\begin{equation}
+\vec{t} = \textbf{T} \vec{n}.
+\end{equation}
+
+Se for possível escrever o vetor $ \vec{df} $ em função de um vetor tensão, $ \vec{t} _{0} $, em $ B_{0} $ e em relação a uma área indeformada, então
+\begin{equation}
+\vec{df}  = \vec{t} dA \Longleftrightarrow \vec{df}  = \vec{t_{0}} dA_{0}.
+\end{equation}
+Logo,
+\begin{equation}
+\vec{df}  = \vec{t} dA  = \vec{t_{0}} dA_{0},
+\end{equation}
+isto é,
+\begin{equation}
+\vec{t_{0}} = \dfrac{dA}{dA_{0}} \vec{t}
+\end{equation}
+que, pela equação (\ref{vetor_tensao}),
+\begin{equation} \label{vetor_tensao_B0}
+\vec{t}_{0} = \textbf{T}_{0} \vec{n}_{0} = \textbf{T} \dfrac{dA}{dA_{0}} \vec{n}. 
+\end{equation}
+  		
+Como, segundo Malvrin (1969), 
+\begin{equation}
+dA \vec{n} = dA_{0} \vert \textbf{F} \vert ( \textbf{F} ^{-1}) ^{T} \vec{n} _{0}
+\end{equation}
+a equação em (\ref{vetor_tensao_B0}) pode ser escrita como:
+\begin{equation}
+\vec{t}_{0}  \vec{n} _{0} = \textbf{T}  \vert \textbf{F} \vert ( \textbf{F} ^{-1}) ^{T} \vec{n} _{0}.
+\end{equation}
+Logo,
+\begin{equation} \label{tensor_PK}
+\textbf{T} _{ \textbf{0}} = \textbf{T}  \vert \textbf{F} \vert ( \textbf{F} ^{-1}) ^{T}
+\end{equation}
+onde $ \textbf{T} _{ \textbf{0}} $ é conhecido como o primeiro tensor de Piolla-Kirchhoff.
+
+Como o tensor de tensões de Cauchy \textbf{T} é simétrico e o tensor \textbf{F} não é simétrico, o primeiro tensor de Piolla-Kirchhoff não será simétrico. Para contornar tal problema pode-se considerar um  "pseudo" tensor força $ \tilde{df} $ na área $ dA_{0} $, onde
+\begin{equation}
+\tilde{df} = \tilde{t} dA_{0}
+\end{equation} 
+sendo $ \tilde{t} $ um "pseudo" vetor tensão na área $ dA_{0} $, calculado por:
+\begin{equation}
+\tilde{t} =  \tilde{ \textbf{ T}} \vec{n} _{0}.
+\end{equation}
+
+Procedendo de forma análoga ao que foi feito com primeiro tensor de Piolla-Kirchhoff, obtém-se que:
+\begin{equation}
+ \tilde{ \textbf{ T}}  = \textbf{F} ^{-1} \textbf{T} _{0}
+\end{equation}
+ou, pela equação (\ref{tensor_PK}),
+\begin{equation}
+\tilde{ \textbf{T}} = \vert \textbf{F} \vert ( \textbf{F} ^{-1}) \textbf{T}   ( \textbf{F} ^{-1}) ^{T}
+\end{equation}
+sendo agora $ \tilde{ \textbf{T}} $ simétrico e chamado de segundo tensor de Piolla-Kirchhoff.
+ 
+%-------------------------------------------------------------------------------------------------------------------------------------------------------
+\section{LEIS DE CONSERVAÇÃO}
+
+\subsection{Lei de conservação da massa}
+
+Em seus experimentos o  francês Antoine Laurent Lavosier concluiu que, numa reação química realizada em um sistema fechado, a massa permanecia constante, ou seja, em um sistema fechado, onde não há troca de matéria com o meio ambiente, a massa total antes da reação é igual a massa total após a reação. Por esta descoberta a Lei de Lavosier é hoje popularmente conhecida pela frase:
+
+\begin{center}
+\textit{" Na natureza nada se cria, nada se perde, tudo se transforma."}
+\end{center}
+
+Para definir a equação de conservação da massa, considere $\rho$ a massa específica de um material ou mais especificamente, $\rho$ é a massa do material por unidade de volume. Como a massa deve ser conservada para todo o tempo pode-se afirmar que:
+\begin{equation} \label{lei_conser_massa}
+\dfrac{D}{Dt} \int_{Vm} \rho ( \vec{x} , t) dV=0
+\end{equation}
+
+De acordo com o Teorema de transportes de Reynolds em Malvrin (1969), para um dado $\textbf{T}( \vec{x}, t)$, que pode ser um escalar ou uma função tensorial com coordenandas espaciais $(x_{1},x_{2},x_{2})$ no tempo \textit{t}, tem-se que:
+\begin{equation} \label{transp_Reynolds}
+\dfrac{D}{Dt} \int_{Vm(t)} \textbf{T} ( \vec{x} , t)dV =\int_{Vc} \dfrac{ \partial \textbf{T} ( \vec{x} ,t)}{ \partial t} dV + \int_{Sc} \textbf{T} ( \vec{v} \cdot \vec{n}) dS
+\end{equation}
+onde $\textit{Vc}$ é o volume de controle, fixo no espaço, $\textit{Sc}$ são as fronteiras de $\textit{Vc}$, $\vec{v} = (u , v , w) $ é um vetor velocidade  e $\vec{n}$ é um vetor normal unitário. Desta forma a equação (\ref{lei_conser_massa}) pode ser escrita como:
+\begin{equation} \label{conser_massa_Vc1}
+\int_{Vc} \dfrac{ \partial}{\partial t} \rho (\vec{x} , t) dV= - \int_{Sc} \rho ( \vec{v} \cdot \vec{n} ) dS
+\end{equation}
+ou
+\begin{equation} \label{conser_massa_Vc2}
+\dfrac{ \partial}{\partial t} \int_{Vc} \rho ( \vec{x} , t) dV = - \int_{Sc} \rho ( \vec{v} \cdot \vec{n} ) dS.
+\end{equation}
+
+A equação (\ref{conser_massa_Vc2}) indica que a taxa de variação da massa dentro do volume de controle é igual ao influxo de massa através da superfície de controle. Como, pelo Teorema de Gauss em Lai (2010),
+\begin{equation} \label{teorema_Gauss}
+\int_{Sc} \rho ( \vec{v} \cdot \vec{n} ) dS= \int_{Vc} (div \rho \vec{v}) dV,
+\end{equation}
+então a equação (\ref{conser_massa_Vc1}) pode ser escrita como:
+\begin{equation}
+\int_{Vc} \dfrac{ \partial}{\partial t} \rho (\vec{x} , t) dV= - \int_{Vc} (div \rho \vec{v}) dV
+\end{equation}
+ou
+\begin{equation} \label{integral_massa}
+\int_{Sc} \left[ \dfrac{ \partial \rho}{\partial t} + div ( \rho \vec{v}) \right] dV = 0
+\end{equation}
+que é válida para todo $Vc$. Assim,
+\begin{equation} \label{eq_massa_1}
+\dfrac{ \partial \rho}{\partial t} + div ( \rho \vec{v}) = 0
+\end{equation}
+ou
+\begin{equation} \label{eq_massa_2}
+\dfrac{ \partial \rho}{\partial t} +  \rho div ( \vec{v}) = 0.
+\end{equation}
+
+A equação (\ref{eq_massa_1}) ou a sua varaição, equação (\ref{eq_massa_2}), é conhecida como a Equação de Conservação da Massa ou Equação da Continuidade. (LAI, 2010).
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------------
+\subsection{Lei de conservação do \textit{momentun}}
+
+Sabe-se que corpos possuem massa que pode ser denotada por \textit{m}. Quando este se deslocam apresentam uma velocidade $\vec{v}$. A quantidade obtida da multiplicação da massa pela velocidade $(m \times \vec{v})$, chamado do movimento linear, também deve ser conservado ou, em outras palavras, não é possível aumentar nem diminuir o valor desta quantidade. (MALVRIN, 1969).
+
+A idéia básica deste postulado é que cada partícula, em um meio contínuo, deve satizfazer a lei do movimento de Newton, também conhecida como Segunda Lei de Newton, que pode ser escrita na forma vetorial como:
+\begin{equation}
+\vec{F}= m \cdot \vec{a},
+\end{equation}
+onde $ \vec{a}= \dfrac{D \vec{v}}{Dt}$ é aceleração da partícula.
+
+O princípio global do  \textit{momentun} linear diz que a força total (superfície e forças de corpo) que atuam em qualquer parte fixa de um ponto material é igual à taxa de variação da quantidade de movimento linear. (LAI, 2010). 
+
+Denotando por  \textbf{t} o vetor de tensões e  \textbf{B} as forças de corpo por unidade de massa, tem-se que:
+\begin{equation} \label{eq_movimento_1}
+\int_{Sc} \textbf{t} dS + \int_{Vc} \rho \textbf{B} dV = \dfrac{D}{dt} \int_{vm} \rho \vec{v} dV. 
+\end{equation}
+
+De acordo com o Teorema de transportes de Reynolds, equação (\ref{transp_Reynolds}), a equação (\ref{eq_movimento_1}) pode ser escrita da seguinte forma:
+\begin{equation} \label{eq_movimento_2}
+\int_{Sc} \textbf{t} dS + \int_{Vc} \rho \textbf{B} dV = \int_{Vc} \dfrac{ \partial \rho \vec{v}}{ \partial t} dV + \int_{Sc} \rho \vec{v} ( \vec{v} \cdot \vec{n}) dS.
+\end{equation}
+
+Assim, de acordo com a equação (\ref{eq_movimento_2}), pode-se afirma que a força total exercida sobre a parte fixa de um ponto material em um dado instante de tempo \textit{t} em um volume de controle $Vc$ é igual a razão de tempo da mudança total do movimeto linear dentro do volume de controle adicionado do influxo do movimento linear através da superfície de controle $Sc$. 
+
+De forma análoga à equação (\ref{integral_massa}), onde foi aplicado o Teorema da Divergencia de Gauss, a equação (\ref{eq_movimento_2}) pode ser escrita como:
+\begin{equation} \label{eq_movimento_3}
+\int_{Vc} \left[ \dfrac{(D \rho \vec{v} )}{Dt} + \rho \vec{v} (div \vec{v}) dV \right] = \int_{Sc} \textbf{t} dS + \int_{Vc} \rho \textbf{B} dV.
+\end{equation}
+
+Considerando a derivalda material em Malvrin (1969), tem-se que:
+\begin{equation}
+\dfrac{( \rho \vec{v} )}{Dt} = \dfrac{D \rho}{Dt} \vec{v} + \rho \dfrac{D \vec{v}}{Dt}= -( \rho div \vec{v}) \vec{v} + \rho \dfrac{D \vec{v}}{Dt}.
+\end{equation}  
+
+Da equação de conservação da massa, equação (\ref{eq_massa_2}), $D \rho / Dt +  \rho div \vec{v} = 0$. Logo, a equação (\ref{eq_movimento_3}) pode ser escrita como:
+\begin{equation}
+\int_{Vc} \rho \dfrac{D \vec{v}}{Dt} dV = \int_{Sc} \textbf{t} dS + \int_{Vc} \rho \textbf{B} dV.
+\end{equation}
+
+Como \textbf{t} é um vetor de tensão, então poder ser decomposto em função do tensor de tensão de Piolla-Kirchhoff e do vetor normal unitário $ \vec{n}$. Assim,
+\begin{equation} \label{integral_vetor_tensao}
+\int_{Sc} \textbf{t} dS = \int_{Sc} \textbf{T} \vec{n} dS = \int_{Vc} div \textbf{T} dV.
+\end{equation}
+
+Desta forma, tem-se na equação (\ref{integral_vetor_tensao}) que:
+\begin{equation}
+\int_{Vc} \left( \rho \dfrac{D \vec{v}}{dt} - div \textbf{T} - \rho \textbf{B} \right) dV = 0. 
+\end{equation}
+Logo,
+\begin{equation}
+\rho \dfrac{D \vec{v}}{dt} - div \textbf{T} - \rho \textbf{B} = 0,
+\end{equation}
+ou seja,
+\begin{equation} \label{eq_movimento_final}
+\rho \dfrac{D \vec{v}}{Dt} = div \textbf{T} + \rho \textbf{B}
+\end{equation}
+que é chamada de Equação do Movimento.
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------------
+\subsection{Lei de conservação da energia}
+
+O Princípio ou Lei de conservação da energia estabele que a quantidade total de energia de um sistema isolado deve permanecer constante, ou seja, a energia não pode variar, ser destruida, mas sim transformada.
+Desconsiderando a entrada de outras formas de energia a Lei de conservação de energia, segundo Lai (2010), pode ser enuciada de seguinte forma:
+\begin{center}
+
+ " A razão do acréscimo, no tempo, da energia interna e da energia cinética para um ponto material fixo é igual a variação do trabalho realizado pela superfície e as forças de corpo mais o fluxo de calor, por condução, através das superfícies deste volume." 
+ \end{center}
+ 
+ Considerando que $ v^{ 2 }$   denota $ ( \vec{v} \cdot \vec{v} ) $, \textbf{u} a energia interna por unidade de massa, $ \vec{q} $  o vetor fluxo de calor, ou seja, a razão do fluxo de calor por unidade de área através das fronteiras e  $ q_{S} $ é o suprimento de calor por unidade de massa, então tem-se que:
+\begin{equation} \label{conserv_energia_1}
+\dfrac{D}{Dt} \int_{Vm} \left( \dfrac{ \rho v^{2}}{2} + \rho \textbf{u} \right) dV = \int_{Sc} ( \textbf{t} \cdot \vec{v}) dS + \int_{Vc} \rho ( \textbf{B} \cdot \vec{v}) dV - \int_{Sc} ( \textbf{q} \cdot \vec{n}) dS + \int_{Vc} \rho q_{S} dV.
+\end{equation}
+
+Aplicando o Teorema de transportes de Reynolds, equação (\ref{transp_Reynolds}), o lado esquerdo da equação (\ref{conserv_energia_1}) pode ser escrito como:
+\begin{equation} \label{conserv_energia_2}
+\dfrac{D}{Dt} \int_{Vm} \left( \dfrac{ \rho v^{2}}{2} + \rho \textbf{u} \right) dV = \int_{Vc} \left[ \dfrac{D}{Dt} \rho \left( \dfrac{v^{2}}{2} + \textbf{u} \right) + \rho \left( \dfrac{v^{2}}{2} + \textbf{u} \right) div \vec{v} \right] dV
+\end{equation}
+
+Considerando a derivada material e evidenciando os termos semelhantes, a equação (\ref{conserv_energia_2}) torna-se:
+%\begin{equation}
+%\dfrac{D}{Dt} \int_{Vm} \left( \dfrac{ \rho v^{2}}{2} + \rho \textbf{u} \right) dV = \int_{Vc} \left[ \rho \dfrac{D}{Dt} \left( \dfrac{v^{2}}{2} + \textbf{u} \right) + \left( \dfrac{v^{2}}{2} + \textbf{u} \right) \left( \dfrac{D \rho}{Dt} + \rho div \vec{v} \right) \right] dV = \int_{Vc} \left[ \rho \dfrac{D}{Dt} \left( \dfrac{v^{2}}{2} + \textbf{u} \right) \right] dV.
+%\end{equation}
+
+\begin{eqnarray} \label{conserv_energia_3}
+\dfrac{D}{Dt} \int_{Vm} \left( \dfrac{ \rho v^{2}}{2} + \rho \textbf{u} \right) dV = \nonumber \\
+\int_{Vc} \left[ \rho \dfrac{D}{Dt} \left( \dfrac{v^{2}}{2} + \textbf{u} \right) + \left( \dfrac{v^{2}}{2} + \textbf{u} \right) \left( \dfrac{D \rho}{Dt} + \rho div \vec{v} \right) \right] dV = \nonumber \\
+\int_{Vc} \left[ \rho \dfrac{D}{Dt} \left( \dfrac{v^{2}}{2} + \textbf{u} \right) \right] dV.
+\end{eqnarray}
+
+Como a força total $ P $ ou taxa de trabalho, realizado pelo vetor de tensão \textbf{t} sobre a superfície $ S $ é dada por
+\begin{equation} \label{conserv_energia_4}
+P = \int_{S}( \textbf{t} \cdot \vec{v}) dS = \int_{V} [(div \textbf{T}) \cdot \vec{v} + tr( \textbf{T} ^{T} \bigtriangledown \vec{v} ) ] dV
+\end{equation} 
+onde $ tr $ representa o traço de $( \textbf{T} ^{T} \bigtriangledown \vec{v} ) $. Então, na equação (\ref{conserv_energia_1}), tem-se que:
+\begin{equation} \label{conserv_energia_5}
+\int_{Sc}( \textbf{t} \cdot \vec{v}) dS = \int_{Vc} [(div \textbf{T}) \cdot \vec{v} + tr( \textbf{T} ^{T} \bigtriangledown \vec{v} ) ] dV.
+\end{equation}
+
+Pela equação (\ref{teorema_Gauss}), Teorema da Divergência de Gauss,
+\begin{equation} \label{conserv_energia_6}
+\int_{Sc}( \textbf{q} \cdot \vec{n}) dS = \int_{Vc} (div \textbf{q}) dV.
+\end{equation} 
+
+Assim, considerando as equações (\ref{conserv_energia_2}), (\ref{conserv_energia_3}), (\ref{conserv_energia_4}), (\ref{conserv_energia_5}) e (\ref{conserv_energia_6}) a equação (\ref{conserv_energia_1}) resulta em:
+\begin{equation} \label{conserv_energia_7}
+\int_{Vc} \dfrac{D}{Dt} \left( \dfrac{v^{2}}{2} + \textbf{u} \right) dV = \int_{Vc} [( div \textbf{T} + \rho \textbf{B}) \cdot \vec{v} + tr ( \textbf{T} ^{T} \bigtriangledown \vec{v}) - div \textbf{q} + \rho q_{S}] dV.
+\end{equation}
+
+Como,
+\begin{equation}
+(div \textbf{T} + \rho \textbf{B}) \vec{v} = \rho \dfrac{D \vec{v}}{Dt} \cdot \vec{v} = \dfrac{1}{2} \rho \dfrac{Dv^{2}}{Dt}
+\end{equation}
+a equação (\ref{conserv_energia_7}) torna-se:
+\begin{equation}
+\int_{Vc} \rho \dfrac{D \textbf{u}}{Dt} dV = \int_{Vc} [tr( \textbf{T} ^{T} \bigtriangledown \vec{v}) - div \textbf{q} + \rho q_{S}] dV.
+\end{equation}
+
+Portanto, resultado em:
+\begin{equation} \label{conerv_energia_final}
+\rho \dfrac{D \textbf{u}}{Dt} = tr( \textbf{T} ^{T} \bigtriangledown \vec{v}) - div \textbf{q} + \rho q_{S}
+\end{equation} 
+onde a equação acima é chamada de Equação de Conservação da Energia.
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------------
+\section{EQUAÇÃO HIDROSTÁTICA}
+
+Considerando a equação do movimento de Cauchy,
+\begin{equation}
+\dfrac{ \partial T_{ij}}{ \partial x_{j}} + \rho B_{i}  = \rho a_{i}
+\end{equation}
+onde, negligenciando a aceleração, tem-se:
+\begin{equation} \label{eqestatica}
+\dfrac{ \partial T_{ij}}{ \partial x_{j}} + \rho B_{i}  = 0
+\end{equation}
+chamada de equação do equilíbrio estático. (LAI, 2010).
+
+Se este fluido for considerado em equilíbrio estático, então somente a tensão normal será considerada, ou seja, não há forças de tensões cisalhantes. Sendo assim, a única força de superfície a atuar neste fluido será a pressão $P$. Logo,
+\begin{equation}
+T_{ij} = -P \delta_{ij}.
+\end{equation}
+Assim, a equação (\ref{eqestatica}) pode ser escrita como:
+\begin{equation} \label{estatica1}
+\dfrac{ \partial P}{ \partial x_{i}} = \rho B_{i}.
+\end{equation}
+
+Ao analisar a equação (\ref{eqestatica}) percebe-se que duas forças atuam sobre este fluido, que são as forças de corpo e as forças de superfície, sendo esta última a pressão. Para muitas aplicações em engenharia, as forças de corpo são causadas pela gravidade, conforme abordado em Fox e Macdonald (1998). Sendo assim, considerando o vetor gravidade $ \vec{g} = ( g_1 , g_2 , g_3) $, a equação (\ref{estatica1}) pode ser dada por:
+\begin{equation}
+\dfrac{ \partial P}{ \partial x_{i}} = \rho g_{i},
+\end{equation}
+que também pode ser escrita na forma
+\begin{equation} \label{eqhidro}
+- \nabla P + \rho \vec{g} = 0
+\end{equation}
+que é a equação hodrostática.
+
+Se for adotado, no sistema de coordenadas cartesianas, o eixo $z$ como o eixo direcionado verticalmente para cima, tem-se:
+\begin{equation}
+\dfrac{ \partial P}{ \partial x_{1}} = 0,
+\end{equation}
+\begin{equation}
+\dfrac{ \partial P}{ \partial x_{2}} = 0,
+\end{equation}
+\begin{equation}
+\dfrac{ \partial P}{ \partial x_{3}} = - \rho g_{3},
+\end{equation}
+o que mostra que a pressão é independente de $x$ e $y$. Logo, a derivada total pode ser usada no lugar da derivada parcial, ou seja,
+\begin{equation} \label{pressaoz}
+\dfrac{ dP}{ dz} = - \rho g.
+\end{equation}
+
+Para fluidos incompressíveis, $ \rho = constante$. Logo,
+\begin{equation} \label{pctante}
+\dfrac{ dP}{ dz} = - \rho g = constante.
+\end{equation}
+Assim, para a variação de pressão, dado uma condição de fronteira e um nível de referência $ z_0 $ com pressão $ P_0 $, tem-se:
+\begin{equation}
+\int^{ P}_{ P_0} {dP} = - \int^{z}_{z_0} { \rho g dz} = - \rho g \int^{z}_{z_0} {dz},
+\end{equation}
+o que resulta em 
+\begin{equation}
+P - P_{0} = - \rho g (z-z_0) = \rho g (z_0 - z)
+\end{equation}
+ou
+\begin{equation} \label{varpres}
+\Delta P = \rho g (z_0 - z) = \rho g h.
+\end{equation}
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------------
+\section{FLUIDOS NEWTONIANOS}
+
+\begin{figure}
+\centering
+\includegraphics[scale=1]{experimento_de_newton.jpg}
+\caption{O experimento de Newton de transferência de quantidade de movimento (fonte: Gobbi \textit{et al.}, 2005)}
+\label{fig:expnewton}
+\end{figure}	
+
+%\begin{figure}
+%\caption{O EXPERIMENTO DE NEWTON DE TRANSFERÊNCIA DE QUANTIDADE DE MOVIMENTO}
+%\label{fig:expnewton}
+%\centering
+%\includegraphics[scale=1]{experimento_de_newton.jpg}
+%\end{figure}	
+
+O Filósofo, Matemático e Físico inglês Isaac Newton observou, por meio de um experimento em que colocou uma placa em movimento sobre um fluido, figura (\ref{fig:expnewton}), que muitos fluidos apresentam proporcionalidade entre a tensão tangencial ou cisalhante e a taxa de deformação e que esta constante de proporcionalidade é uma propriedade intrínseca do material, a qual denominou de viscosidade absoluta ou viscosidade dinâmica, $ \mu $. (MARCHETTI, 2008).
+\begin{equation}
+\textbf{T} _{xy} = \mu \dfrac{\partial v_{x}}{\partial y}.
+\end{equation} 
+
+Desta forma, a viscosidade de um fluido, $ \mu $, é a medida de sua resistência à deformação.
+Quando uma tensão cisalhante é aplicada em um sólido elástico, este se deforma até atingir o estado de equilíbrio. No entanto, ao ser removida esta tensão o sólido retorna ao seu estado inicial. (LAI, 2010). 
+Para certos fluidos, como a água, a deformação permanece mesmo após findar a tensão cisalhante. Pode-se dizer então que a tensão cisalhante do fluido em movimento não depende da deformação, mas sim da taxa de deformação aplicada sobre ele. Quando a relação tensão e taxa de deformação é linear, diz-se que este é um fluido newtoniano, como pode ser observado na figura (\ref{fig:fluidonewtoniano}).    
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=1]{fluido_newtoniano.jpg}
+\caption{Tensão \textit{versus} taxa de deformação para vários fluidos (fonte: Gobbi \textit{et al.}, 2005)}
+\label{fig:fluidonewtoniano}
+\end{figure}
+%\begin{figure}[h]
+%\caption{TENSÃO x TAXA DE DEFORMAÇÃO PARA VÁRIOS FLUIDOS}
+%\label{fig:fluidonewtoniano}
+%\centering
+%\includegraphics[scale=1]{fluido_newtoniano.jpg}
+%\end{figure}	
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------------
+\section{EQUAÇÃO DE NAVIER-STOKES PARA FLUIDOS INCOMPRESSÍVEIS}
+
+Considerando as características dos fluidos newtonianos, cuja tensão e a taxa de deformação são lineares, o tensor de tensões \textbf{T} pode ser decomposto em duas parcelas:
+\begin{equation}
+\textbf{T} = - P \textbf{I} - \textbf{T} ^{ \backprime}
+\end{equation}
+onde $ - P \textbf{I} $ é a parcela hidrodinâmica, sendo $ P $ a pressão, e $ \textbf{T} ^{ \backprime} $ uma parcela não hidrodinâmica que depende da taxa de deformação do fluido.
+
+A taxa de deformação pode ser representada pelo tensor gradiente de velocidades $  \textbf{D} $, ou seja,
+\begin{equation}
+\textbf{D} = \dfrac{1}{2} [ \vec{ \bigtriangledown} \vec{v} + ( \vec{ \bigtriangledown} \vec{v}) ^{T}]
+\end{equation} 
+ou, usando a notação indicial, o tensor $ \textbf{D} $ pode ser escrito na configuração euleriana como:
+\begin{equation}
+D_{ij} = \dfrac{1}{2} \left[ \dfrac{ \partial v_{i}}{ \partial x_{j}} + \dfrac{ \partial v_{j}}{ \partial x_{i}} \right].
+\end{equation}
+
+Pela relação linear do fluido newtoniano, figura (\ref{fig:fluidonewtoniano}), pode-se fazer uma comparação com a relação constitutiva de um sólido elástico linear isotrópico. (LAI, 2010). Assim, a parcela não hidrodinâmica $ \textbf{T} ^{ \backprime} $ pode ser escrita como:
+\begin{equation} \label{parcela_nao_hidrod}
+T_{ij} ^{\backprime} = \lambda \Delta \delta _{ij} + 2 \mu D_{ij}
+\end{equation}
+onde $ \lambda $, $  \mu $ são constantes do material e $ \Delta $ é o traço do tensor \textbf{D}. Escrito conforme a equação (\ref{parcela_nao_hidrod}) o tensor $ \textbf{T} ^{ \backprime}$ é chamado de tensão de viscosidade e, assim, o tensor de tensão torna-se:
+\begin{equation} \label{parcela_hidrod}
+T_{ij} = - P \delta _{ij} + \lambda \Delta \delta _{ij} + 2 \mu D_{ij}.
+\end{equation}
+
+Para o caso de um fluido em equilíbrio, como em um recipiente isolado contendo água, a equação (\ref{parcela_nao_hidrod}) será nula.
+
+Tomando como base a equação de conservação da massa, equação (\ref{eq_massa_2}), um fluido será dito incompressível se:
+\begin{equation}
+\dfrac{ D \rho}{Dt} = 0.
+\end{equation} 
+Logo,
+\begin{equation}
+\rho \dfrac{ \partial v_{k}}{ \partial x_{k}} = 0,
+\end{equation} 
+o que implica em
+\begin{equation}
+\dfrac{ \partial v_{k}}{ \partial x_{k}} = div \vec{v} = 0.
+\end{equation}
+
+Assim, para um fluido incompressível, o traço do tensor gradiente de velocidades será nulo.
+\begin{equation}
+\Delta = D_{ii} = D_{11} + D_{22} + D_{33} = 0 
+\end{equation}
+
+Desta forma, a equação (\ref{parcela_hidrod}) será escrita como:
+\begin{equation}
+T_{ij} = - P \delta _{ij} + 2 \mu D_{ij}
+\end{equation}
+ou
+\begin{equation} \label{parcela_hidrod_2}
+T_{ij} = - P \delta _{ij} - \mu \left[ \dfrac{ \partial v_{i}}{ \partial x_{j}} + \dfrac{ \partial v_{j}}{ \partial x_{i}} \right].
+\end{equation}
+
+Da equação do movimento, equação (\ref{eq_movimento_final}), tem-se:
+\begin{equation}  \label{parcela_hidrod_3}
+\rho \left( \dfrac{ \partial v_{i}}{ \partial t} + v_{j} \dfrac{ \partial v_{i}}{ \partial x_{j}} \right) = \dfrac{ \partial T_{ij}}{ \partial x_{j}} + \rho B_{i}.
+\end{equation}
+
+Diferenciando parcialmente a equação (\ref{parcela_hidrod_2}), resulta:
+\begin{equation} \label{derv_parcela_hidrod}
+\dfrac{ \partial T_{ij}}{ \partial x_{j}} = - \dfrac{ \partial P}{ \partial x_{i}} + \mu \dfrac{ \partial ^{2} v_{i}}{ \partial x_{j} \partial x_{j}} + \mu \dfrac{ \partial ^{2} v_{j}}{ \partial x_{j} \partial x_{i}}.
+\end{equation}
+
+Para um fluido incompressível, 
+\begin{equation}
+\dfrac{ \partial ^{2} v_{j}}{ \partial x_{j} \partial x_{i}} = \dfrac{ \partial}{ \partial x_{i}} \left( \dfrac{ \partial v_{i}}{ \partial x_{j}} \right) = 0.
+\end{equation}
+
+Logo, a equação (\ref{derv_parcela_hidrod}), para um fluido incompressível, torna-se:
+\begin{equation}  \label{parcela_hidrod_4}
+\dfrac{ \partial T_{ij}}{ \partial x_{j}} = - \dfrac{ \partial P}{ \partial x_{i}} + \mu \dfrac{ \partial ^{2} v_{i}}{ \partial x_{j} \partial x_{j}}.
+\end{equation}
+Adotando as equações (\ref{parcela_hidrod_3}) e (\ref{parcela_hidrod_4}), a equação constitutiva (\ref{parcela_hidrod_2}) resulta em:
+\begin{equation} \label{Navier_Stokes}
+\rho \left( \dfrac{ \partial v_{i}}{ \partial t} + v_{j} \dfrac{ \partial v_{i}}{ \partial x_{j}} \right) = \rho B_{i}  - \dfrac{ \partial P}{ \partial x_{i}} + \mu \dfrac{ \partial ^{2} v_{i}}{ \partial x_{j} \partial x_{j}} 
+\end{equation}
+chamada de equação de Navier-Stokes para fluidos newtonianos incompressíveis.
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------------
+\section{EQUAÇÕES DE EULER}
+
+Segundo Toro (1999), as equações de Euler dependentes do tempo $t$ formam um sistema não linear hiperbólico de leis de conservação que governam a dinâmica de um material compressível, quando os efeitos das forças de corpo, tensões viscosas e fluxo de calor são negligenciados. Por este motivo, pode-se afirmar que as equações de Euler são simplicações da equação de Navier-Stokes.
+
+Este sistema formado pode ser representado por um conjunto de variáveis físicas ou primitivas, tais como densidade $( \rho)$, pressão $(P)$, velocidade na direção do eixo $x$ $(u)$, velocidade na direção do eixo $y$ $(v)$ e velocidade na direção do eixo $z$ $(w)$ ou então, em função de variáveis conservativas como densidade $( \rho)$, momento na direção do eixo $x$ $( \rho u)$, momento na direção do eixo $y$ $( \rho v)$, momento na direção do eixo $z$ $( \rho w)$ e energia total por unidade de massa $( \textit{E})$.
+
+Pode-se dizer que, fisicamente, este sistema de equações conservativas resulta da adoção da lei de conservação da massa, da conservação do momento e da conservação da energia. Desta forma, considerando as equações (\ref{eq_massa_2}), (\ref{eq_movimento_final}) e (\ref{conerv_energia_final}) obtem-se o sistema de equações conservativas dado por:
+\begin{equation} \label{massasis}
+\rho_{t} + ( \rho u)_{x} + ( \rho v)_{y} + ( \rho w)_{z} = 0,
+\end{equation}
+\begin{equation} \label{momentox}
+( \rho u)_{t} + ( \rho u^{2} + P )_{x} + ( \rho uv)_{y} + ( \rho uw)_{z} = 0,
+\end{equation}
+\begin{equation} \label{momentoy}
+( \rho v)_{t} + ( \rho uv)_{x} + ( \rho v^{2} + P )_{y}  + ( \rho vw)_{z} = 0,
+\end{equation}
+\begin{equation} \label{momentoz}
+( \rho w)_{t} + ( \rho uw)_{x} + ( \rho vw)_{y} + ( \rho w^{2} + P )_{z} = 0,
+\end{equation}
+\begin{equation} \label{energiasis}
+\textit{E}_{t} + [u( \textit{E}+P)]_{x} + [v( \textit{E}+P)]_{y} + [w( \textit{E}+P)]_{z} = 0,
+\end{equation} 
+chamado de equações de Euler, onde
+\begin{center}
+ $ \textit{E} = \rho \left[ \frac{1}{2} \vec{(v)}^{2} + \textbf{e} \right] $ 
+\end{center}
+ é a energia total,
+ \begin{center}
+ $  \frac{1}{2} \vec{(v)}^{2} = \frac{1}{2} \vec{v} \cdot \vec{v} = \frac{1}{2} \left( u^2 + v^2 + w^2 \right) $ 
+\end{center}
+é a energia cinética específica e $ \textbf{e} $ é a energia interna específica.
+
+De acordo com Novak \textit{et al.} (2010), as equações de Euler são somente as equações (\ref{momentox}), (\ref{momentoy}) e (\ref{momentoz}). No entanto, conforme Toro (1999), pode-se generalizar e considerar o sistema completo como as equações de Euler.
+
+As equações de Euler também podem ser escritas na forma vetorial como:
+\begin{equation} \label{vetorEuler}
+\vec{U}_t + \vec{F(U)}_x + \vec{G(U)}_y + \vec{H(U)}_z = 0
+\end{equation}
+sendo $ \vec{U} $ um vetor de variáveis consevativas e $ \vec{F(U)}$, $ \vec{G(U)}$, $ \vec{H(U)}$ vetores fluxos nas direções $x$, $y$ e $z$, respectivamente, ou seja,
+\begin{equation}
+\vec{U} =  \left[ 
+\begin{array}{c}
+\rho \\
+\rho u \\
+\rho v \\
+\rho w \\
+\textit{E} \\
+\end{array}
+\right] ; 
+\vec{F(U)} =  \left[ 
+\begin{array}{c}
+\rho u \\
+\rho u^2 + P \\
+\rho uv \\
+\rho uw \\
+u ( \textit{E} + P ) \\
+\end{array}
+\right] ;  
+\vec{G(U)} =  \left[ 
+\begin{array}{c}
+\rho v \\
+\rho uv \\
+\rho v^2 + P \\
+\rho vw \\
+v ( \textit{E} + P ) \\
+\end{array}
+\right] ;
+ \vec{H(U)} =  \left[ 
+\begin{array}{c}
+\rho w \\
+\rho uw \\
+\rho vw \\
+\rho w^2 + P \\
+w ( \textit{E} + P ) \\
+\end{array}
+\right] 
+\end{equation}
+
+Quando as forças de corpo são incluidas via um termo fonte, mas os efeitos da viscosidade e condução do calor são negligenciados, as equações de Euler, na forma vetorial, podem ser escritas como:
+\begin{equation} \label{vetorFonte}
+\vec{U}_t + \vec{F(U)}_x + \vec{G(U)}_y + \vec{H(U)}_z = \vec{S(U)}
+\end{equation}
+onde, em $ \vec{S(U)} $, forças de corpo como a gravidade podem ser introduzidas. Normalmente, $ \vec{S(U)} $ é uma função algébrica das variáveis do escoamento e não envolve derivadas, mas pode haver exceções. (TORO, 1999).
+
+Como comentado anteriormente, as equações de Euler podem ser escritas em função de variáveis primitivas ou físicas. Assim, expandindo as derivadas na equação de conservação da massa (\ref{massasis}), substituindo nas equações do momento (\ref{momentox}), (\ref{momentoy}), (\ref{momentoz})  e, após, usando na equação da energia (\ref{energiasis}) resulta nas equações de Euler para um gás ideal, com a gravidade como termo fonte, escritas como:
+\begin{equation} \label{massasis2}
+\rho_t + u \rho_x + v \rho_y + w \rho_z + \rho ( u_x + v_y + w_z ) = 0,
+\end{equation}
+\begin{equation} \label{momentox2}
+u_t + uu_x + vu_y + wu_z + \frac{1}{ \rho} P_x = g_1,
+\end{equation}
+\begin{equation} \label{momentoy2}
+v_t + uv_x + vv_y + wv_z + \frac{1}{ \rho} P_y = g_2,
+\end{equation}
+\begin{equation} \label{momentow2}
+w_t + uw_x + vw_y + ww_z + \frac{1}{ \rho} P_w = g_3,
+\end{equation}
+\begin{equation} \label{energiasis2}
+P_t + uP_x + vP_y + wP_z + \gamma P( u_x + v_y + w_z ) = 0,
+\end{equation}
+onde $ \gamma$, chamada de razão de calor específico ou expoente específico, é dado por:
+\begin{equation}
+\gamma = \frac{ c_P}{c_V},
+\end{equation}
+ou seja, é a razão entre o calor específico sob pressão constante e o calor específico sob volume constante. (LEVEQUE, 2004).
+
+De acordo com Toro (1999), a razão de calor específico da água, $ \gamma_W$, é de $ 1 cal/{g \cdot{} ^{ \circ}} C $ e do ar, $ \gamma_a$, é de $ 0,24 cal/{g \cdot{} ^{ \circ}} C $, ambas sob pressão constante.
+
+Segundo Leveque (2004), pode-se estabelecer uma relação para a razão de calor específico em função do número de Prandtl, $Pr$, ou seja, 
+\begin{equation} \label{RelPr}
+\gamma = \frac{5Pr}{9Pr - 4}.
+\end{equation}
+
+Em condições normais, ou seja, temperatura constante e pressão constante, o número de Prandtl para o ar é $Pr_{a} = 0,71$ e para a água, a uma temperatura de $ 20^{ \circ}C$, é  $Pr_{W} = 0,7$. Assim, usando a relação (\ref{RelPr}), tem-se:
+\begin{equation} \label{rel}
+\gamma_W \approx \gamma_a \approx 1,52174.
+\end{equation}
+No entanto, se o escoamento for isotérmico, então pode-se considerar que  $\gamma_W = \gamma_a = 1$.
+  
+%-------------------------------------------------------------------------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------------------
+\chapter{MÉTODOS DE SOLUÇÕES}
+%capítulo 4
+
+A solução de alguns problemas físicos podem se tornar uma tarefa árdua, senão impossível. Obter uma resposta algébrica para um conjunto de equações diferenciais parciais como as equações de Euler, exige muito tempo e, também, muitas simplificações levando a resposta final distante do desejado. Para o caso das equações de Navier-Stokes, isso torna-se impossível.
+
+A Dinâmica dos Fluidos mostrou bem a limitação do cálculo diferencial para prever fenômenos mais complexos, o que veio a prejudicar a hidrodinâmica por muitas décadas, conforme afirma Paiva \textit{et al.} (2009). 
+
+A Dinâmica dos Fluidos Computacional (CFD), sigla em inglês de \textit{Computacional Fluid Dynamics}, tem conseguido avanços consideráveis na modelagem e solução daquelas equações, pois alia o aprimoramento das técnicas e esquemas de soluções numéricas com a evolução da capacidade de processamento dos computadores. Isto faz com que fenômenos mais complexos sejam modelados com maior precisão e num espaço de tempo cada vez menor, bem como evita experimentos de altos custos ou impossíveis em laboratórios. (CRESPO \textit{et al.}, 2009).
+
+Hirsch (2007) esquematiza o desenvolvimento computacional de um experimento, subdividindo-o em três etapas; Projeto Assistido por Computador (CAD), sigla em inglês de \textit{Computer-Assisted Design}, Engenharia Assistida por Computador (CAE), sigla em inglês de \textit{Computer-Assisted Engineering} e Fabricação Assistida por Computador (CAM), sigla em inglês de \textit{Computer-Assisted Manufacturing}, onde cada uma destas etapas é formada por um conjunto de software e ferramentas computacionais. Dentre deste contexto, a CFD é classificada como um das formadoras da CAE, que também é composta pela Mecânica do Sólidos Computacioanl (CSM), sigla em inglês de \textit{Computational Solid Mechanics}, Aeroacústica Computacional (CAA), sigla em inglês de \textit{Computational Aero-Acoustics} e Eletromagnetismo Computacional (CEM), sigla em inglês de \textit{Computational electromagnetics}. Ao observar a posição central ocupada pela CAE e, dentro dela a CFD na figura (\ref{fig:esquema_CAE}), consegue-se compreender o que diz PAIVA \textit{et al.} (2009) quando afirma que pesquisadores em Dinâmicas dos Fluidos trabalham em institutos e departamentos de matemática, física e engenharia, o que torna esta área interdiciplinar.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=1]{esquema_CAE.jpg}
+\caption{A estrutura de desenvolvimento de um protótipo virtual (fonte: adaptada de Hirsch, 2007)}
+\label{fig:esquema_CAE}
+\end{figure}
+%\begin{figure}[h]
+%\caption{A ESTRUTURA DE DESENVOLVIMENTO DE UM PROTÓTIPO VIRTUAL}
+%\label{fig:esquema_CAE}
+%\centering
+%\includegraphics[scale=1]{esquema_CAE.jpg}
+%\end{figure}
+
+De uma forma geral, os métodos numéricos podem ser classificados em métodos eulerianos, que são aqueles que necessitam discretizar o domínio computacional por meio de um conjunto de células, comumente chamada de malha computacional ou \textit{grid}; os métodos lagrangeanos, que são aqueles no qual utilizam um conjunto de partículas para discretizar o estado e a dinâmica de um sistema; e os métodos híbridos, que são aqueles que combinam os métodos eulerianos e lagrangeanos, com o intuito de contornar as desvantagens que cada um deles apresentam, sendo normalmente usado em simulações que envolvem a interação fluido-estrutura. Este tipo de método numérico não será abordado neste trabalho, mas pode ser encontrado em trabalhos como e de (MAO e YANG, 2005) ou (BENSON, 1992). 	
+
+\section{MÉTODO DAS DIFERENÇAS FINITAS}
+
+Uma das ferramentas que compõem a CFD é a técnica euleriana das difernças finitas, também chamado de Método das Diferenças Finitas (MDF), sendo considerado o método mais antigo para se obter a solução numérica das equações diferenciais, onde as primeiras aplicações são atribuidas a Euler em 1768. (HIRSCH, 2007).
+
+O MDF é baseado nas propriedades das expansões de Taylor e nas aplicações diretas das definições de derivadas. Assim, considerando a definição da derivada da função $u$ em relação à $x$, tem-se:
+\begin{equation} \label{derivu}
+u_x = \frac{ \partial u}{ \partial x} = \lim_{ \Delta x \rightarrow 0} \frac{ u(x + \Delta x) - u(x)}{ \delta x}.
+\end{equation}
+
+Se o limite for removido da igualdade acima, então resulta em uma diferença. Como $ \Delta x$ é pequeno, mas finito, obtem-se um aproximação para a função derivada $u$.
+
+O fato de considerar $ \Delta x$ finito introduz um erro na solução da derivada, chamado de erro de truncamento e o tamanho deste erro pode ser obtido por meio da expansão da série de Taylor $ u(x+ \Delta x)$ em torno de $x$, o que denomina-se de ordem de precisão da aproximação diferença. (HIRSCH, 2007). Então, da série de Taylor, 
+\begin{equation} \label{Taylor}
+u( x + \Delta x) = u(x) + \Delta x \frac{ \partial u}{ \partial x} + \frac{ \Delta x^2}{ 2!} \frac{ \partial ^{2} u}{ \partial x^2} + \frac{ \Delta x^3}{ 3!} \frac{ \partial ^{3} u}{ \partial x^3} + \cdots .
+\end{equation}
+que pode ser escrita na forma
+\begin{equation} \label{Taylortru}
+\frac{ u( x + \Delta x) - u(x)}{ \Delta x} = u_{x} + \left[ \frac{ \Delta x}{2} u_{xx} (x) + \frac{ \Delta x^{2}}{6} u_{xxx} (x) + \cdots \right]
+\end{equation}
+onde o termo entre colchetes é o erro de truncamento e os demais termos considerados, confirmam que a igualdade (\ref{derivu}) é uma aproximação para a derivada da função $u$ em relação à $x$.
+
+Se na expressão (\ref{Taylortru}) for considerado o truncamento até o menor expoente em $ \Delta x$, ou seja,
+\begin{equation} \label{Taylor_1}
+\frac{ u( x + \Delta x) - u(x)}{ \Delta x} \approx u_{x} + \left[ \frac{ \Delta x}{2} u_{xx} (x) \right]
+\end{equation}
+a aproximação é dita de primeira ordem e escreve-se como:
+\begin{equation} \label{ordem_1}
+\frac{ u( x + \Delta x) - u(x)}{ \Delta x} = u_{x} + O( \Delta x).
+\end{equation}
+
+É possível definir formas diferentes para aproximar a derivada e estas podem ter diferentes ordens de precisão. Contudo, a maneira como foram abtidas as formulações anteriores conduz à soluções contínuas para $u_x$, sendo que o objetivo é o cálculo de $u$ por meio de um conjunto discreto de pontos, ou seja, uma solução numérica. Desta forma, se for adotado um conjunto de pontos $x_i$, $i = 1, \ldots, N$, onde o domínio de interesse é subdividido em $N$ partes de tamanhos iguais $ \Delta x$ e $ u_i = ( i \Delta x)$, então a solução numérica pode ser encontrada, sem perda de generalidades, por meio de três caminhos da aproxmação de derivada, que são:
+\begin{equation} \label{difav}
+( u_x)_i = \frac{ u_{i+1} - u_i}{ \Delta x} + O( \Delta x)
+\end{equation}
+chamada de diferença avançada ( \textit{forward difference});
+\begin{equation} \label{difat}
+( u_x)_i = \frac{ u_{i} - u_{i-1}}{ \Delta x} + O( \Delta x)
+\end{equation}
+chamada de diferença atrasada ( \textit{backward difference}) e
+\begin{equation} \label{difce}
+( u_x)_i = \frac{ u_{i+1} - u_{i-1}}{2 \Delta x} + O( \Delta x^2)
+\end{equation}
+chamada de diferença central ( \textit{central difference}).
+
+Como pode ser observado, as diferenças (\ref{difav}) e (\ref{difat}) são de precisão de primeira ordem, enquanto que a diferença (\ref{difce}) é de precisão de segunda ordem. A interpretação geométrica destas diferenças podem ser observadas na figura (\ref{fig:inter_geom}).
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=1]{inter_geom.jpg}
+\caption{Interpretação geométrica das fórmulas das diferenças para as derivadas de primeira ordem (fonte: adaptada de Hirsch, 2007)}
+\label{fig:inter_geom}
+\end{figure}
+%\begin{figure}[h]
+%\caption{INTERPRETAÇÃO GEOMÉTRICA DAS FÓRMULAS DAS DIFERNÇAS PARA AS DERIVADAS DE PRIMEIRA ORDEM}
+%\label{fig:inter_geom}
+%\centering
+%\includegraphics[scale=1]{inter_geom.jpg}
+%\end{figure}
+
+Outro caso a ser considerado para as diferenças é quando se deseja obter uma solução numérica para a função $u$ em um tempo diferente de que está sendo trabalhado, ou seja, deseja-se conhecer a função para tempos diferentes, sendo que já se conhece a solução para o tempo atual $n$. Assim, discretizando o espaço e o tempo em intervalos constantes $ \Delta x$ e $ \Delta t$, sendo $x_i = i \Delta x$, $t^n = n \Delta t$ e $ u^{n}_{i} = u( i \delta x, n \delta t)$, pode-se obter duas formas de avaliar a solução. Para exemplifica-las pode-se considerar a equação linear hiperbólica da advecção
+\begin{equation}
+\frac{ \partial u}{ \partial t} + a \frac{ \partial u}{ \partial x} = 0
+\end{equation}
+ou
+\begin{equation} \label{advecção}
+u_t + au_x = 0
+\end{equation}
+sendo $a = constante$. Logo, adotando para a discretização no tempo a diferença avançada e para o espaço a diferença central, encontra-se:
+\begin{equation} \label{advnum}
+\frac{ u^{n+1}_{i} - u^{n}_{i}}{ \Delta t} + \frac{a}{2 \Delta x} \left( u^{n}_{i+1} - u^{n}_{i-1} \right) = 0
+\end{equation}
+ou explicitando o termo para o tempo $n+1$, 
+\begin{equation} \label{explícito}
+u^{n+1}_{i} =  u^{n}_{i} - \frac{a \Delta t}{2 \Delta x} \left( u^{n}_{i+1} - u^{n}_{i-1} \right) 
+\end{equation} 
+conhecido como Método das Diferenças Finitas Explícito.
+
+Da mesma forma, porém considerando o segundo termo da equação (\ref{advnum}) para o tempo $n+1$, tem-se:
+\begin{equation}
+\frac{ u^{n+1}_{i} - u^{n}_{i}}{ \Delta t} + \frac{a}{2 \Delta x} \left( u^{n+1}_{i+1} - u^{n+1}_{i-1} \right) = 0
+\end{equation}
+conhecido como o Método das Diferenças Finitas Implícito.
+
+De acordo como Sperandio, Mendes e Silva (2003) a classificação das diferenças serem explícitas ou implícitas está no fato de que se os valores de $u$, no tempo $n+1$, forem obtidos em função de todas as quantidades no tempo corrente $t=n$, então o método será explícito. No entanto, se $u$ for obtido por valores no tempo futuro, $t=n+1$, o método será implícito.
+
+Uma ilustração da discretização no espaço e no tempo pode ser observada na figura (\ref{fig:espaço_tempo}).
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=1]{espaço_tempo.jpg}
+\caption{Discretização nos eixos espaço e tempo (fonte: Hirsch, 2007)}
+\label{fig:espaço_tempo}
+\end{figure}
+%\begin{figure}[h]
+%\caption{DISCRETIZAÇÃO NOS EIXOS ESPAÇO E TEMPO}
+%\label{fig:espaço_tempo}
+%\centering
+%\includegraphics[scale=1]{espaço_tempo.jpg}
+%\end{figure} 
+
+Conforme comentado em Press \textit{et al.} (1992), os métodos explícitos são de fácil implementação, pois a função é avaliada por meio de valores já conhecidos, o que os tormam muito econômicos em função do número de operações necessárias para avançar no tempo. Já para os esquemas implícitos, há necessidade de se determinar três valores desconhecidos no tempo $n+1$, o que leva a resolver um sistema de equações tridiagonal que pode ser linear ou não, dependendo da equação a ser resolvida. Para o caso de um sistema linear tridiagonal, o algoritmo de Thomas pode ser facilmente implementado. No entanto, para um sistema não linear o número de operações necessárias para o avanço no tempo podem ser muito maior.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=1]{malha_2D.jpg}
+\caption{Malha cartesiana bidimensional (fonte: Hirsch, 2007)}
+\label{fig:malha_2D}
+\end{figure}
+%\begin{figure}[h]
+%\caption{MALHA CARTESIANA BIDIMENSIONAL}
+%\label{fig:malha_2D}
+%\centering
+%\includegraphics[scale=1]{malha_2D.jpg}
+%\end{figure}
+
+As fórmulas do Método das Diferenças Finitas unidimensional podem ser estendidas para o plano bidimensional. Ao observar a figura (\ref{fig:malha_2D}) pode-se obter a malha retangular para o ponto $u_{ij} = u(x_i , y_j)$, sendo $ x_i = x_0 + i \Delta x$,  $ y_i = y_0 + i \Delta y$ e, então para a diferença avançada da direção do eixo $x$
+\begin{equation} \label{avdir_x}
+(u_x)_{ij} = \left( \frac{ \partial u}{ \partial x} \right)_{ij} = \frac{ u_{i+1,j} - u_{ij}}{ \Delta x} + O( \Delta x) ;
+\end{equation}
+ou na direção do eixo $y$
+\begin{equation} \label{avdir_y}
+(u_y)_{ij} = \left( \frac{ \partial u}{ \partial y} \right)_{ij} = \frac{ u_{i,j+1} - u_{ij}}{ \Delta y} + O( \Delta y) .
+\end{equation}
+
+Para a diferença atrasada na direção do eixo x
+\begin{equation} \label{atdir_x}
+(u_x)_{ij} = \left( \frac{ \partial u}{ \partial x} \right)_{ij} = \frac{ u_{i,j} - u_{i-1,j}}{ \Delta x} + O( \Delta x) ;
+\end{equation}
+ou na direção do eixo $y$
+\begin{equation} \label{atdir_y}
+(u_y)_{ij} = \left( \frac{ \partial u}{ \partial y} \right)_{ij} = \frac{ u_{ij} - u_{i,j-1}}{ \Delta y} + O( \Delta y) .
+\end{equation}
+
+Para a diferença central na direção do eixo $x$
+\begin{equation} \label{cedir_x}
+(u_x)_{ij} = \left( \frac{ \partial u}{ \partial x} \right)_{ij} = \frac{ u_{i+1,j} - u_{i-1,j}}{2 \Delta x} + O( \Delta x^2) ;
+\end{equation}
+ou na direção do eixo $y$
+\begin{equation} \label{atdir_y}
+(u_y)_{ij} = \left( \frac{ \partial u}{ \partial y} \right)_{ij} = \frac{ u_{i,j+1} - u_{i,j-1}}{2 \Delta y} + O( \Delta y^2) .
+\end{equation}
+
+De forma análoga ao que foi desenvolvido para as aproximações de segunda ordem unidimensional, pode-se obter para as aproximações de segunda ordem bidimensional, assunto amplamente discutido na literatura, tais como (WEIYAN, 1992) ou (LEVEQUE, 1992).
+
+
+\section{CONVERGÊNCIA, CONSISTÊNCIA E ESTABILIDADE}
+
+A falta de conhecimento das soluções exatas de certos problemas nos remete à resolve-los de forma aproximada por meio de um esquema ou método numérico. No entanto, faz-se necessário verificar até que ponto a forma numérica adotada é satisfatória para tal tarefa.
+
+De acordo com Kundu, Cohen e Dowlin (2012) a verificação da "qualidade" de um esquema numérico, seja ele implícito ou explícito, necessita de três conceitos: a convergência, a consistência e a estabilidade da solução numérica.
+
+Segundo Crossley (1999), neste conjunto de conceitos ainda pode ser incluido a precisão que define o quanto a solução aproximada está conseguindo representar da solução exata. Para tanto, se faz necessário o conhecimento de duas quantidades que são: o erro local ou truncamento, que é a diferença entre a solução numérica em um dado ponto e a solução exata para este mesmo ponto e o erro global, que reflete o erro total da solução numérica, o que quase sempre é impossível de se obter, já que a solução exata nem sempre é conhecida.
+
+Para Hirsch (2007), um esquema numérico é dito convergente quando a solução obtida tende para a solução exata no momento em que os passos no tempo e no espaço tendem para zero. Assim, o erro de truncamento pode ser definido como:
+\begin{equation}
+\tilde{ \epsilon}^{n}_{i} = u^{n}_{i} - \tilde{ u} \left( i \Delta x , n \Delta t \right)
+\end{equation}
+onde $ \tilde{ u}(x,t)$ é a solução exata e, então, da condição de convergência, resulta que
+\begin{equation}
+\lim_{ \stackrel{ \Delta x \rightarrow 0}{ \Delta t \rightarrow 0} } | \tilde{ \epsilon}^{n}_{i} | = 0.
+\end{equation}
+
+Kundu, Cohen e Dowlin (2012) também afirmam que algumas medidas do erro podem ser estimadas como:
+\begin{equation}
+\left\| e^{n}_{i} \right\| \leq k \Delta x^{a} \Delta t^{b} ,
+\end{equation}
+onde esta medida pode ser determinada como a raiz quadrada do erro médio, sendo $k$ uma constante que depende de $ \Delta x$ e $ \Delta t$, $a$ e $b$ são razoes de convergência quando o erro se aproxima de zero.
+
+Ao que foi visto acima, tudo leve a crer que um grid pode ser reduzido indiscriminadamente e a convergência será sempre alcançada. No entanto, conforme afirma Crossley (1999), isto só será possível se o método for consistente, ou seja, ao ser reduzido o tamanho do passo no espaço e/ou no tempo a equação discretizada tender para a equação diferencial onde, neste caso, o método será dito como de uso prático.
+
+Deve ser lembrado que devido à aritmética finita dos computadores pode haver um acúmulo no erro a medida que ocorre o avanço no tempo do processo de discretização. Se não houver um controle para este erro a solução tenderá para o infinito e o método será dito instável. Portanto, um método será dito estável quando, ao avançar no tempo, mantiver o erro limitado. Isto é uma condição somente do método numérico utilizado e não envolve as condições da equação diferencial. (HIRSCH, 2007).
+
+Muito métodos numéricos tem o seu grid limitado pelo número de Courant-Friedrichs-Lewy (Co),
+\begin{equation} \label{CFL}
+Co \leq 1
+\end{equation}
+o que indica que a partícula de um fluido não pode percorrer mais do que um grid espacial em um passo de tempo.
+
+Dentre os conceitos analisados, a estabilidade é decisiva para a viabilidade de uma aproximação numérica, devido ser uma condição necessária (em vez de suficiente) para se ter a precisão. A relação entre consistência, estabilidade e convergência é conhecida como o Teorema de Equivalência de Lax que diz (HIRSCH, 2007),
+\begin{theorem}[Teorema de Lax]
+Dada uma equação diferencial parcial com condições iniciais e de contorno, bem postas, e um esquema de discretização que satisfaz à condição de consistência, então a estabilidade é uma condição necessária e suficiente para a convergência.
+\end{theorem}
+
+Pode-se adotar três procedimentos para a análise de estabilidade denominados de: estabilidade eurística, estabilidade de Von Neumann e estabilidade matricial. Destes, o mais utilizado segundo Sperandio, Mendes e Silva (2003), é a análise de Von Neumann que basicamente representa o erro numérico via uma decomposição hamônica de Fourier, ou seja,
+\begin{equation} \label{Von_Neumann}
+u^{n}_{j} = \xi ^{n} e^{ ikj \Delta x} 
+\end{equation}
+onde $k$ é um número de onda espacial real e $ \xi = \xi (k)$ é um número complexo que depende de $k$, chamado de fator de amplificação. Em seguida, a decomposição harmônica é substituida na equação discretizada e, então é feita a análise do crescimento do erro, determinando assim se o método é condicionalmente estável ou incondicionalmente estável. Para mais detalhes veja (HIRSCH, 2007), (KUNDU, COHEN e DOWLIN, 2012), (SPERANDIO, 2003), (BATCHELOR, 1999).
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------------
+\section{O ESQUEMA DE LAX-FRIEDRICHS}
+
+Como mostrado anteriormente, a equação linear hiperbólica da advecção, equação (\ref{advecção}), foi discretizada por meio do Método das Diferenças Finitas Explícito, equação (\ref{explícito}). No entanto, a forma como foi construída esta discretização gera instabilidade que, segundo o Teorema de Lax, não será convergente. Nota-se isso por meio da análise de Von Neumenn que, ao subtituir o fator de amplificação (\ref{Von_Neumann}) na equação (\ref{explícito}), resulta:
+\begin{equation} \label{instabi}
+\xi (k) = 1-i(Co)sen(k \Delta x)
+\end{equation}
+onde $ Co = \frac{a \Delta t}{ \Delta x} \leq 1$, é o número de Courant-Friedrichs-Lewy, desigualdade (\ref{CFL}), $i$ é um número complexo.
+
+De acordo com Press (1992), como 
+\begin{equation}
+| \xi (k)| = |1-i(Co)sen(k \Delta x)| >1
+\end{equation}
+para todo $k$, então o método é incondicionalmente instável. A figura (\ref{fig:Dias_A}) mostra as instabilidades geradas para alguns intervalos de tempo.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=1]{Dias_A.jpg}
+\caption{Solução numérica da equação da advecção por meio do MDFE (fonte: Dias, 2013)}
+\label{fig:Dias_A}
+\end{figure}
+
+Para tentar solucionar o problema da instabilidade o esquema de Lax-Friedrichs substitui o termo $u^{n}_{i}$ da equação (\ref{explícito}) por um termo médio, ou seja, 
+\begin{equation}
+u^{n}_{i} \rightarrow \frac{1}{2} \left( u^{n}_{i+1} + u^{n}_{i-1} \right).
+\end{equation}
+Desta forma a equação (\ref{explícito}) passa a ser escrita como:
+\begin{equation} \label{esq_Lax}
+u^{n+1}_{i} =  \frac{1}{2} \left[ \left( u^{n}_{i+1} + u^{n}_{i-1} \right)  - (Co) \left( u^{n}_{i+1} - u^{n}_{i-1} \right) \right]. 
+\end{equation} 
+
+Ao fazer a análise de estabilidade de Von Neumann na equação (\ref{esq_Lax}) encontra-se que:
+\begin{equation} \label{instabi_Lax}
+\xi (k) = cos(k \Delta x)-i(Co)sen(k \Delta x).
+\end{equation}
+
+Se $ \xi (k)$ na equação (\ref{instabi_Lax}), que é um número complexo, for maior do que $1$, então esquema (\ref{esq_Lax}) será instável, mas se for considerado que $ | \xi (k)|^{2} \leq 1$ o esquema (\ref{esq_Lax}) será estável, o que só será possível se $Co \leq 1$, que é o critério de Courant-Friedrichs-Lewy.
+
+Segundo Press (1992), o que ocorre no esquema de Lax-Friedrichs é a inclusão de um termo difusivo, ou seja, o esquema de Lax-Friedrichs é dito ter uma dissipação numérica ou viscosidade numérica. Isto pode ser observado na figura (\ref{fig:Dias_B}) onde não ocorre mais as soluções espúrias que estavam ocorrendo na figura (\ref{fig:Dias_A}), mostrando que o esquema (\ref{esq_Lax}) é estável. No entanto, a solução é "amortecida" pela difusão numérica o que pode prejudicar a resposta do ponto de vista físico do problema. Existem outras forma de contornar o problema da instabilidade encontrada pelo MDFE, como o método de Lax-Wendroff ou mesmo o esquema Upwind, mas não serão abordados neste trabalho. Tais métodos podem ser encontrados nas literaturas como (PRESS, 1992), (HIRSCH, 2007), (KUNDU, COHEN e DOWLIN, 2012), (SPERANDIO, 2003), (BATCHELOR, 1999).
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=1]{Dias_B.jpg}
+\caption{Solução numérica da equação da advecção por meio do esquema de Lax-Friedrichs (fonte: Dias, 2013)}
+\label{fig:Dias_B}
+\end{figure}   
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------------
+\section{HIDRODINÂMICA DE PARTÍCULAS SUAVIZADAS}
+
+%=====================================================================================================================================================
+%=====================================================================================================================================================
+\chapter{ANÁLISE DE RUPTURA DE BARRAGENS}
+%Título Capítulo 5
+
+\section{DADOS GERAIS DA RUPTURA DE UMA BARRAGEM}
+
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------------
+\section{O ESTADO DA ARTE DA RUPTURA DE UMA BARRAGEM}
+
+
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+\section{RESULTADOS EM MODELOS REDUZIDOS}
+
+
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+\section{O PySPH}
+
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+\section{PROPOSTA DA PESQUISA}
+   
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+\section{A GERAÇÃO DA MALHA}
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------------
+\section{CONDIÇÕES INICIAIS E DE CONTORNO}
+
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+\section{VARIAÇÃO DOS PARÂMETROS}
+
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+\section{VARIAÇÃO DOS PARÂMETROS DO PySPH}
+
+%=======================================================================================================================================================
+%=======================================================================================================================================================
+\chapter{RESULTADOS}
+%Título Capítulo 6
+
+\section{ANÁLISE DOS RESULTADOS OBTIDOS}
+   
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+\section{ANÁLISE DOS RESULTADOS OBTIDOS NO PySPH}
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------------
+\section{COMPARAÇÃO DOS RESULTADOS}
+
+%=======================================================================================================================================================
+%=======================================================================================================================================================
+\chapter{CONCLUSÕES}
+%Título Capítulo 7
+
+%=======================================================================================================================================================
+%=======================================================================================================================================================
+
+\begin{thebibliography}{99}
+
+\bibitem{Calainho} CALAINHO, J.A.L., HORTA, C.A., GONÇALVES, C. e LOMÕNACO, F.G.,
+\textit{Cavitação em Turbinas Hidráulicas do Tipo Francis e Kaplan no Brasil}, Anais do XV Seminário Nacional de Produção e Transmissão de Energia Elétrica, Foz do Iguaçu: 1999. 6p. 1 CD.
+
+\bibitem{Aneel} Agência Nacional de Energia Elétrica - ANEEL 
+\textit{Capacidade do Brasil}, disponível em: http://www.aneel.gov.br/aplicacoes/capacidadebrasil/FontesEnergia.asp?, Acessado em: fev. 2013.
+
+\bibitem{Itaipu} ITAIPU, 
+\textit{Energia: Geração}, Foz do Iguaçu, 2012, disponível em: http://www.itaipu.gov.br/energia/geracao, Acessodo em: jan. 2013.
+
+\bibitem{Musardo} MUSARDO, G.B., 
+\textit{Análise microestrutural de revestimentos usados no reparo de turbinas hidráulicas danificadas pela cavitação}. 96 f.  Disssertação(Mestrado em Engenharia Mecânica) - Unesp, Ilha Solteira-SP, 2006.
+
+\bibitem{Civis} ITAIPU, 
+\textit{Usina Hidrelétrica Itaipu: aspectos técnicos das estruturas civis}, Foz do Iguaçu, ITAIPU Binacional, 2008.
+
+\bibitem{Engenharia} ITAIPU, 
+\textit{Itaipu: Usina Hidrelétrica - projeto: aspectos da engenharia}, Foz do Iguaçu, ITAIPU Binacional, 2009.
+
+\bibitem{CEASB} CEASB, 
+\textit{http://www.pti.org.br/ceasb}.  Acessado em: jan. 2013.
+
+\bibitem{Tian} TIAN, Y.W., ZHUO, L., 
+\textit{Numerical Simulation of Vortex Cavitation in Draft Tube}. Anais do 23rd Symposium on Hydraulic Machinery and Systems, Yokohama, Japão, 2006.
+
+\bibitem{Ventikos} VENTIKOS, Y., TZABIRAS, G., 
+\textit{A numerical method for the simulation of steady and unsteady cavitating flows}, Computers and Fluids, 2000. Disponível em: http://www.elsevier.com/locate/compfluid. Acessado em: jan. 2013.
+
+\bibitem{Malvrin} MALVRIN, L.E.,
+\textit{Introduction to the Mechanics of a Continuous Medium}. New Jersey: Prentice-Hall, 1969.
+
+\bibitem{Lai} LAI, W.M.,
+\textit{Introduction to Continuous Mechanics}, 4th ed. New York: Elsever Ltd, 2010.
+
+\bibitem{Reddy} REDDY, J.N.,
+\textit{Energy principles and variational methods in applied mechanics}. College Station, Texas: Jonh Wiley end Sons, Inc.
+
+\bibitem{Wiki} WIKIPEDIA, 
+\textit{Cavitação}, disponível em: http://pt.wikipedia.org/wiki/Cavitacao. Acessado em: jan. 2013. 
+
+\bibitem{Joao_Paulo} RIBEIRO, J.P., 
+\textit{Uma investigação de grandezas hidrodinâmicas no tubo de sucção de turbinas com rotor Francis operando em cargas variáveis}. 101 f. Disssertação(Mestrado em Ciências da Engenharia da Energia) - UNIFEI, Itajubá-MG, 2007. 
+
+\bibitem{Jean} FRANC, J.P., MICHEL, J. M.,
+\textit{Fundamentals of Cavitation}. New York: Kluwer Academic Publishers, 2005.
+
+\bibitem{Marciana} GÓES, M.L., 
+\textit{Desenvolvimento de um simulador numérico empregando o método Smoohted Particle Hydrodynamics para resolução de escoamentos incompressíveis. Implementação computacional em paralelo (CUDA)}. 99 f. Disssertação(Mestrado Modelagem Computacional) - UERJ, Nova Friburgo-RJ, 2012. 
+
+\bibitem{Josecley} GÓES, J.F., 
+\textit{Resuloção numérica de escoamentos compressíveis empregando um método de partículas livres de malhas e o processamento em paralelo (CUDA)}. 99 f. Disssertação(Mestrado) - UERJ, Nova Friburgo-RJ, 2011. 
+
+\bibitem{March} MARCHETTI, D.H.U., 
+\textit{Notas de Mecânicas dos Fluidos}, Dpto de Física, IFUSP, 2008, disponível em: http://gibbs.if.usp.br/~marchett. Acessado em: jan. 2013.
+
+\bibitem{Cristopher} BRENNEN, C.E., 
+\textit{Cavitation and bubble dynamics}. Pasadena, California: California Institute of Technology, Oxford University Press, 1995. 
+
+\bibitem{Arantes} ARANTES, E.J., 
+\textit{Caracterização do escoamento sobre vertedouro em degraus via CFD}. 204 f. Tese(Doutorado em Engenharia Civil na Área de Hidráulica e Saneamento) - EESC/USP, São Carlos-SP, 2007. 
+
+\bibitem{Alysson} SILVA, A.A.N., 
+\textit{Simulação numérica de escoamentos bidimensionais com superfícies livres e linhas de contato dinâmicas}. 103 f. Disssertação(Mestrado em Ciências) - ICMC/USP, São Carlos-SP, 2010.
+
+\bibitem{Vivarelli} VIVARELLI, R.,
+\textit{Modelagem e simulação numérica do escoamento completo de uma turbina Francis: uma aplicação às turbinas da usina hidrelétrica de ITAIPU}. 132 f. Trabalho de Graduação (Bacharel em Engenharia Mecânica) - Unioeste, Foz do Iguaçu, 2008.
+
+\bibitem{Nei_Franco} CARVALHO, N.F., 
+\textit{Esquemas para calcular a continuidade térmica nas faces de volumes fintos}. 150 f. Tese(Doutorado em Engenharia Mecânica) - PPGEM/UFPR, Curitiba, 2011.
+
+\bibitem{Maliska} SCHNEIDER, F.A., MALISKA, C.R., 
+\textit{Uma formulação em volumes finitos usando malhas não-estruturadas}, Florianópolis-SC: SINMEC/UFSC.
+
+\bibitem{html} As Leis Naturais, 
+\textit{http://www.valdiraguilera.net/leis-de-conservacao.html}.  Acessado em: mar. 2013.
+
+\end{thebibliography}
+
+
+\end{document}
