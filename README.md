@@ -10,7 +10,11 @@ A princípio este repositório contém apenas os arquivos referente a dissertaç
 Posteriormente disponibilizarei os códigos e algoritmos utilizado para a mineração de dados em si.
 
 
-## Correções/Ajustes
+### Correções/Ajustes
 
-Alterações e correções:
 https://github.com/medeirosthiiago/glue-grade/blob/master/bugs.md
+
+
+### Última versão da dissertação
+
+https://github.com/medeirosthiiago/glue-grade/blob/master/documento-tcc-desenv/modelo%20UFPR.pdf
