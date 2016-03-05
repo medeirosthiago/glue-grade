@@ -9,13 +9,13 @@ A Seção~\ref{sec: metodologia} irá concluir o capítulo apresentando as etapa
 Tecnologias e ferramentas para a criação e prototipagem dos algoritmos.
 
 %% Bibliotecas Python
-\subsection{Bibliotecas do Python}\label{sec:bib_python}
+\subsection{Bibliotecas da Linguagem Python}\label{sec:bib_python}
 Um dos grandes diferenciais da linguagem Python é o seu enorme conjunto de bibliotecas para soluções de diversos problemas.
 
-A seguir serão apresentadas as bibliotecas necessárias para a mineração de dados, através das quais é possível coletar, limpar, transformar, realizar operações e apresentar resultados proveniente dos dados da rede social \textit{LinkedIn}.
+A seguir serão apresentadas as bibliotecas necessárias para a mineração de dados, através das quais é possível coletar, limpar, transformar, realizar operações e apresentar resultados proveniente dos dados da rede social \textit{LinkedIn}. Para evitar a repetição da palavra \textit{biblioteca}, será utilizado o termo \textit{pacote} para o mesmo significado no restante desta dissertação.
  
 %%% sub: NumPy
-\subsubsection{\textbf{\textit{NumPy}}}
+\subsubsection{\textit{Biblioteca NumPy}}
 \textit{NumPy} é o pacote fundamental para computação científica em Python. É o acrônico para \textit{Numerical Python}. Esta biblioteca provê:
 
 \begin{itemize}
@@ -44,8 +44,8 @@ Para aplicações voltadas para a análise de dados, esta biblioteca possui gran
 Enquanto \textit{NumPy} oferece o fundamento computacional para essas operações, é preferível utilizar a biblioteca \textit{pandas} como base para a mineração de dados (especialmente de dados estruturados ou dados tabulados) devido a sua interface rica e de alto-nível no qual permite as tarefas com dados mais concisas e simples.
 
 %%% sub: pandas
-\subsubsection{\textbf{\textit{pandas}}}
-\textit{pandas} é a biblioteca de maior interesse para a mineração de dados. Ela possui estruturas de dados de alto-nível e ferramentas de manipulação desenvolvidas para facilitar e agilizar a análise de dados em Python. \textit{pandas} é desenvolvida sob a biblioteca \textit{NumPy} e viabiliza o uso em aplicações centradas nesta. A seguir são expostas algumas soluções que a biblioteca disponibiliza \cite{python-analysis}:
+\subsubsection{Biblioteca \textit{pandas}}
+A biblioteca \textit{pandas} atrai o maior interesse de cientistas quanto a mineração de dados. Ela possui estruturas de dados de alto-nível e ferramentas de manipulação desenvolvidas para facilitar e agilizar a análise de dados em Python. \textit{pandas} é desenvolvida sob a biblioteca \textit{NumPy} e viabiliza o uso em aplicações centradas nesta. A seguir são expostas algumas soluções que a biblioteca disponibiliza \cite{python-analysis}:
 
 \begin{itemize}
     \item Estrutura de dados com eixos rotulados suportam o alinhamento de dados automáticos ou explícitos. Isso evita erros comuns resultantes de dados desalinhados e dados indexados de formas diferentes provenientes de outras fontes de dados;
@@ -91,8 +91,8 @@ Existem várias maneiras diferentes de se criar um \textit{DataFrame}, entretant
 \end{figure}
 
 %%% sub: matplotlib
-\subsubsection{\textbf{\textit{matplotlib}}}
-\textit{matplotlib} é uma biblioteca desenvolvida para a geração de gráficos bidimensionais a partir de \textit{arrays}. Gráficos comuns podem ser criados com alta qualidade a partir de simples comandos, inspirados nos comandos gráficos do MATLAB, exemplo ilustrado na Figura~\ref{matplotlib-fig}.
+\subsubsection{Biblioteca \textit{matplotlib}}
+O pacote \textit{matplotlib} é desenvolvido para a geração de gráficos bidimensionais a partir de \textit{arrays}. Gráficos comuns podem ser criados com alta qualidade a partir de simples comandos, inspirados nos comandos gráficos do MATLAB, exemplo ilustrado na Figura~\ref{matplotlib-fig}.
 
 Quando usado em conjunto com ferramentas GUI (\textit{IPython}, por exemplo), esta biblioteca possui recursos interativos como zoom e visão panorâmica. \textit{matplotlib} suporta várias ferramentas GUI \textit{backend}, nos diversos sistemas operacionais suportados pelo Python, e permitem exportar gráficos em diversos formatos: PDF, SVG, JPG, PNG, BMP, GIF, etc.
 
@@ -108,7 +108,7 @@ Quando usado em conjunto com ferramentas GUI (\textit{IPython}, por exemplo), es
 
 
 %%% sub: SciPy
-\subsubsection{\textbf{\textit{SciPy}}}
+\subsubsection{Biblioteca \textit{SciPy}}
 \textit{SciPy} é uma coleção de pacotes que abordam uma série de soluções para diferentes domínios na computação científica. Na lista a seguir são apresentados exemplos desses pacotes \cite{python-analysis}:
 
 \begin{itemize}
@@ -124,7 +124,7 @@ Quando usado em conjunto com ferramentas GUI (\textit{IPython}, por exemplo), es
 
 
 %%% sub: IPython
-\subsubsection{\textbf{\textit{IPython}}}
+\subsubsection{Interpretador \textit{IPython}}
 \textit{IPython} foi desenvolvido com o intuito de ser um interpretador interativo para o Python que teve início em 2001. Desde a sua criação o \textit{IPython} evoluiu grandemente, ao ponto de ser considerada uma das mais importantes ferramentas para computação científica em Python. Essa biblioteca não oferece nenhuma ferramenta para análise de dados ou análise computacional em si, sendo designada para maximizar a produtivadade tanto na interação computacional como no desenvolvimento de softwares. Oferece um fluxo de visualização de um modo \textit{execute-explore} ao invés do típico modelo \textit{edit-compile-run} de muitas outras linguagens de programação. Ela também provê uma pequena integração com o \textit{shell} e o sistema de arquivos de sistema operacional. Como a maior parte da programação focada na mineração de dados envolve exploração, tentativa e erro, e iteração, \textit{IPython}, em quase todos os casos, irá facilitar este tipo de trabalho \cite{python-analysis}.
 
 Hoje, o projeto \textit{IPython} engloba muito mais do que apenas um interpretador \textit{shell} para Python. Ele também inclui um console gráfico interativo, o \textit{IPython Notebook}, que provê ao usuário uma experiência de caderno (\textit{notebook-like}) através de um navegador \textit{web}, conforme Figura~\ref{ipython-fig}, e dispõe de um mecanismo de processamento paralelo. Assim como muitas outras ferramentas desenvolvidas para programadores, é extremamente customizável \cite{mining-social-web}. \\ \\ \\ \\ \\ \\ \\
@@ -139,7 +139,7 @@ Hoje, o projeto \textit{IPython} engloba muito mais do que apenas um interpretad
 \end{figure}
 
 % python-linkedin
-\subsubsection{\textbf{\textit{python-linkedin}}}
+\subsubsection{Biblioteca \textit{python-linkedin}}
 Esta biblioteca provê ao Python a API do \textit{LinkedIn}. Através da utilização do protocolo OAuth 2.0, é possível acessar diveros campos como \textit{Profile}, \textit{Group}, \textit{Company}, \textit{Jobs}, \textit{Search}, \textit{Share}, \textit{Network} e requisições REST APIs \cite{python-linkedin}.
 
 %%
@@ -152,7 +152,7 @@ Uma API é composta por uma série de funções acessíveis somente por programa
 
 %% 
 % REST API
-\subsubsection{\textbf{Arquitetura REST}}
+\subsubsection{Arquitetura REST}
 REST foi um termo criado por \citeonline{rest}, onde ele modela um estilo de arquitetura para a construção de serviços \textit{web} consistentes e coesos. O estilo da arquitetura REST é baseado em recursos e nos estados desses recursos.
 
 Abreviação para Transferência de Estado Representacional, REST, é um estilo arquitetural baseado em recursos e nas representações desses recursos. Enfatiza a escalabilidade na interação entre componentes, a generalidade de interfaces, a implantação independente dos componentes de um sistema, o uso de componentes intermediários visando a redução na latência de interações, o reforço na segurança e o encapsulamento de sistemas legados. O REST ignora os detalhes da implementação de componente e a sintaxe de protocolo com o objetivo de focar nos papéis dos componentes, nas restrições sobre sua interação com outros componentes e na sua interpretação de elementos de dados significantes \cite{rest}.
@@ -173,7 +173,7 @@ Neste trabalho será utilizado apenas o protocolo OAuth 2.0 para o acesso aos da
 
 OAuth é uma sigla para "\textit{open authorization}", ou autorização aberta, e provê um meio para que usuários autorizem uma aplicação acessar dados, com alguma finalidade, através de uma API sem que os usuários precisem passar credenciais como nome de usuário e senha. De um modo geral, usuários são capazes de controlar o nível de acesso para estas aplicações e revogar este controle a qualquer momento \cite{mining-social-web}.
 
-\subsubsection{\textbf{OAuth 1.0a}}
+\subsubsection{Protocolo OAuth 1.0a}
 OAuth 1.0a é um protocolo que permite que um cliente (\textit{client}) \textit{web} tenha acesso a um recurso protegido pelo seu dono em um servidor. Esta definição se dá através da RFC 5849. Que são documentos técnicos desenvolvidos e mantidos pelo Internet Enginnering Task Force (IETF), instituição que especifica os padrões que serão implementados e utilizados em toda a Internet.
 
 A razão para a existência dessa tecnologia é para evitar problemas de usuários (donos dos recursos) compartilhar suas senhas com aplicações \textit{web}.
@@ -193,7 +193,7 @@ Uma aplicação que está requerindo acesso é conhecida como \textit{client}, e
 
 Para credenciais particulares, um \textit{client} começa com um uma \textit{consumer key} e um \textit{consumer secret} e no fim do processo de \textit{OAuth dance} termina com um \textit{token} de acesso e \textit{token} de acesso secreto que pode ser usado para acessar recursos protegidos.
 
-\subsubsection{\textbf{OAuth 2.0}}
+\subsubsection{Protocolo OAuth 2.0}
 Enquanto o protocolo OAuth 1.0a permite uma autorização útil para o acesso a aplicações \textit{web}, OAuth 2.0 foi originalmente destinado a simplificar significantemente a implementação detalhada para desenvolvedores de aplicações \textit{web}, baseando-se completamente no SSL para aspectos de segurança e satisfazer uma vasta quantidade de casos de uso. Esses casos de uso variaram desde suporte para dispositivos móveis à necessidades empresariais e, consequentemente as necessidades de um termo mais futuro, da "Internet das Coisas"\space \cite{mining-social-web}.
 
 Diferentemente da implementação OAuth 1.0a, que consiste de um rígido conjunto de etapas, a implementação do OAuth 2.0, definido através do RFC 6749, pode variar de acordo com a particularidade do caso de uso. Um decorrer típico da execução do OAuth 2.0 tem a vantagem do SSL e essencialmente contém apenas poucos redirecionamentos que, acompanhada de em alto-nível, não possui tanta diferença em relação ao processo anterior que envolvem um ciclo do OAuth 1.0a.
@@ -209,7 +209,7 @@ A grande parte das análise realizadas neste projeto acontece utilizando arquivo
 
 Na Subseção~\ref{api-linkedin} é apresentado a API do \textit{LinkedIn} e como se obter dados através dela.
 
-\subsubsection{\textbf{API LinkedIn}}\label{api-linkedin}
+\subsubsection{API LinkedIn}\label{api-linkedin}
 O acesso a API se dá através da criação de uma aplicação pela página \textit{web} de desenvolvimento do \textit{LinkedIn}. Após a criação da aplicação é fornecido ao usuário informações para o acesso utilizando o protocolo OAuth, será informado uma chave da API da aplicação, uma chave secreta, o \textit{token} de usuário OAuth e credenciais secretas do usuário OAuth.
 
 Dispondo de todas as credenciais do protocolo OAuth o acesso a API acontece utilizando a biblioteca \textit{python-linkedin}, especificada na Subseção~\ref{sec:bib_python}.
@@ -220,7 +220,7 @@ Conforme descrito anteriormente, é possível fazer o \textit{download} dos dado
 
 %%
 % METODOLOGIA
-\section{METODOLOGIA E DESENVOLVIMENTO}\label{sec: metodologia}
+\section{METODOLOGIA E DESENVOLVIMENTO **}\label{sec: metodologia}
 O processo de desenvolvimento da solução segue uma série de princípios de conjunto de boas práticas e etapas do \textit{data mining}, para melhor estruturar e obter, não só o resultado esperado, mas também para que todo o processo ocorra de forma coerente e padronizada.
 
 %%
@@ -228,19 +228,19 @@ O processo de desenvolvimento da solução segue uma série de princípios de co
 \subsection{Etapas Para a Mineração de Dados do \textit{LinkedIn}}
 Abordado previamente, o acesso aos dados do \textit{LinkedIn} acontece através da utilização de sua API. A análise necessária para a interpretação dos dados se dá pela aplicação da técnica de \textit{clustering}, normalização de dados e computação de similaridade. 
 
-\subsubsection{\textbf{\textit{Clustering}}} 
+\subsubsection{\textit{Clustering}}
 Um aprendizado não supervisionado que está presente em várias ferramentas de \textit{data mining}. A técnica de \textit{clustering} envolve em pegar uma coleção de itens e particioná-los em pequenas coleções, conhecidos como \textit{cluster}, de acordo com alguma heurística que será usado para comparar com outros itens da coleção.
 
 Técnicas para \textit{clustering} são partes fundamentais para um processo de mineração de dados. Uma implementação simples de \textit{clustering} pode criar experiências de usuário incrivelmente convincentes para alcançar resultados. Também pode ser aplicado a bases de texto utilizando algoritmos de \textit{text mining}, onde o algoritmo procura agrupar textos que falem sobre o mesmo assunto e separar textos de conteúdo diferentes.
 
 Por exemplo, caso queira considerar a localização geográfica dos contatos na rede \textit{LinkedIn}, é necessário realizar um \textit{cluster} nas conexões através de um determinado número de regiões com o intuito da melhor compreensão de oportunidades econômicas disponíveis.
 
-\subsubsection{\textbf{Normalização de Dados}}
+\subsubsection{Normalização de Dados}
 Quando se recupera dados provenientes de uma API, é muito comum que esses não estarão no formato desejado para a sua análise. No caso do \textit{LinkedIn}, pode ser que usuários procurem por vagas de emprego escrevendo os nomes das vagas de alguma outra maneira sem ser o nome correto da vaga. Como exemplo, uma vaga para administrador de banco de dados pode ser buscado através da sigla "DBA", que em inglês significa \textit{Database Administrator}.
 
 A normalização de dados, procura então resolver esses problemas padronizando situações específicas que irá facilitar a análise posterior dos dados.
 
-\subsubsection{\textbf{Computação de Similaridade}}
+\subsubsection{Computação de Similaridade}
 Após a normalização dos itens, é preciso verificar a similaridade entre eles. Podendo ser vagas de emprego, nomes de empresas, interesses profissionais, indicação geográfica, ou qualquer outro campo digitado na busca como um texto livre. Para isso é necessário definir uma heurística que conseguirá aproximar a similaridade entre dois valores quaisquer. Em algumas situações a similaridade heurística será um tanto óbvia, porém em outros casos será complicada. Por exemplo, comparar o tempo de carreira entre duas pessoas pode ser simples como uma operação de soma ou subtração. Mas comparar um elemento profissional, como "atitude de liderança" \space de uma maneira automatizada pode ser um desafio.
 
 \section{CONSIDERAÇÕES FINAIS}
