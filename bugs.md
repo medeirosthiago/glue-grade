@@ -29,3 +29,6 @@
     * (Pressman, 2011)
     * (Fachin, 2010)
     * (Kauark, Manhaes, Medeiros, 2010)
+
+> Correções 08/Março
+* [x] Alterar título
