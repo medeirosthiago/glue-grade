@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 matplotlib.use('qt4agg')
 
-tweets_data_path = 'test.txt'
+tweets_data_path = '../data/dilma.txt'
 
 tweets_data = []
 tweets_file = open(tweets_data_path, "r")
