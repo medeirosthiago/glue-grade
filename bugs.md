@@ -1,8 +1,10 @@
-## Correções/Ajustes de Dissertação e Desenvolvimento
-
+### Correções/Ajustes de Dissertação e Desenvolvimento
 
 * [ ] Fonte das figuras e tabela, padronizar
 
+* * *
+
+### 1ª Avaliação
 #### João :
 * [x] Melhorar o resumo
 * [x] Comentar sobre a tabela -> explicar o tempo de desenvolvimento do trabalho
@@ -13,9 +15,9 @@
 
 #### Alessandra :
 * [x] Melhorar o título
-    * 'Mineração de dados da rede social Linkedin utilizando a linguagem de programação Python e bibliotecas para análise e mineração de dados'
-    :arrow_heading_down:
-    * __'Mineração de dados utilizando a linguagem de programação Python para análise e mineração de dados aplicado à rede social Linkedin'__
+    * Mineração de dados da rede social Linkedin utilizando a linguagem de programação Python e bibliotecas para análise e mineração de dados
+    * Mineração de dados utilizando a linguagem de programação Python para análise e mineração de dados aplicado à rede social Linkedin
+    * MINERAÇÃO DE DADOS APLICADO À REDE SOCIAL LINKEDIN UTILIZANDO A LINGUAGEM DE PROGRAMAÇÃO PYTHON
 * [x] Resumo precisa ser reescrito
 * [ ] Próximo trabalho deve ser colocado análise de resultados
 * [x] Falta de referências sobre as afirmações na introdução
@@ -30,5 +32,7 @@
     * (Fachin, 2010)
     * (Kauark, Manhaes, Medeiros, 2010)
 
-> Correções 08/Março
-* [x] Alterar título
+* * *
+
+### Ajustes Abril/2016
+* [ ] Alterar figura ipython (jupyter)
