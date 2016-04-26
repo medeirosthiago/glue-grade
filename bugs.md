@@ -36,3 +36,5 @@
 
 ### Ajustes Abril/2016
 * [ ] Alterar figura ipython (jupyter)
+* [ ] Corrigir todas as referências quanto a linkedin no trabalho
+* [ ] Ajustar todas as anotações em vermelho
