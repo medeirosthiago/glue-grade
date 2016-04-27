@@ -6,8 +6,6 @@
 * [x] Limpar sujeira e bugs dos dados coletados
 * [x] Backup dos arquivos
 
-* * *
-
 #### Perguntas a serem feitas: \#ImpeachmentDay
 * [ ] Quais os estados que mais twittaram?
 * [ ] Qual lado recebeu mais tweets nos estados?
@@ -28,13 +26,10 @@ Odebretch, LavaJato
 ##### Manifestações?
 
 * * *
-* * *
 
 ### Correções/Ajustes de Dissertação
 
 * [ ] Fonte das figuras e tabela, padronizar
-
-* * *
 
 ### 1ª Avaliação
 #### João :
@@ -72,3 +67,9 @@ Odebretch, LavaJato
 * [ ] Corrigir todas as referências quanto a linkedin no trabalho
 * [ ] Ajustar todas as anotações em vermelho
 * [ ] uft-8 nos source code
+
+* * *
+
+### Dúvidas
+* [ ] Capítulo é maiusculo ou minusculo
+* [ ] Como cria “lista de có

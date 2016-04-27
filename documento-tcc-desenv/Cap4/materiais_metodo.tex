@@ -127,11 +127,11 @@ Quando usado em conjunto com ferramentas GUI (\textit{IPython}, por exemplo), es
 \subsubsection{Interpretador \textit{IPython}}
 O interpretador \textit{IPython} teve seu desenvolvimento iniciado em 2001, com o intuito de ser um interpretador interativo para a linguagem Python. Desde a sua criação o \textit{IPython} evoluiu grandemente, ao ponto de ser considerada uma das mais importantes ferramentas para computação científica em Python. Essa biblioteca não oferece nenhuma ferramenta para análise de dados ou análise computacional em si, sendo designada para maximizar a produtividade, tanto na interação computacional como no desenvolvimento de softwares. Oferece um fluxo de visualização de um modo \textit{execute-explore} ao invés do típico modelo \textit{edit-compile-run} de muitas outras linguagens de programação. Ela também provê uma pequena integração com o \textit{shell} e sistemas de arquivos. Como a maior parte da programação focada na mineração de dados envolve exploração, tentativa, erro e iteração, \textit{IPython}, em quase todos os casos, irá facilitar este tipo de trabalho \cite{python-analysis}.
 
-Hoje, o projeto \textit{IPython} engloba muito mais do que apenas um interpretador \textit{shell} para Python. Ele também inclui um console gráfico interativo, o \textit{IPython Notebook}, que provê ao usuário uma experiência de caderno (\textit{notebook-like}) através de um navegador \textit{web}, conforme Figura~\ref{ipython-fig}, e dispõe de um mecanismo de processamento paralelo. Assim como muitas outras ferramentas desenvolvidas para programadores, é extremamente customizável \cite{mining-social-web}. \\ \\ \\ \\ \\ \\ \\
+Hoje, o projeto \textit{IPython}, mantido pela empresa \textit{Jupyter}, engloba muito mais do que apenas um interpretador \textit{shell} para Python. Ele também inclui um console gráfico interativo, o \textit{IPython Notebook}, que provê ao usuário uma experiência de caderno (\textit{notebook-like}) através de um navegador \textit{web}, conforme Figura~\ref{ipython-fig}, e dispõe de um mecanismo de processamento paralelo. Assim como muitas outras ferramentas desenvolvidas para programadores, é extremamente customizável \cite{mining-social-web}. \\ \\ \\ \\ \\ \\ \\
 
 \begin{figure}[h!]
   \centering
-  \fbox{\includegraphics[width=0.9\textwidth]{Cap4/imagens/ipython-notebook}}
+  \fbox{\includegraphics[width=0.95\textwidth]{Cap4/imagens/jupyter}}
   \caption{Exemplo de uma página \textit{web} do \textit{IPython Notebook}}
   \vspace{-0.3cm}
   \legend{FONTE: \citeonline{python-analysis}}
@@ -139,8 +139,8 @@ Hoje, o projeto \textit{IPython} engloba muito mais do que apenas um interpretad
 \end{figure}
 
 % python-linkedin
-\subsubsection{Biblioteca \textit{python-linkedin}}
-Esta biblioteca provê ao Python a API do \textit{LinkedIn}. Através da utilização do protocolo OAuth 2.0, é possível acessar diveros campos como \textit{Profile}, \textit{Group}, \textit{Company}, \textit{Jobs}, \textit{Search}, \textit{Share}, \textit{Network} e requisições REST APIs \cite{python-linkedin}.
+\subsubsection{Biblioteca \textit{tweepy}}
+Esta biblioteca provê ao Python a API do \textit{Twitter}. Através da utilização do protocolo OAuth 1.0a, é possível acessar diversos campos como \textit{Profile}, \textit{Group}, \textit{Company}, \textit{Jobs}, \textit{Search}, \textit{Share}, \textit{Network} e requisições REST APIs \cite{tweepy}.
 
 %%
 % API
@@ -159,7 +159,7 @@ REST foi um termo criado por \citeonline{rest}, onde ele modela um estilo de arq
 
 A funcionalidade de uma REST API é similar ao funcionamento de uma página \textit{web}, onde o usuário efetua uma requisição a um servidor \textit{web}, utilizando o protocolo HTTP, e recebe dados como resposta.
 
-Um recurso é qualquer conteúdo ou informação que é exposto na Internet, podendo ser um documento, vídeo clip, até processos de negócio ou dispositivos. Para utilizar um recurso é necessário ser capaz de identificá-lo na rede e de ter meios para manipulá-lo. Tem-se então, o \textit{Uniform Resource Identifiers} (URI) para este propósito. Um URI unicamente identifica um recurso e, ao mesmo tempo, o torna endereçável ou capaz de ser manipulado utilizando um protocolo, como o HTTP. \textbf{\textcolor{red}{[QUE ISSO?][}}O URI de um recurso se distingue dos de qualquer outro recurso e é através do próprio URI que ocorrem as interações com o recurso \cite{rest-book}.\textbf{\textcolor{red}{]}}
+Um recurso é qualquer conteúdo ou informação que é exposto na Internet, podendo ser um documento, vídeo clip, até processos de negócio ou dispositivos. Para utilizar um recurso é necessário ser capaz de identificá-lo na rede e de ter meios para manipulá-lo. Tem-se então, o \textit{Uniform Resource Identifiers} (URI) para este propósito. Um URI unicamente identifica um recurso e, ao mesmo tempo, o torna endereçável ou capaz de ser manipulado utilizando um protocolo, como o HTTP. O URI de um recurso se distingue dos de qualquer outro recurso e é através do próprio URI que ocorrem as interações com o recurso \cite{rest-book}.
 
 Recursos devem possuir pelo menos um identificador para ser endereçável, e cada identificador é associado com uma ou mais representações, que é uma transformação ou uma visão do estado do recurso em um instante de tempo. Essa visão é codificada em um ou mais formatos transferíveis, tal como XHTML, Atom, texto simples, XML, YML, JSON, JPG, MP3, entre outros  \cite{rest-book}.
 
@@ -167,7 +167,7 @@ Os recursos provêm o conteúdo ou objeto com o qual se quer interagir e para at
 
 
 \subsection{Protocolo de Autenticação - OAuth}
-\textbf{\textcolor{red}{[MELHORAR]}} Protocolos de autenticação são capazes de, simplesmente, autenticar a parte que está se conectando, ou ainda de autenticar a parte que está conectando, assim como se autenticar para ele.
+Protocolos de autenticação são capazes de, simplesmente, autenticar a parte que está se conectando, ou ainda de autenticar a parte que está conectando, assim como se autenticar para ele.
 
 Neste trabalho será utilizado apenas o protocolo OAuth 2.0 para o acesso aos dados do \textit{LinkedIn}. É possível também, realizar a autenticação utilizando a versão mais antiga, OAuth 1.0a, mas será apenas referenciado, neste trabalho, para a melhor compreensão do funcionamento do protocolo.
 
@@ -196,32 +196,29 @@ Para credenciais particulares, um \textit{client} começa com uma \textit{consum
 \subsubsection{Protocolo OAuth 2.0}
 Enquanto o protocolo OAuth 1.0a permite uma autorização útil para o acesso a aplicações \textit{web}, o OAuth 2.0 foi originalmente destinado a simplificar, significantemente, a implementação detalhada para desenvolvedores de aplicações \textit{web}, baseando-se completamente no SSL para aspectos de segurança e para satisfazer uma vasta quantidade de casos de uso. Esses casos de uso variaram desde suporte para dispositivos móveis à necessidades empresariais e, consequentemente, às necessidades de um termo mais futuro, da "Internet das Coisas"\space \cite{mining-social-web}.
 
-Diferentemente da implementação OAuth 1.0a, que consiste de um rígido conjunto de etapas, a implementação do OAuth 2.0, definido através do RFC 6749, pode variar de acordo com a particularidade do caso de uso. Um decorrer típico da execução do OAuth 2.0 tem a vantagem do SSL e, essencialmente, contém apenas poucos redirecionamentos que,\textbf{\textcolor{red}{[}} acompanhada de em alto-nível, \textbf{\textcolor{red}{][QUE ISSO?]}}não possui tanta diferença em relação ao processo anterior que envolvem um ciclo do OAuth 1.0a.
+Diferentemente da implementação OAuth 1.0a, que consiste de um rígido conjunto de etapas, a implementação do OAuth 2.0, definido através do RFC 6749, pode variar de acordo com a particularidade do caso de uso. Um decorrer típico da execução do OAuth 2.0 tem a vantagem do SSL e, essencialmente, contém apenas poucos redirecionamentos que, acompanhada de em alto-nível, não possui tanta diferença em relação ao processo anterior que envolvem um ciclo do OAuth 1.0a.
 
 %%
 % Linkedin
-\subsection{Rede Social LinkedIn}
-\textit{LinkedIn} é uma rede social diferenciada, pois é voltada para perfis profissionais. Os usuários geralmente utilizam a rede como um currículo \textit{online}, procuram se relacionar com novos contatos para aumentar a sua rede de conhecimentos profissionais e, também, para encontrar e conhecer novas oportunidades, tanto de ocupação quanto de negócio.
+\subsection{Rede Social \textit{Twitter}}
 
-A mineração de dados através da rede \textit{LinkedIn} se dá utilizando a API que ela dispõe. Para isso, é necessário possuir uma conta nesta rede social.
+Na subseção~\ref{api-twitter} é apresentado a API do \textit{Twitter} e como se obter dados através dela.
 
-A grande parte das análise realizadas neste projeto acontece utilizando arquivos \textit{comma-separated values} (CSV) \textbf{\textcolor{red}{[BREEVE DEFINIÇÃO]}}, que podem ser baixados.
+\subsubsection{API \textit{Twitter}}\label{api-twitter}
+O acesso a API se dá através da criação de uma aplicação pela página \textit{web} de desenvolvimento do \textit{Twitter}. Após a criação da aplicação é fornecido ao usuário informações para o acesso utilizando o protocolo OAuth, será informado uma chave da API da aplicação, uma chave secreta, o \textit{token} de usuário OAuth e credenciais secretas do usuário OAuth.
 
-Na Subseção~\ref{api-linkedin} é apresentado a API do \textit{LinkedIn} e como se obter dados através dela.
-
-\subsubsection{API LinkedIn \textbf{\textcolor{red}{[MAIS DETALHES SOBRE API - MELHORAR]}}}\label{api-linkedin}
-O acesso a API se dá através da criação de uma aplicação pela página \textit{web} de desenvolvimento do \textit{LinkedIn}. Após a criação da aplicação é fornecido ao usuário informações para o acesso utilizando o protocolo OAuth, será informado uma chave da API da aplicação, uma chave secreta, o \textit{token} de usuário OAuth e credenciais secretas do usuário OAuth.
-
-Dispondo de todas as credenciais do protocolo OAuth o acesso à API acontece utilizando a biblioteca \textit{python-linkedin}, especificada na subseção~\ref{sec:bib_python}.
-
-Os dados disponibilizados pela API estão limitados, basicamente, ao o que o usuário consegue usufruir da sua experiência através da página \textit{web}. Restrições como a visualização de "amigos de amigos" \space também existem, demonstrando ser uma API um tanto restrita. Essa restrição é proposital e importante para a política do \textit{LinkedIn}. Portanto, é possível fazer buscas de pessoas, companhias, empregos, conexões, grupos e outros elementos que a API disponibiliza \cite{mining-social-web}.
-
-Conforme descrito anteriormente, é possível fazer o \textit{download} dos dados, visíveis ao usuário, em formato CSV, podendo ser especificados em títulos de trabalho ou contatos através de uma opção de exportação presente no menu da página do \textit{LinkedIn}.
+Dispondo de todas as credenciais do protocolo OAuth o acesso à API acontece utilizando a biblioteca \textit{tweepy}, especificada na subseção~\ref{sec:bib_python}.
 
 %%
 % METODOLOGIA
-\section{METODOLOGIA E DESENVOLVIMENTO \textbf{\textcolor{red}{[REFAZER]}}}\label{sec: metodologia}
+\section{METODOLOGIA E DESENVOLVIMENTO}\label{sec: metodologia}
 O processo de desenvolvimento da solução segue uma série de princípios de conjunto de boas práticas e etapas do \textit{data mining}, para melhor estruturar e obter, não só o resultado esperado, mas também para que todo o processo ocorra de forma coerente e padronizada.
+
+%Onde e como será realizada a pesquisa; Tipo de pesquisa, população (universo da pesquisa), amostragem, instrumentos de coleta, forma como pretende tabular e analisar os dados
+
+Nesta seção são apresentadas as principais metodologias utilizadas neste trabalho. Na seção XX …
+\subsection{Iterativo e Incremental}
+
 
 %%
 % Etapas do Data Mining
@@ -230,8 +227,6 @@ Abordado previamente, o acesso aos dados do \textit{LinkedIn} acontece através 
 
 \subsubsection{\textit{Clustering}}
 A técnica de \textit{clustering} é um aprendizado não supervisionado que está presente em várias ferramentas de \textit{data mining}. Consiste na adoção de uma coleção de itens e, após particioná-los em pequenas coleções, conhecidos como \textit{cluster}, baseando-se em alguma heurística que será usada para comparar com outros itens da coleção.
-
-\textbf{\textcolor{red}{[ESTUDAR MAIS ATÉ O FINAL]}}
 
 Técnicas para \textit{clustering} são partes fundamentais para um processo de mineração de dados. Uma implementação simples de \textit{clustering} pode criar experiências de usuário incrivelmente convincentes para alcançar resultados. Também pode ser aplicado a bases de texto utilizando algoritmos de \textit{text mining}, onde o algoritmo procura agrupar textos que falem sobre o mesmo assunto e separar textos de conteúdo diferentes.
 

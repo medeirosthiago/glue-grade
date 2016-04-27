@@ -29,25 +29,19 @@ Python é uma linguagem de programação livre e multiplataforma, possui uma exc
 A mineração de dados busca então, extrair dos dados o conhecimento útil para algum objetivo específico. Entretanto, a tarefa de extração de conhecimento é complexa devido a multidisciplinaridade envolvida no seu processo de extração e, também, por não ter um modelo de mineração genérico para a busca de informação útil. Para isso, é necessário o uso de ferramentas que viabilizam essas tarefas. Logo, Python dispõe de um conjunto de bibliotecas para a análise e mineração de dados extremamente poderosas e com uma curva de aprendizado curta, graças a sintaxe clara e descomplicada que a linguagem fornece.
 
 
-\section{JUSTIFICATIVA}\label{sec:justificativa}
-This chapter kicks off our journey of mining the social web with Twitter, a rich source of social data that is a great starting point for social web mining because of its inherent openness for public consumption, clean and well-documented API, rich developer tooling, and broad appeal to users from every walk of life. Twitter data is particularly interesting because tweets happen at the “speed of thought” and are available for con‐ sumption as they happen in near real time, represent the broadest cross-section of so‐ ciety at an international level, and are so inherently multifaceted. Tweets and Twitter’s “following” mechanism link people in a variety of ways, ranging from short (but often meaningful) conversational dialogues to interest graphs that connect people and the things that they care about.
+\section{JUSTIFICATIVA \textbf{\textcolor{red}{[FAZENDO]}}}\label{sec:justificativa}
+A rede social \textit{Twitter} é uma fonte rica de dados e um ponto de partida inicial para minerar redes sociais, graças a sua abertura para o consumo público, API bem documentada, e vasta quantidade de informações devido a interação dos usuários a todo instante. Os dados do \textit{Twitter} são particularmente interessante porque \textit{tweets}, frases postadas na rede social, segundo \citeonline{mining-social-web}, acontecem na "velocidade do pensamento" e logo estão disponíveis para o consumo.
 
-Since this is the first chapter, we’ll take our time acclimating to our journey in social web mining. However, given that Twitter data is so accessible and open to public scru‐ tiny, Chapter 9 further elaborates on the broad number of data mining possibilities by providing a terse collection of recipes in a convenient problem/solution format that can be easily manipulated and readily applied to a wide range of problems. You’ll also be able to apply concepts from future chapters to Twitter data
-
-In the context of the current discussion, these are just a few observations that are gen‐ erally true of humanity. We have a deeply rooted need to share our ideas and experiences, which gives us the ability to connect with other people, to be heard, and to feel a sense of worth and importance. We are curious about the world around us and how to organize and manipulate it, and we use communication to share our observations, ask questions, and engage with other people in meaningful dialogues about our quandaries.
-
-The last two bullet points highlight our inherent intolerance to friction. Ideally, we don’t want to have to work any harder than is absolutely necessary to satisfy our curiosity or get any particular job done; we’d rather be doing “something else” or moving on to the next thing because our time on this planet is so precious and short. Along similar lines, we want things now and tend to be impatient when actual progress doesn’t happen at the speed of our own thought.One way to describe Twitter is as a microblogging service that allows people to com‐ municate with short, 140-character messages that roughly correspond to thoughts or ideas. In that regard, you could think of Twitter as being akin to a free, high-speed, global text-messaging service. In other words, it’s a glorified piece of valuable infra‐ structure that enables rapid and easy communication. However, that’s not all of the story. It doesn’t adequately address our inherent curiosity and the value proposition that emerges when you have over 500 million curious people registered, with over 100 mil‐ lion of them actively engaging their curiosity on a regular monthly basis.
-
-Besides the macro-level possibilities for marketing and advertising—which are always lucrative with a user base of that size—it’s the underlying network dynamics that created the gravity for such a user base to emerge that are truly interesting, and that’s why Twitter is all the rage. While the communication bus that enables users to share short quips at the speed of thought may be a necessary condition for viral adoption and sustained engagement on the Twitter platform, it’s not a sufficient condition. The extra ingredient that makes it sufficient is that Twitter’s asymmetric following model satisfies our curi‐ osity. It is the asymmetric following model that casts Twitter as more of an interest graph than a social network, and the APIs that provide just enough of a framework for struc‐ ture and self-organizing behavior to emerge from the chaos.In other words, whereas some social websites like Facebook and LinkedIn require the mutual acceptance of a connection between users (which usually implies a real-world connection of some kind), Twitter’s relationship model allows you to keep up with the latest happenings of any other user, even though that other user may not choose to follow you back or even know that you exist. Twitter’s following model is simple but exploits a fundamental aspect of what makes us human: our curiosity. Whether it be an infatuation with celebrity gossip, an urge to keep up with a favorite sports team, a keen interest in a particular political topic, or a desire to connect with someone new, Twitter provides you with boundless opportunities to satisfy your curiosity.
+A necessidade de compartilhar ideias e experiências permite que pessoas se relacionem, são ouvidas, e se sentem importantes e parte de um meio. 
 
 
 Para que os dados se tornem uma informação útil é preciso saber como coletar, processar, modelar e visualizar. Portanto, este estudo é tratado como uma área interdisciplinar que depende de uma arquitetura de \textit{software} apropriada, técnicas de processamento massivo de dados, algoritmos de redução de dimensionalidade, modelagem estatística e computacional, visualização de dados, entre outros.
 
 
-\section{OBJETIVOS \textbf{\textcolor{red}{[REFAZER]}}}\label{sec:objetivos}
+\section{OBJETIVOS}\label{sec:objetivos}
 
 \subsection{Objetivo Geral} 
-Este trabalho tem como objetivo principal utilizar técnicas e algoritmos de \textit{data mining}, como o aprendizado de máquina (\textit{machine learning}), para a análise e mineração de dados provenientes da rede social textit{Twitter}, utilizando os recursos e bibliotecas que a linguagem de programação Python possui.
+Este trabalho tem como objetivo principal utilizar técnicas e algoritmos de \textit{data mining}, como o aprendizado de máquina (\textit{machine learning}), para a análise e mineração de dados provenientes da rede social \textit{Twitter}, utilizando os recursos e bibliotecas que a linguagem de programação Python possui.
 
 \subsection{Objetivos Específicos}\label{subsec:objetivos_especificos}
 \begin{itemize}
@@ -55,7 +49,7 @@ Este trabalho tem como objetivo principal utilizar técnicas e algoritmos de \te
 	\item Descrever as técnicas de \textit{data mining};
 	\item Explorar as funcionalidades das bibliotecas de mineração e visualização da linguagem Python;
 	\item Examinar e utilizar a API da rede social \textit{Twitter};
-	\item Encontrar padrões utilizando técnicas e algoritmos de aprendizado de máquina (machine learning);
+	\item Encontrar padrões utilizando técnicas e algoritmos de aprendizado de máquina (\textit{machine learning});
 	\item Compreender e aplicar técnicas de geolocalização para melhor apresentação de resultados;
 	\item Apresentar testes e resultados obtidos da análise e mineração dos dados.
 \end{itemize}
@@ -67,7 +61,7 @@ As atividades a serem executadas no decorrer do projeto visando o êxito do mesm
 \begin{itemize}
   \item Estudo e Pesquisa: aquisição dos conhecimentos pertinentes e necessários para o desenvolvimento do projeto;
   \item Análise de Requisitos: levantamento dos requisitos do projeto;
-  \item Geração de Documentação: desenvolvimento das documentações para especificação do projeto;
+  \item Geração do Documento: desenvolvimento das documentações para especificação do projeto;
   \item Implementação: desenvolvimento dos códigos para a análise de dados;
   \item Testes: execução dos testes que irão garantir a qualidade das informações a serem geradas;
   \item Elaboração de Artigos: parte do tempo destinado ao projeto será para desenvolver artigos visando a publicação em eventos da área;
@@ -112,14 +106,16 @@ As atividades a serem executadas no decorrer do projeto visando o êxito do mesm
 
 Além deste capítulo introdutório, este trabalho é composto de mais seis capítulos.
 
-O capítulo 2 apresenta os trabalhos que são referências para este estudo.
+O Capítulo 2 apresenta os trabalhos que são referências para este estudo.
 
-Os fundamentos teóricos, como os conceitos de \textit{data mining}, e base para o entendimento do tema proposto estão descritos no capítulo 3.
+Os fundamentos teóricos, como os conceitos de \textit{data mining}, e base para o entendimento do tema proposto estão descritos no Capítulo 3.
 
-As bibliotecas da linguagem Python utilizadas para a mineração de dados são expostas no capítulo 4. Também, são apresentadas neste capítulo a API do \textit{LinkedIn}, as etapas de \textit{data mining} e outros materiais e metodologias utilizados para execução deste trabalho.
+As bibliotecas da linguagem Python utilizadas para a mineração de dados são expostas no Capítulo 4. Também, são apresentadas neste capítulo a API do \textit{Twitter}, as etapas de \textit{data mining} e outros materiais e metodologias utilizados para execução deste trabalho.
 
-No capítulo 5 são demonstradas as fases de desenvolvimento de algoritmos para a implementação do \textit{data mining} e \textit{machine learning}.
+\textbf{\textcolor{red}{[CUIDAR]}}
 
-Os resultados obtidos e a apresentação de planilhas e gráficos das soluções desenvolvidas são apresentados no capítulo 6.
+No Capítulo 5 são demonstradas as fases de desenvolvimento de algoritmos para a implementação do \textit{data mining} e \textit{machine learning}.
 
-Por fim, a conclusão deste trabalho se dá no capítulo 7, onde são abordadas e analisadas as dificuldades, além de determinar as possibilidades para trabalhos futuros.
+Os resultados obtidos e a apresentação de planilhas e gráficos das soluções desenvolvidas são apresentados no Capítulo 6.
+
+Por fim, a conclusão deste trabalho se dá no Capítulo 7, onde são abordadas e analisadas as dificuldades, além de determinar as possibilidades para trabalhos futuros.

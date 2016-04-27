@@ -4,10 +4,16 @@
 Este capítulo tem como finalidade apresentar com um maior nível de detalhamento as técnicas utilizadas neste trabalho com o objetivo de se atingir as metas propostas já descritas no Capítulo~\ref{ch:introducao}, no item~\ref{sec:objetivos}.
 
 \section{COLETA DE DADOS}
-Utilizando os dados
+Uma característica, comentada anteriormente neste trabalho, sobre a rede social \textit{Twitter} é a disponibilidade de informações de eventos em tempo real. Os \textit{tweets} podem ser postados comentando sobre a final de um campeonato de futebol, datas importantes, acontecimentos internacionais e políticos, entre outros.
 
-Aqui vai algum código:
-\lstset{language=Python, caption={Um código aqui}}
+Para este trabalho foi aproveitado o dia 17 de abril de 2016, onde foi realizado a votação do Congresso Brasileiro pela continuação do processo de Impeachment do cargo da presidenta Dilma Rouseff. Neste dia milhares de \textit{tweets} foram publicados utilizando a \textit{hashtag} "\#ImpeachmentDay" \space com o objetivo de comentar sobre o evento de votação e, também, a atual situação política do Brasil.
+
+Com o objetivo de coletar todos os dados que contenham a \textit{hashtag} "\#ImpeachmentDay", foi desenvolvido um \textit{script} que utiliza o serviço de \textit{Stream} do \textit{Twitter} também conhecido como \textit{FireHose}.
+
+As primeiras linhas do \textit{script} servem para importar as bibliotecas e objetos necessários para a utilização da API do \textit{Twitter}, assim como as informações das chaves de acesso e \textit{tokens} para o protocolo OAuth, que são fundamentais para a comunicação com o serviço de \textit{Stream}. \\
+
+
+\lstset{language=Python, caption={\textit{Script} coletar-hashtags.py}}
 \begin{lstlisting}
 from tweepy.streaming import StreamListener
 from tweepy import OAuthHandler
@@ -36,10 +42,13 @@ if __name__ == '__main__':
     auth.set_access_token(access_token, access_token_secret)
     stream = Stream(auth, l)
 
-    stream.filter(track=['ImpeachmentDay', 'NaoVaiTerGolpe',
-    					 'ForaDilma'])
+    stream.filter(track=['ImpeachmentDay'])
 
 \end{lstlisting}
+
+Na linha 11 é criado uma classe que irá instanciar uma escuta para este \textit{Stream} e, na linha 28, é informado o filtro que o \textit{Stream} usará para coletar informações apenas com a \textit{hashtag} em análise.
+
+Quando este \textit{script} está em execução é mostrado na tela todos os \textit{tweets} que estão sendo coletados, já filtrados, porém não está sendo persistido em nenhum arquivo ou banco de dados. Com o intuito de salvar todos estes dados é utilizado o \textit{minus}
 
 
 
