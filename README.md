@@ -1,16 +1,18 @@
-# Mineração de Dados Aplicado à Rede Social Linkedin utilizando Python
+# Mineração de Dados Aplicado à Rede Social Twitter utilizando Python
 
 Este repositório apresenta o desenvolvimento da minha dissertação, artigos, resumos, entre outros, que estou produzindo
 como meu TCC, com o objetivo de "colá" grau (glue grade).
 
-Tenho me aventurado com machine learning e um pouco de IA para este projeto.
+* * *
 
-A princípio este repositório contém apenas os arquivos referentes a dissertação e desenvolvimento em Latex.
+### Source Code / IPython Notebook
 
-Posteriormente disponibilizarei os códigos e algoritmos utilizado para a mineração de dados em si.
+https://github.com/medeirosthiiago/glue-grade/tree/master/src/py2/twitter
+
+Para carregar o IPython Notebook acesse pelo [__nbviewer__](http://nbviewer.jupyter.org/github/medeirosthiiago/glue-grade/tree/master/src/py2/twitter/) que carrega mais rápido as informações.
 
 
-### Correções/Ajustes
+### Correções / Ajustes
 
 https://github.com/medeirosthiiago/glue-grade/blob/master/bugs.md
 
