@@ -17,7 +17,7 @@
 % ------------------------------------------------------------------------
 %DECLARAÇÃO DO TIPO DE DOCUMENTO, TAMANHO DA FOLHA E FONTE
 %-----------------------------------------------------------------
-\documentclass[12pt,oneside,a4paper,english,french,spanish]{abntex2}
+\documentclass[12pt,oneside,a4paper,english,french,spanish,listof=entryprefix]{abntex2}
 
 %-----------------------------------------------------------------
 %DEFINIÇÃO DOS PACOTES UTILIZADOS
@@ -40,6 +40,8 @@
 % CONFIGURAÇÕES PARA CÓDIGO FONTE
 % ------------------------ 
 \usepackage{listings}
+\usepackage{scrhack}
+\usepackage{chngcntr}
  
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
@@ -138,7 +140,13 @@
 \listoftables*
 \cleardoublepage
 
-\pdfbookmark[0]{\lstlistlistingname}{toc}% inserir lista de códigos
+\counterwithout{lstlisting}{chapter}
+\makeatletter
+\renewcommand{\l@lstlisting}[2]{%
+  \@dottedtocline{1}{0em}{1.5em}{\lstlistingname\ #1}{#2}%
+}
+\makeatother
+\pdfbookmark[0]{\lstlistlistingname}{lol}% inserir lista de códigos
 \lstlistoflistings
 \cleardoublepage
 
