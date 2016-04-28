@@ -161,3 +161,4 @@ print/*
 rascunho-tcc.txt
 py3/
 *.txt
+*/.texpadtmp/*

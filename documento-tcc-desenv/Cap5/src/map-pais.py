@@ -1,0 +1,10 @@
+tweets_by_country = tweets['country'].value_counts()
+
+fig, ax = plt.subplots(figsize=(20,10))
+ax.tick_params(axis='x', labelsize=15)
+ax.tick_params(axis='y', labelsize=15)
+ax.set_xlabel('Paises'.decode('utf-8'), fontsize=20)
+ax.set_ylabel('Numero de tweets'.decode('utf-8') , fontsize=20)
+ax.set_title('Top 5 Paises'.decode('utf-8'), fontsize=20, fontweight='bold')
+tweets_by_country[:5].plot(ax=ax, kind='bar', color='lightskyblue')
+plt.grid()

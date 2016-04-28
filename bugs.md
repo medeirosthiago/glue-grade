@@ -71,7 +71,20 @@ Odebretch, LavaJato
 * * *
 
 ### Dúvidas
-* [ ] Capítulo, seção? maiusculo ou minusculo
+* [x] Capítulo, seção? maiusculo ou minusculo
 * [ ] Como cria “lista de codigos”
-* [ ] nome de scripts e hashtags (“” ou negrito?)
+* [x] nome de scripts e hashtags (“” ou negrito?)
 * [ ] software / hardware? itálico?
+
+
+
+
+
+
+arrancar introdução da implementação
+do cargo de presidente da senhora dilma
+com a finalidade de coletar todos os dados da referida hashtag
+a ferramenta grep é considerada como um “canivete suico”
+dataframe foi construído um gráfico em barras que indica as quantidades de tweets em relação as quatro linguas mais significativas no conjunto de dados coletados
+é possível verificar nesta figura
+caso a linguagem nao esteja/seja definida nestes ambeintes a api a classifica como indefinida

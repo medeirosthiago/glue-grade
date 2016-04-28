@@ -1,7 +1,7 @@
 \chapter{MATERIAIS E MÉTODOS}\label{ch:materiais-metodos}
 Após a revisão bibliográfica de outros estudos e os fundamentos teóricos necessários para a mineração de dados utilizando Python, torna-se importante definir as ferramentas, tecnologias e procedimentos necessários para o desenvolvimento do projeto.
 
-Este capítulo apresenta os materiais e métodos utilizados para a realização do processo de \textit{data mining}, onde, na seção~\ref{sec: tec-ferramenta} são apresentadas as tecnologias e ferramentas que serão utilizadas durante o estudo. Serão abordados quais as bibliotecas que a linguagem Python disponibiliza para a análise e mineração de dados e, também, como acessar a API do \textit{LinkedIn}. Esta será esclarecida também neste capítulo, após a explicação do conceito de API e o protocolo OAuth.
+Este capítulo apresenta os materiais e métodos utilizados para a realização do processo de \textit{data mining}, onde, na seção~\ref{sec: tec-ferramenta} são apresentadas as tecnologias e ferramentas que serão utilizadas durante o estudo. Serão abordados quais as bibliotecas que a linguagem Python disponibiliza para a análise e mineração de dados e, também, como acessar a API do \textit{Twitter}. Esta será esclarecida também neste capítulo, após a explicação do conceito de API e o protocolo OAuth.
 
 A seção~\ref{sec: metodologia} irá concluir o capítulo apresentando as etapas de \textit{data mining} com o intuito de evidenciar o processo para a obtenção de conhecimento útil.
 
@@ -12,7 +12,7 @@ Tecnologias e ferramentas para a criação e prototipagem dos algoritmos.
 \subsection{Bibliotecas da Linguagem Python}\label{sec:bib_python}
 Um dos grandes diferenciais da linguagem Python é o seu enorme conjunto de bibliotecas para soluções de diversos problemas.
 
-A seguir serão apresentadas as bibliotecas necessárias para a mineração de dados, através das quais é possível coletar, limpar, transformar, realizar operações e apresentar resultados proveniente dos dados da rede social \textit{LinkedIn}. Para evitar repetições da palavra "biblioteca", o termo "pacote"\space também será utilizado com o mesmo significado no restante desta dissertação.
+A seguir serão apresentadas as bibliotecas necessárias para a mineração de dados, através das quais é possível coletar, limpar, transformar, realizar operações e apresentar resultados proveniente dos dados da rede social \textit{Twitter}. Para evitar repetições da palavra "biblioteca", o termo "pacote"\space também será utilizado com o mesmo significado no restante desta dissertação.
  
 %%% sub: NumPy
 \subsubsection{\textit{Biblioteca NumPy}}
@@ -138,21 +138,21 @@ Hoje, o projeto \textit{IPython}, mantido pela empresa \textit{Jupyter}, engloba
   \label{ipython-fig}
 \end{figure}
 
-% python-linkedin
-\subsubsection{Biblioteca \textit{tweepy}}
+% tweepy
+\subsubsection{Biblioteca \textit{tweepy} \textbf{\textcolor{red}{[FAZENDO]}}}
 Esta biblioteca provê ao Python a API do \textit{Twitter}. Através da utilização do protocolo OAuth 1.0a, é possível acessar diversos campos como \textit{Profile}, \textit{Group}, \textit{Company}, \textit{Jobs}, \textit{Search}, \textit{Share}, \textit{Network} e requisições REST APIs \cite{tweepy}.
 
 %%
 % API
 \subsection{Interface de Programação de Aplicações - API}\label{subsec: api}
-API é uma sigla para \textit{Application Programming Interface} e basicamente é uma tecnologia que permite um pedaço de \textit{software} se comunicar com outro pedaço de \textit{software}. Existem vários tipos de API e é comumente referenciado a outras tecnologias. Por exemplo, para o desenvolvimento deste trabalho será utilizado a API do \textit{LinkedIn}. 
+API é uma sigla para \textit{Application Programming Interface} e basicamente é uma tecnologia que permite um pedaço de \textit{software} se comunicar com outro pedaço de \textit{software}. Existem vários tipos de API e é comumente referenciado a outras tecnologias. Por exemplo, para o desenvolvimento deste trabalho será utilizado a API do \textit{Twitter}. 
 
 Uma API é composta por uma série de funções acessíveis somente por programação, e que permitem utilizar características do \textit{software} menos evidentes ao utilizador tradicional.
 
 
 %% 
 % REST API
-\subsubsection{Arquitetura REST}
+\subsubsection{Arquitetura REST \textbf{\textcolor{red}{[CORRIGINDO]}}}
 Abreviação para Transferência de Estado Representacional (REST), é um estilo arquitetural baseado em recursos e nas representações desses recursos. Enfatiza a escalabilidade na interação entre componentes, a generalidade de interfaces, a implantação independente dos componentes de um sistema, o uso de componentes intermediários visando a redução na latência de interações, o reforço na segurança e o encapsulamento de sistemas legados. A REST ignora os detalhes da implementação de componente e a sintaxe de protocolo com o objetivo de focar nos papéis dos componentes, nas restrições sobre sua interação com outros componentes e na sua interpretação de elementos de dados significantes \cite{rest}.
 
 REST foi um termo criado por \citeonline{rest}, onde ele modela um estilo de arquitetura para a construção de serviços \textit{web} consistentes e coesos. O estilo da arquitetura REST é baseado em recursos e nos estados desses recursos.
@@ -166,10 +166,10 @@ Recursos devem possuir pelo menos um identificador para ser endereçável, e cad
 Os recursos provêm o conteúdo ou objeto com o qual se quer interagir e para atuar sobre eles é utilizado os métodos de HTTP. Os métodos HTTP na arquitetura REST podem ser referenciados como Verbos, uma vez que representam ações sobre os recursos \cite{rest-book}.
 
 
-\subsection{Protocolo de Autenticação - OAuth}
+\subsection{Protocolo de Autenticação - OAuth \textbf{\textcolor{red}{[CORRIGINDO]}}}
 Protocolos de autenticação são capazes de, simplesmente, autenticar a parte que está se conectando, ou ainda de autenticar a parte que está conectando, assim como se autenticar para ele.
 
-Neste trabalho será utilizado apenas o protocolo OAuth 2.0 para o acesso aos dados do \textit{LinkedIn}. É possível também, realizar a autenticação utilizando a versão mais antiga, OAuth 1.0a, mas será apenas referenciado, neste trabalho, para a melhor compreensão do funcionamento do protocolo.
+Neste trabalho será utilizado apenas o protocolo OAuth 1.0 para o acesso aos dados do \textit{Twitter}. É possível também, realizar a autenticação utilizando a versão mais atual, OAuth 2.0, mas será apenas referenciado, neste trabalho, para a melhor compreensão do funcionamento do protocolo.
 
 OAuth é uma sigla para "\textit{open authorization}", ou autorização aberta, e provê um meio para que usuários autorizem uma aplicação acessar dados, com alguma finalidade, através de uma API, sem que os usuários precisem passar credenciais como nome de usuário e senha. De um modo geral, usuários são capazes de controlar o nível de acesso para estas aplicações e revogar este controle a qualquer momento \cite{mining-social-web}.
 
@@ -199,8 +199,8 @@ Enquanto o protocolo OAuth 1.0a permite uma autorização útil para o acesso a 
 Diferentemente da implementação OAuth 1.0a, que consiste de um rígido conjunto de etapas, a implementação do OAuth 2.0, definido através do RFC 6749, pode variar de acordo com a particularidade do caso de uso. Um decorrer típico da execução do OAuth 2.0 tem a vantagem do SSL e, essencialmente, contém apenas poucos redirecionamentos que, acompanhada de em alto-nível, não possui tanta diferença em relação ao processo anterior que envolvem um ciclo do OAuth 1.0a.
 
 %%
-% Linkedin
-\subsection{Rede Social \textit{Twitter}}
+% Twitter
+\subsection{Rede Social \textit{Twitter} \textbf{\textcolor{red}{[CORRIGINDO]}}}
 
 Na subseção~\ref{api-twitter} é apresentado a API do \textit{Twitter} e como se obter dados através dela.
 
@@ -211,7 +211,7 @@ Dispondo de todas as credenciais do protocolo OAuth o acesso à API acontece uti
 
 %%
 % METODOLOGIA
-\section{METODOLOGIA E DESENVOLVIMENTO}\label{sec: metodologia}
+\section{METODOLOGIA E DESENVOLVIMENTO \textbf{\textcolor{red}{[FAZENDO]}}}\label{sec: metodologia}
 O processo de desenvolvimento da solução segue uma série de princípios de conjunto de boas práticas e etapas do \textit{data mining}, para melhor estruturar e obter, não só o resultado esperado, mas também para que todo o processo ocorra de forma coerente e padronizada.
 
 %Onde e como será realizada a pesquisa; Tipo de pesquisa, população (universo da pesquisa), amostragem, instrumentos de coleta, forma como pretende tabular e analisar os dados
@@ -222,18 +222,18 @@ Nesta seção são apresentadas as principais metodologias utilizadas neste trab
 
 %%
 % Etapas do Data Mining
-\subsection{Etapas Para a Mineração de Dados do \textit{LinkedIn}}
-Abordado previamente, o acesso aos dados do \textit{LinkedIn} acontece através da utilização de sua API e a interpretação dos dados se dá pela aplicação da técnica de \textit{clustering}, normalização de dados e computação de similaridade. 
+\subsection{Etapas Para a Mineração de Dados do \textit{Twitter}}
+Abordado previamente, o acesso aos dados do \textit{Twitter} acontece através da utilização de sua API e a interpretação dos dados se dá pela aplicação da técnica de \textit{clustering}, normalização de dados e computação de similaridade. 
 
-\subsubsection{\textit{Clustering}}
+\subsubsection{\textit{Clustering} \textbf{\textcolor{red}{[CORRIGINDO]}}}
 A técnica de \textit{clustering} é um aprendizado não supervisionado que está presente em várias ferramentas de \textit{data mining}. Consiste na adoção de uma coleção de itens e, após particioná-los em pequenas coleções, conhecidos como \textit{cluster}, baseando-se em alguma heurística que será usada para comparar com outros itens da coleção.
 
 Técnicas para \textit{clustering} são partes fundamentais para um processo de mineração de dados. Uma implementação simples de \textit{clustering} pode criar experiências de usuário incrivelmente convincentes para alcançar resultados. Também pode ser aplicado a bases de texto utilizando algoritmos de \textit{text mining}, onde o algoritmo procura agrupar textos que falem sobre o mesmo assunto e separar textos de conteúdo diferentes.
 
-Por exemplo, caso queira considerar a localização geográfica dos contatos na rede \textit{LinkedIn}, é necessário realizar um \textit{cluster} nas conexões através de um determinado número de regiões com o intuito da melhor compreensão de oportunidades econômicas disponíveis.
+Por exemplo, caso queira considerar a localização geográfica dos contatos na rede \textit{Twitter}, é necessário realizar um \textit{cluster} nas conexões através de um determinado número de regiões com o intuito da melhor compreensão de oportunidades econômicas disponíveis.
 
-\subsubsection{Normalização de Dados}
-Quando se recupera dados provenientes de uma API, é muito comum que esses não estarão no formato desejado para a sua análise. No caso do \textit{LinkedIn}, pode ser que usuários procurem por vagas de emprego escrevendo os nomes das vagas de alguma outra maneira sem ser o nome correto da vaga. Como exemplo, uma vaga para administrador de banco de dados pode ser buscado através da sigla "DBA", que em inglês significa \textit{Database Administrator}.
+\subsubsection{Normalização de Dados \textbf{\textcolor{red}{[CORRIGINDO]}}}
+%Quando se recupera dados provenientes de uma API, é muito comum que esses não estarão no formato desejado para a sua análise. No caso do \textit{Twitter}, pode ser que usuários procurem por vagas de emprego escrevendo os nomes das vagas de alguma outra maneira sem ser o nome correto da vaga. Como exemplo, uma vaga para administrador de banco de dados pode ser buscado através da sigla "DBA", que em inglês significa \textit{Database Administrator}.
 
 A normalização de dados, procura então resolver esses problemas padronizando situações específicas que irá facilitar a análise posterior dos dados.
 
