@@ -1,6 +1,6 @@
 \chapter{IMPLEMENTAÇÃO DAS TÉCNICAS E ANÁLISE DOS RESULTADOS}\label{ch:implementacao}
 
-Este capítulo tem como finalidade apresentar com um maior nível de detalhamento as técnicas utilizadas neste trabalho, com o objetivo de se atingir as metas propostas já descritas no Capítulo~\ref{ch:introducao}, no item~\ref{sec:objetivos}.
+Este capítulo tem como finalidade apresentar com um maior nível de detalhamento as técnicas utilizadas neste trabalho, com o objetivo de se atingir as metas propostas já descritas no Capítulo~\ref{ch:introducao}, na seção~\ref{sec:objetivos}.
 
 \section{COLETA DE DADOS}
 Uma característica comentada anteriormente sobre a rede social \textit{Twitter} é a disponibilidade de informações de eventos em tempo real. Os \textit{tweets} podem ser postados com o intuito de comentar sobre a final de um campeonato de futebol, datas importantes, acontecimentos internacionais e políticos, entre outros.
@@ -105,7 +105,7 @@ Utilizando uma biblioteca para expressões regulares, é possível procurar por 
 
 O Código~\ref{cod-hash}, apresenta uma função que procura determinadas palavras dentro do \textit{DataFrame}. Estas palavras então preenchem uma coluna com os \textit{tweets} relacionados com a palavra buscada. As palavras buscadas são referentes às \textit{hashtags} que mais foram publicadas nesta data.
 
-\lstinputlisting[language=Python, label=cod-hash, caption=Contabilização do número de \textit{tweets} por países]{Cap5/src/hashtags.py}
+\lstinputlisting[language=Python, label=cod-hash, caption=Buscar \textit{hashtags} mais publicadas]{Cap5/src/hashtags.py}
 
 As \textit{hashtags} são contabilizadas e apresentadas através do gráfico de setores da Figura~\ref{hashtag}. Onde é possível verificar a porcentagem referente aos \textit{tweets} realizados com a \textit{hashtag} \#ImpeachmentDay. 
 
@@ -137,7 +137,7 @@ O resultado da execução do Código~\ref{extract-link}, é uma lista de milhare
 
 Semelhante ao Código~\ref{cod-hash}, é possível aplicar o filtro das \textit{hashtags} para encontrar nomes com maior popularidade através do Código~\ref{cod-fig-pol}.
 
-\lstinputlisting[language=Python, label=cod-fig-pol, caption=Contabilização do número de \textit{tweets} por países]{Cap5/src/figuras-pol.py}
+\lstinputlisting[language=Python, label=cod-fig-pol, caption=Filtro para coletar nomes com mais \textit{tweets}]{Cap5/src/figuras-pol.py}
 
 Como resultado o Código~\ref{cod-fig-pol}, constrói um gráfico de setores, nesse é possível verificar a porcentagem de \textit{tweets} para nomes específicos através da Figura~\ref{fig-pol}, porém não é possível, ainda, predizer se os argumentos a respeito destas pessoas são positivos ou negativos. \\ \\ \\ \\
 
