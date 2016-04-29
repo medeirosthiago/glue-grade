@@ -6,7 +6,7 @@ Este capítulo apresenta os materiais e métodos utilizados para a realização 
 A seção~\ref{sec: metodologia} irá concluir o capítulo apresentando as etapas de \textit{data mining} com o intuito de evidenciar o processo para a obtenção de conhecimento útil.
 
 \section{TECNOLOGIAS E FERRAMENTAS}\label{sec: tec-ferramenta}
-Tecnologias e ferramentas para a criação e prototipagem dos algoritmos.
+Tecnologias e ferramentas para a implementação de \textit{scripts} e utilização dos algoritmos.
 
 %% Bibliotecas Python
 \subsection{Bibliotecas da Linguagem Python}\label{sec:bib_python}
@@ -202,8 +202,8 @@ Para definir o que seria o \textit{Twitter}, \citeonline{mining-social-web} abor
 \begin{itemize}
 	\item Permitir que a pessoa seja ouvida;
 	\item Permitir que a pessoa satisfaça suas curiosidades;
-	\item Permitir isso de um modo fácil e acessível;
-	\item Permitir isso agora.
+	\item Permitir de um modo fácil e acessível;
+	\item Permitir agora.
 \end{itemize}
 
 Essas observações são, de um modo geral, verdadeiramente humano. Pessoas possuem o desejo de compartilhar ideias e experiências, que as permitam se conectarem com outras pessoas, para serem ouvidas, e se sentirem parte ou digna de importância \cite{twitter2}.
@@ -276,32 +276,23 @@ Quando um método da API é invocado, quase todos os seus retornos será uma ins
 %%
 % METODOLOGIA
 \section{METODOLOGIA E DESENVOLVIMENTO}\label{sec: metodologia}
-%O processo de desenvolvimento da solução segue uma série de princípios de conjunto de boas práticas e etapas do \textit{data mining}, para melhor estruturar e obter, não só o resultado esperado, mas também para que todo o processo ocorra de forma coerente e padronizada.
+É possível caracterizar este projeto, como um trabalho científico, que, é avaliado, segundo \citeonline{demo}, pela sua qualidade política e pela sua qualidade formal. Sendo a qualidade política referenciada pelos seus conteúdos, aos fins e à substância do trabalho científico. Qualidade formal diz respeito aos meios e formas usados na produção do trabalho. Refere-se ao domínio de técnicas de coleta e interpretação de dados, manipulação de fontes de informação, conhecimento demonstrado na apresentação do referencial teórico e apresentação escrita ou oral em conformidade com os ritos acadêmicos \cite{metodologia}.
 
-%Onde e como será realizada a pesquisa; Tipo de pesquisa, população (universo da pesquisa), amostragem, instrumentos de coleta, forma como pretende tabular e analisar os dados
+Segundo \citeonline{goldenberg}, é desejável que uma pesquisa científica preencha os seguintes requisitos:
 
-%Nesta seção são apresentadas as principais metodologias utilizadas neste trabalho. Na seção XX …
-\subsection{Iterativo e Incremental}
+\begin{enumerate}
+	\item a existência de uma pergunta que se deja responder;
+	\item a elaboração de um conjunto de passos que permitam chegar à resposta;
+	\item a indicação do grau de confiabilidade na resposta obtida.
+\end{enumerate}
+ 
+Este trabalho tem como objetivo uma pesquisa iterativa com as ferramentas que a linguagem de programação Python disponibiliza, para a mineração de dados provenientes da rede social \textit{Twitter}, e permite apresentar características sobre os usuários que realizaram \textit{tweets} referente a votação do Congresso Brasileiro para a continuidade do processo de Impeachment da presidente Dilma Rousseff.
 
+Para o desenvolvimento dos \textit{scripts} de mineração, será utilizado o modelo Iterativo e Incremental, encontrado no desenvolvimento ágil e também pelo guia de modelos de processos e padrões de boas práticas, \textit{Rational Unified Process} (RUP).
 
-%%
-%% Etapas do Data Mining
-%\subsection{Etapas Para a Mineração de Dados do \textit{Twitter}}
-%Abordado previamente, o acesso aos dados do \textit{Twitter} acontece através da utilização de sua API e a interpretação dos dados se dá pela aplicação da técnica de \textit{clustering}, normalização de dados e computação de similaridade. 
+O desenvolvimento Iterativo e Incremental é um modelo clássico para o processo de criação de \textit{softwares}. Tem como característica o retrabalho em que o tempo de revisão e melhorias de partes dos \textit{scripts} é pré-definido. E o planejamento estagiado em que várias partes do \textit{script} são desenvolvidos em paralelo e integrados quando completos \cite{rup}.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+Este tipo de abordagem, funciona muito bem através da utilização do interpretador \textit{IPython}, onde é possível realizar este modelo de desenvolvimento e apresentar vários resultados em paralelo.
 
 
 
