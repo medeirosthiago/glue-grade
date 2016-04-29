@@ -1,4 +1,4 @@
-### Correções/Ajustes de Desenvolvimento
+### Correções / Ajustes de Desenvolvimento
 #### Preparativos para Votação do Congresso
 * [x] Pesquisar quais hashtags serão utilizados no dia
 * [x] Desenvolver script python para coleta de dados
@@ -27,7 +27,7 @@ Odebretch, LavaJato
 
 * * *
 
-### Correções/Ajustes de Dissertação
+### Correções / Ajustes de Dissertação
 
 * [ ] Fonte das figuras e tabela, padronizar
 
@@ -38,7 +38,7 @@ Odebretch, LavaJato
 * [x] Ver a palavra qualidade
 * [x] Etapas não batem com o número de figuras (Figura 1)
 * [x] Objetivo -> Dentro do __Objetivo Geral__ deve ser melhor especificado nos objetivos específicos
-* [x] Deixar claro quais os resultados finais desejados
+* [ ] Deixar claro quais os resultados finais desejados
 
 #### Alessandra :
 * [x] Melhorar o título
@@ -62,7 +62,7 @@ Odebretch, LavaJato
 
 * * *
 
-### Ajustes Abril/2016
+### Ajustes Abril / 2016
 * [x] Alterar figura ipython (jupyter)
 * [x] Corrigir todas as referências quanto a linkedin no trabalho
 * [ ] Ajustar todas as anotações em vermelho
