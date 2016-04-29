@@ -64,14 +64,20 @@ Odebretch, LavaJato
 
 ### Ajustes Abril/2016
 * [x] Alterar figura ipython (jupyter)
-* [ ] Corrigir todas as referências quanto a linkedin no trabalho
+* [x] Corrigir todas as referências quanto a linkedin no trabalho
 * [ ] Ajustar todas as anotações em vermelho
 * [ ] uft-8 nos source code
+* [x] Justificativa
+* [x] Organização do trabalho
+* [ ] OAuth; REST
+* [ ] Machine Learning -> Ajustar tudo
+* [ ] Informações sobre Twitter: API, bibliotecas…
+* [ ] Metodologia
 
 * * *
 
 ### Dúvidas
 * [x] Capítulo, seção? maiusculo ou minusculo
-* [ ] Como cria “lista de codigos”
+* [x] Como cria “lista de codigos”
 * [x] nome de scripts e hashtags (“” ou negrito?)
 * [ ] software / hardware? itálico?
