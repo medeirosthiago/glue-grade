@@ -45,7 +45,7 @@ Odebretch, LavaJato
     * Mineração de dados da rede social Linkedin utilizando a linguagem de programação Python e bibliotecas para análise e mineração de dados
     * Mineração de dados utilizando a linguagem de programação Python para análise e mineração de dados aplicado à rede social Linkedin
     * MINERAÇÃO DE DADOS APLICADO À REDE SOCIAL LINKEDIN UTILIZANDO A LINGUAGEM DE PROGRAMAÇÃO PYTHON
-    * MINERAÇÃO DE DADOS APLICADO À REDE SOCIAL TWITTER UTILIZANDO A LINGUAGEM DE PROGRAMAÇÃO PYTHON
+    * **MINERAÇÃO DE DADOS APLICADO À REDE SOCIAL TWITTER UTILIZANDO A LINGUAGEM DE PROGRAMAÇÃO PYTHON** :+1:
 * [x] Resumo precisa ser reescrito
 * [x] Próximo trabalho deve ser colocado análise de resultados
 * [x] Falta de referências sobre as afirmações na introdução
