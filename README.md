@@ -9,8 +9,8 @@ como meu TCC, com o objetivo de "_colá_" grau (glue grade :ok_hand:).
 
 https://github.com/medeirosthiiago/glue-grade/tree/master/src/py2/twitter
 
-Para carregar o IPython Notebook acesse pelo [__nbviewer__](http://nbviewer.jupyter.org/github/medeirosthiiago/glue-grade/tree/master/src/py2/twitter/) que carrega mais rápido as informações.
-Atualmente o notebook [__tweepy-small__](http://nbviewer.jupyter.org/github/medeirosthiiago/glue-grade/blob/master/src/py2/twitter/tweepy-small.ipynb) é que está sendo desenvolvido.
+Para carregar o IPython Notebook acesse pelo [__nbviewer__](http://nbviewer.jupyter.org/github/medeirosthiiago/glue-grade/tree/master/src/twitter/) que carrega mais rápido as informações.
+Atualmente o notebook [__tcc-twitter__](http://nbviewer.jupyter.org/github/medeirosthiiago/glue-grade/blob/master/src/twitter/notebooks/tcc-twitter.ipynb) é que está sendo desenvolvido.
 
 
 ### Correções / Ajustes
