@@ -163,3 +163,4 @@ py3/
 *.txt
 */.texpadtmp/*
 dilma.json
+dilma-fixed.json
