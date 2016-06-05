@@ -24,10 +24,10 @@
 %-----------------------------------------------------------------
 \usepackage{cmap}				% Mapear caracteres especiais no PDF
 \usepackage{lmodern}			% Usa a fonte Latin Modern			
-\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[T1]{fontenc}			% Selecao de codigos de fonte.
 \usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
 \usepackage{lastpage}			% Usado pela Ficha catalográfica
-\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{indentfirst}			% Indenta o primeiro parágrafo de cada seção.
 \usepackage{color}				% Controle das cores
 \usepackage{graphicx}			% Inclusão de gráficos
 
@@ -74,6 +74,12 @@
  
 \lstset{style=mystyle}
 \renewcommand{\lstlistingname}{Código}
+
+% ------------------------
+% CONFIGURAÇÕES PARA CRIAÇÃO DE LISTAS DE CONTEÚDOS
+% ------------------------ 
+\usepackage{tocloft}
+\usepackage{etoolbox}
 
 
 % Fonte "Arial"
