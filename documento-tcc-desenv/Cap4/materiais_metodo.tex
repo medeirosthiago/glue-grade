@@ -206,23 +206,23 @@ Para definir o que seria o \textit{Twitter}, \citeonline{mining-social-web} abor
 	\item Permitir agora.
 \end{itemize}
 
-Essas observações são, de um modo geral, verdadeiramente humano. Pessoas possuem o desejo de compartilhar ideias e experiências, que as permitam se conectarem com outras pessoas, para serem ouvidas, e se sentirem parte ou digna de importância \cite{twitter2}.
+Essas observações são, de um modo geral, verdadeiramente humanas. Pessoas possuem o desejo de compartilhar ideias e experiências, que as permitam se conectar com outras pessoas, para serem ouvidas, e se sentirem parte ou digna de importância \cite{twitter2}.
 
-Os dois últimos itens enfatizam a vontade de não ter alguma dificuldade para satisfazer as curiosidades ou realizar algum trabalho específico \cite{mining-social-web}.
+Os dois últimos itens que \citeonline{mining-social-web} aborda ao comentar sobre as necessidades de uma tecnologia social, enfatizam a vontade de não ter alguma dificuldade para satisfazer as curiosidades ou realizar algum trabalho específico.
 
-Uma maneira de descrever o \textit{Twitter} é, então, um serviço de \textit{microblog} que permite uma breve comunicação entre pessoas. Mensagens de no máximo 140 caracteres explicam a "breve comunicação", que normalmente correspondem a pensamentos ou ideias sobre um determinado assunto. Em outras palavras, \textit{Twitter} é um serviço global de trocas de mensagens, extremamente rápido e gratuito \cite{twitter1}.
+Uma maneira de descrever o \textit{Twitter} é, então, como um serviço de \textit{microblog} que permite uma breve comunicação entre pessoas. Mensagens de no máximo 140 caracteres explicam a "breve comunicação", que normalmente correspondem à pensamentos ou ideias sobre um determinado assunto, em outras palavras, \textit{Twitter} é um serviço global de trocas de mensagens, extremamente rápido e gratuito \cite{twitter1}.
 
-Outro elemento interessante para a utilização dessa rede social é a assimetria ao "seguir" \space uma pessoa. Esta liberdade permite aos usuários atender as suas curiosidades. Diferentemente de outras redes sociais, como \textit{Facebook} e \textit{LinkedIn}, que requer uma aceitação mútua da conexão entre os usuários, o modelo de relacionamento no \textit{Twitter} viabiliza os acontecimentos de qualquer outro cliente na rede. Podendo ser alguma especulação sobre celebridades, atualizações sobre times de esportes, algum tópico particular político, ou o simples desejo de se conectar a alguém \cite{twitter2}.
+Outro elemento interessante para a utilização dessa rede social é a assimetria ao "seguir" \space uma pessoa. Esta liberdade permite aos usuários atender as suas curiosidades. Diferentemente de outras redes sociais, como \textit{Facebook} e \textit{LinkedIn}, que requer uma aceitação mútua da conexão entre os usuários, o modelo de relacionamento no \textit{Twitter} viabiliza os acontecimentos de qualquer outro cliente na rede, podendo ser alguma especulação sobre celebridades, atualizações sobre times de esportes, algum tópico particular político ou o simples desejo de se conectar a alguém \cite{twitter2}.
 
 
 \subsubsection{API do \textit{Twitter}}\label{api-twitter}
 \textit{Twitter} é caracterizado como um serviço de \textit{microblog} em tempo real, que permite os usuários postarem pequenas atualizações de qualquer situação que desejar, essas postagens são chamados de \textit{tweets}, que aparecem em \textit{timelines} (linhas de tempo). \textit{Tweets} podem incluir uma ou mais entidades em seus 140 caracteres de conteúdo e referenciar um ou mais lugares que mapeiam localizações do mundo real \cite{mining-social-web}.
 
-É necessário ter um entendimento sobre usuários (\textit{users}), \textit{tweets} e \textit{timelines} para o uso efetivo da API do \textit{Twitter}. Será, então, abordado uma breve explicação sobre a plataforma de objetos do \textit{Twitter}, com o intuito de interagir com a sua API para a coleta de dados \cite{twitter-doc}.
+%É necessário ter um entendimento sobre usuários (\textit{users}), \textit{tweets} e \textit{timelines} para o uso efetivo da API do \textit{Twitter}. Será, então, abordado uma breve explicação sobre a plataforma de objetos do \textit{Twitter}, com o intuito de interagir com a sua API para a coleta de dados \cite{twitter-doc}.
 
-\textit{Tweets} são a essência do \textit{Twitter}, e apesar deles serem representados como 140 caracteres de conteúdo textual associado a uma atualização de um usuário, existe muito mais informação através dos metadados. Em adição ao conteúdo textual de um \textit{tweet}, eles vem empacotados em dois pedaços de metadados: entidades e lugares. Entidades de um \textit{tweet} são basicamente menções de usuários, \textit{hashtags}, URLs, e mídias que são associadas a um \textit{tweet}. E lugares são localizações no mundo real que podem estar adjunto a um \textit{tweet}. Um lugar pode ser uma localização atual aonde o \textit{tweet} foi composto, mas também pode ser uma referência a algum lugar descrito no \textit{tweet} \cite{twitter-doc}.
+A essência do \textit{Twitter} são os \textit{tweets} e, apesar deles serem representados como 140 caracteres de conteúdo textual associado a uma atualização de um usuário, existe muito mais informação através dos metadados. Em adição ao conteúdo textual de um \textit{tweet}, eles vêm empacotados em dois pedaços de metadados: entidades e lugares. Entidades de um \textit{tweet} são, basicamente, menções de usuários, \textit{hashtags}, URLs e mídias que são associadas a um \textit{tweet}. Lugares são localizações no mundo real, que podem estar adjunto a um \textit{tweet}. Um lugar pode ser uma localização atual aonde o \textit{tweet} foi composto, mas também pode ser uma referência a algum lugar descrito no \textit{tweet} \cite{twitter-doc}.
 
-Para exemplificar, considere o \textit{tweet} apresentado pela Figura~\ref{fig:tweet}. O \textit{tweet} possui 83 caracteres (incluindo espaços e quebra de linhas) e contem quatro entidades: duas \textit{hashtags} \#GameOfThrones e \#Linux, uma menção ao usuário @itsfoss e uma imagem como conteúdo de mídia. Não existe porém, uma localidade exposta nesta postagem. Porém existe muito mais informações no metadado deste \textit{tweet} que demonstra a quantidade de dados que se pode coletar.
+Para exemplificar, considere o \textit{tweet} apresentado pela Figura~\ref{fig:tweet}. O \textit{tweet} possui 83 caracteres (incluindo espaços e quebra de linhas) e contém quatro entidades: duas \textit{hashtags} \#GameOfThrones e \#Linux, uma menção ao usuário @itsfoss e uma imagem como conteúdo de mídia. Não existe porém, uma localidade exposta nesta postagem, porém existe muito mais informações no metadado deste \textit{tweet} que demonstra a quantidade de dados que se pode coletar.
 
 \begin{figure}[h]
   \centering
@@ -234,10 +234,8 @@ Para exemplificar, considere o \textit{tweet} apresentado pela Figura~\ref{fig:t
 \end{figure}
 
 
-Por fim, \textit{timelines} são coleções de \textit{tweets} ordenadas cronologicamente. É possível afirmar, que \textit{timeline} é qualquer coleção específica de \textit{tweets} apresentadas em uma ordem cronológica. Através da perspectiva de um usuário do \textit{Twitter}, a \textit{timeline} inicial (\textit{home}) é a visualização principal quando este usuário acessa a sua conta no serviço do \textit{Twitter} \cite{mining-social-web}.
-
-Quando este acesso é realizado, normalmente, acontece através do endereço https://twitter.com. A URL para a \textit{timeline} de algum usuário em particular, no entanto, precisa ser sufixado com o contexto que identifica este usuário específico, por exemplo https://twitter.com/unixstickers.
-Uma aplicação como o \textit{TweetDeck} disponibiliza a customização da visualização de várias \textit{timelines}, como demonstra a Figura~\ref{fig:tweet-deck}.
+\textit{Timelines} são coleções de \textit{tweets} ordenadas cronologicamente. É possível afirmar, que \textit{timeline} é qualquer coleção específica de \textit{tweets} apresentadas em uma ordem cronológica. Através da perspectiva de um usuário do \textit{Twitter}, a \textit{timeline} inicial (\textit{home}) é a visualização principal quando este usuário acessa a sua conta no serviço do \textit{Twitter} \cite{mining-social-web}. Quando este acesso é realizado, normalmente acontece através do endereço https://twitter.com. A URL para a \textit{timeline} de algum usuário em particular, no entanto, precisa ser sufixado com o contexto que identifica este usuário específico, por exemplo; https://twitter.com/unixstickers.
+A figura~\ref{fig:tweet-deck} ilustra a aplicação \textit{TweetDeck} que disponibiliza a customização da visualização de várias \textit{timelines}.
 
 \begin{figure}[h]
   \centering
@@ -248,7 +246,7 @@ Quando este acesso é realizado, normalmente, acontece através do endereço htt
   \label{fig:tweet-deck}
 \end{figure}
 
-Enquanto \textit{timelines} são coleções de \textit{tweets} com uma velocidade relativamente baixa de atualizações, \textit{streams} são amostras de \textit{tweets} públicos fluindo através do \textit{Twitter} em tempo real. Uma ferramenta pública que a rede social disponibiliza é o \textit{firehose}, que permite coletar, ou visualizar, centenas de milhares de \textit{tweets} por minuto durante eventos com interesses bem abrangentes, como debates presidenciais, finais de campeonatos esportivos e outros acontecimentos que engloba milhares de internautas \cite{twitter-doc}.
+\textbf{\textcolor{red}{[MELHORAR]}} Enquanto \textit{timelines} são coleções de \textit{tweets} com uma velocidade relativamente baixa de atualizações, \textit{streams} são amostras de \textit{tweets} públicos fluindo através do \textit{Twitter} em tempo real. Uma ferramenta pública que a rede social disponibiliza é o \textit{firehose}, que permite coletar, ou visualizar, centenas de milhares de \textit{tweets} por minuto durante eventos com interesses bem abrangentes, como debates presidenciais, finais de campeonatos esportivos e outros acontecimentos que engloba milhares de internautas \cite{twitter-doc}.
 
 
 % Bibliotecas Twitter
@@ -275,8 +273,8 @@ Quando um método da API é invocado, quase todos os seus retornos será uma ins
 
 %%
 % METODOLOGIA
-\section{METODOLOGIA E DESENVOLVIMENTO}\label{sec: metodologia}
-É possível caracterizar este projeto, como um trabalho científico, que, é avaliado, segundo \citeonline{demo}, pela sua qualidade política e pela sua qualidade formal. Sendo a qualidade política referenciada pelos seus conteúdos, aos fins e à substância do trabalho científico. Qualidade formal diz respeito aos meios e formas usados na produção do trabalho. Refere-se ao domínio de técnicas de coleta e interpretação de dados, manipulação de fontes de informação, conhecimento demonstrado na apresentação do referencial teórico e apresentação escrita ou oral em conformidade com os ritos acadêmicos \cite{metodologia}.
+\section{METODOLOGIA E DESENVOLVIMENTO}\label{sec: metodologia} \textbf{\textcolor{red}{[MELHORAR]}}
+É possível caracterizar este projeto como um trabalho científico que é avaliado, segundo \citeonline{demo}, pela sua qualidade política e pela sua qualidade formal. A qualidade política é referenciada pelos seus conteúdos, aos fins e à substância do trabalho científico. Já qualidade formal, diz respeito aos meios e formas usados na produção do trabalho, referindo-se ao domínio de técnicas de coleta e interpretação de dados, manipulação de fontes de informação, conhecimento demonstrado na apresentação do referencial teórico e apresentação escrita ou oral em conformidade com os ritos acadêmicos \cite{metodologia}.
 
 Segundo \citeonline{goldenberg}, é desejável que uma pesquisa científica preencha os seguintes requisitos:
 
@@ -286,7 +284,7 @@ Segundo \citeonline{goldenberg}, é desejável que uma pesquisa científica pree
 	\item a indicação do grau de confiabilidade na resposta obtida.
 \end{enumerate}
  
-Este trabalho tem como objetivo uma pesquisa iterativa com as ferramentas que a linguagem de programação Python disponibiliza, para a mineração de dados provenientes da rede social \textit{Twitter}, e permite apresentar características sobre os usuários que realizaram \textit{tweets} referente a votação do Congresso Brasileiro para a continuidade do processo de Impeachment da presidente Dilma Rousseff.
+Este trabalho tem como objetivo uma pesquisa iterativa com as ferramentas que a linguagem de programação Python disponibiliza para a mineração de dados provenientes da rede social \textit{Twitter}, e permite apresentar características sobre os usuários que realizaram \textit{tweets} referente a votação do Congresso Brasileiro para a continuidade do processo de Impeachment da presidente Dilma Rousseff.
 
 Para o desenvolvimento dos \textit{scripts} de mineração, será utilizado o modelo Iterativo e Incremental, encontrado no desenvolvimento ágil e também pelo guia de modelos de processos e padrões de boas práticas, \textit{Rational Unified Process} (RUP).
 
