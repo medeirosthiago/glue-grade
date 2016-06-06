@@ -1,18 +1,19 @@
-%----------------------------------------------------------------- 
+% ---
 % CAPA
+% ---
 \renewcommand{\imprimircapa}{%
   \begin{capa}
-  	\begin{center} %Isso eu fiz
+  	\begin{center}
   		\large{FACULDADE ANGLO-AMERICANO DE FOZ DO IGUAÇU}
   	\end{center}
     \center
-    %{\imprimirautor} %Dica da Tássia
+    %{\imprimirautor}
         
-    %{\ABNTEXchapterfont\large\imprimirautor} %Original
-    {\ABNTEXchapterfont\imprimirautor} %Isso eu fiz
+    %{\ABNTEXchapterfont\large\imprimirautor} % Original
+    {\ABNTEXchapterfont\imprimirautor}
 
     \vspace*{8cm}
-    %{\imprimirtitulo} Dica da Tássia
+    %{\imprimirtitulo}
     \ABNTEXchapterfont\bfseries\large\imprimirtitulo
     \vfill
     
@@ -25,12 +26,13 @@
 }
 
 \makeatletter
-%----------------------------------------------------------------- 
+% ---
 % FOLHA DE ROSTO
+% ---
 \renewcommand{\folhaderostocontent}{
 		\center	
 		%{\large\textbf\imprimirautor} %Original
-			{\large\imprimirautor} %Eu fiz
+			{\large\imprimirautor}
 	
 	    \vspace*{8cm}		
 		
@@ -62,17 +64,21 @@
 		{\large\textbf\imprimirdata}		
 }
 
-%****************************************************
-%outras configurações 
-%***********************************************************
-\setlength{\parindent}{1.3cm} % Tamanho do parágrafo
-\setlength{\parskip}{0.2cm}  % Controle do espaçamento entre um parágrafo e outro
-	% Altera o tamanho das fontes dos capítulos e dos apêndices
+% ---
+% OUTRAS CONFIGURAÇÕES
+% ---
+\setlength{\parindent}{1.3cm} 		% Tamanho do parágrafo
+\setlength{\parskip}{0.2cm}  		% Controle do espaçamento entre um parágrafo e outro
+	
+% Altera o tamanho das fontes dos capítulos e dos apêndices
+% ---
 \renewcommand{\ABNTEXchapterfont}{\bfseries}
 \renewcommand{\ABNTEXchapterfontsize}{\large}
 \renewcommand{\ABNTEXsectionfontsize}{\normalfont}
 
-% Separação de Palavras:
+% ---
+% SEPARAÇÃO DE PALAVRAS
+% ---
 %\hyphenation{}
 \hyphenation{teorias}
 \hyphenation{baseados}
@@ -94,45 +100,41 @@
 \hyphenation{proces-samento}
 \hyphenation{neces-sidades}
 
-	% Configura layout para elementos textuais
-
+% Configura layout para elementos textuais
+% ---
 \makepagestyle{abnt_ufpr}
 
 \makeoddhead{abntchapfirst}{}{}{\ABNTEXfontereduzida\thepage}
 
 \pagestyle{abnt_ufpr}
 
-
-
 \newtheorem{theorem}{Teorema}[chapter]
 \newtheorem{definition}[theorem]{Defini\c{c}\~{a}o}
 \newtheorem{proposition}[theorem]{Proposi\c{c}\~{a}o}
 
 \makeatother
-%********************************************************************
-%*********************************************************************
-% Essa parte para baixo até o fim foi tudo copiado da TASSIA
 
-%\newcommand{\quadroname}{Quadro}
-%\newcommand{\listofquadrosname}{Lista de quadros}
+% ---
+% CONFIGURAÇÃO DE LISTAS DE CONTEÚDO
+% ---
+\newcommand{\graficoname}{GRÁFICO}
+\newcommand{\listofgraficosname}{LISTA DE GRÁFICOS}
 
-%\newfloat[chapter]{quadro}{loq}{\quadroname}
-%\newlistof{listofquadros}{loq}{\listofquadrosname}
-%\newlistentry{quadro}{loq}{0}
+\newfloat[chapter]{grafico}{loq}{\graficoname}
+\newlistof{listofgraficos}{loq}{\listofgraficosname}
+\newlistentry{grafico}{loq}{0}
 
-% configurações para atender às regras da ABNT
-%\counterwithout{quadro}{chapter}
-%\renewcommand{\cftquadroname}{\quadroname\space}
-%\renewcommand*{\cftquadroaftersnum}{\hfill--\hfill}
+% configurações para atender às regras da ABNT em listas
+% ---
+\counterwithout{grafico}{chapter}
+\renewcommand{\cftgraficoname}{\graficoname\space}
+\renewcommand*{\cftgraficoaftersnum}{\hfill--\hfill}
 
-%****************************************************
-%outras configuraÃ§Ãµes
-%***********************************************************
-%\setlength{\parindent}{1.3cm} % Tamanho do parÃ¡grafo
-%\setlength{\parskip}{0.0cm}  % Controle do espaÃ§amento entre um parÃ¡grafo e outro
+%\setlength{\parindent}{1.3cm} 			% Tamanho do parágrafo
+%\setlength{\parskip}{0.0cm}  			% Controle do espaçamento entre um parágrafo e outro
 
-% Altera o tamanho das fontes dos capÃ­tulos e dos apÃªndices
-
+% Altera o tamanho das fontes dos capítulos e dos apêndices
+% ---
 \renewcommand{\ABNTEXchapterfont}{\normalfont\fontseries{b}\selectfont}
 \renewcommand{\ABNTEXchapterfontsize}{\normalsize}
 \renewcommand{\ABNTEXpartfont}{\fontseries{b}\selectfont\selectfont}
@@ -146,30 +148,32 @@
 \renewcommand{\ABNTEXsubsubsubsectionfont}{\normalfont\itshape\selectfont}
 \renewcommand{\ABNTEXsubsubsubsectionfontsize}{\normalsize}
 
-
-% CONFIGURACAO DO SUMARIO
-
+% ---
+% CONFIGURAÇÃO DO SUMÁRIO
+% ---
 % Sumário
 \renewcommand*{\cftsectionfont}{\normalfont}
 \renewcommand*{\cftsubsubsectionfont}{\normalfont}
 \renewcommand*{\cftsubsectionfont}{\normalfont}
 \renewcommand*{\cftparagraphfont}{\normalfont\itshape}
 
-% -----------------------------------------------------------------------------
+% ---
 % Modifica o espaçamento no sumário
 % Nao ha espacos, para as entradas de capitulos
+% ---
 \setlength{\cftbeforeparagraphskip}{0pt}
 \setlength{\cftbeforesubsectionskip}{0pt}
 \setlength{\cftbeforesectionskip}{0pt}
 \setlength{\cftbeforesubsubsectionskip}{0pt}
 \setlength{\cftbeforechapterskip}{0pt}
 
-
+% ---
+% CAPITALIZAÇÃO DE LISTAS
+% ---
 
 \addto\captionsbrazil{
 	\renewcommand{\bibname}{REFER\^ENCIAS}
 }
-
 \addto\captionsbrazil{\renewcommand{\listadesiglasname}{LISTA DE ABREVIATURAS}}
 \addto\captionsbrazil{\renewcommand{\listfigurename}{LISTA DE ILUSTRAÇÕES}}
 \addto\captionsbrazil{\renewcommand{\listtablename}{LISTA DE TABELAS}}
@@ -182,17 +186,18 @@
 \addto\captionsbrazil{\renewcommand{\figurename}{FIGURA}}
 \addto\captionsbrazil{\renewcommand{\tablename}{TABELA}}
 
-
-% Configura layout para elementos textuais
-
+% ---
+% LAYOUT PARA ELEMENTOS TEXTUAIS
+% ---
 %\makepagestyle{abnt_ufpr}
-
 
 %\makeoddhead{abntchapfirst}{}{}{\ABNTEXfontereduzida\thepage}
 
 %\pagestyle{abnt_ufpr}
 
-%%%%%%%% AMBIENTES %%%%%%%%%%
+% ---
+% AMBIENTES
+% ---
 %\newtheorem{teo}{Teorema}[chapter]
 %\newtheorem{cor}[teo]{Corol\'{a}rio}
 %\newtheorem{lem}[teo]{Lema}
@@ -205,7 +210,9 @@
 %\newenvironment{dem}{\smallskip \noindent{\bf Demonstra\c{c}\~{a}o}: }
 %{\hfill $\Box$\hspace{0in}\medskip}
 
-%%%%%%%% COMANDOS FRECUENTES %%%%%%%%
+% ---
+% COMANDOS FREQUENTES
+% ---
 %\newcommand{\eq}{\begin{equation}}
 %	\newcommand{\ee}{\end{equation}}
 %\newcommand{\R}{{\mathbb R}}
@@ -221,5 +228,5 @@
 %\newcommand{\Ia}{{\displaystyle\int_{0}^{1} \displaystyle\int_{0}^T }}
 %\newcommand{\Ii}{{\displaystyle\int_{0}^{t} \displaystyle\int_{0}^1 }}
 %\newcommand{\Ib}{{\displaystyle\int_{0}^{1} \displaystyle\int_{0}^t }}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %\makeatother 
