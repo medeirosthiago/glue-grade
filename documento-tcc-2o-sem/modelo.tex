@@ -145,14 +145,11 @@
 \listofgraficos*
 \cleardoublepage
 
-\counterwithout{lstlisting}{chapter}
-\makeatletter
-\renewcommand{\l@lstlisting}[2]{%
-  \@dottedtocline{1}{0em}{1.5em}{\lstlistingname\ #1}{#2}%
-}
-\makeatother
 \pdfbookmark[0]{\lstlistlistingname}{lol}	% inserir lista de códigos
+\counterwithout{lstlisting}{chapter}
+\begin{KeepFromToc}
 \lstlistoflistings
+\end{KeepFromToc}
 \cleardoublepage
 
 \input{Configuracoes/siglas}  				% inserir lista de abreviaturas e siglas

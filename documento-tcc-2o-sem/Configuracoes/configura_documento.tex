@@ -101,7 +101,7 @@
 \hyphenation{neces-sidades}
 
 % Configura layout para elementos textuais
-% ---
+% -
 \makepagestyle{abnt_ufpr}
 
 \makeoddhead{abntchapfirst}{}{}{\ABNTEXfontereduzida\thepage}
@@ -117,6 +117,8 @@
 % ---
 % CONFIGURAÇÃO DE LISTAS DE CONTEÚDO
 % ---
+% lista de gráficos
+% -
 \newcommand{\graficoname}{GRÁFICO}
 \newcommand{\listofgraficosname}{LISTA DE GRÁFICOS}
 
@@ -124,17 +126,37 @@
 \newlistof{listofgraficos}{loq}{\listofgraficosname}
 \newlistentry{grafico}{loq}{0}
 
-% configurações para atender às regras da ABNT em listas
-% ---
-\counterwithout{grafico}{chapter}
+\counterwithout{grafico}{chapter}		% configurações para atender às regras da ABNT em listas
 \renewcommand{\cftgraficoname}{\graficoname\space}
 \renewcommand*{\cftgraficoaftersnum}{\hfill--\hfill}
+
+% lista de códigos
+% -
+\renewcommand{\lstlistingname}{CÓDIGO}
+\renewcommand{\lstlistlistingname}{LISTA DE CÓDIGOS}
+
+\begingroup\makeatletter				% configurações para atender às regras da ABNT em listas
+\let\newcounter\@gobble\let\setcounter\@gobbletwo
+  \globaldefs\@ne \let\c@loldepth\@ne
+  \newlistof{listings}{lol}{\lstlistlistingname}
+  \newlistentry{lstlisting}{lol}{0}
+\endgroup
+
+\renewcommand{\cftlstlistingaftersnum}{\hfill--\hfill}
+
+\let\oldlstlistoflistings\lstlistoflistings
+\renewcommand{\lstlistoflistings}{%
+   \begingroup%
+   \let\oldnumberline\numberline%
+   \renewcommand{\numberline}{\lstlistingname\space\oldnumberline}%
+   \oldlstlistoflistings%
+   \endgroup}
 
 %\setlength{\parindent}{1.3cm} 			% Tamanho do parágrafo
 %\setlength{\parskip}{0.0cm}  			% Controle do espaçamento entre um parágrafo e outro
 
 % Altera o tamanho das fontes dos capítulos e dos apêndices
-% ---
+% -
 \renewcommand{\ABNTEXchapterfont}{\normalfont\fontseries{b}\selectfont}
 \renewcommand{\ABNTEXchapterfontsize}{\normalsize}
 \renewcommand{\ABNTEXpartfont}{\fontseries{b}\selectfont\selectfont}
@@ -177,10 +199,10 @@
 \addto\captionsbrazil{\renewcommand{\listadesiglasname}{LISTA DE ABREVIATURAS}}
 \addto\captionsbrazil{\renewcommand{\listfigurename}{LISTA DE ILUSTRAÇÕES}}
 \addto\captionsbrazil{\renewcommand{\listtablename}{LISTA DE TABELAS}}
-\addto\captionsbrazil{%
-  \renewcommand*{\lstlistlistingname}{LISTA DE CÓDIGOS}%
-  \renewcommand*{\lstlistingname}{CÓDIGO}%
-}
+%\addto\captionsbrazil{%
+%  \renewcommand*{\lstlistlistingname}{LISTA DE CÓDIGOS}%
+%  \renewcommand*{\lstlistingname}{CÓDIGO}%
+%}
 \addto\captionsbrazil{\renewcommand{\contentsname}{SUMÁRIO}}
 \addto\captionsbrazil{\renewcommand\appendixtocname{APÊNDICES}\renewcommand\appendixpagename{APÊNDICES}}
 \addto\captionsbrazil{\renewcommand{\figurename}{FIGURA}}
