@@ -78,9 +78,20 @@
 % ------------------------
 % CONFIGURAÇÕES PARA CRIAÇÃO DE LISTAS DE CONTEÚDOS
 % ------------------------ 
-\usepackage{tocloft}
-\usepackage{etoolbox}
+%\usepackage{tocloft}
+%\usepackage{etoolbox}
 
+\newcommand{\graficoname}{GRÁFICO}
+\newcommand{\listofgraficosname}{LISTA DE GRÁFICOS}
+
+\newfloat[chapter]{grafico}{loq}{\graficoname}
+\newlistof{listofgraficos}{loq}{\listofgraficosname}
+\newlistentry{grafico}{loq}{0}
+
+% configurações para atender às regras da ABNT
+\counterwithout{grafico}{chapter}
+\renewcommand{\cftgraficoname}{\graficoname\space}
+\renewcommand*{\cftgraficoaftersnum}{\hfill--\hfill}
 
 % Fonte "Arial"
 \usepackage{helvet}
@@ -145,6 +156,10 @@
 
 \pdfbookmark[0]{\listtablename}{lot}% inserir lista de tabelas
 \listoftables*
+\cleardoublepage
+
+\pdfbookmark[0]{\listofgraficosname}{loq}% inserir lista de gráficos
+\listofgraficos*
 \cleardoublepage
 
 \counterwithout{lstlisting}{chapter}

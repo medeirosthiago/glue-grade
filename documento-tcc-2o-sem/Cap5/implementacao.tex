@@ -71,16 +71,16 @@ A execução deste código permitiu, a geração um \textit{DataFrame} para info
 
 \lstinputlisting[language=Python, label=map-lingua, caption=Mapeamento de variáveis para um \textit{DataFrame}]{Cap5/src/map-lingua.py}
 
-Após o mapeamento das informações do \textit{DataFrame} foi construído um gráfico em barras indicando as quantidades de \textit{tweets} em relação aos quatro idiomas mais significativos no conjunto de dados coletados. A Figura~\ref{lingua} apresenta o gráfico gerado.
+Após o mapeamento das informações do \textit{DataFrame} foi construído um gráfico em barras indicando as quantidades de \textit{tweets} em relação aos quatro idiomas mais significativos no conjunto de dados coletados, Gráfico~\ref{lingua}.
 
-\begin{figure}[h]
+\begin{grafico}[h]
 	\centering
 	\fbox{\includegraphics[width=1\textwidth]{Cap5/graficos/linguas}}
 	\caption{Idiomas que mais realizaram \textit{tweets}}
 	\vspace{-0.3cm}
 	\legend{FONTE: Elaborado pelo autor}
 	\label{lingua}
-\end{figure}
+\end{grafico}
 
 É possível verificar nesta figura que existe uma barra com o nome de \textit{und} para especificar o segundo idioma que mais realizou \textit{tweets}. Essa é uma condição em que não foi identificado o idioma de origem e, então, a API do \textit{Twitter} classifica como \textit{undefined}, ou indefinido no português. Essa linguagem indefinida ocorre devido ao \textit{software} em que o usuário está realizando o \textit{tweet}, por exemplo; um navegador \textit{web}, um aplicativo \textit{mobile} do \textit{Twitter} ou algum aplicativo de terceiro que permite realizar ações no \textit{Twitter}. Caso a linguagem não esteja definida nestes ambientes, a API a classifica como indefinida \cite{twitter-doc}.
 
@@ -88,16 +88,16 @@ Semelhante ao que foi realizado no Código~\ref{map-lingua}, através do Código
 
 \lstinputlisting[language=Python, label=map-pais, caption=Contabilização do número de \textit{tweets} por países]{Cap5/src/map-pais.py}
 
-O Código~\ref{map-pais} verifica quais são os cinco países que mais realizaram \textit{tweets} através do mapeamento do \textit{DataFrame} e constrói um gráfico em barras para representá-los, Figura~\ref{paises}.
+O Código~\ref{map-pais} verifica quais são os cinco países que mais realizaram \textit{tweets} através do mapeamento do \textit{DataFrame} e constrói um gráfico em barras para representá-los, Gráfico~\ref{paises}.
 
-\begin{figure}[h]
+\begin{grafico}[h]
 	\centering
 	\fbox{\includegraphics[width=1\textwidth]{Cap5/graficos/paises}}
 	\caption{Países que mais realizaram \textit{tweets}}
 	\vspace{-0.3cm}
 	\legend{FONTE: Elaborado pelo autor}
 	\label{paises}
-\end{figure}
+\end{grafico}
 
 Este gráfico demonstra, claramente, que a maior número de \textit{tweets} foram publicados do Brasil e apenas uma pequena quantia deles foram realizados nos Estados Unidos, Argentina, Portugal e Venezuela. É importante notar que nem todos os \textit{tweets} gerados possuem um país de origem, o que se assemelha a situação anterior, onde a API do \textit{Twitter} os classifica como \textit{undefined}, porém não sendo apresentado no gráfico da Figura~\ref{paises}.
 
@@ -109,16 +109,16 @@ O Código~\ref{cod-hash}, apresenta uma função que procura determinadas palavr
 
 As \textit{hashtags} são contabilizadas e apresentadas através do gráfico de setores da Figura~\ref{hashtag}, onde é possível verificar a porcentagem referente aos \textit{tweets} realizados com a \textit{hashtag} \#ImpeachmentDay. 
 
-\begin{figure}[h]
+\begin{grafico}[h]
 	\centering
 	\fbox{\includegraphics[width=1\textwidth]{Cap5/graficos/hashtag}}
 	\caption{\textit{Hashtags} com o maior número de \textit{tweets}}
 	\vspace{-0.3cm}
 	\legend{FONTE: Elaborado pelo autor}
 	\label{hashtag}
-\end{figure}
+\end{grafico}
 
-Através da Figura~\ref{hashtag}, pode-se notar que as \textit{hashtags} \#ForaDilma e \#TchauQuerida somaram um total de 60,7\%, indicando que a maioria dos \textit{tweets} eram de apoio ao processo de Impeachment da Presidente da República, diferentemente dos 34,3\% dos \textit{tweets} que é o somatório de \#BrasilContraOGolpe e \#NaoVaiTerGolpe.
+Através do Gráfico~\ref{hashtag}, pode-se notar que as \textit{hashtags} \#ForaDilma e \#TchauQuerida somaram um total de 60,7\%, indicando que a maioria dos \textit{tweets} eram de apoio ao processo de Impeachment da Presidente da República, diferentemente dos 34,3\% dos \textit{tweets} que é o somatório de \#BrasilContraOGolpe e \#NaoVaiTerGolpe.
 
 Dando continuidade ao uso da biblioteca para trabalhar com expressões regulares, o Código~\ref{extract-link} permite encontrar \textit{links} que são publicados pelos usuários através de seus \textit{tweets}. Estes \textit{links} podem ser filtrados de acordo com a \textit{hashtag} utilizada.
 
@@ -139,16 +139,16 @@ Semelhante ao Código~\ref{cod-hash}, é possível aplicar o filtro das \textit{
 
 \lstinputlisting[language=Python, label=cod-fig-pol, caption=Filtro para coletar nomes com mais \textit{tweets}]{Cap5/src/figuras-pol.py}
 
-Como resultado, o Código~\ref{cod-fig-pol} constrói um gráfico em setores, onde é possível verificar a porcentagem de \textit{tweets} para nomes específicos, Figura~\ref{fig-pol}, porém não é possível, ainda, predizer se os argumentos a respeito destas pessoas são positivos ou negativos. \\
+Como resultado, o Código~\ref{cod-fig-pol} constrói um gráfico em setores, onde é possível verificar a porcentagem de \textit{tweets} para nomes específicos, Gráfico~\ref{fig-pol}, porém não é possível, ainda, predizer se os argumentos a respeito destas pessoas são positivos ou negativos. \\
 
-\begin{figure}[h]
+\begin{grafico}[h]
 	\centering
 	\fbox{\includegraphics[width=1\textwidth]{Cap5/graficos/figuras-politicas}}
 	\caption{Gráfico em setores para figuras importantes}
 	\vspace{-0.3cm}
 	\legend{FONTE: Elaborado pelo autor}
 	\label{fig-pol}
-\end{figure}
+\end{grafico}
 
 O gráfico de setores representado pela Figura~\ref{fig-pol}, demonstra que o nome mais mencionado foi de Eduardo Cunha e com apenas 2618 \textit{tweets} o nome de Michel Temer foi publicado. Até mesmo as menções ao ex-presidente Luiz Inácio "Lula" da Silva recebeu apenas 18,8\% do total dos nomes filtrados.
 
