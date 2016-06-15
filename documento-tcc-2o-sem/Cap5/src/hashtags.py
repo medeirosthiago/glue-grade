@@ -1,6 +1,3 @@
-import re
-
-
 def word_in_text(word, text):
     word = word.lower()
     text = text.lower()
@@ -15,10 +12,6 @@ tweets['ForaDilma'] = tweets['text'].apply(lambda tweet: word_in_text('ForaDilma
 tweets['BrasilContraOGolpe'] = tweets['text'].apply(lambda tweet: word_in_text('BrasilContraOGolpe', tweet))
 tweets['ForaCunha'] = tweets['text'].apply(lambda tweet: word_in_text('ForaCunha', tweet))
 
-# print tweets['FicaQuerida'].value_counts()[True]
-# print tweets['NaoVaiTerGolpe'].value_counts()[True]
-# print tweets['ForaPT'].value_counts()[True]
-
 hashtags = ['ForaDilma', 'NaoVaiTerGolpe', 'TchauQuerida', 'BrasilContraOGolpe', 'ForaCunha']
 tweets_by_hashtags = [tweets['ForaDilma'].value_counts()[True],
                       tweets['NaoVaiTerGolpe'].value_counts()[True],
@@ -26,12 +19,12 @@ tweets_by_hashtags = [tweets['ForaDilma'].value_counts()[True],
                       tweets['BrasilContraOGolpe'].value_counts()[True],
                       tweets['ForaCunha'].value_counts()[True]]
 
-plt.subplots(figsize=(9,9))
+plt.subplots(figsize=(10,10))
 colors = ['gold', 'yellowgreen', 'lightcoral', 'lightskyblue', 'peachpuff']
-explode = (0.03, 0.03, 0.03, 0.05, 0.03)
+explode = (0.03, 0.03, 0.03, 0.03, 0.03)
 plt.pie(tweets_by_hashtags, explode=explode, labels=hashtags, colors=colors,
         autopct='%1.1f%%', shadow=True, startangle=140)
-plt.rcParams['font.size'] = 12
-plt.legend(tweets_by_hashtags, loc=(1,.6))
+plt.rcParams['font.size'] = 15
+plt.legend(tweets_by_hashtags, loc=(.95,.6), title='Numero de Tweets:'.decode('utf-8'), fontsize=15)
 plt.axis('equal')
 plt.show()

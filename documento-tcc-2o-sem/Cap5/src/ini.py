@@ -1,11 +1,6 @@
 %matplotlib inline
 
-import json
-import pandas as pd
-import matplotlib.pyplot as plt
-
-
-tweets_data_path = 'data/coleta-sem-dirty-data.json'
+tweets_data_path = 'data/small-data.json'
 
 tweets_data = []
 tweets_file = open(tweets_data_path, "r")

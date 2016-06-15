@@ -7,7 +7,7 @@ Uma característica comentada anteriormente sobre a rede social \textit{Twitter}
 
 Para este trabalho foi aproveitado o dia 17 de abril de 2016, onde foi realizado a votação no Congresso Brasileiro pela continuação do processo de Impeachment do cargo de presidente da senhora Dilma Rousseff. Neste dia, milhares de \textit{tweets} foram publicados utilizando a \textit{hashtag} \#ImpeachmentDay, a fim de comentar sobre o evento e, também, a atual situação política do Brasil.
 
-Com a finalidade de coletar todos os dados da referida \textit{hashtag}, foi desenvolvido um \textit{script} que utiliza o serviço de \textit{Stream} do \textit{Twitter}, também conhecido como \textit{FireHose}.
+Com a finalidade de coletar todos os dados da referida \textit{hashtag}, foi desenvolvido um \textit{script} que utiliza o serviço da API de \textit{streaming} do \textit{Twitter}.
 
 As primeiras linhas mostradas no Código~\ref{coleta-script} servem para importar as bibliotecas e objetos necessários para a utilização da API do \textit{Twitter}, assim como as informações das chaves de acesso e \textit{tokens} para o protocolo OAuth, que são fundamentais para a comunicação com o serviço de \textit{Stream}.
 
@@ -26,7 +26,7 @@ Quando este \textit{script} está em execução é mostrado na tela todos os \te
 	\label{exec-coleta}
 \end{figure}
 
-O \textit{script} apresentado no Código~\ref{coleta-script} permaneceu em execução durante 14 horas (das 08:30 às 22:30) do dia 17 de abril, resultando em um arquivo de 2.6 gigabytes. O formato deste arquivo é um JSON, onde apresenta todas as informações presentes em um \textit{tweet}, como demonstrado através do Código~\ref{peda-json}.
+O \textit{script} apresentado no Código~\ref{coleta-script} permaneceu em execução durante 12 horas (das 10:30 às 22:30) do dia 17 de abril, resultando em um arquivo de 2.6 gigabytes. O formato deste arquivo é um JSON, onde apresenta todas as informações presentes em um \textit{tweet}, como demonstrado através do Código~\ref{peda-json}.
 
 \lstinputlisting[language=Python, label=peda-json, caption=Exemplo de um \textit{tweet} no formato JSON]{Cap5/src/peda.json}
 
@@ -61,70 +61,37 @@ Combinado com o comando de \textit{stdout} ($>$), é possível redirecionar todo
 
 Após obter o arquivo JSON sem a presença de \textit{dirty data} foi possível iniciar o processo de extração de conhecimento utilizando o interpretador \textit{IPython}.
 
-Nesta primeira etapa foram importados as bibliotecas necessárias para se trabalhar com arquivos do tipo JSON e também para a geração de gráficos, conforme o Código~\ref{ini-py}.
+Nesta primeira etapa foram importados as bibliotecas necessárias para se trabalhar com arquivos do tipo JSON e também informado ao interpretador \textit{IPython} para apresentar gráficos em sua funcionalidade de \textit{notebook}, conforme o Código~\ref{imp-py}.
+
+\lstinputlisting[language=Python, label=imp-py, caption=Importação de bibliotecas Python]{Cap5/src/import.py}
+
+A linha 3 do Código~\ref{ini-py} atribui a uma variável a localização do arquivo para a leitura dos dados, onde, através de um laço de repetição o interpretador irá ler cada linha do arquivo JSON, ou seja, cada \textit{tweet} e irá adicionar a variável "tweets\_data", que foi declarada como uma lista Python na linha 5.
 
 \lstinputlisting[language=Python, label=ini-py, caption=Leitura do arquivo JSON]{Cap5/src/ini.py}
 
-A primeira linha do Código~\ref{ini-py} permite a visualização de gráficos e planilhas no \textit{IPython}. A partir da linha 8, é realizado a construção de um \textit{DataFrame}, definido na seção~\ref{pandas}, através leitura do arquivo coleta-sem-dirty-data.json.
+O Código~\ref{ini-py} também apresenta a construção de um \textit{DataFrame}, definido na seção~\ref{pandas}, que foi alocado a variável "tweets" \space na linha 14. Esses \textit{DataFrames} possuem uma arquitetura semelhante ao formato de tabelas, em que é possível adicionar uma coluna ou uma tabela a uma variável em Python.
 
-A execução deste código permitiu, a geração um \textit{DataFrame} para informar o número de \textit{tweets} que ele contém. Esses \textit{DataFrames} possuem uma arquitetura semelhante ao formato de tabelas, em que é possível adicionar uma coluna ou uma tabela a uma variável em Python. \textbf{\textcolor{red}{[MELHORAR]}} Através do mapeamento de uma condição específica em um \textit{DataFrame}, apresentado no Código~\ref{map-lingua} para mapear o texto, a língua e o país em que o \textit{tweet} foi publicado.
+Através de uma variável do tipo \textit{DataFrame} é possível determinar uma condição específica em que um \textit{DataFrame} consiga mapear informações de uma lista Python, neste caso a variável "tweet\_data". O Código~\ref{map-lingua} demonstra esta funcionalidade para mapear o conteúdo de texto, idioma e país de um \textit{tweet} da lista "tweets\_data" \space para o \textit{DataFrame} "tweets".
 
 \lstinputlisting[language=Python, label=map-lingua, caption=Mapeamento de variáveis para um \textit{DataFrame}]{Cap5/src/map-lingua.py}
 
-Após o mapeamento das informações do \textit{DataFrame} foi construído um gráfico em barras indicando as quantidades de \textit{tweets} em relação aos quatro idiomas mais significativos no conjunto de dados coletados, Gráfico~\ref{lingua}.
+A linha 6 do Código~\ref{map-lingua} demonstra a soma de \textit{tweets} com o mesmo idioma através da função "value\_counts()".
 
-\begin{grafico}[h]
-	\centering
-	\fbox{\includegraphics[width=1\textwidth]{Cap5/graficos/linguas}}
-	\caption{Idiomas que mais realizaram \textit{tweets}}
-	\vspace{-0.3cm}
-	\legend{FONTE: Elaborado pelo autor}
-	\label{lingua}
-\end{grafico}
-
-É possível verificar nesta figura que existe uma barra com o nome de \textit{und} para especificar o segundo idioma que mais realizou \textit{tweets}. Essa é uma condição em que não foi identificado o idioma de origem e, então, a API do \textit{Twitter} classifica como \textit{undefined}, ou indefinido no português. Essa linguagem indefinida ocorre devido ao \textit{software} em que o usuário está realizando o \textit{tweet}, por exemplo; um navegador \textit{web}, um aplicativo \textit{mobile} do \textit{Twitter} ou algum aplicativo de terceiro que permite realizar ações no \textit{Twitter}. Caso a linguagem não esteja definida nestes ambientes, a API a classifica como indefinida \cite{twitter-doc}.
-
-Semelhante ao que foi realizado no Código~\ref{map-lingua}, através do Código~\ref{map-pais} foi possível verificar quais os países que estavam comentando sobre a \textit{hashtag} \#ImpeachmentDay através do Código~\ref{map-pais}.
+Semelhante ao que foi realizado no Código~\ref{map-lingua}, foi possível verificar quais os cinco países que mais realizaram \textit{tweets} utilizando a \textit{hashtag} \#ImpeachmentDay através do Código~\ref{map-pais}.
 
 \lstinputlisting[language=Python, label=map-pais, caption=Contabilização do número de \textit{tweets} por países]{Cap5/src/map-pais.py}
 
-O Código~\ref{map-pais} verifica quais são os cinco países que mais realizaram \textit{tweets} através do mapeamento do \textit{DataFrame} e constrói um gráfico em barras para representá-los, Gráfico~\ref{paises}.
-
-\begin{grafico}[h]
-	\centering
-	\fbox{\includegraphics[width=1\textwidth]{Cap5/graficos/paises}}
-	\caption{Países que mais realizaram \textit{tweets}}
-	\vspace{-0.3cm}
-	\legend{FONTE: Elaborado pelo autor}
-	\label{paises}
-\end{grafico}
-
-Este gráfico demonstra, claramente, que a maior número de \textit{tweets} foram publicados do Brasil e apenas uma pequena quantia deles foram realizados nos Estados Unidos, Argentina, Portugal e Venezuela. É importante notar que nem todos os \textit{tweets} gerados possuem um país de origem, o que se assemelha a situação anterior, onde a API do \textit{Twitter} os classifica como \textit{undefined}, porém não sendo apresentado no gráfico da Figura~\ref{paises}.
-
 Utilizando uma biblioteca para expressões regulares, é possível procurar por \textit{tweets} de palavras específicas, ou \textit{hashtags} mesmo o usuário digitando com letras maiúsculas ou minúsculas.
 
-O Código~\ref{cod-hash}, apresenta uma função que procura determinadas palavras dentro do \textit{DataFrame}. Estas palavras então preenchem uma coluna com os \textit{tweets} relacionados com a palavra buscada. As palavras buscadas são referentes às \textit{hashtags} que mais foram publicadas nesta data.
+O Código~\ref{cod-hash}, apresenta uma função que procura determinadas palavras dentro do \textit{DataFrame}. Estas palavras então preenchem uma coluna com os \textit{tweets} relacionados com a palavra buscada. As palavras específicas buscadas são referentes às \textit{hashtags} que mais foram publicadas nesta data.
 
 \lstinputlisting[language=Python, label=cod-hash, caption=Buscar \textit{hashtags} mais publicadas]{Cap5/src/hashtags.py}
 
-As \textit{hashtags} são contabilizadas e apresentadas através do gráfico de setores da Figura~\ref{hashtag}, onde é possível verificar a porcentagem referente aos \textit{tweets} realizados com a \textit{hashtag} \#ImpeachmentDay. 
+Ainda utilizando a função declarada no Código~\ref{cod-hash} e aproveitando a temática da votação no congresso, o Código~\ref{cod-vota} implementa um filtro para buscar informações com a palavra "SIM" \space em \textit{tweets} com a \textit{hashtag} \#ForaDilma e a palavra "NÃO" \space para as publicações realizadas com a \textit{hashtag} \#NaoVaiTerGolpe.
 
-\begin{grafico}[h]
-	\centering
-	\fbox{\includegraphics[width=1\textwidth]{Cap5/graficos/hashtag}}
-	\caption{\textit{Hashtags} com o maior número de \textit{tweets}}
-	\vspace{-0.3cm}
-	\legend{FONTE: Elaborado pelo autor}
-	\label{hashtag}
-\end{grafico}
+\lstinputlisting[language=Python, label=cod-vota, caption=Buscar informações sobre votação]{Cap5/src/votacao.py}
 
-Através do Gráfico~\ref{hashtag}, pode-se notar que as \textit{hashtags} \#ForaDilma e \#TchauQuerida somaram um total de 60,7\%, indicando que a maioria dos \textit{tweets} eram de apoio ao processo de Impeachment da Presidente da República, diferentemente dos 34,3\% dos \textit{tweets} que é o somatório de \#BrasilContraOGolpe e \#NaoVaiTerGolpe.
-
-Dando continuidade ao uso da biblioteca para trabalhar com expressões regulares, o Código~\ref{extract-link} permite encontrar \textit{links} que são publicados pelos usuários através de seus \textit{tweets}. Estes \textit{links} podem ser filtrados de acordo com a \textit{hashtag} utilizada.
-
-\lstinputlisting[language=Python, label=extract-link, caption=Extração de \textit{links} provenientes de \textit{tweets}]{Cap5/src/extract-link.py}
-
-\textbf{\textcolor{red}{[MELHORAR]}} O resultado da execução do Código~\ref{extract-link}, foi uma lista de milhares de \textit{links} e o número em ordem do \textit{tweet} encontrado no \textit{DataFrame}. A Figura~\ref{links} apresenta um pedaço desta lista para exemplificação.
+Dando continuidade ao uso da biblioteca para trabalhar com expressões regulares, o Código~\ref{extract-link} permite encontrar \textit{links} ou entidades de vídeo e foto que são publicados pelos usuários através de seus \textit{tweets}. Estes \textit{links} podem ser filtrados de acordo com a \textit{hashtag} utilizada. A Figura~\ref{links} apresenta um pedaço desta lista para exemplificação.
 
 \begin{figure}[h]
 	\centering
@@ -135,24 +102,46 @@ Dando continuidade ao uso da biblioteca para trabalhar com expressões regulares
 	\label{links}
 \end{figure}
 
+
+\lstinputlisting[language=Python, label=extract-link, caption=Extração de \textit{links} provenientes de \textit{tweets}]{Cap5/src/extract-link.py}
+
 Semelhante ao Código~\ref{cod-hash}, é possível aplicar o filtro das \textit{hashtags} para encontrar nomes com maior popularidade através do Código~\ref{cod-fig-pol}.
 
 \lstinputlisting[language=Python, label=cod-fig-pol, caption=Filtro para coletar nomes com mais \textit{tweets}]{Cap5/src/figuras-pol.py}
 
-Como resultado, o Código~\ref{cod-fig-pol} constrói um gráfico em setores, onde é possível verificar a porcentagem de \textit{tweets} para nomes específicos, Gráfico~\ref{fig-pol}, porém não é possível, ainda, predizer se os argumentos a respeito destas pessoas são positivos ou negativos. \\
+A partir da linha 16 do Código~\ref{cod-fig-pol} é implementado as informações para a apresentação de um gráfico em setores para a melhor interpretação dos resultados.
 
-\begin{grafico}[h]
-	\centering
-	\fbox{\includegraphics[width=1\textwidth]{Cap5/graficos/figuras-politicas}}
-	\caption{Gráfico em setores para figuras importantes}
-	\vspace{-0.3cm}
-	\legend{FONTE: Elaborado pelo autor}
-	\label{fig-pol}
-\end{grafico}
+Através da utilização do \textit{DataFrame} com a variável "tweets", é possível ainda extrair algumas outras entidades dos \textit{tweets} como a data de criação, nome de usuário, quantidade de seguidores do usuário que publicou o \textit{tweet}, número de \textit{retweets} daquela publicação entre outros. O Código~\ref{dframe} apresenta alguma dessas formas de mapeamento e também imprime o número de \textit{tweets} originais e o número de \textit{retweets} que representam a totalidade das publicações coletadas.
 
-O gráfico de setores representado pela Figura~\ref{fig-pol}, demonstra que o nome mais mencionado foi de Eduardo Cunha e com apenas 2618 \textit{tweets} o nome de Michel Temer foi publicado. Até mesmo as menções ao ex-presidente Luiz Inácio "Lula" da Silva recebeu apenas 18,8\% do total dos nomes filtrados.
+\lstinputlisting[language=Python, label=dframe, caption=Extração de outras entidades dos \textit{tweets}]{Cap5/src/dframe.py}
 
+O Código~\ref{category} aproveita o mapeamento das entidades e define uma função para gerar gráficos em barra da entidade de usuários, que representa o número de \textit{tweets} que alguns usuários realizaram dentro das \textit{hashtags} utilizadas para a coleta de dados.
 
+\lstinputlisting[language=Python, label=category, caption=Filtro de usuários através de categorias de entidades]{Cap5/src/category.py}
+
+Uma outra maneira de apresentar os dados coletados é através do \textit{wordcloud} ou nuvem de palavras. O Código~\ref{wordcloud} apresenta o desenvolvimento de uma \textit{wordcloud}, onde é contabilizado o número de aparições de todas as palavras do conteúdo de texto publicado na rede social \textit{Twitter}.
+
+Para gerar uma \textit{wordcloud} é necessário realizar um laço de repetição, conforme demonstrado na linha 3, que irá verificar cada palavra e remover algumas exceções, por exemplo palavras iniciadas com "@" \space ou com "RT" \space em seu conteúdo.
+
+A linha 12 apresenta o uso da biblioteca \textit{nltk} para definir algumas palavras que serão bloqueadas como padrão, por exemplo, artigos definidos e indefinidos, que não são necessários a sua contabilização.
+
+\lstinputlisting[language=Python, label=wordcloud, caption=Implementação da \textit{wordcloud}]{Cap5/src/wordcloud.py}
+
+É possível também utilizar a entidade de localização, apresentada pela API do \textit{Twitter} como \textit{coordinates}, para conseguir as coordenadas de alguns \textit{tweets} e posicioná-las em ambientes de geolocalização.
+
+O Código~\ref{mapa} apresenta o desenvolvimento para este tipo de funcionalidade utilizando a biblioteca \textit{Folium}. Também foi necessário inverter a ordem de latitude e longitude disponibilizada pelo \textit{Twitter} para aplicar a correta localização no mapa, conforme apresentado na linha 3.
+
+\lstinputlisting[language=Python, label=mapa, caption=Implementação de coordenadas dos \textit{tweets}]{Cap5/src/mapa.py}
+
+A data de publicação dos \textit{tweets} é identificado pelo atributo "created\_at", onde, através do Código~\ref{time} é possível contabilizar o número de \textit{tweets} de um determinado horário e apresentá-los através de um gráfico.
+
+As linhas 4 e 5 especificam as informações do fuso horário, definindo por padrão o horário a partir de \textit{Greenwich} (GMT) e subtraído três horas para contemplar o horário de Brasília. Na linha 7 é especificado a contabilização dentro de um intervalo de uma hora e as linhas do Código~\ref{time} que se seguem são as funcionalidades para a criação do gráfico.
+
+\lstinputlisting[language=Python, label=time, caption=Data da publicação dos \textit{tweets}]{Cap5/src/time.py}
+
+Todos os códigos implementados neste trabalho, exceto o Código~\ref{coleta-script} e os \textit{scripts} para a limpeza de \textit{dirty data}, foram desenvolvidos utilizando a funcionalidade de \textit{notebook} do \textit{IPython}, onde é possível apresentar os códigos ao interpretador do Python utilizando um navegador \textit{web}.
+
+Os resultados apresentados durante a implementação são apresentados no capítulo posterior a este, onde serão analisado os resultados encontrados.
 
 
 
