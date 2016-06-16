@@ -101,6 +101,39 @@ Da mesma maneira que a Figura~\ref{fig:wordcloud} apresenta as palavras com mais
 	\label{fig:worddilma}
 \end{figure}
 
-Fazendo o uso dos atributos de coordenadas, implementados no Código~\ref{mapa}, através da biblioteca \textit{Folium} é possível verificar a distribuição dos \textit{tweets}
+Exercendo o uso dos atributos de coordenadas, implementados no Código~\ref{mapa} utilizando a biblioteca \textit{Folium}, é possível verificar a distribuição dos \textit{tweets} geograficamente. As informações de latitude e longitude permitem que cada \textit{tweet} seja representado por um marcador conforme ilustrado pela Figura~\ref{fig:mapa}.
+
+A coleta de dados resultou em um arquivo JSON com 358.293 \textit{tweets}, porém apenas 470 destas publicações possuem informações de coordenadas. Este total de \textit{tweets} com atributos de posições geográficas representa apenas míseros 0,13\% da totalidade dos dados, não sendo possível, então, afirmar que é um padrão ou uma tendência.
+
+A utilização dos dados geográficos, representados pela Figura~\ref{fig:mapa}, demonstra mais um das funcionalidades que as bibliotecas da linguagem Python disponibiliza para a apresentação dos dados. Através do \textit{IPython} é possível navegar através do mapa, ter interações com os marcadores e se distanciar ou aproximar para verificar detalhes sobre as localidades da publicação. \\ \\ \\ \\ \\
+
+\begin{figure}[h]
+	\centering
+	\fbox{\includegraphics[width=1\textwidth]{Cap6/imagens/mapa}}
+	\caption{Distribuição geográfica de \textit{tweets}}
+	\vspace{-0.3cm}
+	\legend{FONTE: Elaborado pelo autor}
+	\label{fig:mapa}
+\end{figure}
+
+\begin{grafico}[h!]
+	\centering
+	\fbox{\includegraphics[width=1\textwidth]{Cap6/graficos/time}}
+	\caption{Publicação de \textit{tweets} por hora}
+	\vspace{-0.3cm}
+	\legend{FONTE: Elaborado pelo autor}
+	\label{time}
+\end{grafico}
+
+O Gráfico~\ref{time} apresenta a quantidade de publicações de \textit{tweets} por hora dentro das 12 horas de coletas.
+
+É notado que no período das 14 horas (02 PM) ocorreu o maior número de \textit{tweets}, chegando a quase 100 mil publicações. O horário da votação no congresso começou às 16 horas, horário de Brasília, momento em que teve as maiores baixas apresentas pelo Gráfico~\ref{time}. A ascensão dos \textit{tweest} volta acontecer após às 22 horas, próximo ao horário de conclusão e resultado da votação.
+
+As bibliotecas que Python dispõe, permitiu a apresentação de gráficos em colunas, setores e áreas. Também a visualização de palavras mais mencionadas através do \textit{wordcloud} e a distribuições dos \textit{tweest} através de coordenadas para ser apresentadas em mapa.
+
+
+
+
+
 
 
