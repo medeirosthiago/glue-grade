@@ -28,9 +28,9 @@ O Gráfico~\ref{paises} demonstra, claramente, que a maior número de \textit{tw
 	\label{paises}
 \end{grafico}
 
-Durante a votação no Congresso para a continuação do processo de Impeachment da Presidente Dilma Rousseff, os deputados declaravam o seu posicionamento dizendo se o seu voto era "SIM" para o processo ou "NÃO" caso o contrário.
+Durante a votação no Congresso para a continuação do processo de Impeachment da Presidente Dilma Rousseff, os deputados declaravam o seu posicionamento dizendo se o seu voto era "SIM" \space para o processo ou "NÃO" \space caso o contrário.
 
-O Gráfico~\ref{votacao}, apresenta a contabilização de palavras "SIM" \space e "NÃO" \space e as \textit{hashtags} \#ForaDilma e \#NaoVaiTerGolpe em \textit{tweets}. Dentro da \textit{hashtag} \#ForaDilma foi verificado a quantidades de palavras "SIM" isoladas e para a \textit{hashtag} \#NaoVaiTerGolpe verificou-se a disponibilidade da palavra "NÃO". É válido informar que o Código~\ref{cod-vota} possui um filtro para não contabilizar as palavra "NÃO" que fazem parte da palavra-chave da \textit{hashtga} \#NaoVaiTerGolpe, podendo coletar apenas as palavras isoladas que fazem menções a votação. \\ \\ \\ \\ \\
+O Gráfico~\ref{votacao}, apresenta a contabilização de palavras "SIM" \space e "NÃO" \space e as \textit{hashtags} \#ForaDilma e \#NaoVaiTerGolpe em \textit{tweets}. Dentro da \textit{hashtag} \#ForaDilma foi verificado a quantidades de palavras "SIM" \space isoladas e para a \textit{hashtag} \#NaoVaiTerGolpe verificou-se a disponibilidade da palavra "NÃO" \space . É válido informar que o Código~\ref{cod-vota} possui um filtro para não contabilizar as palavra "NÃO" \space que fazem parte da palavra-chave da \textit{hashtag} \#NaoVaiTerGolpe, podendo coletar apenas as palavras isoladas que fazem menções a votação. \\ \\ \\ \\ \\
 
 \begin{grafico}[h]
 	\centering
@@ -75,7 +75,7 @@ Uma outra maneira de apresentar a contabilização de palavras mais mencionadas 
 
 Através da Figura~\ref{fig:wordcloud}, é possível verificar claramente palavras como "ImpeachmentDay", "Dilma", "Cunha", "Brasil", "ForaDilma", "impeachment" dentre outras.
 
-As cores disponibilizadas na Figura~\ref{fig:wordcloud} são da biblioteca padrão do \textit{wordcloud} não representando nenhum outro indício a não ser uma funcionalidade aleatória para melhor visualizar as palavras. \\ \\ \\ \\ \\ \\
+As cores disponibilizadas na Figura~\ref{fig:wordcloud} são da biblioteca padrão do \textit{wordcloud} não representando nenhum outro indício a não ser uma funcionalidade aleatória para melhor visualizar as palavras. \\ \\ \\ \\ \\ \\ \\
 
 \begin{figure}[h]
 	\centering
@@ -86,7 +86,11 @@ As cores disponibilizadas na Figura~\ref{fig:wordcloud} são da biblioteca padr�
 	\label{fig:wordcloud}
 \end{figure}
 
-É possível também passar alguma imagem para a biblioteca com o intuito de utilizar das formas e cores presentes na imagem para uma tentativa de representação do \textit{wordcloud}.
+A biblioteca \textit{wordcloud} na linguagem Python, permite que o desenvolvedor utilize alguma imagem como modelo. Onde as cores e o posicionamento das palavras são disponibilizados na tentativa de representar a imagem modelo.
+
+A Figura~\ref{fig:worddilma} ilustra este tipo de funcionalidade apresentando a imagem modelo uma foto da Presidente suspensa Dilma Rousseff. Ao lado direito é demonstrado o \textit{wordcloud} gerado, que representa cores com tonalidades semelhantes a imagem modelo.
+
+Da mesma maneira que a Figura~\ref{fig:wordcloud} apresenta as palavras com mais menções, o \textit{wordcloud} da Figura~\ref{fig:worddilma} também disponibiliza as 500 palavras e \textit{hastags} mais publicadas coletadas durante o dia da votação no Congresso brasileiro. \\ \\ \\
 
 \begin{figure}[h]
 	\centering
@@ -96,5 +100,7 @@ As cores disponibilizadas na Figura~\ref{fig:wordcloud} são da biblioteca padr�
 	\legend{FONTE: Elaborado pelo autor}
 	\label{fig:worddilma}
 \end{figure}
+
+Fazendo o uso dos atributos de coordenadas, implementados no Código~\ref{mapa}, através da biblioteca \textit{Folium} é possível verificar a distribuição dos \textit{tweets}
 
 
