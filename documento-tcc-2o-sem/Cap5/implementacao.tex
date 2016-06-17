@@ -119,13 +119,13 @@ O Código~\ref{category} aproveita o mapeamento das entidades e define uma funç
 
 \lstinputlisting[language=Python, label=category, caption=Filtro de usuários através de categorias de entidades]{Cap5/src/category.py}
 
-Uma outra maneira de apresentar os dados coletados é através do \textit{wordcloud} ou nuvem de palavras. O Código~\ref{wordcloud} apresenta o desenvolvimento de uma \textit{wordcloud}, onde é contabilizado o número de aparições de todas as palavras do conteúdo de texto publicado na rede social \textit{Twitter}.
+Uma outra maneira de apresentar os dados coletados é através do \textit{Word Cloud} ou nuvem de palavras. O Código~\ref{wordcloud} apresenta o desenvolvimento de uma \textit{Word Cloud}, onde é contabilizado o número de aparições de todas as palavras do conteúdo de texto publicado na rede social \textit{Twitter}.
 
-Para gerar uma \textit{wordcloud} é necessário realizar um laço de repetição, conforme demonstrado na linha 3, que irá verificar cada palavra e remover algumas exceções, por exemplo palavras iniciadas com "@" \space ou com "RT" \space em seu conteúdo.
+Para gerar uma \textit{Word Cloud} é necessário realizar um laço de repetição, conforme demonstrado na linha 3, que irá verificar cada palavra e remover algumas exceções, por exemplo palavras iniciadas com "@" \space ou com "RT" \space em seu conteúdo.
 
 A linha 12 apresenta o uso da biblioteca \textit{nltk} para definir algumas palavras que serão bloqueadas como padrão, por exemplo, artigos definidos e indefinidos, que não são necessários a sua contabilização.
 
-\lstinputlisting[language=Python, label=wordcloud, caption=Implementação da \textit{wordcloud}]{Cap5/src/wordcloud.py}
+\lstinputlisting[language=Python, label=wordcloud, caption=Implementação da \textit{Word Cloud}]{Cap5/src/wordcloud.py}
 
 É possível também utilizar a entidade de localização, apresentada pela API do \textit{Twitter} como \textit{coordinates}, para conseguir as coordenadas de alguns \textit{tweets} e posicioná-las em ambientes de geolocalização.
 
