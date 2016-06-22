@@ -1,25 +1,29 @@
+% !TeX encoding = UTF-8
+
+\preambulo{Trabalho de conclus{\~ a}o de curso apresentado como requisito obrigat{\' o}rio para obten{\c c}{\~ a}o do t{\' i}tulo de Bacharel em Ci{\^ e}ncia da Computa{\c c}{\~ a}o da Faculdade Anglo-Americano de Foz do Igua{\c c}u.}
+\local{Foz do Igua{\c c}u}
+\instituicao{Faculdade Anglo-Americano de Foz do Igua{\c c}u}
+
+
 % ---
 % CAPA
 % ---
 \renewcommand{\imprimircapa}{%
   \begin{capa}
   	\begin{center}
-  		\large{FACULDADE ANGLO-AMERICANO DE FOZ DO IGUAÇU}
+  		\textbf{\large{\MakeUppercase{\imprimirinstituicao}}}
   	\end{center}
     \center
-    %{\imprimirautor}
-        
-    %{\ABNTEXchapterfont\large\imprimirautor} % Original
-    {\ABNTEXchapterfont\imprimirautor}
+
+    {\normalsize\MakeUppercase{\imprimirautor}}
 
     \vspace*{8cm}
-    %{\imprimirtitulo}
-    \ABNTEXchapterfont\bfseries\large\imprimirtitulo
+    \ABNTEXchapterfont\bfseries\large\MakeUppercase{\imprimirtitulo}
     \vfill
     
-    \imprimirlocal
+    {\normalfont\small\MakeUppercase{\imprimirlocal}}
 
-    \imprimirdata
+    {\normalfont\small\imprimirdata}
     
     \vspace*{1cm}
   \end{capa}
@@ -31,44 +35,51 @@
 % ---
 \renewcommand{\folhaderostocontent}{
 		\center	
-		%{\large\textbf\imprimirautor} %Original
-			{\large\imprimirautor}
+		{\normalsize\MakeUppercase{\imprimirautor}}
 	
 	    \vspace*{8cm}		
 		
-		
-		{\large\textbf\imprimirtitulo}
+		{\large\MakeUppercase{\imprimirtitulo}}
 	
 		\vspace*{3cm}	
 
 		\abntex@ifnotempty{\imprimirpreambulo}{
 			\hspace{.3\textwidth}
 			\begin{minipage}{.55\textwidth}
-			
-				\SingleSpacing
+				{\footnotesize \SingleSpacing
 				\imprimirpreambulo				
 				\SingleSpacing				
 				{\imprimirorientadorRotulo~\imprimirorientador\par}
 				\SingleSpacing	
 		        \abntex@ifnotempty{\imprimircoorientador}{
-		             {\imprimircoorientadorRotulo~\imprimircoorientador}
-		}
-		\end{minipage}
+		             {\imprimircoorientadorRotulo~\imprimircoorientador} } }
+			\end{minipage}
 		
 			\vspace*{\fill}
 		}
 		
+		{\normalfont\small\MakeUppercase{\imprimirlocal}}
 		
-		{\large\textbf\imprimirlocal}
-		
-		{\large\textbf\imprimirdata}		
+		{\normalfont\small\imprimirdata}		
 }
+
 
 % ---
 % OUTRAS CONFIGURAÇÕES
 % ---
 \setlength{\parindent}{1.3cm} 		% Tamanho do parágrafo
 \setlength{\parskip}{0.2cm}  		% Controle do espaçamento entre um parágrafo e outro
+
+% Controle do espaçamento entre a legenda e a fonte (e nota) de figuras e tabelas}:
+\setlength{\abovecaptionskip}{0 mm}
+\setlength{\belowcaptionskip}{1 mm}
+
+% Define os tamanhos das margens do documento
+% ---
+\setlrmarginsandblock{3cm}{2cm}{*}
+\setulmarginsandblock{3cm}{2cm}{*}
+\checkandfixthelayout
+
 	
 % Altera o tamanho das fontes dos capítulos e dos apêndices
 % ---
@@ -100,17 +111,31 @@
 \hyphenation{proces-samento}
 \hyphenation{neces-sidades}
 
-% Configura layout para elementos textuais
-% -
-\makepagestyle{abnt_ufpr}
+% ---
+% CONFIGURACAO DO ESTILO DE PÁGINA TEXTUAL 
+% ---
+% criar um novo estilo de cabeçalhos e rodapés
+\makepagestyle{abnt-anglo}
+  %%cabeçalhos
+  \makeevenhead{abnt-anglo}{\ABNTEXfontereduzida\thepage}{}{}
+  \makeoddhead{abnt-anglo}{}{}{\ABNTEXfontereduzida\thepage}
+  %\makeheadrule{textualCC-Anglo}{\textwidth}{\normalrulethickness} %linha
+  %% rodapé
+  \makeevenfoot{abnt-anglo}{}{}{} 
+  \makeoddfoot{abnt-anglo}{}{}{}
+\pagestyle{abnt-anglo}
 
-\makeoddhead{abntchapfirst}{}{}{\ABNTEXfontereduzida\thepage}
-
-\pagestyle{abnt_ufpr}
-
-\newtheorem{theorem}{Teorema}[chapter]
-\newtheorem{definition}[theorem]{Defini\c{c}\~{a}o}
-\newtheorem{proposition}[theorem]{Proposi\c{c}\~{a}o}
+% ---
+% utfpr-style
+%\makepagestyle{abnt_ufpr}
+%
+%\makeoddhead{abntchapfirst}{}{}{\ABNTEXfontereduzida\thepage}
+%
+%\pagestyle{abnt_ufpr}
+%
+%\newtheorem{theorem}{Teorema}[chapter]
+%\newtheorem{definition}[theorem]{Defini\c{c}\~{a}o}
+%\newtheorem{proposition}[theorem]{Proposi\c{c}\~{a}o}
 
 \makeatother
 
@@ -183,11 +208,17 @@
 % Modifica o espaçamento no sumário
 % Nao ha espacos, para as entradas de capitulos
 % ---
-\setlength{\cftbeforeparagraphskip}{0pt}
-\setlength{\cftbeforesubsectionskip}{0pt}
+\setlength{\cftbeforechapterskip}{\onelineskip}
 \setlength{\cftbeforesectionskip}{0pt}
+\setlength{\cftbeforesubsectionskip}{0pt}
 \setlength{\cftbeforesubsubsectionskip}{0pt}
-\setlength{\cftbeforechapterskip}{0pt}
+\setlength{\cftbeforeparagraphskip}{0pt}
+
+%\setlength{\cftbeforeparagraphskip}{0pt}
+%\setlength{\cftbeforesubsectionskip}{0pt}
+%\setlength{\cftbeforesectionskip}{0pt}
+%\setlength{\cftbeforesubsubsectionskip}{0pt}
+%\setlength{\cftbeforechapterskip}{0pt}
 
 % ---
 % CAPITALIZAÇÃO DE LISTAS
