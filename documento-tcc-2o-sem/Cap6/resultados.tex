@@ -6,12 +6,12 @@ Este capítulo tem como finalidade apresentar os resultados obtidos através das
 
 Após o mapeamento das informações do \textit{DataFrame}, apresentado pelo Código~\ref{ini-py} e Código~\ref{map-lingua}, foi construído um gráfico em barras indicando as quantidades de \textit{tweets} em relação aos quatro idiomas mais significativos no conjunto de dados coletados, Gráfico~\ref{lingua}.
 
-\begin{grafico}[h]
+\begin{grafico}[h!]
 	\centering
 	\fbox{\includegraphics[width=1\textwidth]{Cap6/graficos/linguas}}
+	\vspace{-0.2cm}
 	\caption{Idiomas que mais realizaram \textit{tweets}}
-	\vspace{-0.3cm}
-	\legend{FONTE: Elaborado pelo autor}
+	\fonte{Elaborado pelo autor}
 	\label{lingua}
 \end{grafico}
 
@@ -22,22 +22,22 @@ O Gráfico~\ref{paises} demonstra, claramente, que a maior número de \textit{tw
 \begin{grafico}[h]
 	\centering
 	\fbox{\includegraphics[width=1\textwidth]{Cap6/graficos/paises}}
+	\vspace{-0.2cm}
 	\caption{Países que mais realizaram \textit{tweets}}
-	\vspace{-0.3cm}
-	\legend{FONTE: Elaborado pelo autor}
+	\fonte{Elaborado pelo autor}
 	\label{paises}
 \end{grafico}
 
 Durante a votação no Congresso para a continuação do processo de Impeachment da Presidente Dilma Rousseff, os deputados declaravam o seu posicionamento dizendo se o seu voto era "SIM" \space para o processo ou "NÃO" \space caso o contrário.
 
-O Gráfico~\ref{votacao}, apresenta a contabilização de palavras "SIM" \space e "NÃO" \space e as \textit{hashtags} \#ForaDilma e \#NaoVaiTerGolpe em \textit{tweets}. Dentro da \textit{hashtag} \#ForaDilma foi verificado a quantidades de palavras "SIM" \space isoladas e para a \textit{hashtag} \#NaoVaiTerGolpe verificou-se a disponibilidade da palavra "NÃO" \space . É válido informar que o Código~\ref{cod-vota} possui um filtro para não contabilizar as palavra "NÃO" \space que fazem parte da palavra-chave da \textit{hashtag} \#NaoVaiTerGolpe, podendo coletar apenas as palavras isoladas que fazem menções a votação. \\ \\ \\ \\ \\
+O Gráfico~\ref{votacao}, apresenta a contabilização de palavras "SIM" \space e "NÃO" \space e as \textit{hashtags} \#ForaDilma e \#NaoVaiTerGolpe em \textit{tweets}. Dentro da \textit{hashtag} \#ForaDilma foi verificado a quantidades de palavras "SIM" \space isoladas e para a \textit{hashtag} \#NaoVaiTerGolpe verificou-se a disponibilidade da palavra "NÃO" \space . É válido informar que o Código~\ref{cod-vota} possui um filtro para não contabilizar as palavra "NÃO" \space que fazem parte da palavra-chave da \textit{hashtag} \#NaoVaiTerGolpe, podendo coletar apenas as palavras isoladas que fazem menções a votação.
 
 \begin{grafico}[h]
 	\centering
 	\fbox{\includegraphics[width=1\textwidth]{Cap6/graficos/votacao}}
-	\caption{Número de menções de "SIM" e "NÃO" em \textit{tweets}}
-	\vspace{-0.3cm}
-	\legend{FONTE: Elaborado pelo autor}
+	\vspace{-0.2cm}
+	\caption{Número de menções de "SIM" \space e "NÃO" \space em \textit{tweets}}
+	\fonte{Elaborado pelo autor}
 	\label{votacao}
 \end{grafico}
 
@@ -46,9 +46,9 @@ Semelhante a solução anterior, é possível contabilizar as \textit{hashtags} 
 \begin{grafico}[h]
 	\centering
 	\fbox{\includegraphics[width=1\textwidth]{Cap6/graficos/hashtag}}
+	\vspace{-0.2cm}
 	\caption{\textit{Hashtags} com o maior número de \textit{tweets}}
-	\vspace{-0.3cm}
-	\legend{FONTE: Elaborado pelo autor}
+	\fonte{Elaborado pelo autor}
 	\label{hashtag}
 \end{grafico}
 
@@ -61,28 +61,28 @@ O Código~\ref{cod-fig-pol} explicado no capítulo anterior, constrói um gráfi
 \begin{grafico}[h]
 	\centering
 	\fbox{\includegraphics[width=1\textwidth]{Cap6/graficos/figuras-politicas}}
+	\vspace{-0.2cm}
 	\caption{Gráfico em setores para figuras importantes}
-	\vspace{-0.3cm}
-	\legend{FONTE: Elaborado pelo autor}
+	\fonte{Elaborado pelo autor}
 	\label{fig-pol}
 \end{grafico}
 
 O Gráfico~\ref{fig-pol}, demonstra que o nome mais mencionado foi de Eduardo Cunha e com apenas 2618 \textit{tweets} o nome de Michel Temer foi publicado. Até mesmo as menções ao ex-presidente Luiz Inácio "Lula" \space da Silva recebeu apenas 18,8\% do total dos nomes filtrados.
 
-Semelhante ao Gráfico~\ref{hashtag}, é possível verificar o número de \textit{tweets} em que foi mencionado cada figura política. Porém não é contabilizado o nome de Dilma Rousseff, pois quase todos os \textit{tweets} fazem alguma menção a ela, resultando então em uma porcentagem mínima para os nomes apresentados no Gráfico~\ref{fig-pol}. \\ \\ \\
+Semelhante ao Gráfico~\ref{hashtag}, é possível verificar o número de \textit{tweets} em que foi mencionado cada figura política. Porém não é contabilizado o nome de Dilma Rousseff, pois quase todos os \textit{tweets} fazem alguma menção a ela, resultando então em uma porcentagem mínima para os nomes apresentados no Gráfico~\ref{fig-pol}.
 
 Uma outra maneira de apresentar a contabilização de palavras mais mencionadas é através da \textit{Word Cloud}. Conforme implementado e apresentado no Código~\ref{wordcloud} é possível visualizar algumas palavras-chaves, onde as mais citadas apresentam um tamanho de fonte maior, assim como as menos citadas são representadas através das palavras menores.
 
 Através da Figura~\ref{fig:wordcloud}, é possível verificar claramente palavras como "ImpeachmentDay", "Dilma", "Cunha", "Brasil", "ForaDilma", "impeachment" dentre outras.
 
-As cores disponibilizadas na Figura~\ref{fig:wordcloud} são da biblioteca padrão do \textit{Word Cloud} não representando nenhum outro indício a não ser uma funcionalidade aleatória para melhor visualizar as palavras. \\ \\ \\ \\ \\ \\ \\
+As cores disponibilizadas na Figura~\ref{fig:wordcloud} são da biblioteca padrão do \textit{Word Cloud} não representando nenhum outro indício a não ser uma funcionalidade aleatória para melhor visualizar as palavras.
 
 \begin{figure}[h]
 	\centering
 	\fbox{\includegraphics[width=1\textwidth]{Cap6/imagens/wordcloud}}
+    \vspace{-0.2cm}
 	\caption{\textit{Word Cloud} das 500 palavras mais mencionadas}
-	\vspace{-0.3cm}
-	\legend{FONTE: Elaborado pelo autor}
+	\fonte{Elaborado pelo autor}
 	\label{fig:wordcloud}
 \end{figure}
 
@@ -90,14 +90,14 @@ A biblioteca \textit{Word Cloud} na linguagem Python, permite que o desenvolvedo
 
 A Figura~\ref{fig:worddilma} ilustra este tipo de funcionalidade apresentando a imagem modelo uma foto da Presidente suspensa Dilma Rousseff. Ao lado direito é demonstrado o \textit{Word Cloud} gerado, que representa cores com tonalidades semelhantes a imagem modelo.
 
-Da mesma maneira que a Figura~\ref{fig:wordcloud} apresenta as palavras com mais menções, o \textit{Word Cloud} da Figura~\ref{fig:worddilma} também disponibiliza as 500 palavras e \textit{hastags} mais publicadas coletadas durante o dia da votação no Congresso brasileiro. \\ \\ \\
+Da mesma maneira que a Figura~\ref{fig:wordcloud} apresenta as palavras com mais menções, o \textit{Word Cloud} da Figura~\ref{fig:worddilma} também disponibiliza as 500 palavras e \textit{hastags} mais publicadas coletadas durante o dia da votação no Congresso brasileiro.
 
 \begin{figure}[h]
 	\centering
 	\fbox{\includegraphics[width=1\textwidth]{Cap6/imagens/worddilma}}
+	\vspace{-0.2cm}
 	\caption{\textit{Word Cloud} utilizando imagem como modelo}
-	\vspace{-0.3cm}
-	\legend{FONTE: Elaborado pelo autor}
+	\fonte{Elaborado pelo autor}
 	\label{fig:worddilma}
 \end{figure}
 
@@ -105,23 +105,23 @@ Exercendo o uso dos atributos de coordenadas, implementados no Código~\ref{mapa
 
 A coleta de dados resultou em um arquivo JSON com 358.293 \textit{tweets}, porém apenas 470 destas publicações possuem informações de coordenadas. Este total de \textit{tweets} com atributos de posições geográficas representa apenas míseros 0,13\% da totalidade dos dados, não sendo possível, então, afirmar que é um padrão ou uma tendência.
 
-A utilização dos dados geográficos, representados pela Figura~\ref{fig:mapa}, demonstra mais um das funcionalidades que as bibliotecas da linguagem Python disponibiliza para a apresentação dos dados. Através do \textit{IPython} é possível navegar através do mapa, ter interações com os marcadores e se distanciar ou aproximar para verificar detalhes sobre as localidades da publicação. \\ \\ \\ \\ \\
+A utilização dos dados geográficos, representados pela Figura~\ref{fig:mapa}, demonstra mais um das funcionalidades que as bibliotecas da linguagem Python disponibiliza para a apresentação dos dados. Através do \textit{IPython} é possível navegar através do mapa, ter interações com os marcadores e se distanciar ou aproximar para verificar detalhes sobre as localidades da publicação.
 
 \begin{figure}[h]
 	\centering
 	\fbox{\includegraphics[width=1\textwidth]{Cap6/imagens/mapa}}
+	\vspace{-0.2cm}
 	\caption{Distribuição geográfica de \textit{tweets}}
-	\vspace{-0.3cm}
-	\legend{FONTE: Elaborado pelo autor}
+	\fonte{Elaborado pelo autor}
 	\label{fig:mapa}
 \end{figure}
 
 \begin{grafico}[h!]
 	\centering
 	\fbox{\includegraphics[width=1\textwidth]{Cap6/graficos/time}}
+	\vspace{-0.2cm}
 	\caption{Publicação de \textit{tweets} por hora}
-	\vspace{-0.3cm}
-	\legend{FONTE: Elaborado pelo autor}
+	\fonte{Elaborado pelo autor}
 	\label{time}
 \end{grafico}
 
