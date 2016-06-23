@@ -30,7 +30,7 @@ O Gráfico~\ref{paises} demonstra, claramente, que a maior número de \textit{tw
 
 Durante a votação no Congresso para a continuação do processo de Impeachment da Presidente Dilma Rousseff, os deputados declaravam o seu posicionamento dizendo se o seu voto era "SIM" \space para o processo ou "NÃO" \space caso o contrário.
 
-O Gráfico~\ref{votacao}, apresenta a contabilização de palavras "SIM" \space e "NÃO" \space e as \textit{hashtags} \#ForaDilma e \#NaoVaiTerGolpe em \textit{tweets}. Dentro da \textit{hashtag} \#ForaDilma foi verificado a quantidades de palavras "SIM" \space isoladas e para a \textit{hashtag} \#NaoVaiTerGolpe verificou-se a disponibilidade da palavra "NÃO" \space . É válido informar que o Código~\ref{cod-vota} possui um filtro para não contabilizar as palavra "NÃO" \space que fazem parte da palavra-chave da \textit{hashtag} \#NaoVaiTerGolpe, podendo coletar apenas as palavras isoladas que fazem menções a votação.
+O Gráfico~\ref{votacao}, apresenta a contabilização de palavras "SIM" \space e "NÃO" \space e as \textit{hashtags} \#ForaDilma e \#NaoVaiTerGolpe em \textit{tweets}. Dentro da \textit{hashtag} \#ForaDilma foi verificado a quantidades de palavras "SIM" \space isoladas e para a \textit{hashtag} \#NaoVaiTerGolpe verificou-se a disponibilidade da palavra "NÃO" \space . É válido informar que o Código~\ref{cod-vota} possui um filtro para não contabilizar as palavra "NÃO" \space que fazem parte da palavra-chave da \textit{hashtag} \#NaoVaiTerGolpe, podendo coletar apenas as palavras isoladas que fazem menções a votação. \\ \\ \\ \\ \\ \\
 
 \begin{grafico}[h]
 	\centering
@@ -69,13 +69,7 @@ O Código~\ref{cod-fig-pol} explicado no capítulo anterior, constrói um gráfi
 
 O Gráfico~\ref{fig-pol}, demonstra que o nome mais mencionado foi de Eduardo Cunha e com apenas 2618 \textit{tweets} o nome de Michel Temer foi publicado. Até mesmo as menções ao ex-presidente Luiz Inácio "Lula" \space da Silva recebeu apenas 18,8\% do total dos nomes filtrados.
 
-Semelhante ao Gráfico~\ref{hashtag}, é possível verificar o número de \textit{tweets} em que foi mencionado cada figura política. Porém não é contabilizado o nome de Dilma Rousseff, pois quase todos os \textit{tweets} fazem alguma menção a ela, resultando então em uma porcentagem mínima para os nomes apresentados no Gráfico~\ref{fig-pol}.
-
-Uma outra maneira de apresentar a contabilização de palavras mais mencionadas é através da \textit{Word Cloud}. Conforme implementado e apresentado no Código~\ref{wordcloud} é possível visualizar algumas palavras-chaves, onde as mais citadas apresentam um tamanho de fonte maior, assim como as menos citadas são representadas através das palavras menores.
-
-Através da Figura~\ref{fig:wordcloud}, é possível verificar claramente palavras como "ImpeachmentDay", "Dilma", "Cunha", "Brasil", "ForaDilma", "impeachment" dentre outras.
-
-As cores disponibilizadas na Figura~\ref{fig:wordcloud} são da biblioteca padrão do \textit{Word Cloud} não representando nenhum outro indício a não ser uma funcionalidade aleatória para melhor visualizar as palavras.
+Semelhante ao Gráfico~\ref{hashtag}, é possível verificar o número de \textit{tweets} em que foi mencionado cada figura política. Porém não é contabilizado o nome de Dilma Rousseff, pois quase todos os \textit{tweets} fazem alguma menção a ela, resultando então em uma porcentagem mínima para os nomes apresentados no Gráfico~\ref{fig-pol}. \\ \\ \\ \\ \\ \\
 
 \begin{figure}[h]
 	\centering
@@ -85,6 +79,12 @@ As cores disponibilizadas na Figura~\ref{fig:wordcloud} são da biblioteca padr�
 	\fonte{Elaborado pelo autor}
 	\label{fig:wordcloud}
 \end{figure}
+
+Uma outra maneira de apresentar a contabilização de palavras mais mencionadas é através da \textit{Word Cloud}. Conforme implementado e apresentado no Código~\ref{wordcloud} é possível visualizar algumas palavras-chaves, onde as mais citadas apresentam um tamanho de fonte maior, assim como as menos citadas são representadas através das palavras menores.
+
+Através da Figura~\ref{fig:wordcloud}, é possível verificar claramente palavras como "ImpeachmentDay", "Dilma", "Cunha", "Brasil", "ForaDilma", "impeachment" dentre outras.
+
+As cores disponibilizadas na Figura~\ref{fig:wordcloud} são da biblioteca padrão do \textit{Word Cloud} não representando nenhum outro indício a não ser uma funcionalidade aleatória para melhor visualizar as palavras.
 
 A biblioteca \textit{Word Cloud} na linguagem Python, permite que o desenvolvedor utilize alguma imagem como modelo. Onde as cores e o posicionamento das palavras são disponibilizados na tentativa de representar a imagem modelo.
 
@@ -103,7 +103,7 @@ Da mesma maneira que a Figura~\ref{fig:wordcloud} apresenta as palavras com mais
 
 Exercendo o uso dos atributos de coordenadas, implementados no Código~\ref{mapa} utilizando a biblioteca \textit{Folium}, é possível verificar a distribuição dos \textit{tweets} geograficamente. As informações de latitude e longitude permitem que cada \textit{tweet} seja representado por um marcador conforme ilustrado pela Figura~\ref{fig:mapa}.
 
-A coleta de dados resultou em um arquivo JSON com 358.293 \textit{tweets}, porém apenas 470 destas publicações possuem informações de coordenadas. Este total de \textit{tweets} com atributos de posições geográficas representa apenas míseros 0,13\% da totalidade dos dados, não sendo possível, então, afirmar que é um padrão ou uma tendência.
+A coleta de dados resultou em um arquivo JSON com 358.293 \textit{tweets}, porém apenas 470 destas publicações possuem informações de coordenadas. Este total de \textit{tweets} com atributos de posições geográficas representa apenas míseros 0,13\% da totalidade dos dados, não sendo possível, então, afirmar que é um padrão ou uma tendência. \\ \\
 
 A utilização dos dados geográficos, representados pela Figura~\ref{fig:mapa}, demonstra mais um das funcionalidades que as bibliotecas da linguagem Python disponibiliza para a apresentação dos dados. Através do \textit{IPython} é possível navegar através do mapa, ter interações com os marcadores e se distanciar ou aproximar para verificar detalhes sobre as localidades da publicação.
 
@@ -116,6 +116,10 @@ A utilização dos dados geográficos, representados pela Figura~\ref{fig:mapa},
 	\label{fig:mapa}
 \end{figure}
 
+O Gráfico~\ref{time} apresenta a quantidade de publicações de \textit{tweets} por hora dentro das 12 horas de coletas.
+
+É notado que no período das 14 horas (02 PM) ocorreu o maior número de \textit{tweets}, chegando a quase 100 mil publicações. O horário da votação no congresso começou às 16 horas, horário de Brasília, momento em que teve as maiores baixas apresentas pelo Gráfico~\ref{time}. A ascensão dos \textit{tweest} volta acontecer após às 22 horas, próximo ao horário de conclusão e resultado da votação. \\ \\ \\ \\ \\ \\ \\ \\
+
 \begin{grafico}[h!]
 	\centering
 	\fbox{\includegraphics[width=1\textwidth]{Cap6/graficos/time}}
@@ -124,10 +128,6 @@ A utilização dos dados geográficos, representados pela Figura~\ref{fig:mapa},
 	\fonte{Elaborado pelo autor}
 	\label{time}
 \end{grafico}
-
-O Gráfico~\ref{time} apresenta a quantidade de publicações de \textit{tweets} por hora dentro das 12 horas de coletas.
-
-É notado que no período das 14 horas (02 PM) ocorreu o maior número de \textit{tweets}, chegando a quase 100 mil publicações. O horário da votação no congresso começou às 16 horas, horário de Brasília, momento em que teve as maiores baixas apresentas pelo Gráfico~\ref{time}. A ascensão dos \textit{tweest} volta acontecer após às 22 horas, próximo ao horário de conclusão e resultado da votação.
 
 As bibliotecas que Python dispõe, permitiu a apresentação de gráficos em colunas, setores e áreas. Também a visualização de palavras mais mencionadas através do \textit{Word Cloud} e a distribuições dos \textit{tweest} através de coordenadas para ser apresentadas em mapa.
 
