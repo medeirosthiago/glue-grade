@@ -1,5 +1,3 @@
-%matplotlib inline
-
 tweets_data_path = 'data/small-data.json'
 
 tweets_data = []
