@@ -1,0 +1,290 @@
+% !TeX encoding = UTF-8
+
+\preambulo{Trabalho de conclus{\~ a}o de curso apresentado como requisito obrigat{\' o}rio para obten{\c c}{\~ a}o do t{\' i}tulo de Bacharel em Ci{\^ e}ncia da Computa{\c c}{\~ a}o da Faculdade Anglo-Americano de Foz do Igua{\c c}u.}
+\local{Foz do Igua{\c c}u}
+\instituicao{Faculdade Anglo-Americano de Foz do Igua{\c c}u}
+
+
+% ---
+% CAPA
+% ---
+\renewcommand{\imprimircapa}{%
+  \begin{capa}
+  	\begin{center}
+  		\textbf{\large{\MakeUppercase{\imprimirinstituicao}}}
+  	\end{center}
+    \center
+
+    {\normalsize\MakeUppercase{\imprimirautor}}
+
+    \vspace*{8cm}
+    \ABNTEXchapterfont\bfseries\large\MakeUppercase{\imprimirtitulo}
+    \vfill
+    
+    {\normalfont\small\MakeUppercase{\imprimirlocal}}
+
+    {\normalfont\small\imprimirdata}
+    
+    \vspace*{1cm}
+  \end{capa}
+}
+
+\makeatletter
+% ---
+% FOLHA DE ROSTO
+% ---
+\renewcommand{\folhaderostocontent}{
+		\center	
+		{\normalsize\MakeUppercase{\imprimirautor}}
+	
+	    \vspace*{8cm}		
+		
+		{\large\MakeUppercase{\imprimirtitulo}}
+	
+		\vspace*{3cm}	
+
+		\abntex@ifnotempty{\imprimirpreambulo}{
+			\hspace{.3\textwidth}
+			\begin{minipage}{.55\textwidth}
+				{\footnotesize \SingleSpacing
+				\imprimirpreambulo				
+				\SingleSpacing				
+				{\imprimirorientadorRotulo~\imprimirorientador\par}
+				\SingleSpacing	
+		        \abntex@ifnotempty{\imprimircoorientador}{
+		             {\imprimircoorientadorRotulo~\imprimircoorientador} } }
+			\end{minipage}
+		
+			\vspace*{\fill}
+		}
+		
+		{\normalfont\small\MakeUppercase{\imprimirlocal}}
+		
+		{\normalfont\small\imprimirdata}		
+}
+
+
+% ---
+% OUTRAS CONFIGURAÇÕES
+% ---
+\setlength{\parindent}{1.3cm} 		% Tamanho do parágrafo
+\setlength{\parskip}{0.2cm}  		% Controle do espaçamento entre um parágrafo e outro
+
+% Controle do espaçamento entre a legenda e a fonte (e nota) de figuras e tabelas}:
+\setlength{\abovecaptionskip}{0 mm}
+\setlength{\belowcaptionskip}{1 mm}
+
+% Define os tamanhos das margens do documento
+% ---
+\setlrmarginsandblock{3cm}{2cm}{*}
+\setulmarginsandblock{3cm}{2cm}{*}
+\checkandfixthelayout
+
+	
+% Altera o tamanho das fontes dos capítulos e dos apêndices
+% ---
+\renewcommand{\ABNTEXchapterfont}{\bfseries}
+\renewcommand{\ABNTEXchapterfontsize}{\large}
+\renewcommand{\ABNTEXsectionfontsize}{\normalfont}
+
+% ---
+% SEPARAÇÃO DE PALAVRAS
+% ---
+%\hyphenation{}
+\hyphenation{teorias}
+\hyphenation{baseados}
+\hyphenation{MATLAB}
+\hyphenation{Pyramid}
+\hyphenation{Mar-cação}
+\hyphenation{lin-guagem}
+\hyphenation{matplotlib}
+\hyphenation{sociali-zação}
+\hyphenation{bi-bli-oteca}
+\hyphenation{Notebook}
+\hyphenation{profis-si-onais}
+\hyphenation{ar-quivos}
+\hyphenation{usu-ário}
+\hyphenation{fer-ramentas}
+\hyphenation{materi-al}
+\hyphenation{re-almen-te}
+\hyphenation{LinkedIn}
+\hyphenation{proces-samento}
+\hyphenation{neces-sidades}
+\hyphenation{relaci-onados}
+
+% ---
+% CONFIGURACAO DO ESTILO DE PÁGINA TEXTUAL 
+% ---
+% criar um novo estilo de cabeçalhos e rodapés
+\makepagestyle{abnt-anglo}
+  %%cabeçalhos
+  \makeevenhead{abnt-anglo}{\ABNTEXfontereduzida\thepage}{}{}
+  \makeoddhead{abnt-anglo}{}{}{\ABNTEXfontereduzida\thepage}
+  %\makeheadrule{textualCC-Anglo}{\textwidth}{\normalrulethickness} %linha
+  %% rodapé
+  \makeevenfoot{abnt-anglo}{}{}{} 
+  \makeoddfoot{abnt-anglo}{}{}{}
+\pagestyle{abnt-anglo}
+
+% ---
+% utfpr-style
+%\makepagestyle{abnt_ufpr}
+%
+%\makeoddhead{abntchapfirst}{}{}{\ABNTEXfontereduzida\thepage}
+%
+%\pagestyle{abnt_ufpr}
+%
+%\newtheorem{theorem}{Teorema}[chapter]
+%\newtheorem{definition}[theorem]{Defini\c{c}\~{a}o}
+%\newtheorem{proposition}[theorem]{Proposi\c{c}\~{a}o}
+
+\makeatother
+
+\usepackage{perpage} %the perpage package
+\MakePerPage{footnote} %the perpage package command
+
+% ---
+% CONFIGURAÇÃO DE LISTAS DE CONTEÚDO
+% ---
+% lista de gráficos
+% -
+\newcommand{\graficoname}{GRÁFICO}
+\newcommand{\listofgraficosname}{LISTA DE GRÁFICOS}
+
+\newfloat[chapter]{grafico}{loq}{\graficoname}
+\newlistof{listofgraficos}{loq}{\listofgraficosname}
+\newlistentry{grafico}{loq}{0}
+
+\counterwithout{grafico}{chapter}		% configurações para atender às regras da ABNT em listas
+\renewcommand{\cftgraficoname}{\graficoname\space}
+\renewcommand*{\cftgraficoaftersnum}{\hfill--\hfill}
+
+% lista de códigos
+% -
+\renewcommand{\lstlistingname}{CÓDIGO}
+\renewcommand{\lstlistlistingname}{LISTA DE CÓDIGOS}
+
+\begingroup\makeatletter				% configurações para atender às regras da ABNT em listas
+\let\newcounter\@gobble\let\setcounter\@gobbletwo
+  \globaldefs\@ne \let\c@loldepth\@ne
+  \newlistof{listings}{lol}{\lstlistlistingname}
+  \newlistentry{lstlisting}{lol}{0}
+\endgroup
+
+\renewcommand{\cftlstlistingaftersnum}{\hfill--\hfill}
+
+\let\oldlstlistoflistings\lstlistoflistings
+\renewcommand{\lstlistoflistings}{%
+   \begingroup%
+   \let\oldnumberline\numberline%
+   \renewcommand{\numberline}{\lstlistingname\space\oldnumberline}%
+   \oldlstlistoflistings%
+   \endgroup}
+
+%\setlength{\parindent}{1.3cm} 			% Tamanho do parágrafo
+%\setlength{\parskip}{0.0cm}  			% Controle do espaçamento entre um parágrafo e outro
+
+% Altera o tamanho das fontes dos capítulos e dos apêndices
+% -
+\renewcommand{\ABNTEXchapterfont}{\normalfont\fontseries{b}\selectfont}
+\renewcommand{\ABNTEXchapterfontsize}{\normalsize}
+\renewcommand{\ABNTEXpartfont}{\fontseries{b}\selectfont\selectfont}
+\renewcommand{\ABNTEXpartfontsize}{\normalsize}
+\renewcommand{\ABNTEXsectionfont}{\normalfont\selectfont}
+\renewcommand{\ABNTEXsectionfontsize}{\normalsize}
+\renewcommand{\ABNTEXsubsectionfont}{\normalfont\selectfont}
+\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
+\renewcommand{\ABNTEXsubsubsectionfont}{\normalfont\selectfont}
+\renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize}
+\renewcommand{\ABNTEXsubsubsubsectionfont}{\normalfont\itshape\selectfont}
+\renewcommand{\ABNTEXsubsubsubsectionfontsize}{\normalsize}
+
+% ---
+% CONFIGURAÇÃO DO SUMÁRIO
+% ---
+% Sumário
+\renewcommand*{\cftsectionfont}{\normalfont}
+\renewcommand*{\cftsubsubsectionfont}{\normalfont}
+\renewcommand*{\cftsubsectionfont}{\normalfont}
+\renewcommand*{\cftparagraphfont}{\normalfont\itshape}
+
+% ---
+% Modifica o espaçamento no sumário
+% Nao ha espacos, para as entradas de capitulos
+% ---
+\setlength{\cftbeforechapterskip}{\onelineskip}
+\setlength{\cftbeforesectionskip}{0pt}
+\setlength{\cftbeforesubsectionskip}{0pt}
+\setlength{\cftbeforesubsubsectionskip}{0pt}
+\setlength{\cftbeforeparagraphskip}{0pt}
+
+%\setlength{\cftbeforeparagraphskip}{0pt}
+%\setlength{\cftbeforesubsectionskip}{0pt}
+%\setlength{\cftbeforesectionskip}{0pt}
+%\setlength{\cftbeforesubsubsectionskip}{0pt}
+%\setlength{\cftbeforechapterskip}{0pt}
+
+% ---
+% CAPITALIZAÇÃO DE LISTAS
+% ---
+\renewcommand{\fontename}{FONTE}
+
+\addto\captionsbrazil{
+	\renewcommand{\bibname}{REFER\^ENCIAS}
+}
+\addto\captionsbrazil{\renewcommand{\listadesiglasname}{LISTA DE ABREVIATURAS}}
+\addto\captionsbrazil{\renewcommand{\listfigurename}{LISTA DE ILUSTRAÇÕES}}
+\addto\captionsbrazil{\renewcommand{\listtablename}{LISTA DE TABELAS}}
+%\addto\captionsbrazil{%
+%  \renewcommand*{\lstlistlistingname}{LISTA DE CÓDIGOS}%
+%  \renewcommand*{\lstlistingname}{CÓDIGO}%
+%}
+\addto\captionsbrazil{\renewcommand{\contentsname}{SUMÁRIO}}
+\addto\captionsbrazil{\renewcommand\appendixtocname{APÊNDICES}\renewcommand\appendixpagename{APÊNDICES}}
+\addto\captionsbrazil{\renewcommand{\figurename}{FIGURA}}
+\addto\captionsbrazil{\renewcommand{\tablename}{TABELA}}
+
+% ---
+% LAYOUT PARA ELEMENTOS TEXTUAIS
+% ---
+%\makepagestyle{abnt_ufpr}
+
+%\makeoddhead{abntchapfirst}{}{}{\ABNTEXfontereduzida\thepage}
+
+%\pagestyle{abnt_ufpr}
+
+% ---
+% AMBIENTES
+% ---
+%\newtheorem{teo}{Teorema}[chapter]
+%\newtheorem{cor}[teo]{Corol\'{a}rio}
+%\newtheorem{lem}[teo]{Lema}
+%\newtheorem{prop}[teo]{Proposi\c{c}\~{a}o}
+%\newtheorem{defn}[teo]{Defini\c{c}\~{a}o}
+%\newtheorem{Ex}[teo]{Exemplo}
+%\newtheorem{obs}[teo]{Observa\c{c}\~{a}o}
+%\newtheorem{prob}[teo]{Problema}
+%\newtheorem{conc}[teo]{Conclusão}
+%\newenvironment{dem}{\smallskip \noindent{\bf Demonstra\c{c}\~{a}o}: }
+%{\hfill $\Box$\hspace{0in}\medskip}
+
+% ---
+% COMANDOS FREQUENTES
+% ---
+%\newcommand{\eq}{\begin{equation}}
+%	\newcommand{\ee}{\end{equation}}
+%\newcommand{\R}{{\mathbb R}}
+%\newcommand{\N}{{\mathbb N}}
+%\newcommand{\K}{{\mathbb K}}
+%\newcommand{\Q}{{\mathbb Q}}
+%\newcommand{\Z}{{\mathbb Z}}
+%\newcommand{\V}{{\mathbb V}}
+%\newcommand{\D}{{\mathcal{D}}}
+%\newcommand{\C}{{\mathbb C}}
+%\newcommand{\di} {\displaystyle}
+%\newcommand{\I}{{\displaystyle\int_{0}^{T} \displaystyle\int_{0}^1 }}
+%\newcommand{\Ia}{{\displaystyle\int_{0}^{1} \displaystyle\int_{0}^T }}
+%\newcommand{\Ii}{{\displaystyle\int_{0}^{t} \displaystyle\int_{0}^1 }}
+%\newcommand{\Ib}{{\displaystyle\int_{0}^{1} \displaystyle\int_{0}^t }}
+
+%\makeatother 

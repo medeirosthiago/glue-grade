@@ -1,0 +1,32 @@
+\chapter{CONCLUSÕES E SUGESTÕES PARA TRABALHOS FUTUROS}\label{ch:conclusao}
+
+A proposta dessa dissertação foi utilizar técnicas e algoritmos de \textit{data mining} para analisar e minerar os dados provenientes da rede social \textit{Twitter}, utilizando os recursos e bibliotecas da linguagem de programação Python. Para tanto, foi necessário o conhecimento de conceitos de KDD e \textit{data mining}, implementar técnicas utilizando bibliotecas da linguagem em estudo e apresentar informações úteis para possíveis interpretações.
+
+Durante o aprendizado de \textit{data mining}, foi determinado que a sua definição consiste em um processo de descoberta de padrões interessantes e conhecimentos de um vasto conjunto de dados, sendo necessário, então, ferramentas que auxiliem na coleta, limpeza, seleção e apresentação desses dados.
+
+Para a coleta e limpeza dos dados, a linguagem Python se tornou extremamente útil ao permitir o desenvolvimento de um código que se autenticou com o \textit{Twitter} e a utilização da API de \textit{streaming} para coletar os dados que continham a \textit{hashtag} \#ImpeachmentDay.
+
+Ao valer-se da API de \textit{streaming} do \textit{Twitter} não foi possível adquirir todos os \textit{tweets} referente a \textit{hashtag} mencionada, devido a limitação que a API possui. Como resultado, algumas linhas do arquivo gerado eram consideradas \textit{dirty datas}, sendo preciso limpá-las para a melhor análise dos dados.
+
+No decorrer da implementação das técnicas utilizando a linguagem Python, a biblioteca \textit{pandas} apresentou-se como uma excelente ferramenta para a manipulação de dados, podendo estes serem estruturados ou não. Por meio de estruturas, como o \textit{DataFrame}, foi possível ordenar alguns atributos do arquivo JSON gerado, por exemplo: data de criação, número de identificação, localização, texto, nome de usuários, dentre outros.
+
+Toda a implementação para a análise e apresentação dos dados foi desenvolvida através da funcionalidade de \textit{notebook} que o interpretador \textit{IPython} possui, possibilitando realizar a importação de bibliotecas, testes de instruções específicas e a visualização de gráficos e imagens.
+
+Como resultado, apresentou-se gráficos que indicaram os países e idiomas que mais publicaram \textit{tweets}, a contabilização de \textit{hashtags} e personagens políticos que mais se destacaram na data de coleta dos dados, e também, em decorrência da mineração dos dados, foi possível representar por meio de um mapa a distribuição das publicações pelo mundo.  
+
+Ao iniciar a discussão a respeito da definição do tema e das atividades que seriam realizadas como conteúdo deste trabalho, elegeu-se a rede social \textit{LinkedIn} como fonte de dados para a aplicação dos processos de \textit{data mining}, todavia, ao começar a primeira fase da implementação, a API do \textit{LinkedIn} limitava a extração a dados básicos de apenas um perfil de usuário, tornando-se inviável a atividade de mineração devido a escassez de informação.
+
+Diante do exposto acima, recomenda-se em trabalhos futuros, sondar a possibilidade de minerar dados provenientes de outras redes sociais, tais como \textit{Facebook}, \textit{GitHub}, \textit{Google+}, devido a aplicabilidade de suas APIs, adotando técnicas semelhantes as que foram utilizadas neste trabalho.
+
+Recomenda-se, também o estudo e implementação de algoritmos de aprendizado de máquina (\textit{machine learning}), especificamente análise de sentimento, técnica esta que permite identificar e extrair sentimentos em um texto, sendo uma das principais ferramentas utilizadas quando se trata de aprendizado de máquina na rede social \textit{Twitter}.
+
+
+
+
+
+
+
+
+
+
+
