@@ -1,0 +1,342 @@
+\chapter{MATERIAIS E MÉTODOS}\label{ch:materiais-metodos}
+Após a revisão bibliográfica de outros estudos e os fundamentos teóricos necessários para a mineração de dados utilizando Python, torna-se importante definir as ferramentas, tecnologias e procedimentos necessários para o desenvolvimento do projeto.
+
+Este capítulo apresenta os materiais e métodos utilizados para a realização do processo de \textit{data mining}, onde, na seção~\ref{sec: tec-ferramenta} são apresentadas as tecnologias e ferramentas que serão utilizadas durante o estudo. Serão abordados quais as bibliotecas que a linguagem Python disponibiliza para a análise e mineração de dados e, também, como acessar a API do \textit{Twitter}. Esta será esclarecida também neste capítulo, após a explicação do conceito de API e o protocolo OAuth.
+
+A seção~\ref{sec: metodologia} irá concluir o capítulo apresentando as etapas de \textit{data mining} com o intuito de evidenciar o processo para a obtenção de conhecimento útil.
+
+\section{TECNOLOGIAS E FERRAMENTAS}\label{sec: tec-ferramenta}
+Tecnologias e ferramentas para a implementação de \textit{scripts} e utilização dos algoritmos.
+
+%% Bibliotecas Python
+\subsection{Bibliotecas da Linguagem Python}\label{sec:bib_python}
+Um dos grandes diferenciais da linguagem Python é o seu enorme conjunto de bibliotecas para soluções de diversos problemas.
+
+A seguir serão apresentadas as bibliotecas necessárias para a mineração de dados, através das quais é possível coletar, limpar, transformar, realizar operações e apresentar resultados proveniente dos dados da rede social \textit{Twitter}. Para evitar repetições da palavra "biblioteca", o termo "pacote"\space também será utilizado com o mesmo significado no restante desta dissertação.
+ 
+%%% sub: NumPy
+\subsubsection{Biblioteca \textit{NumPy}}
+\textit{NumPy} é o pacote fundamental para computação científica em Python. É o acrônico para \textit{Numerical Python}. Esta biblioteca provê:
+
+\begin{itemize}
+    \item \textit{ndarray} que é um objeto de matriz multidimensional;
+    \item Funções que permitem realizar operações vetoriais ou operações matemáticas entre matrizes sem a necessidade de programar \textit{loops};
+    \item Ferramentas para a leitura e escrita em conjuntos de dados matriciais;
+    \item Operações de álgebra linear, transformada de Fourier e geração de números aleatórios;
+    \item Ferramentas para a integração em outras linguagens de programação como C, C++ e Fortran.
+\end{itemize}
+
+Além da capacidade de rápido processamento em matrizes que o \textit{NumPy} oferece ao Python, um dos principais objetivos em relação a análise de dados é que serve como um "container"\space para os dados serem passado por algoritmos. Para dados numéricos, as matrizes de \textit{NumPy} são muito mais eficientes para a ordenação e manipulação de dados do que qualquer outra estrutura embutida em Python. Igualmente, bibliotecas escritas em linguagens de baixo nível, como C ou Fortran, podem operar dados gravados em matrizes da \textit{NumPy} sem precisar da cópia de qualquer dado \cite{python-analysis}.
+
+A biblioteca \textit{NumPy} por si só, não provê uma funcionalidade de alto-nível para a análise de dados. Tendo um conhecimento sobre as matrizes de \textit{NumPy} e matrizes orientadas a computação (\textit{array-oriented computing}) irá facilitar o uso de outras ferramentas, como \textit{pandas}, com mais efetividade.
+
+Para aplicações voltadas para a análise de dados, esta biblioteca possui grande funcionalidade em setores como:
+
+\begin{itemize}
+    \item Criação rápida de matrizes para a interação e limpeza de dados, separação e filtragem, transformação e outros tipos de operações computacionais;
+    \item Algoritmos comuns para matrizes como ordenação, operações únicas e definidas;
+    \item Eficiente descrição estatística e agregação/sumarização de dados;
+    \item Alinhamento de dados e manipulação de dados relacionais para operações de junção e imerção (\textit{join} e \textit{merge}) de conjuntos de dados heterogeneos;
+    \item Expressar lógicas de condições através de expressões matriciais ao invés de laços de repetições e condições como \textit{while, for, if-elif-else};
+    \item Agrupamento de manipulação de dados (agregação, transformação, aplicação de funções).
+\end{itemize}
+
+Enquanto \textit{NumPy} oferece o fundamento computacional para essas operações, é preferível utilizar a biblioteca \textit{pandas} como base para a mineração de dados (especialmente de dados estruturados ou dados tabulados), devido a sua interface rica e de alto-nível no qual permite as tarefas com dados mais concisas e simples.
+
+%%% sub: pandas
+\subsubsection{Biblioteca \textit{pandas}}\label{pandas}
+A biblioteca \textit{pandas} atrai o maior interesse de cientistas quanto a mineração de dados. Ela possui estruturas de dados de alto-nível e ferramentas de manipulação desenvolvidas para facilitar e agilizar a análise de dados em Python. \textit{pandas} é desenvolvida sob a biblioteca \textit{NumPy} e viabiliza o uso em aplicações centradas nesta. A seguir são expostas algumas soluções que a biblioteca disponibiliza \cite{python-analysis}:
+
+\begin{itemize}
+    \item Estrutura de dados com eixos rotulados suportam o alinhamento de dados automáticos ou explícitos. Isso evita erros comuns resultantes de dados desalinhados e dados indexados de formas diferentes provenientes de outras fontes de dados;
+    \item A mesma estrutura de dados consegue manusear tanto dados de séries temporais como dados não-temporais;
+    \item Operações e reduções aritméticas é passado para metadados (eixos rotulados);
+    \item Manipulação flexível de dados em falta;
+    \item \textit{Merge} (fundir) e outras operações relacionais encontradas em bancos de dados relacional.
+\end{itemize}
+
+Esta biblioteca possui duas estrutura de dados principais: \textit{Series} e \textit{DataFrame}. Estas estruturas não são uma solução universal para todos os problemas, mas provê uma base sólida e de fácil manipulação para a maioria das aplicações com mineração de dados.
+
+Uma \textit{Series} é um tipo de \textit{array} ou uma matriz unidimensional, similar a um \textit{array} que possui uma matriz de dados (qualquer tipo de dado da biblioteca \textit{NumPy}) e um outro vetor associado a dados rotulados, chamados de \textit{index} (índice). Uma simples \textit{Series} é formado por uma única matriz de dados, conforme a Figura~\ref{pandas-series}.
+
+\begin{figure}[h!]
+	\centering
+	\fbox{\includegraphics[width=.5\textwidth]{Cap4/imagens/pandas-series}}
+	\vspace{0.1cm}
+	\caption{Exemplo de uma \textit{Series}}
+	\fonte{\citeonline{python-analysis}}
+	\label{pandas-series}
+\end{figure}
+
+\textit{DataFrame} representa uma tabela, uma estrutura de dados do tipo planilha, que possui uma coleção ordenada de colunas, onde cada uma delas pode ter um tipo de valor diferente (numérico, \textit{string}, \textit{boolean}, etc.). O \textit{DataFrame} possui um índice para linhas e também para colunas. Pode ser interpretado como um dicionário de \textit{Series}. De uma maneira geral, o dado é armazenado como um ou mais blocos bi-dimensionais ao invés de uma lista, dicionário, ou outro tipo de coleção de matriz unidimensional \cite{python-analysis}.
+
+Existem várias maneiras diferentes de se criar um \textit{DataFrame}, entretanto uma forma comum é um dicionário de dimensões iguais, conforme a Figura~\ref{pandas-dataframe} e a Figura~\ref{pandas-dataframe2}, ou uma matriz \textit{NumPy}.
+
+\begin{figure}[h!]
+	\centering
+	\fbox{\includegraphics[width=.9\textwidth]{Cap4/imagens/pandas-dataframe}}
+	\vspace{0.1cm}
+	\caption{Criação de um \textit{DataFrame}}
+	\fonte{\citeonline{python-analysis}}
+	\label{pandas-dataframe}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+    \fbox{\includegraphics[width=.36\textwidth]{Cap4/imagens/pandas-dataframe2}}
+    \vspace{0.1cm}
+	\caption{Conteúdo de um \textit{DataFrame} pelo interpretador \textit{IPython}}
+	\fonte{\citeonline{python-analysis}}
+	\label{pandas-dataframe2}
+\end{figure}
+
+%%% sub: matplotlib
+\subsubsection{Biblioteca \textit{matplotlib}}
+O pacote \textit{matplotlib} é desenvolvido para a geração de gráficos bidimensionais a partir de \textit{arrays}. Gráficos comuns podem ser criados com alta qualidade a partir de simples comandos, inspirados nos comandos gráficos do MATLAB, exemplo ilustrado na Figura~\ref{matplotlib-fig}.
+
+Quando usado em conjunto com ferramentas GUI (\textit{IPython}, por exemplo), esta biblioteca possui recursos interativos como zoom e visão panorâmica. Além disto, suporta várias ferramentas GUI \textit{backend}, nos diversos sistemas operacionais suportados pelo Python, e permitem exportar gráficos em diversos formatos: PDF, SVG, JPG, PNG, BMP, GIF, etc.
+
+\textit{matplotlib} também possui várias ferramentas adicionais, como o \textit{mplot3d} para plotar gráficos tridimensionais, e o \textit{basemap} para mapeamentos e projeções.
+
+\begin{figure}[h!]
+  \includegraphics[width=1\textwidth]{Cap4/imagens/matplotlib}
+  \caption{Exemplo de um gráfico gerado pelo \textit{matplotlib}}
+  \fonte{\citeonline{matplotlib}}
+  \label{matplotlib-fig}
+\end{figure}
+
+
+%%% sub: SciPy
+\subsubsection{Biblioteca \textit{SciPy}}
+\textit{SciPy} é uma coleção de pacotes que abordam uma série de soluções para diferentes domínios na computação científica. Na lista a seguir são apresentados exemplos desses pacotes \cite{python-analysis}:
+
+\begin{itemize}
+	\item \textit{scipy.integrate}: rotinas de integração numéricas e soluções de equações diferenciais;
+	\item \textit{scipy.linalg}: rotinas de álgebra linear e decomposição de matrizes;
+	\item \textit{scipy.optimize}: funções otimizadoras (minimizadoras) e algoritmos de busca em raíz;
+	\item \textit{scipy.signal}: ferramentas para processamento de sinais;
+	\item \textit{scipy.sparse}: matrizes esparsas e soluções de sistemas lineares esparsos;
+	\item \textit{scipy.special}: agregador do \textit{SPECFUN}, uma biblioteca do Fortran que implementa várias funções matemáticas, como exemplo, a função gama;
+	\item \textit{scipy.stats}: funções estatísticas, variáveis contínuas e discretas, testes estatísticos e outros modelos estatísticos;
+	\item \textit{scipy.weave}: ferramenta para usar códigos \textit{inline} de C++ para acelerar a computação de matrizes.
+\end{itemize}
+
+
+%%% sub: IPython
+\subsubsection{Interpretador \textit{IPython}}
+O interpretador \textit{IPython} teve seu desenvolvimento iniciado em 2001, com o intuito de ser um interpretador interativo para a linguagem Python. Desde a sua criação o \textit{IPython} evoluiu grandemente, ao ponto de ser considerada uma das mais importantes ferramentas para computação científica em Python. Essa biblioteca não oferece nenhuma ferramenta para análise de dados ou análise computacional em si, sendo designada para maximizar a produtividade, tanto na interação computacional como no desenvolvimento de \textit{softwares}. Oferece um fluxo de visualização de um modo \textit{execute-explore} ao invés do típico modelo \textit{edit-compile-run} de muitas outras linguagens de programação. Ela também provê uma pequena integração com o \textit{shell} e sistemas de arquivos. Como a maior parte da programação focada na mineração de dados envolve exploração, tentativa, erro e iteração, \textit{IPython}, em quase todos os casos, irá facilitar este tipo de trabalho \cite{python-analysis}.
+
+\begin{figure}[h!]
+  \centering
+  \fbox{\includegraphics[width=0.95\textwidth]{Cap4/imagens/jupyter}}
+  \vspace{0.1cm}
+  \caption{Exemplo de uma página \textit{web} do \textit{IPython Notebook}}
+  \fonte{Elaborado pelo autor}
+  \label{ipython-fig}
+\end{figure}
+
+Hoje, o projeto \textit{IPython}, mantido pela empresa \textit{Jupyter}, engloba muito mais do que apenas um interpretador \textit{shell} para Python. Ele também inclui um console gráfico interativo, o \textit{IPython Notebook}, que provê ao usuário uma experiência de caderno (\textit{notebook-like}) através de um navegador \textit{web}, conforme Figura~\ref{ipython-fig}, e dispõe de um mecanismo de processamento paralelo. Assim como muitas outras ferramentas desenvolvidas para programadores, é extremamente customizável \cite{mining-social-web}.
+
+%%% sub: Folium
+\subsubsection{Biblioteca \textit{Folium}}
+A linguagem Python possui a biblioteca \textit{Folium} que permite a visualização de dados em um mapa interativo desenvolvido em JavaScript o \textit{Leaflet}. \textit{Folium} permite que os dados de coordenadas sejam combinados com marcadores para a atribuição de informações ou notas em um mapa \cite{folium}.
+
+A biblioteca possui integração com várias tecnologias que disponibilizam dados para a criação de mapas interativos, como \textit{OpenStreetmap}, \textit{MapQuest Open}, \textit{Mapbox} e \textit{Stamen} \cite{folium}.
+
+%%% sub: NLTK
+\subsubsection{Biblioteca \textit{NLTK}}
+\textit{Natural Language Toolkit} - NLTK, é um conjunto de bibliotecas e programas para a representação simbólica e estatística do processamento de linguagem natural (NLP) para o Python \cite{nltk}.
+
+A biblioteca NLTK se destina a apoiar a pesquisa e ensino em NLP ou areas correlativas incluindo linguagem empírica, ciência cognitiva, inteligência artificial, recuperação de informação e aprendizado de máquina. Permite o suporte a classificação, utilização de \textit{tokens}, \textit{stemming}, \textit{tagging}, análise (\textit{parsing}) e funcionalidades de raciocínio semântico \cite{nltk}.
+
+Para a implementação de alguns códigos, esta biblioteca possibilitará a exclusão ou inclusão de certas palavras e símbolos durante a análise dos dados.
+
+%%% sub: Word Cloud
+\subsubsection{Biblioteca \textit{Word Cloud}}
+
+\textit{Word Clouds}, conhecidas também como \textit{Tag Clouds}, são nuvens de palavras ou imagens formadas por um conjunto de palavras, utilizadas para apresentação e interpretação de palavras em um determinado texto.
+
+Python possui uma biblioteca para a criação de \textit{Word Clouds}, em que, através de uma visualização, cada palavra tem seu tamanho regido pela relevância em determinado texto. Geralmente se trata de uma contagem simples das ocorrências de determinada palavra no texto \cite{citeword}.
+
+%%
+% API
+\subsection{Interface de Programação de Aplicações - API}\label{subsec: api}
+API é uma sigla para \textit{Application Programming Interface} e basicamente é uma tecnologia que permite um pedaço de \textit{software} se comunicar com outro pedaço de \textit{software}. Existem vários tipos de API e é comumente referenciado a outras tecnologias. Por exemplo, para o desenvolvimento deste trabalho será utilizado a API do \textit{Twitter}. 
+
+Uma API é composta por uma série de funções acessíveis somente por programação, e que permitem utilizar características do \textit{software} menos evidentes ao utilizador tradicional. Neste caso, a rede social \textit{Twitter} possui vasta quantidade de dados, aonde através de sua API, permite que desenvolvedores externos possam implementar tecnologias que utilizam os seus dados.
+
+
+%% 
+% REST API
+\subsubsection{Arquitetura REST}
+Abreviação para Transferência de Estado Representacional (REST), é um estilo arquitetural baseado em recursos e nas representações desses recursos. Enfatiza a escalabilidade na interação entre componentes, a generalidade de interfaces, a implantação independente dos componentes de um sistema, o uso de componentes intermediários visando a redução na latência de interações, o reforço na segurança e o encapsulamento de sistemas legados. A REST ignora os detalhes da implementação de componente e a sintaxe de protocolo com o objetivo de focar nos papéis dos componentes, nas restrições sobre sua interação com outros componentes e na sua interpretação de elementos de dados significantes \cite{rest}.
+
+REST foi um termo criado por \citeonline{rest}, onde ele modela um estilo de arquitetura para a construção de serviços \textit{web} consistentes e coesos. O estilo da arquitetura REST é baseado em recursos e nos estados desses recursos.
+
+A funcionalidade de uma REST API é similar ao funcionamento de uma página \textit{web}, onde o usuário efetua uma requisição a um servidor \textit{web}, utilizando o protocolo HTTP, e recebe dados como resposta.
+
+Um recurso é qualquer conteúdo ou informação que é exposto na Internet, podendo ser um documento, vídeo clip, até processos de negócio ou dispositivos. Para utilizar um recurso é necessário ser capaz de identificá-lo na rede e de ter meios para manipulá-lo. Tem-se então, o \textit{Uniform Resource Identifiers} (URI) para este propósito. Um URI unicamente identifica um recurso e, ao mesmo tempo, o torna endereçável ou capaz de ser manipulado utilizando um protocolo, como o HTTP. O URI de um recurso se distingue dos de qualquer outro recurso e é através do próprio URI que ocorrem as interações com o recurso \cite{rest-book}.
+
+Recursos devem possuir pelo menos um identificador para ser endereçável, e cada identificador é associado com uma ou mais representações, que é uma transformação ou uma visão do estado do recurso em um instante de tempo. Essa visão é codificada em um ou mais formatos transferíveis, tal como XHTML, Atom, texto simples, XML, YML, JSON, JPG, MP3, entre outros  \cite{rest-book}.
+
+Os recursos provêm o conteúdo ou objeto com o qual se quer interagir e para atuar sobre eles é utilizado os métodos de HTTP. Os métodos HTTP na arquitetura REST podem ser referenciados como Verbos, uma vez que representam ações sobre os recursos \cite{rest-book}.
+
+
+\subsection{Protocolo de Autenticação - OAuth}
+Protocolos de autenticação são capazes de, simplesmente, autenticar a parte que está se conectando, ou ainda de autenticar a parte que está conectando, assim como se autenticar para ele.
+
+Neste trabalho será utilizado apenas o protocolo OAuth 1.0 para o acesso aos dados do \textit{Twitter}. É possível também, realizar a autenticação utilizando a versão mais atual, OAuth 2.0, mas será apenas referenciado, neste trabalho, para a melhor compreensão do funcionamento do protocolo.
+
+OAuth é uma sigla para "\textit{open authorization}", ou autorização aberta, e provê um meio para que usuários autorizem uma aplicação acessar dados, com alguma finalidade, através de uma API, sem que os usuários precisem passar credenciais como nome de usuário e senha. De um modo geral, usuários são capazes de controlar o nível de acesso para estas aplicações e revogar este controle a qualquer momento \cite{mining-social-web}.
+
+\subsubsection{Protocolo OAuth 1.0a}
+OAuth 1.0a é um protocolo que permite que um cliente (\textit{client}) \textit{web} tenha acesso a um recurso protegido pelo seu dono em um servidor. Esta definição se dá através da RFC 5849. Que são documentos técnicos desenvolvidos e mantidos pelo Internet Enginnering Task Force (IETF), instituição que especifica os padrões que serão implementados e utilizados em toda a Internet.
+
+A razão para a existência dessa tecnologia é para evitar problemas de usuários (donos dos recursos) compartilhar suas senhas com aplicações \textit{web}.
+
+A versão OAuth 1.0a não permite que credenciais sejam trocadas utilizando uma conexão \textit{Secure Socket Layer} (SSL) através de um protocolo HTTPS. Por esse motivo, muitos desenvolvedores achavam tedioso o trabalho devido aos vários detalhes envolvidos em encriptação.
+
+SSL é um padrão global para tecnologia de segurança. Tem como função principal criar um canal criptografado entre um servidor \textit{web} e um navegador (\textit{browser}) para garantir que todos os dados transmitidos sejam seguros e sigilosos.
+
+Uma aplicação que está requerindo acesso é conhecida como \textit{client}, em alguns momentos chamado de \textit{consumer}, a rede social ou o serviço que contém os recursos protegidas é nomeado como \textit{server} (também chamado de \textit{provider}) e o usuário que concede o acesso é o \textit{resource owner} (dono do recurso, tradução livre). Com estes elementos, as três participações que envolvem o processo e a interação que estes elementos possuem é conhecida como \textit{"three-legged-flow"} ou de uma maneira mais coloquial, a \textit{OAuth dance}. Estas são as etapas fundamentais que envolvem a \textit{OAuth dance} que, como resultado, permite ao \textit{client} o acesso a recursos protegidos, conforme listado a seguir \cite{mining-social-web}:
+
+\begin{enumerate}
+	\item O \textit{client} obtém um \textit{token} de requisição do servidor de serviço (aplicação);
+	\item O dono do recurso autoriza o \textit{token} de requisição;
+	\item O \textit{client} troca o \textit{token} de requisição por um \textit{token} de acesso;
+	\item O \textit{client} usa o \textit{token} de acesso para acessar os recursos protegidos com a consideração do dono do recurso.
+\end{enumerate}
+
+Para credenciais particulares, um \textit{client} começa com uma \textit{consumer key} e um \textit{consumer secret} e no fim do processo de \textit{OAuth dance}, termina com um \textit{token} de acesso e \textit{token} de acesso secreto que pode ser usado para acessar recursos protegidos.
+
+\subsubsection{Protocolo OAuth 2.0}
+Enquanto o protocolo OAuth 1.0a permite uma autorização útil para o acesso a aplicações \textit{web}, o OAuth 2.0 foi originalmente destinado a simplificar, significantemente, a implementação detalhada para desenvolvedores de aplicações \textit{web}, sendo fundamentado completamente no SSL para aspectos de segurança e para satisfazer uma vasta quantidade de casos de uso. Esses casos de uso variaram desde suporte para dispositivos móveis à necessidades empresariais e, consequentemente, às necessidades de um termo mais futuro, da "Internet das Coisas"\space \cite{mining-social-web}.
+
+Diferentemente da implementação OAuth 1.0a, que consiste de um rígido conjunto de etapas, a implementação do OAuth 2.0, definido através do RFC 6749, pode variar de acordo com a particularidade do caso de uso. Um decorrer típico da execução do OAuth 2.0 tem a vantagem do SSL e, essencialmente, contém apenas poucos redirecionamentos que, acompanhada de em alto-nível, não possui tanta diferença em relação ao processo anterior que envolvem um ciclo do OAuth 1.0a.
+
+%%
+% Twitter
+\subsection{Rede Social \textit{Twitter}}
+Para definir o que seria o \textit{Twitter}, \citeonline{mining-social-web} aborda as seguintes necessidades que uma tecnologia social precisa disponibilizar à uma pessoa:
+
+\begin{itemize}
+	\item Permitir que a pessoa seja ouvida;
+	\item Permitir que a pessoa satisfaça suas curiosidades;
+	\item Permitir de um modo fácil e acessível;
+	\item Permitir agora.
+\end{itemize}
+
+Essas observações são, de um modo geral, verdadeiramente humanas. Pessoas possuem o desejo de compartilhar ideias e experiências, que as permitam se conectar com outras pessoas, para serem ouvidas, e se sentirem parte ou digna de importância \cite{twitter2}.
+
+Os dois últimos itens que \citeonline{mining-social-web} aborda ao comentar sobre as necessidades de uma tecnologia social, enfatizam a vontade de não ter alguma dificuldade para satisfazer as curiosidades ou realizar algum trabalho específico.
+
+Uma maneira de descrever o \textit{Twitter} é, então, como um serviço de \textit{microblog} que permite uma breve comunicação entre pessoas. Mensagens de no máximo 140 caracteres explicam a "breve comunicação", que normalmente correspondem à pensamentos ou ideias sobre um determinado assunto, em outras palavras, \textit{Twitter} é um serviço global de trocas de mensagens, extremamente rápido e gratuito \cite{twitter1}.
+
+Outro elemento interessante para a utilização dessa rede social é a assimetria ao "seguir" \space uma pessoa. Esta liberdade permite aos usuários atender as suas curiosidades. Diferentemente de outras redes sociais, como \textit{Facebook} e \textit{LinkedIn}, que requer uma aceitação mútua da conexão entre os usuários, o modelo de relacionamento no \textit{Twitter} viabiliza os acontecimentos de qualquer outro cliente na rede, podendo ser alguma especulação sobre celebridades, atualizações sobre times de esportes, algum tópico particular político ou o simples desejo de se conectar a alguém \cite{twitter2}.
+
+
+\subsubsection{API do \textit{Twitter}}\label{api-twitter}
+\textit{Twitter} é caracterizado como um serviço de \textit{microblog} em tempo real, que permite os usuários postarem pequenas atualizações de qualquer situação que desejar, essas postagens são chamados de \textit{tweets}, que aparecem em \textit{timelines} (linhas de tempo). \textit{Tweets} podem incluir uma ou mais entidades em seus 140 caracteres de conteúdo e referenciar um ou mais lugares que mapeiam localizações do mundo real \cite{mining-social-web}.
+
+%É necessário ter um entendimento sobre usuários (\textit{users}), \textit{tweets} e \textit{timelines} para o uso efetivo da API do \textit{Twitter}. Será, então, abordado uma breve explicação sobre a plataforma de objetos do \textit{Twitter}, com o intuito de interagir com a sua API para a coleta de dados \cite{twitter-doc}.
+
+A essência do \textit{Twitter} são os \textit{tweets} e, apesar deles serem representados como 140 caracteres de conteúdo textual associado a uma atualização de um usuário, existe muito mais informação através dos metadados. Em adição ao conteúdo textual de um \textit{tweet}, eles vêm empacotados em dois pedaços de metadados: entidades e lugares. Entidades de um \textit{tweet} são, basicamente, menções de usuários, \textit{hashtags}, URLs e mídias que são associadas a um \textit{tweet}. Lugares são localizações no mundo real, que podem estar adjunto a um \textit{tweet}. Um lugar pode ser uma localização atual aonde o \textit{tweet} foi composto, mas também pode ser uma referência a algum lugar descrito no \textit{tweet} \cite{twitter-doc}.
+
+Para exemplificar, considere o \textit{tweet} apresentado pela Figura~\ref{fig:tweet}. O \textit{tweet} possui 83 caracteres (incluindo espaços e quebra de linhas) e contém quatro entidades: duas \textit{hashtags} \#GameOfThrones e \#Linux, uma menção ao usuário @itsfoss e uma imagem como conteúdo de mídia. Não existe porém, uma localidade exposta nesta postagem, porém existe muito mais informações no metadado deste \textit{tweet} que demonstra a quantidade de dados que se pode coletar.
+
+\begin{figure}[h]
+  \centering
+  \fbox{\includegraphics[width=0.8\textwidth]{Cap4/imagens/tweet}}
+  \vspace{0.1cm}
+  \caption{Exemplo de um \textit{tweet}}
+  \fonte{\citeonline{twitter-example}}
+  \label{fig:tweet}
+\end{figure}
+
+
+\textit{Timelines} são coleções de \textit{tweets} ordenadas cronologicamente. É possível afirmar, que \textit{timeline} é qualquer coleção específica de \textit{tweets} apresentadas em uma ordem cronológica. Através da perspectiva de um usuário do \textit{Twitter}, a \textit{timeline} inicial (\textit{home}) é a visualização principal quando este usuário acessa a sua conta no serviço do \textit{Twitter} \cite{mining-social-web}. Quando este acesso é realizado, normalmente acontece através do endereço https://twitter.com. A URL para a \textit{timeline} de algum usuário em particular, no entanto, precisa ser sufixado com o contexto que identifica este usuário específico, por exemplo; https://twitter.com/unixstickers.
+A figura~\ref{fig:tweet-deck} ilustra a aplicação \textit{TweetDeck} que disponibiliza a customização da visualização de várias \textit{timelines}.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=1\textwidth]{Cap4/imagens/tweet-deck}
+  \caption{Aplicação \textit{TweetDeck} apresentando várias \textit{timelines}}
+  \fonte{Elaborado pelo autor}
+  \label{fig:tweet-deck}
+\end{figure}
+
+%\textbf{\textcolor{red}{[MELHORAR]}} Enquanto \textit{timelines} são coleções de \textit{tweets} com uma velocidade relativamente baixa de atualizações, \textit{streams} são amostras de \textit{tweets} públicos fluindo através do \textit{Twitter} em tempo real. Uma ferramenta pública que a rede social disponibiliza é o \textit{firehose}, que permite coletar, ou visualizar, centenas de milhares de \textit{tweets} por minuto durante eventos com interesses bem abrangentes, como debates presidenciais, finais de campeonatos esportivos e outros acontecimentos que engloba milhares de internautas \cite{twitter-doc}.
+
+\textit{Twitter} possui três tipos de APIs que permitem que desenvolvedores acessem seus dados, isto é, são capazes de coletar, ou consumir, \textit{tweets} completos, entidades específicas e também informações dos usuários ou réplicas de mensagens.
+
+A API de busca do \textit{Twitter} (\textit{Twitter's Search API}), tem a funcionalidade de capturar dados através de uma busca ou um usuário. Esta API permite o acesso a dados que já existem em \textit{tweets} previamente publicados. Através da API de busca, o usuário solicita \textit{tweets} que correspondem a algum critério de busca, podendo ser nome de usuários, localizações, nome de lugares, palavras-chaves e \textit{hashtags} \cite{twitter-doc}.
+
+Através da API de busca, desenvolvedores podem coletar \textit{tweets} que ocorreram e são limitados a um resultado de 3200 publicações dependendo do critério de busca. Utilizando uma \textit{hashtag} específica a API permite coletar até 5000 \textit{tweets} por \textit{hashtag}. Estas limitações acontecem em um determinado período de tempo, onde hoje, são permitidos 180 requisições a cada 15 minutos \cite{twitter-doc}.
+
+A segunda tecnologia, e também a tecnologia utilizada neste trabalho para a coleta dos dados, é a API de \textit{streaming} do \textit{Twitter} (\textit{Twitter's Streaming API}) onde se comporta de maneira diferente da API de busca. Nesta, é recebido dados que estão acontecendo em tempo real. Através da API de \textit{streaming}, é possível registrar um conjunto de critérios de busca, para que cada vez que um \textit{tweet} corresponder ao critério salvo, irá ser enviado diretamente ao seu solicitante \cite{twitter-doc}.
+
+A principal desvantagem da API de \textit{streaming} é que o \textit{Twitter} provê apenas uma parte das publicações que estão acontecendo. E então, a porcentagem dos \textit{tweets} coletados por esta API variam de acordo com o número de requisições de usuários durante o tráfego de dados naquele exato momento. A razão por não receber todas as publicações é porque o \textit{Twitter} precisa dispor de uma infraestrutura que suporte todas as requisições dos \textit{tweets} que estão sendo publicados \cite{twitter1}.
+
+O \textit{Twitter Firehose} é a última API disponibilizada e funciona semelhante a API de \textit{streaming}, onde é enviado a usuários finais os dados de \textit{tweets} que são publicados em tempo real. A diferença é que o \textit{Twitter Firehose} garante o consumo de 100\% dos \textit{tweets} que correspondem ao critério de busca \cite{twitter-doc}.
+
+A API de \textit{Firehose} é mantida por dois provedores de dados, GNIP e DataSift, que possuem relações empresarias com o \textit{Twitter}. Devido a esta relação e a disponibilidade de infraestrutura destas empresas, a utilização do \textit{Firehose} não é gratuita mas também exclui várias restrições de usos impostas pelo \textit{Twitter}, diferentemente da API de \textit{streaming} onde é possível realizar a coleta sem custos \cite{twitter1}.
+
+% Bibliotecas Twitter
+\subsubsection{Bibliotecas Para o Consumo de Dados da API do \textit{Twitter}}
+O acesso a API acontece através da criação de uma aplicação pela página \textit{web} de desenvolvimento do \textit{Twitter}, https://apps.twitter.com. Após a criação desta aplicação é fornecido ao usuário informações para o acesso utilizando o protocolo OAuth. Será informado uma chave exclusiva da API da aplicação, uma chave secreta, o \textit{token} de usuário OAuth e credenciais secretas do usuário OAuth \cite{mining-social-web}.
+
+Com estas credencias é possível, então, ter acesso as APIs do \textit{Twitter} e, consequentemente, o que a mesma disponibiliza para os usuários. Para o consumo desta API, a linguagem de programação Python apresenta algumas bibliotecas que facilita este tipo de serviço, listadas a seguir:
+
+\begin{itemize}
+	\item \textit{requests-oauthlib};
+	\item \textit{tweepy};
+	\item \textit{python-twitter};
+	\item \textit{oauthlib}.
+\end{itemize}
+
+A biblioteca \textit{tweepy}, será a mais utilizada para as implementações deste trabalho devido a fácil interação com a APIs do \textit{Twitter}. Esta biblioteca permite o acesso a todos os métodos presentes na API, cada método pode aceitar parâmetros diversos e retornar respostas quando invocados \cite{tweepy}.
+
+O Código~\ref{cod:exempla-api} exemplifica o consumo da API segundo \citeonline{tweepy}.
+
+\lstinputlisting[language=Python, label=cod:exempla-api, caption=Acesso à API do \textit{Twitter}]{Cap4/src/acesso.py}
+
+Quando um método da API é invocado, quase todos os seus retornos serão uma instância de um modelo \textit{tweepy}. Este modelo irá conter dados retornados do \textit{Twitter} onde é possível manipulá-los da maneira como o programador preferir \cite{tweepy}.
+
+
+%%
+% METODOLOGIA
+\section{METODOLOGIA E DESENVOLVIMENTO}\label{sec: metodologia}
+Um trabalho científico, segundo \citeonline{demo}, pode ser avaliado pela sua qualidade política e pela sua qualidade formal. A qualidade política é referenciada pelos seus conteúdos, relevância e utilidade prática. Já a qualidade formal, diz respeito aos meios e formas usados na produção do trabalho, referindo-se ao domínio de técnicas de coleta e interpretação de dados, manipulação de fontes de informação, conhecimento demonstrado na apresentação do referencial teórico e apresentação escrita ou oral em conformidade com os ritos acadêmicos \cite{metodologia}.
+
+A característica política deste trabalho se dá com a demonstração da possibilidade de utilização da linguagem Python para a mineração de dados em redes sociais, especificamente neste presente trabalho o \textit{Twitter}, através das APIs disponibilizadas por este.
+
+Para o cumprimento das qualidades citadas, desempenhou-se uma pesquisa científica em que segundo \citeonline{goldenberg}, precisa satisfazer os seguintes requisitos:
+
+\begin{enumerate}
+	\item a existência de uma pergunta que se deja responder;
+	\item a elaboração de um conjunto de passos que permitam chegar à resposta;
+	\item a indicação do grau de confiabilidade na resposta obtida.
+\end{enumerate}
+
+A pergunta a ser respondida diz respeito da viabilidade de utilizar Python como uma ferramenta útil para a mineração de dados e, consequentemente, a apresentação dos resultados obtidos. Sendo necessário o conhecimento teórico sobre técnicas de mineração de dados e das funcionalidades e bibliotecas que a linguagem em estudo dispõe.
+
+Para o cumprimento do segundo requisito de \citeonline{goldenberg}, foram desenvolvidos \textit{scripts} para a autenticação, coleta e limpeza de dados utilizando o modelo Iterativo e Incremental como técnica de Engenharia de \textit{Software}.
+
+O desenvolvimento Iterativo e Incremental é um modelo clássico para o processo de criação de \textit{softwares}, que utiliza padrões do modelo \textit{Rational Unified Process} - RUP e também de desenvolvimentos ágeis, tem como característica o retrabalho em que o tempo de revisão e melhorias de partes dos \textit{scripts} é pré-definido e o planejamento estagiado em que várias partes do \textit{script} são desenvolvidos em paralelo e integrados quando completos \cite{rup}.
+
+A apresentação dos resultados e, também, o indicativo da resposta alcançada pela mineração dos dados, ocorreu através da implementação de códigos Python que resultaram em informações interpretadas através de gráficos, imagens e mapa.
+
+O presente trabalho se caracteriza, também, segundo \citeonline{gil}, como uma pesquisa exploratória, em que visa proporcionar familiaridade com problema ou necessidade e torná-lo explícito ou também a construção de hipóteses. Através da interpretação dos dados minerados é possível a explicitação e o desenvolvimento de hipóteses apresentadas pelas publicações na rede social \textit{Twitter}.
+
+
+
+
+
+
+
+
+
+
+
+
+
