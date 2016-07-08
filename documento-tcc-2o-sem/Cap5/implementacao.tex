@@ -75,13 +75,13 @@ A primeira linha do Código~\ref{ini-py} atribuiu a variável, "tweets\_data\_pa
 
 \lstinputlisting[language=Python, label=ini-py, caption=Leitura do arquivo JSON]{Cap5/src/ini.py}
 
-O Código~\ref{ini-py} também apresenta a construção de um \textit{DataFrame}, definido na seção~\ref{pandas}, que foi alocado à variável "tweets" \space na linha 14. Esses \textit{DataFrames} possuem uma arquitetura semelhante ao formato de tabelas, em que é possível adicionar uma coluna ou uma tabela a uma variável em Python.
+O Código~\ref{ini-py} também apresenta a construção de um \textit{DataFrame}, definido na seção~\ref{pandas}, que foi alocado à variável "tweets" \space na linha 12. Esses \textit{DataFrames} possuem uma arquitetura semelhante ao formato de tabelas, em que é possível adicionar uma coluna ou uma tabela a uma variável em Python.
 
 Através de uma variável do tipo \textit{DataFrame} foi possível determinar uma condição específica em que um \textit{DataFrame} consiga mapear informações de uma lista Python, neste caso a variável "tweet\_data". O Código~\ref{map-lingua} demonstra esta funcionalidade para mapear o conteúdo de texto, idioma e país de um \textit{tweet} da lista "tweets\_data" \space para o \textit{DataFrame} "tweets".
 
-\lstinputlisting[language=Python, label=map-lingua, caption=Mapeamento de variáveis para um \textit{DataFrame}]{Cap5/src/map-lingua.py}
-
 A linha 6 do Código~\ref{map-lingua} demonstra a soma de \textit{tweets} com o mesmo idioma através da função "value\_counts()".
+
+\lstinputlisting[language=Python, label=map-lingua, caption=Mapeamento de variáveis para um \textit{DataFrame}]{Cap5/src/map-lingua.py}
 
 Semelhante ao que foi realizado no Código~\ref{map-lingua}, foi possível verificar quais os cinco países que mais realizaram \textit{tweets} utilizando a \textit{hashtag} \#ImpeachmentDay através do Código~\ref{map-pais}.
 
@@ -129,7 +129,7 @@ Uma outra maneira de apresentar os dados coletados foi através do \textit{Word 
 
 Para gerar uma \textit{Word Cloud} foi necessário realizar um laço de repetição, conforme demonstrado na linha 3, que verificou cada palavra e removeu algumas exceções, por exemplo palavras iniciadas com "@" \space ou com "RT" \space em seu conteúdo.
 
-A linha 12 apresenta o uso da biblioteca \textit{nltk} para definir algumas palavras que foram bloqueadas como padrão, por exemplo, artigos definidos e indefinidos, que não são necessários a sua contabilização.
+A linha 12 apresenta o uso da biblioteca \textit{nltk} para definir algumas palavras que foram bloqueadas como padrão, por exemplo, artigos definidos e indefinidos, que não são necessários a sua contabilização. \\ \\
 
 \lstinputlisting[language=Python, label=wordcloud, caption=Implementação da \textit{Word Cloud}]{Cap5/src/wordcloud.py}
 
@@ -143,13 +143,13 @@ A data de publicação dos \textit{tweets} é identificado pelo atributo "create
 
 Por padrão, a API do \textit{Twitter} define o horário de criação dos \textit{tweets} em relação ao Tempo Universal Coordenado (UTC) \cite{twitter-doc}. Logo, foi necessário realizar a conversão para contemplar o fuso horário brasileiro. As linhas 4 e 5 especificam as informações do fuso horário, sendo preciso definir, primeiramente, o horário de \textit{Greenwich} (GMT) e, então, subtrair três horas para considerar o horário de Brasília.
 
-A linha 7 é especificado a contabilização dentro de um intervalo de uma hora e as linhas do Código~\ref{time} que se seguem são as funcionalidades para a criação do gráfico.
+A linha 7 é especificado a contabilização dentro de um intervalo de uma hora e as linhas do Código~\ref{time-src} que se seguem são as funcionalidades para a criação do gráfico.
 
-\lstinputlisting[language=Python, label=time, caption=Data da publicação dos \textit{tweets}]{Cap5/src/time.py}
+\lstinputlisting[language=Python, label=time-src, caption=Data da publicação dos \textit{tweets}]{Cap5/src/time.py}
 
-Todos os códigos implementados neste trabalho, exceto o Código~\ref{coleta-script} e os \textit{scripts} para a limpeza de \textit{dirty data}, utilizaram a funcionalidade \textit{notebook} do \textit{IPython}para serem implementados, onde foi possível apresentar os códigos ao interpretador do Python utilizando um navegador \textit{web}.
+Todos os códigos implementados neste trabalho, exceto o Código~\ref{coleta-script} e os \textit{scripts} para a limpeza de \textit{dirty data}, utilizaram a funcionalidade \textit{notebook} do \textit{IPython} para serem implementados, onde foi possível apresentar os códigos ao interpretador do Python utilizando um navegador \textit{web}.
 
-Os resultados apresentados durante a implementação são apresentados no capítulo posterior a este, onde serão analisado os resultados encontrados.
+Os resultados obtidos durante a implementação são apresentados no capítulo posterior a este, onde serão analisado os resultados encontrados.
 
 
 
