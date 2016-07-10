@@ -151,19 +151,25 @@ Todos os códigos implementados neste trabalho, exceto o Código~\ref{coleta-scr
 
 Os resultados obtidos durante a implementação são apresentados no capítulo posterior a este, onde serão analisado os resultados encontrados.
 
-\section{ARQUITETURA}
-A coleta e análise de dados pode ser representado através de um conjunto de passos ilustrado pela Figura~\ref{arquitetura}.
+\section{ARQUITETURA ESTRUTURAL DE COLETA E ANÁLISE DOS DADOS}
+A coleta e análise de dados podem ser representados através de etapas ilustradas pela Figura~\ref{arquitetura}.
 
 \begin{figure}[h]
 	\centering
 	\fbox{\includegraphics[width=1\textwidth]{Cap5/imagens/arquitetura}}
 	\vspace{0.1cm}
-	\caption{Arquitetura}
+	\caption{Arquitetura de etapas para a coleta e análise de \textit{tweets}}
 	\fonte{Elaborado pelo autor}
 	\label{arquitetura}
 \end{figure}
 
-A primeira etapa, consiste na execução do \textit{script} coletar-hashtags.py em que é definido a \textit{hashtag} \#ImpeachmentDay e também informações para a autenticação com a API de \textit{streaming} do \textit{Twitter}.
+A primeira etapa, consiste na coleta de dados em que foi executado o \textit{script} coletar-hashtags.py. Este código possui dados para a autenticação com a API de \textit{streaming} do \textit{Twitter} e também informações para extrair publicações que possuem a \textit{hashtag} \#ImpeachmentDay.
+
+A API de \textit{streamining} envia como resposta os \textit{tweets} publicados, filtrados através da \textit{hashtag} presente no \textit{script}. Como apresentado, através do \textit{stdout} ($>$) foi redirecionado todos os \textit{tweets} coletados para o arquivo coleta-impeachment.json, concluindo o processo de coleta das publicações.
+
+Para a análise dos dados, foi necessário remover os \textit{dirty datas} encontrados no arquivo coleta-impeachment.json. Logo, através do comando \textit{grep --invert-match} criou-se um novo arquivo sem a presença de \textit{dirty datas} chamado de small-data.json.
+
+Através da utilização do \textit{IPython Notebook}, realizou-se a leitura do arquivo small-data.json e posteriormente todas as técnicas desenvolvidas e apresentadas na seção de análise de dados. Os resultados encontrados durante as implementações serão apresentadas no próximo capítulo.
 
 
 
