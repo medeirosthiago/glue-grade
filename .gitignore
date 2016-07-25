@@ -77,4 +77,5 @@ py3/
 */.texpadtmp/*
 *data*.json
 tmp.json
-/src/temp/*
+/src/temp/*.ipnb
+/artigos/*
